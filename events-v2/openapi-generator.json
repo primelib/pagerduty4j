@@ -1,0 +1,13 @@
+{
+	"generatorName": "prime-client-java-feign",
+	"invokerPackage": "io.github.primelib.pagerduty4j.eventsv2",
+	"apiPackage" : "io.github.primelib.pagerduty4j.eventsv2.api",
+	"modelPackage" : "io.github.primelib.pagerduty4j.eventsv2.model",
+	"enablePostProcessFile": true,
+	"globalProperties": {
+		"supportingFiles": false
+	},
+	"additionalProperties": {
+		"projectName": "pagerduty4j"
+	}
+}
