@@ -48,7 +48,7 @@ public class PagerDutyEventsV2Factory {
             .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
             .build();
 
-    public static <T> T build(Consumer<PagerDutyEventsV2FactorySpec<T>> spec) {
+    public static <T> T create(Consumer<PagerDutyEventsV2FactorySpec<T>> spec) {
         PagerDutyEventsV2FactorySpec<T> config = new PagerDutyEventsV2FactorySpec<>(spec);
 
         if (config.api().isInterface()) {
@@ -66,8 +66,8 @@ public class PagerDutyEventsV2Factory {
         }
     }
 
-    public static PagerDutyEventsV2Api build() {
-        return build(spec -> spec.api(PagerDutyEventsV2Api.class));
+    public static PagerDutyEventsV2Api create() {
+        return create(spec -> spec.api(PagerDutyEventsV2Api.class));
     }
 
     private static <T> T buildClient(Consumer<PagerDutyEventsV2FactorySpec<T>> spec) {

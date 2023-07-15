@@ -48,7 +48,7 @@ public class PagerDutyRESTFactory {
             .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
             .build();
 
-    public static <T> T build(Consumer<PagerDutyRESTFactorySpec<T>> spec) {
+    public static <T> T create(Consumer<PagerDutyRESTFactorySpec<T>> spec) {
         PagerDutyRESTFactorySpec<T> config = new PagerDutyRESTFactorySpec<>(spec);
 
         if (config.api().isInterface()) {
@@ -66,8 +66,8 @@ public class PagerDutyRESTFactory {
         }
     }
 
-    public static PagerDutyRESTApi build() {
-        return build(spec -> spec.api(PagerDutyRESTApi.class));
+    public static PagerDutyRESTApi create() {
+        return create(spec -> spec.api(PagerDutyRESTApi.class));
     }
 
     private static <T> T buildClient(Consumer<PagerDutyRESTFactorySpec<T>> spec) {
