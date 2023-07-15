@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "grouping_classification",
     "user_feedback",
@@ -28,19 +33,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInnerMetadata {
 
     /**
+     * Constructs a validated implementation of {@link GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInnerMetadata}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInnerMetadata(Consumer<GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInnerMetadata> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The classification for why this Related Incident was grouped into this group. Values can be one of: [similar_contents, prior_feedback], where: similar_contents - The Related Incident was due to similar contents of the Incidents. prior_feedback - The Related Incident was determined to be related, based on User feedback or Incident merge/unmerge actions. 
      */
     @JsonProperty("grouping_classification")
-    private GroupingClassificationEnum groupingClassification;
+    protected GroupingClassificationEnum groupingClassification;
 
     @JsonProperty("user_feedback")
-    private RelatedIncidentMachineLearningRelationshipUserFeedback userFeedback;
+    protected RelatedIncidentMachineLearningRelationshipUserFeedback userFeedback;
 
     @JsonProperty("dependent_services")
-    private List<RelatedIncidentServiceDependencyBase> dependentServices;
+    protected List<RelatedIncidentServiceDependencyBase> dependentServices;
 
     @JsonProperty("supporting_services")
-    private List<RelatedIncidentServiceDependencyBase> supportingServices;
+    protected List<RelatedIncidentServiceDependencyBase> supportingServices;
 
 
     /**

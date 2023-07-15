@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "self",
@@ -33,50 +38,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class EventRule {
 
     /**
+     * Constructs a validated implementation of {@link EventRule}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public EventRule(Consumer<EventRule> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * ID of the Event Rule.
      */
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * the API show URL at which the object is accessible.
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * Indicates whether the Event Rule is disabled and would therefore not be evaluated.
      */
     @JsonProperty("disabled")
-    private Boolean disabled;
+    protected Boolean disabled;
 
     @JsonProperty("conditions")
-    private ServiceEventRuleAllOfConditions conditions;
+    protected ServiceEventRuleAllOfConditions conditions;
 
     @JsonProperty("time_frame")
-    private ServiceEventRuleAllOfTimeFrame timeFrame;
+    protected ServiceEventRuleAllOfTimeFrame timeFrame;
 
     /**
      * [Early Access] Populate variables from event payloads and use those variables in other event actions.
      */
     @JsonProperty("variables")
-    private List<ServiceEventRuleAllOfVariables> variables;
+    protected List<ServiceEventRuleAllOfVariables> variables;
 
     /**
      * Position/index of the Event Rule in the Ruleset.
      * Starting from position 0 (the first rule), rules are evaluated one-by-one until a matching rule is found.
      */
     @JsonProperty("position")
-    private Integer position;
+    protected Integer position;
 
     /**
      * Indicates whether the Event Rule is the last Event Rule of the Ruleset that serves as a catch-all. It has limited functionality compared to other rules and always matches.
      */
     @JsonProperty("catch_all")
-    private Boolean catchAll;
+    protected Boolean catchAll;
 
     @JsonProperty("actions")
-    private EventRuleAllOfActions actions;
+    protected EventRuleAllOfActions actions;
 
 
 }

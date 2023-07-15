@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "description",
     "events",
@@ -28,25 +33,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class WebhookSubscriptionUpdateWebhookSubscription {
 
     /**
+     * Constructs a validated implementation of {@link WebhookSubscriptionUpdateWebhookSubscription}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public WebhookSubscriptionUpdateWebhookSubscription(Consumer<WebhookSubscriptionUpdateWebhookSubscription> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * A short description of the webhook subscription.
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     /**
      * The set of outbound event types the subscription will receive.
      */
     @JsonProperty("events")
-    private Set<String> events;
+    protected Set<String> events;
 
     @JsonProperty("filter")
-    private WebhookSubscriptionUpdateWebhookSubscriptionFilter filter;
+    protected WebhookSubscriptionUpdateWebhookSubscriptionFilter filter;
 
     /**
      * If true, a webhook will be sent. True is the default state. If false, a webhook will not be sent.
      */
     @JsonProperty("active")
-    private Boolean active;
+    protected Boolean active;
 
 
 }

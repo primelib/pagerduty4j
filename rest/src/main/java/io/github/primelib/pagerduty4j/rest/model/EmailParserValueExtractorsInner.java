@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "part",
@@ -28,26 +33,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EmailParserValueExtractorsInner {
 
+    /**
+     * Constructs a validated implementation of {@link EmailParserValueExtractorsInner}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public EmailParserValueExtractorsInner(Consumer<EmailParserValueExtractorsInner> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     @JsonProperty("part")
-    private PartEnum part;
+    protected PartEnum part;
 
     /**
      * The field name to set in the Incident object. Exactly one must use the `value_name` of `incident_key`
      */
     @JsonProperty("value_name")
-    private String valueName;
+    protected String valueName;
 
     @JsonProperty("regex")
-    private String regex;
+    protected String regex;
 
     @JsonProperty("starts_after")
-    private String startsAfter;
+    protected String startsAfter;
 
     @JsonProperty("ends_with")
-    private String endsWith;
+    protected String endsWith;
 
 
     @AllArgsConstructor

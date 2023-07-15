@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "subscribers"
 })
@@ -25,8 +30,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateBusinessServiceNotificationSubscribersRequest {
 
+    /**
+     * Constructs a validated implementation of {@link CreateBusinessServiceNotificationSubscribersRequest}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public CreateBusinessServiceNotificationSubscribersRequest(Consumer<CreateBusinessServiceNotificationSubscribersRequest> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("subscribers")
-    private Set<NotificationSubscriber> subscribers = new LinkedHashSet<>();
+    protected Set<NotificationSubscriber> subscribers = new LinkedHashSet<>();
 
 
 }

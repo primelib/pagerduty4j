@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import java.util.Set;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -39,83 +44,93 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Integration {
 
+    /**
+     * Constructs a validated implementation of {@link Integration}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public Integration(Consumer<Integration> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * a URL at which the entity is uniquely displayed in the Web app
      */
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     /**
      * The name of this integration.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     @JsonProperty("service")
-    private ServiceReference service;
+    protected ServiceReference service;
 
     /**
      * The date/time when this integration was created.
      */
     @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
+    protected OffsetDateTime createdAt;
 
     @JsonProperty("vendor")
-    private VendorReference vendor;
+    protected VendorReference vendor;
 
     /**
      * Specify for generic_email_inbound_integration. Must be set to an email address @your-subdomain.pagerduty.com
      */
     @JsonProperty("integration_email")
-    private String integrationEmail;
+    protected String integrationEmail;
 
     /**
      * Specify for generic_email_inbound_integration
      */
     @JsonProperty("email_incident_creation")
-    private EmailIncidentCreationEnum emailIncidentCreation;
+    protected EmailIncidentCreationEnum emailIncidentCreation;
 
     /**
      * Specify for generic_email_inbound_integration. May override email_incident_creation
      */
     @JsonProperty("email_filter_mode")
-    private EmailFilterModeEnum emailFilterMode;
+    protected EmailFilterModeEnum emailFilterMode;
 
     /**
      * Specify for generic_email_inbound_integration.
      */
     @JsonProperty("email_parsers")
-    private Set<EmailParser> emailParsers;
+    protected Set<EmailParser> emailParsers;
 
     /**
      * Specify for generic_email_inbound_integration.
      */
     @JsonProperty("email_parsing_fallback")
-    private EmailParsingFallbackEnum emailParsingFallback;
+    protected EmailParsingFallbackEnum emailParsingFallback;
 
     /**
      * Specify for generic_email_inbound_integration.
      */
     @JsonProperty("email_filters")
-    private Set<IntegrationAllOfEmailFilters> emailFilters;
+    protected Set<IntegrationAllOfEmailFilters> emailFilters;
 
 
     @AllArgsConstructor

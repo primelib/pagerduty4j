@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "role",
     "resources"
@@ -26,13 +31,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserRole {
 
     /**
+     * Constructs a validated implementation of {@link UserRole}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public UserRole(Consumer<UserRole> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The role of the user for a set of resources.
      */
     @JsonProperty("role")
-    private RoleEnum role;
+    protected RoleEnum role;
 
     @JsonProperty("resources")
-    private List<Reference> resources;
+    protected List<Reference> resources;
 
 
     /**

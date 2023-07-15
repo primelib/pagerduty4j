@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "type",
@@ -28,23 +33,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class IncidentWorkflowActionInvocation {
 
+    /**
+     * Constructs a validated implementation of {@link IncidentWorkflowActionInvocation}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowActionInvocation(Consumer<IncidentWorkflowActionInvocation> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * Reference to the Action that was invoked
      */
     @JsonProperty("action_id")
-    private String actionId;
+    protected String actionId;
 
     @JsonProperty("inputs")
-    private List<IncidentWorkflowActionInvocationInputsInner> inputs;
+    protected List<IncidentWorkflowActionInvocationInputsInner> inputs;
 
     @JsonProperty("outputs")
-    private List<IncidentWorkflowActionInvocationOutputsInner> outputs;
+    protected List<IncidentWorkflowActionInvocationOutputsInner> outputs;
 
 
     @AllArgsConstructor

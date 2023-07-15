@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "alerts"
 })
@@ -26,10 +31,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdateIncidentAlertsRequest {
 
     /**
+     * Constructs a validated implementation of {@link UpdateIncidentAlertsRequest}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public UpdateIncidentAlertsRequest(Consumer<UpdateIncidentAlertsRequest> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * An array of alerts, including the parameters to update for each alert.
      */
     @JsonProperty("alerts")
-    private List<Alert> alerts = new ArrayList<>();
+    protected List<Alert> alerts = new ArrayList<>();
 
 
 }

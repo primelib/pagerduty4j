@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "status",
     "errors",
@@ -28,19 +33,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateScheduleOverride201ResponseInner {
 
     /**
+     * Constructs a validated implementation of {@link CreateScheduleOverride201ResponseInner}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public CreateScheduleOverride201ResponseInner(Consumer<CreateScheduleOverride201ResponseInner> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * HTTP Status Code reflecting the result of creating this specific override, e.g. 201 for success, 400 for invalid parameters.
      */
     @JsonProperty("status")
-    private BigDecimal status;
+    protected BigDecimal status;
 
     /**
      * If present, an array of strings representing human-readable explanations for errors found.
      */
     @JsonProperty("errors")
-    private List<String> errors;
+    protected List<String> errors;
 
     @JsonProperty("override")
-    private ScheduleOverride override;
+    protected ScheduleOverride override;
 
 
 }

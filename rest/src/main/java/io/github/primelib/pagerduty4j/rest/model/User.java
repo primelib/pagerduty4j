@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -41,107 +46,117 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class User {
 
+    /**
+     * Constructs a validated implementation of {@link User}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public User(Consumer<User> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
     /**
      * The type of object being created.
      */
     @JsonProperty("type")
-    private TypeEnum type = TypeEnum.USER;
+    protected TypeEnum type = TypeEnum.USER;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * a URL at which the entity is uniquely displayed in the Web app
      */
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     /**
      * The name of the user.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * The user's email address.
      */
     @JsonProperty("email")
-    private String email;
+    protected String email;
 
     /**
      * The preferred time zone name. If null, the account's time zone will be used.
      */
     @JsonProperty("time_zone")
-    private String timeZone;
+    protected String timeZone;
 
     /**
      * The schedule color.
      */
     @JsonProperty("color")
-    private String color;
+    protected String color;
 
     /**
      * The user role. Account must have the `read_only_users` ability to set a user as a `read_only_user` or a `read_only_limited_user`, and must have advanced permissions abilities to set a user as `observer` or `restricted_access`.
      */
     @JsonProperty("role")
-    private RoleEnum role;
+    protected RoleEnum role;
 
     /**
      * The URL of the user's avatar.
      */
     @JsonProperty("avatar_url")
-    private String avatarUrl;
+    protected String avatarUrl;
 
     /**
      * The user's bio.
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     /**
      * If true, the user has an outstanding invitation.
      */
     @JsonProperty("invitation_sent")
-    private Boolean invitationSent;
+    protected Boolean invitationSent;
 
     /**
      * The user's title.
      */
     @JsonProperty("job_title")
-    private String jobTitle;
+    protected String jobTitle;
 
     /**
      * The list of teams to which the user belongs. Account must have the `teams` ability to set this.
      */
     @JsonProperty("teams")
-    private List<TeamReference> teams;
+    protected List<TeamReference> teams;
 
     /**
      * The list of contact methods for the user.
      */
     @JsonProperty("contact_methods")
-    private List<ContactMethodReference> contactMethods;
+    protected List<ContactMethodReference> contactMethods;
 
     /**
      * The list of notification rules for the user.
      */
     @JsonProperty("notification_rules")
-    private List<NotificationRuleReference> notificationRules;
+    protected List<NotificationRuleReference> notificationRules;
 
     @JsonProperty("license")
-    private UserAllOfLicense license;
+    protected UserAllOfLicense license;
 
 
     /**

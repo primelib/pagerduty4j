@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "route_to"
 })
@@ -24,10 +29,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInnerActions {
 
     /**
+     * Constructs a validated implementation of {@link OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInnerActions}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInnerActions(Consumer<OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInnerActions> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The ID of a Set from this Unrouted Orchestration whose rules you also want to use with event that match this rule.
      */
     @JsonProperty("route_to")
-    private String routeTo;
+    protected String routeTo;
 
 
 }

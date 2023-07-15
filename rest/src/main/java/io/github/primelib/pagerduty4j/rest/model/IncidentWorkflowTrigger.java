@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -36,38 +41,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class IncidentWorkflowTrigger {
 
+    /**
+     * Constructs a validated implementation of {@link IncidentWorkflowTrigger}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowTrigger(Consumer<IncidentWorkflowTrigger> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * a URL at which the entity is uniquely displayed in the Web app
      */
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     /**
      * Human readable name for the trigger type
      */
     @JsonProperty("trigger_type_name")
-    private String triggerTypeName;
+    protected String triggerTypeName;
 
     @JsonProperty("trigger_type")
-    private TriggerTypeEnum triggerType;
+    protected TriggerTypeEnum triggerType;
 
     /**
      * A PCL condition string.
@@ -76,28 +91,28 @@ public class IncidentWorkflowTrigger {
      * Required if trigger_type is “conditional”, not allowed if trigger_type is “manual”. 
      */
     @JsonProperty("condition")
-    private String condition;
+    protected String condition;
 
     @JsonProperty("trigger_url")
-    private String triggerUrl;
+    protected String triggerUrl;
 
     @JsonProperty("workflow")
-    private IncidentWorkflowTriggerAllOfWorkflow workflow;
+    protected IncidentWorkflowTriggerAllOfWorkflow workflow;
 
     /**
      * An optional array of Services associated with this workflow. Incidents in any of the listed Services are eligible to fire this Trigger
      */
     @JsonProperty("services")
-    private List<IncidentWorkflowTriggerAllOfServices> services;
+    protected List<IncidentWorkflowTriggerAllOfServices> services;
 
     /**
      * Indicates that the Trigger should be associated with All Services
      */
     @JsonProperty("is_subscribed_to_all_services")
-    private Boolean isSubscribedToAllServices;
+    protected Boolean isSubscribedToAllServices;
 
     @JsonProperty("permissions")
-    private IncidentWorkflowTriggerAllOfPermissions permissions;
+    protected IncidentWorkflowTriggerAllOfPermissions permissions;
 
 
     @AllArgsConstructor

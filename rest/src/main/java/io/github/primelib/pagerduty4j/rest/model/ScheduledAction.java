@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "at",
@@ -26,19 +31,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ScheduledAction {
 
     /**
+     * Constructs a validated implementation of {@link ScheduledAction}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ScheduledAction(Consumer<ScheduledAction> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The type of schedule action. Must be set to urgency_change.
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     @JsonProperty("at")
-    private ScheduledActionAt at;
+    protected ScheduledActionAt at;
 
     /**
      * Urgency level. Must be set to high.
      */
     @JsonProperty("to_urgency")
-    private ToUrgencyEnum toUrgency;
+    protected ToUrgencyEnum toUrgency;
 
 
     /**

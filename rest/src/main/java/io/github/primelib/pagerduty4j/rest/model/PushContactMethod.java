@@ -1,10 +1,14 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -18,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @EqualsAndHashCode(callSuper = true)
 @JsonPropertyOrder({
     "type",
@@ -31,29 +36,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class PushContactMethod extends ContactMethod {
 
+    /**
+     * Constructs a validated implementation of {@link PushContactMethod}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public PushContactMethod(Consumer<PushContactMethod> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("type")
-    private ContactMethodType type;
+    protected ContactMethodType type;
 
     /**
      * The type of device.
      */
     @JsonProperty("device_type")
-    private DeviceTypeEnum deviceType;
+    protected DeviceTypeEnum deviceType;
 
     @JsonProperty("sounds")
-    private List<PushContactMethodSound> sounds;
+    protected List<PushContactMethodSound> sounds;
 
     /**
      * Time at which the contact method was created.
      */
     @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
+    protected OffsetDateTime createdAt;
 
     /**
      * If true, this phone has been blacklisted by PagerDuty and no messages will be sent to it.
      */
     @JsonProperty("blacklisted")
-    private Boolean blacklisted;
+    protected Boolean blacklisted;
 
 
     /**

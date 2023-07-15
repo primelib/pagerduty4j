@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "self",
@@ -33,38 +38,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class AuditRecord {
 
+    /**
+     * Constructs a validated implementation of {@link AuditRecord}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public AuditRecord(Consumer<AuditRecord> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * Record URL.
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * The date/time the action executed, in ISO8601 format and millisecond precision.
      */
     @JsonProperty("execution_time")
-    private OffsetDateTime executionTime;
+    protected OffsetDateTime executionTime;
 
     @JsonProperty("execution_context")
-    private AuditRecordExecutionContext executionContext;
+    protected AuditRecordExecutionContext executionContext;
 
     @JsonProperty("actors")
-    private List<Reference> actors;
+    protected List<Reference> actors;
 
     @JsonProperty("method")
-    private AuditRecordMethod method;
+    protected AuditRecordMethod method;
 
     @JsonProperty("root_resource")
-    private Reference rootResource;
+    protected Reference rootResource;
 
     @JsonProperty("action")
-    private String action;
+    protected String action;
 
     @JsonProperty("details")
-    private AuditRecordDetails details;
+    protected AuditRecordDetails details;
 
 
 }

@@ -440,10 +440,10 @@ import io.github.primelib.pagerduty4j.rest.spec.UpdateUserStatusUpdateNotificati
 import io.github.primelib.pagerduty4j.rest.spec.UpdateWebhookSubscriptionOperationSpec;
 
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class PagerDutyRESTSpecApi {
+public class PagerDutyRESTConsumerApi {
     private final PagerDutyRESTApi api;
 
-    public PagerDutyRESTSpecApi(PagerDutyRESTApi api) {
+    public PagerDutyRESTConsumerApi(PagerDutyRESTApi api) {
         this.api = api;
     }
 

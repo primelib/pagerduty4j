@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "matcher",
@@ -28,26 +33,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class MatchPredicate {
 
+    /**
+     * Constructs a validated implementation of {@link MatchPredicate}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public MatchPredicate(Consumer<MatchPredicate> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * Required if the type is `contains`, `exactly` or `regex`.
      */
     @JsonProperty("matcher")
-    private String matcher;
+    protected String matcher;
 
     /**
      * The email field that will attempt to use the matcher expression. Required if the type is `contains`, `exactly` or `regex`.
      */
     @JsonProperty("part")
-    private PartEnum part;
+    protected PartEnum part;
 
     /**
      * Additional matchers to be run. Must be not empty if the type is `all`, `any`, or `not`.
      */
     @JsonProperty("children")
-    private List<MatchPredicate> children = new ArrayList<>();
+    protected List<MatchPredicate> children = new ArrayList<>();
 
 
     @AllArgsConstructor

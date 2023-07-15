@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -18,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -45,119 +50,129 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class IncidentWorkflowAction {
 
+    /**
+     * Constructs a validated implementation of {@link IncidentWorkflowAction}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowAction(Consumer<IncidentWorkflowAction> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * a URL at which the entity is uniquely displayed in the Web app
      */
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     /**
      * The Verified Domain of the account that created the action
      */
     @JsonProperty("domain_name")
-    private String domainName;
+    protected String domainName;
 
     /**
      * The Package Name corresponding to the broad category of the Action
      */
     @JsonProperty("package_name")
-    private String packageName;
+    protected String packageName;
 
     /**
      * The Function Name describing the specific functionality of the Action
      */
     @JsonProperty("function_name")
-    private String functionName;
+    protected String functionName;
 
     /**
      * The version of the Action
      */
     @JsonProperty("version")
-    private BigDecimal version;
+    protected BigDecimal version;
 
     /**
      * The descriptive name of the Action
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * A description of the Action
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     /**
      * The type of Action
      */
     @JsonProperty("action_type")
-    private ActionTypeEnum actionType;
+    protected ActionTypeEnum actionType;
 
     /**
      * The type of Trigger this Action is, if action_type is trigger
      */
     @JsonProperty("trigger_type")
-    private TriggerTypeEnum triggerType;
+    protected TriggerTypeEnum triggerType;
 
     /**
      * A set of tags to apply to this action.
      */
     @JsonProperty("tags")
-    private List<String> tags;
+    protected List<String> tags;
 
     /**
      * A set of search keywords to apply to this action.
      */
     @JsonProperty("search_keywords")
-    private List<String> searchKeywords;
+    protected List<String> searchKeywords;
 
     /**
      * JSON-formatted string of metadata pertaining to the Action
      */
     @JsonProperty("metadata")
-    private String metadata;
+    protected String metadata;
 
     /**
      * The date-time at which this Action was created
      */
     @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
+    protected OffsetDateTime createdAt;
 
     /**
      * The obfuscated Id of the User who created this Action
      */
     @JsonProperty("created_by_user_id")
-    private String createdByUserId;
+    protected String createdByUserId;
 
     /**
      * Inputs whose values used during Action execution
      */
     @JsonProperty("inputs")
-    private List<IncidentWorkflowActionAllOfInputs> inputs;
+    protected List<IncidentWorkflowActionAllOfInputs> inputs;
 
     /**
      * Outputs whose values set during Action execution
      */
     @JsonProperty("outputs")
-    private List<IncidentWorkflowActionAllOfOutputs> outputs;
+    protected List<IncidentWorkflowActionAllOfOutputs> outputs;
 
 
     @AllArgsConstructor

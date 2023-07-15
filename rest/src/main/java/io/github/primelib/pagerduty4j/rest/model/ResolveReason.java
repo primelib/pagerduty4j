@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "incident"
@@ -25,13 +30,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ResolveReason {
 
     /**
+     * Constructs a validated implementation of {@link ResolveReason}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ResolveReason(Consumer<ResolveReason> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The reason the incident was resolved. The only reason currently supported is merge.
      */
     @JsonProperty("type")
-    private TypeEnum type = TypeEnum.MERGE_RESOLVE_REASON;
+    protected TypeEnum type = TypeEnum.MERGE_RESOLVE_REASON;
 
     @JsonProperty("incident")
-    private IncidentReference incident;
+    protected IncidentReference incident;
 
 
     /**

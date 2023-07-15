@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "name",
     "rendered_schedule_entries",
@@ -28,22 +33,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SubSchedule {
 
     /**
+     * Constructs a validated implementation of {@link SubSchedule}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public SubSchedule(Consumer<SubSchedule> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The name of the subschedule
      */
     @JsonProperty("name")
-    private NameEnum name;
+    protected NameEnum name;
 
     /**
      * This is a list of entries on the computed layer for the current time range. Since or until must be set in order for this field to be populated.
      */
     @JsonProperty("rendered_schedule_entries")
-    private List<ScheduleLayerEntry> renderedScheduleEntries;
+    protected List<ScheduleLayerEntry> renderedScheduleEntries;
 
     /**
      * The percentage of the time range covered by this layer. Returns null unless since or until are set.
      */
     @JsonProperty("rendered_coverage_percentage")
-    private BigDecimal renderedCoveragePercentage;
+    protected BigDecimal renderedCoveragePercentage;
 
 
     /**

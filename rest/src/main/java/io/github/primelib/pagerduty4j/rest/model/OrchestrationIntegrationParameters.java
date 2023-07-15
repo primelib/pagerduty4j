@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "routing_key",
     "type"
@@ -25,13 +30,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrchestrationIntegrationParameters {
 
     /**
+     * Constructs a validated implementation of {@link OrchestrationIntegrationParameters}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public OrchestrationIntegrationParameters(Consumer<OrchestrationIntegrationParameters> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Routing Key used to send Events to this Orchestration
      */
     @JsonProperty("routing_key")
-    private String routingKey;
+    protected String routingKey;
 
     @JsonProperty("type")
-    private String type = "global";
+    protected String type = "global";
 
 
 }

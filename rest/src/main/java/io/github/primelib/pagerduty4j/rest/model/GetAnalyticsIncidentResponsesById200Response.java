@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "incident_id",
     "limit",
@@ -30,37 +35,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetAnalyticsIncidentResponsesById200Response {
 
     /**
+     * Constructs a validated implementation of {@link GetAnalyticsIncidentResponsesById200Response}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public GetAnalyticsIncidentResponsesById200Response(Consumer<GetAnalyticsIncidentResponsesById200Response> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The Incident ID passed in to the request.
      */
     @JsonProperty("incident_id")
-    private String incidentId;
+    protected String incidentId;
 
     /**
      * Number of results to include in the batch.
      */
     @JsonProperty("limit")
-    private Integer limit;
+    protected Integer limit;
 
     /**
      * The order in which the results were sorted; asc for ascending, desc for descending.
      */
     @JsonProperty("order")
-    private OrderEnum order;
+    protected OrderEnum order;
 
     /**
      * The column that was used for ordering the results.
      */
     @JsonProperty("order_by")
-    private OrderByEnum orderBy;
+    protected OrderByEnum orderBy;
 
     /**
      * The time zone that the results are in.
      */
     @JsonProperty("time_zone")
-    private String timeZone;
+    protected String timeZone;
 
     @JsonProperty("responses")
-    private List<AnalyticsRawIncidentResponses> responses;
+    protected List<AnalyticsRawIncidentResponses> responses;
 
 
     /**

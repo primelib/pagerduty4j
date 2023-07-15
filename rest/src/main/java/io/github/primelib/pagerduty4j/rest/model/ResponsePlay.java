@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -39,71 +44,81 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ResponsePlay {
 
+    /**
+     * Constructs a validated implementation of {@link ResponsePlay}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ResponsePlay(Consumer<ResponsePlay> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
     /**
      * The type of object being created.
      */
     @JsonProperty("type")
-    private TypeEnum type = TypeEnum.RESPONSE_PLAY;
+    protected TypeEnum type = TypeEnum.RESPONSE_PLAY;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * a URL at which the entity is uniquely displayed in the Web app
      */
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     /**
      * The name of the response play.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * The description of the response play.
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     @JsonProperty("team")
-    private ResponsePlayAllOfTeam team;
+    protected ResponsePlayAllOfTeam team;
 
     /**
      * An array containing the users and/or teams to be added as subscribers to any incident on which this response play is run.
      */
     @JsonProperty("subscribers")
-    private List<ResponsePlayAllOfSubscribersInner> subscribers;
+    protected List<ResponsePlayAllOfSubscribersInner> subscribers;
 
     /**
      * The content of the notification that will be sent to all incident subscribers upon the running of this response play. Note that this includes any users who may have already been subscribed to the incident prior to the running of this response play. If empty, no notifications will be sent.
      */
     @JsonProperty("subscribers_message")
-    private String subscribersMessage;
+    protected String subscribersMessage;
 
     /**
      * An array containing the users and/or escalation policies to be requested as responders to any incident on which this response play is run.
      */
     @JsonProperty("responders")
-    private List<ResponsePlayAllOfRespondersInner> responders;
+    protected List<ResponsePlayAllOfRespondersInner> responders;
 
     /**
      * The message body of the notification that will be sent to this response play's set of responders. If empty, a default response request notification will be sent.
      */
     @JsonProperty("responders_message")
-    private String respondersMessage;
+    protected String respondersMessage;
 
     /**
      * String representing how this response play is allowed to be run. Valid options are:
@@ -112,19 +127,19 @@ public class ResponsePlay {
      *  - `responders`: This response play can be run manually on an incident by any responders in this account.
      */
     @JsonProperty("runnability")
-    private RunnabilityEnum runnability = RunnabilityEnum.SERVICES;
+    protected RunnabilityEnum runnability = RunnabilityEnum.SERVICES;
 
     /**
      * The telephone number that will be set as the conference number for any incident on which this response play is run.
      */
     @JsonProperty("conference_number")
-    private String conferenceNumber;
+    protected String conferenceNumber;
 
     /**
      * The URL that will be set as the conference URL for any incident on which this response play is run.
      */
     @JsonProperty("conference_url")
-    private String conferenceUrl;
+    protected String conferenceUrl;
 
     /**
      * This field has three possible values and indicates how the response play was created.
@@ -133,7 +148,7 @@ public class ResponsePlay {
      *  - `zoom` : Customers with the Zoom-Integration Entitelment can use this value to dynamicly configure conference number and url for zoom
      */
     @JsonProperty("conference_type")
-    private ConferenceTypeEnum conferenceType = ConferenceTypeEnum.NONE;
+    protected ConferenceTypeEnum conferenceType = ConferenceTypeEnum.NONE;
 
 
     /**

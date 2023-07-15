@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "secret",
@@ -29,38 +34,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class WebhookSubscriptionDeliveryMethod {
 
+    /**
+     * Constructs a validated implementation of {@link WebhookSubscriptionDeliveryMethod}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public WebhookSubscriptionDeliveryMethod(Consumer<WebhookSubscriptionDeliveryMethod> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * The secret used to sign webhook payloads. Only provided on the initial create response.
      */
     @JsonProperty("secret")
-    private String secret;
+    protected String secret;
 
     /**
      * Whether or not this webhook subscription is temporarily disabled. Becomes `true` if the delivery method URL is repeatedly rejected by the server.
      */
     @JsonProperty("temporarily_disabled")
-    private Boolean temporarilyDisabled;
+    protected Boolean temporarilyDisabled;
 
     /**
      * Indicates the type of the delivery method.
      */
     @JsonProperty("type")
-    private TypeEnum type = TypeEnum.HTTP_DELIVERY_METHOD;
+    protected TypeEnum type = TypeEnum.HTTP_DELIVERY_METHOD;
 
     /**
      * The destination URL for webhook delivery.
      */
     @JsonProperty("url")
-    private String url;
+    protected String url;
 
     /**
      * Optional headers to be set on this webhook subscription when sent. The header values are redacted in GET requests, but are not redacted on the webhook when delivered to the webhook's endpoint.
      */
     @JsonProperty("custom_headers")
-    private List customHeaders = null;
+    protected List customHeaders = null;
 
 
     /**

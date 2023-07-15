@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "action_id",
     "description",
@@ -29,22 +34,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration {
 
     /**
+     * Constructs a validated implementation of {@link IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration(Consumer<IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The identifier of the Action to execute
      */
     @JsonProperty("action_id")
-    private String actionId;
+    protected String actionId;
 
     /**
      * Description of the Action
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     @JsonProperty("inputs")
-    private List<IncidentWorkflowAllOfStepsInnerAllOfActionConfigurationInputsInner> inputs = new ArrayList<>();
+    protected List<IncidentWorkflowAllOfStepsInnerAllOfActionConfigurationInputsInner> inputs = new ArrayList<>();
 
     @JsonProperty("outputs")
-    private List<IncidentWorkflowAllOfStepsInnerAllOfActionConfigurationOutputsInner> outputs;
+    protected List<IncidentWorkflowAllOfStepsInnerAllOfActionConfigurationOutputsInner> outputs;
 
 
 }

@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "value",
     "threshold_value",
@@ -26,26 +31,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EventRuleActionsCommonSuppress {
 
+    /**
+     * Constructs a validated implementation of {@link EventRuleActionsCommonSuppress}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public EventRuleActionsCommonSuppress(Consumer<EventRuleActionsCommonSuppress> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("value")
-    private Boolean value;
+    protected Boolean value;
 
     /**
      * The number of occurences needed during the window of time to trigger the theshold.
      */
     @JsonProperty("threshold_value")
-    private Integer thresholdValue;
+    protected Integer thresholdValue;
 
     /**
      * The time unit for the window of time.
      */
     @JsonProperty("threshold_time_unit")
-    private ThresholdTimeUnitEnum thresholdTimeUnit;
+    protected ThresholdTimeUnitEnum thresholdTimeUnit;
 
     /**
      * The amount of time units for the window of time.
      */
     @JsonProperty("threshold_time_amount")
-    private Integer thresholdTimeAmount;
+    protected Integer thresholdTimeAmount;
 
 
     /**

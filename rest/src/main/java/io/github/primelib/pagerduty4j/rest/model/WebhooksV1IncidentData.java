@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "incident_number",
@@ -39,68 +44,78 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class WebhooksV1IncidentData {
 
+    /**
+     * Constructs a validated implementation of {@link WebhooksV1IncidentData}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public WebhooksV1IncidentData(Consumer<WebhooksV1IncidentData> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * The number of the incident. This is unique across the account.
      */
     @JsonProperty("incident_number")
-    private Integer incidentNumber;
+    protected Integer incidentNumber;
 
     /**
      * The date/time the incident was first triggered.
      */
     @JsonProperty("created_on")
-    private OffsetDateTime createdOn;
+    protected OffsetDateTime createdOn;
 
     /**
      * The current status of the incident.
      */
     @JsonProperty("status")
-    private StatusEnum status;
+    protected StatusEnum status;
 
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     /**
      * The incident's de-duplication key.
      */
     @JsonProperty("incident_key")
-    private String incidentKey;
+    protected String incidentKey;
 
     @JsonProperty("service")
-    private WebhooksV1Service service;
+    protected WebhooksV1Service service;
 
     @JsonProperty("assigned_to_user")
-    private WebhooksV1AssignedToUser assignedToUser;
+    protected WebhooksV1AssignedToUser assignedToUser;
 
     @JsonProperty("assigned_to")
-    private List<WebhooksV1AssignedTo> assignedTo;
+    protected List<WebhooksV1AssignedTo> assignedTo;
 
     @JsonProperty("trigger_summary_data")
-    private WebhooksV1IncidentDataTriggerSummaryData triggerSummaryData;
+    protected WebhooksV1IncidentDataTriggerSummaryData triggerSummaryData;
 
     @JsonProperty("trigger_details_html_url")
-    private String triggerDetailsHtmlUrl;
+    protected String triggerDetailsHtmlUrl;
 
     /**
      * The time at which the status of the incident last changed.
      */
     @JsonProperty("last_status_change_on")
-    private OffsetDateTime lastStatusChangeOn;
+    protected OffsetDateTime lastStatusChangeOn;
 
     @JsonProperty("last_status_change_by")
-    private WebhooksV1AssignedToUser lastStatusChangeBy;
+    protected WebhooksV1AssignedToUser lastStatusChangeBy;
 
     /**
      * Number of times the incident has been escalated.
      */
     @JsonProperty("number_of_escalations")
-    private Integer numberOfEscalations;
+    protected Integer numberOfEscalations;
 
     @JsonProperty("urgency")
-    private UrgencyEnum urgency;
+    protected UrgencyEnum urgency;
 
 
     /**

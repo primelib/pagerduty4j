@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "first",
     "last",
@@ -34,53 +39,63 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetAnalyticsIncidents200Response {
 
     /**
+     * Constructs a validated implementation of {@link GetAnalyticsIncidents200Response}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public GetAnalyticsIncidents200Response(Consumer<GetAnalyticsIncidents200Response> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Cursor to identify the first object in the response.
      */
     @JsonProperty("first")
-    private String first;
+    protected String first;
 
     /**
      * Cursor to identify the last object in the response.
      */
     @JsonProperty("last")
-    private String last;
+    protected String last;
 
     /**
      * Number of results to include in the batch.
      */
     @JsonProperty("limit")
-    private Integer limit;
+    protected Integer limit;
 
     /**
      * Indicates if there are more resources available than were returned.
      */
     @JsonProperty("more")
-    private Boolean more;
+    protected Boolean more;
 
     /**
      * The order in which the results were sorted;
      * asc for ascending, desc for descending.
      */
     @JsonProperty("order")
-    private OrderEnum order;
+    protected OrderEnum order;
 
     /**
      * The column that was used for ordering the results.
      */
     @JsonProperty("order_by")
-    private OrderByEnum orderBy;
+    protected OrderByEnum orderBy;
 
     @JsonProperty("filters")
-    private GetAnalyticsIncidents200ResponseFilters filters;
+    protected GetAnalyticsIncidents200ResponseFilters filters;
 
     /**
      * The time zone that the results are in.
      */
     @JsonProperty("time_zone")
-    private String timeZone;
+    protected String timeZone;
 
     @JsonProperty("data")
-    private List<AnalyticsRawIncident> data = new ArrayList<>();
+    protected List<AnalyticsRawIncident> data = new ArrayList<>();
 
 
     /**

@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "email_subject",
     "email_body",
@@ -27,22 +32,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RenderedTemplateWarnings {
 
     /**
+     * Constructs a validated implementation of {@link RenderedTemplateWarnings}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public RenderedTemplateWarnings(Consumer<RenderedTemplateWarnings> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * List of warnings for email_subject
      */
     @JsonProperty("email_subject")
-    private List emailSubject = null;
+    protected List emailSubject = null;
 
     /**
      * List of warnings for email_body
      */
     @JsonProperty("email_body")
-    private List emailBody = null;
+    protected List emailBody = null;
 
     /**
      * List of warnings for message field
      */
     @JsonProperty("message")
-    private List message = null;
+    protected List message = null;
 
 
 }

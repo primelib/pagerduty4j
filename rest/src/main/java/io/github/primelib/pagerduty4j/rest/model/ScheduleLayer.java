@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -19,7 +23,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "start",
@@ -36,62 +41,72 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ScheduleLayer {
 
+    /**
+     * Constructs a validated implementation of {@link ScheduleLayer}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ScheduleLayer(Consumer<ScheduleLayer> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * The start time of this layer.
      */
     @JsonProperty("start")
-    private OffsetDateTime start;
+    protected OffsetDateTime start;
 
     /**
      * The end time of this layer. If `null`, the layer does not end.
      */
     @JsonProperty("end")
-    private OffsetDateTime end;
+    protected OffsetDateTime end;
 
     /**
      * The ordered list of users on this layer. The position of the user on the list determines their order in the layer.
      */
     @JsonProperty("users")
-    private List<ScheduleLayerUser> users = new ArrayList<>();
+    protected List<ScheduleLayerUser> users = new ArrayList<>();
 
     /**
      * An array of restrictions for the layer. A restriction is a limit on which period of the day or week the schedule layer can accept assignments.
      */
     @JsonProperty("restrictions")
-    private List<Restriction> restrictions;
+    protected List<Restriction> restrictions;
 
     /**
      * The effective start time of the layer. This can be before the start time of the schedule.
      */
     @JsonProperty("rotation_virtual_start")
-    private OffsetDateTime rotationVirtualStart;
+    protected OffsetDateTime rotationVirtualStart;
 
     /**
      * The duration of each on-call shift in seconds.
      */
     @JsonProperty("rotation_turn_length_seconds")
-    private Integer rotationTurnLengthSeconds;
+    protected Integer rotationTurnLengthSeconds;
 
     /**
      * The name of the schedule layer.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * This is a list of entries on the computed layer for the current time range. Since or until must be set in order for this field to be populated.
      */
     @JsonProperty("rendered_schedule_entries")
-    private List<ScheduleLayerEntry> renderedScheduleEntries;
+    protected List<ScheduleLayerEntry> renderedScheduleEntries;
 
     /**
      * The percentage of the time range covered by this layer. Returns null unless since or until are set.
      */
     @JsonProperty("rendered_coverage_percentage")
-    private BigDecimal renderedCoveragePercentage;
+    protected BigDecimal renderedCoveragePercentage;
 
 
 }

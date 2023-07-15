@@ -10,10 +10,10 @@ import io.github.primelib.pagerduty4j.eventsv2.spec.CreateChangeEventOperationSp
 import io.github.primelib.pagerduty4j.eventsv2.spec.CreateV2EventOperationSpec;
 
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class PagerDutyEventsV2SpecApi {
+public class PagerDutyEventsV2ConsumerApi {
     private final PagerDutyEventsV2Api api;
 
-    public PagerDutyEventsV2SpecApi(PagerDutyEventsV2Api api) {
+    public PagerDutyEventsV2ConsumerApi(PagerDutyEventsV2Api api) {
         this.api = api;
     }
 

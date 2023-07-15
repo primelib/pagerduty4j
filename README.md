@@ -17,23 +17,13 @@ implementation("io.github.primelib:pagerduty4j-rest:<latestVersion>")
 
 ### Usage
 
-*Parameter-Style*
+*Consumer Specification Approach*
 
 ```java
-PagerDutyRESTApi client = PagerDutyRESTFactory.create(spec -> {
+PagerDutyRESTConsumerApi client = PagerDutyRESTFactory.create(spec -> {
+    spec.api(PagerDutyRESTConsumerApi.class);
     spec.baseUrl("https://api.pagerduty.com");
-    spec.api(PagerDutyRESTApi.class);
-});
-
-client.listIncidentAlerts("15", 100, null, null, null, null, null, null);
-```
-
-*Spec-Style*
-
-```java
-PagerDutyRESTSpecApi client = PagerDutyRESTFactory.create(spec -> {
-    spec.baseUrl("https://api.pagerduty.com");
-    spec.api(PagerDutyRESTSpecApi.class);
+    spec.apiKeyAuth(authSpec -> authSpec.apiKey("<token>"));
 });
 
 client.listIncidentAlerts(spec -> {
@@ -41,6 +31,20 @@ client.listIncidentAlerts(spec -> {
     spec.limit(100);
 });
 ```
+
+*Parameter Approach*
+
+```java
+PagerDutyRESTApi client = PagerDutyRESTFactory.create(spec -> {
+    spec.api(PagerDutyRESTApi.class);
+    spec.baseUrl("https://api.pagerduty.com");
+    spec.apiKeyAuth(authSpec -> authSpec.apiKey("<token>"));
+});
+
+client.listIncidentAlerts("15", 100, null, null, null, null, null, null);
+```
+
+**_NOTE:_** The `Parameter Approach` can break if the API changes. The `Consumer Specification Approach` is more resilient to API changes.
 
 ## Module: Events-V2
 
@@ -58,27 +62,37 @@ implementation("io.github.primelib:pagerduty4j-events-v2:<latestVersion>")
 
 ### Usage
 
-*Parameter-Style*
+*Consumer Specification Approach*
+
+```java
+PagerDutyEventsV2ConsumerApi client = PagerDutyEventsV2Factory.create(spec -> {
+    spec.api(PagerDutyEventsV2ConsumerApi.class);
+    spec.baseUrl("https://events.pagerduty.com/v2");
+});
+
+client.createChangeEvent(spec -> {
+    spec.createChangeEventRequest(CreateChangeEventRequest.of(requestSpec -> {
+        requestSpec.routingKey("<routingKey>");
+        requestSpec.payload(ChangeEventPayload.of(payloadSpec -> {
+            payloadSpec.summary("<summary>");
+            payloadSpec.source("<source>");
+        }));
+    }));
+});
+```
+
+*Parameter Approach*
 
 ```java
 PagerDutyEventsV2Api client = PagerDutyEventsV2Factory.create(spec -> {
-    spec.baseUrl("https://events.pagerduty.com/v2");
     spec.api(PagerDutyEventsV2Api.class);
-});
-
-client.createChangeEvent(new CreateChangeEventRequest(new ChangeEventPayload(), "<routingKey>", null, null));
-```
-
-*Spec-Style*
-
-```java
-PagerDutyEventsV2SpecApi client = PagerDutyEventsV2Factory.create(spec -> {
     spec.baseUrl("https://events.pagerduty.com/v2");
-    spec.api(PagerDutyEventsV2SpecApi.class);
 });
 
-client.createChangeEvent(spec -> spec.createChangeEventRequest(new CreateChangeEventRequest(new ChangeEventPayload(), "<routingKey>", null, null)));
+client.createChangeEvent(new CreateChangeEventRequest(new ChangeEventPayload("<summary>", null, "<source>", null), "<routingKey>", null, null));
 ```
+
+**_NOTE:_** The `Parameter Approach` can break if the API changes. The `Consumer Specification Approach` is more resilient to API changes.
 
 ## Contribution
 

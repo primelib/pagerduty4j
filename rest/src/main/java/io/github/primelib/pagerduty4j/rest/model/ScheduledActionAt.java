@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "name"
@@ -25,16 +30,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ScheduledActionAt {
 
     /**
+     * Constructs a validated implementation of {@link ScheduledActionAt}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ScheduledActionAt(Consumer<ScheduledActionAt> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Must be set to named_time.
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * Designates either the start or the end of support hours.
      */
     @JsonProperty("name")
-    private NameEnum name;
+    protected NameEnum name;
 
 
     /**

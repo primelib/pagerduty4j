@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "limit",
     "more",
@@ -28,22 +33,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetBusinessServiceSupportingServiceImpacts200Response {
 
     /**
+     * Constructs a validated implementation of {@link GetBusinessServiceSupportingServiceImpacts200Response}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public GetBusinessServiceSupportingServiceImpacts200Response(Consumer<GetBusinessServiceSupportingServiceImpacts200Response> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Echoes limit pagination property.
      */
     @JsonProperty("limit")
-    private Integer limit;
+    protected Integer limit;
 
     /**
      * Indicates if there are additional records to return
      */
     @JsonProperty("more")
-    private Boolean more;
+    protected Boolean more;
 
     @JsonProperty("services")
-    private List<Impact> services;
+    protected List<Impact> services;
 
     @JsonProperty("additional_fields")
-    private GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditionalFields additionalFields;
+    protected GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditionalFields additionalFields;
 
 
 }

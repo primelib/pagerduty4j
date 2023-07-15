@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "offset",
     "limit",
@@ -30,31 +35,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ListIncidentAlerts200Response {
 
     /**
+     * Constructs a validated implementation of {@link ListIncidentAlerts200Response}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ListIncidentAlerts200Response(Consumer<ListIncidentAlerts200Response> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Echoes offset pagination property.
      */
     @JsonProperty("offset")
-    private Integer offset;
+    protected Integer offset;
 
     /**
      * Echoes limit pagination property.
      */
     @JsonProperty("limit")
-    private Integer limit;
+    protected Integer limit;
 
     /**
      * Indicates if there are additional records to return
      */
     @JsonProperty("more")
-    private Boolean more;
+    protected Boolean more;
 
     /**
      * The total number of records matching the given query.
      */
     @JsonProperty("total")
-    private Integer total;
+    protected Integer total;
 
     @JsonProperty("alerts")
-    private List<Alert> alerts = new ArrayList<>();
+    protected List<Alert> alerts = new ArrayList<>();
 
 
 }

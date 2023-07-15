@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "user_id",
@@ -28,29 +33,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UserSession {
 
+    /**
+     * Constructs a validated implementation of {@link UserSession}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public UserSession(Consumer<UserSession> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     @JsonProperty("user_id")
-    private String userId;
+    protected String userId;
 
     /**
      * The date/time the user session was first created.
      */
     @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
+    protected OffsetDateTime createdAt;
 
     /**
      * The type of the session
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * The summary of the session
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
 
     /**

@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "name",
     "description",
@@ -31,29 +36,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class AutomationActionsProcessAutomationJobActionPostBody {
 
+    /**
+     * Constructs a validated implementation of {@link AutomationActionsProcessAutomationJobActionPostBody}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public AutomationActionsProcessAutomationJobActionPostBody(Consumer<AutomationActionsProcessAutomationJobActionPostBody> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     @JsonProperty("action_classification")
-    private AutomationActionsActionClassificationEnum actionClassification;
+    protected AutomationActionsActionClassificationEnum actionClassification;
 
     @JsonProperty("action_type")
-    private ActionTypeEnum actionType;
+    protected ActionTypeEnum actionType;
 
     @JsonProperty("runner")
-    private String runner;
+    protected String runner;
 
     @JsonProperty("services")
-    private List<ServiceReference> services;
+    protected List<ServiceReference> services;
 
     @JsonProperty("teams")
-    private List<TeamReference> teams;
+    protected List<TeamReference> teams;
 
     @JsonProperty("action_data_reference")
-    private AutomationActionsProcessAutomationJobActionDataReference actionDataReference;
+    protected AutomationActionsProcessAutomationJobActionDataReference actionDataReference;
 
 
     @AllArgsConstructor

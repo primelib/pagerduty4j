@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "user",
@@ -28,25 +33,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Channel {
 
     /**
+     * Constructs a validated implementation of {@link Channel}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public Channel(Consumer<Channel> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * type
      */
     @JsonProperty("type")
-    private String type;
+    protected String type;
 
     @JsonProperty("user")
-    private Object user;
+    protected Object user;
 
     @JsonProperty("team")
-    private Object team;
+    protected Object team;
 
     @JsonProperty("notification")
-    private Notification notification;
+    protected Notification notification;
 
     /**
      * channel
      */
     @JsonProperty("channel")
-    private Object channel;
+    protected Object channel;
 
 
 }

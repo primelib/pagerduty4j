@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "past_incidents",
     "total",
@@ -28,22 +33,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetPastIncidents200Response {
 
     /**
+     * Constructs a validated implementation of {@link GetPastIncidents200Response}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public GetPastIncidents200Response(Consumer<GetPastIncidents200Response> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Aggregate of past incidents
      */
     @JsonProperty("past_incidents")
-    private List<GetPastIncidents200ResponsePastIncidentsInner> pastIncidents;
+    protected List<GetPastIncidents200ResponsePastIncidentsInner> pastIncidents;
 
     /**
      * The total number of Past Incidents if the total parameter was set in the request
      */
     @JsonProperty("total")
-    private BigDecimal total;
+    protected BigDecimal total;
 
     /**
      * The maximum number of Incidents requested
      */
     @JsonProperty("limit")
-    private BigDecimal limit;
+    protected BigDecimal limit;
 
 
 }

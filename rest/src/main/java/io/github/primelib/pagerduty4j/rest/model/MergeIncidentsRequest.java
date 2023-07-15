@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "source_incidents"
 })
@@ -26,10 +31,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MergeIncidentsRequest {
 
     /**
+     * Constructs a validated implementation of {@link MergeIncidentsRequest}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public MergeIncidentsRequest(Consumer<MergeIncidentsRequest> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The source incidents that will be merged into the target incident and resolved.
      */
     @JsonProperty("source_incidents")
-    private List<IncidentReference> sourceIncidents = new ArrayList<>();
+    protected List<IncidentReference> sourceIncidents = new ArrayList<>();
 
 
 }

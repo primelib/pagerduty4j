@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "contexts",
@@ -27,22 +32,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Body {
 
     /**
+     * Constructs a validated implementation of {@link Body}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public Body(Consumer<Body> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The type of the body.
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * Contexts to be included with the body such as links to graphs or images.
      */
     @JsonProperty("contexts")
-    private List<Context> contexts;
+    protected List<Context> contexts;
 
     /**
      * An arbitrary JSON object or string containing any data explaining the nature of the alert.
      */
     @JsonProperty("details")
-    private Object details;
+    protected Object details;
 
 
     /**

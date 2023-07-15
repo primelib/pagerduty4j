@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "icon_url",
     "logo_url",
@@ -32,52 +37,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ExtensionSchema {
 
     /**
+     * Constructs a validated implementation of {@link ExtensionSchema}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ExtensionSchema(Consumer<ExtensionSchema> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * A small logo, 18-by-18 pixels.
      */
     @JsonProperty("icon_url")
-    private String iconUrl;
+    protected String iconUrl;
 
     /**
      * A large logo, 75 pixels high and no more than 300 pixels wide.
      */
     @JsonProperty("logo_url")
-    private String logoUrl;
+    protected String logoUrl;
 
     /**
      * Human friendly display label
      */
     @JsonProperty("label")
-    private String label;
+    protected String label;
 
     /**
      * Machine friendly display label
      */
     @JsonProperty("key")
-    private String key;
+    protected String key;
 
     /**
      * The long description for the Extension
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     /**
      * A link to the extension's support guide
      */
     @JsonProperty("guide_url")
-    private String guideUrl;
+    protected String guideUrl;
 
     /**
      * The types of PagerDuty incident events that will activate this Extension
      */
     @JsonProperty("send_types")
-    private Set<SendTypesEnum> sendTypes;
+    protected Set<SendTypesEnum> sendTypes;
 
     /**
      * The url that the webhook payload will be sent to for this Extension.
      */
     @JsonProperty("url")
-    private String url;
+    protected String url;
 
 
     /**

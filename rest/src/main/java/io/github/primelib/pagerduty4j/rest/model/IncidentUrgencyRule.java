@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "urgency",
@@ -27,22 +32,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IncidentUrgencyRule {
 
     /**
+     * Constructs a validated implementation of {@link IncidentUrgencyRule}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public IncidentUrgencyRule(Consumer<IncidentUrgencyRule> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The type of incident urgency: whether it's constant, or it's dependent on the support hours.
      */
     @JsonProperty("type")
-    private TypeEnum type = TypeEnum.CONSTANT;
+    protected TypeEnum type = TypeEnum.CONSTANT;
 
     /**
      * The incidents' urgency, if type is constant.
      */
     @JsonProperty("urgency")
-    private UrgencyEnum urgency = UrgencyEnum.HIGH;
+    protected UrgencyEnum urgency = UrgencyEnum.HIGH;
 
     @JsonProperty("during_support_hours")
-    private IncidentUrgencyType duringSupportHours;
+    protected IncidentUrgencyType duringSupportHours;
 
     @JsonProperty("outside_support_hours")
-    private IncidentUrgencyType outsideSupportHours;
+    protected IncidentUrgencyType outsideSupportHours;
 
 
     /**

@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "self",
@@ -35,52 +40,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateRulesetRequestRuleset {
 
     /**
+     * Constructs a validated implementation of {@link CreateRulesetRequestRuleset}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public CreateRulesetRequestRuleset(Consumer<CreateRulesetRequestRuleset> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * ID of the Ruleset.
      */
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * Name of the Ruleset.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * Routing keys routed to this Ruleset.
      */
     @JsonProperty("routing_keys")
-    private List<String> routingKeys;
+    protected List<String> routingKeys;
 
     /**
      * The date the Ruleset was created at.
      */
     @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
+    protected OffsetDateTime createdAt;
 
     @JsonProperty("creator")
-    private RulesetCreator creator;
+    protected RulesetCreator creator;
 
     /**
      * The date the Ruleset was last updated.
      */
     @JsonProperty("updated_at")
-    private OffsetDateTime updatedAt;
+    protected OffsetDateTime updatedAt;
 
     @JsonProperty("updater")
-    private RulesetUpdater updater;
+    protected RulesetUpdater updater;
 
     @JsonProperty("team")
-    private RulesetTeam team;
+    protected RulesetTeam team;
 
 
     @AllArgsConstructor

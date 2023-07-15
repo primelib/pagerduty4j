@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "time_zone",
@@ -29,31 +34,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SupportHours {
 
     /**
+     * Constructs a validated implementation of {@link SupportHours}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public SupportHours(Consumer<SupportHours> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The type of support hours
      */
     @JsonProperty("type")
-    private TypeEnum type = TypeEnum.FIXED_TIME_PER_DAY;
+    protected TypeEnum type = TypeEnum.FIXED_TIME_PER_DAY;
 
     /**
      * The time zone for the support hours
      */
     @JsonProperty("time_zone")
-    private String timeZone;
+    protected String timeZone;
 
     @JsonProperty("days_of_week")
-    private List<Integer> daysOfWeek;
+    protected List<Integer> daysOfWeek;
 
     /**
      * The support hours' starting time of day (date portion is ignored)
      */
     @JsonProperty("start_time")
-    private String startTime;
+    protected String startTime;
 
     /**
      * The support hours' ending time of day (date portion is ignored)
      */
     @JsonProperty("end_time")
-    private String endTime;
+    protected String endTime;
 
 
     /**

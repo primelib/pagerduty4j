@@ -1,10 +1,14 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
 import java.util.List;
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "self",
@@ -36,61 +41,71 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ListEventOrchestrations200ResponseAllOfOrchestrationsInner {
 
     /**
+     * Constructs a validated implementation of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInner}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ListEventOrchestrations200ResponseAllOfOrchestrationsInner(Consumer<ListEventOrchestrations200ResponseAllOfOrchestrationsInner> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * ID of the Orchestration.
      */
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * The API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * Name of the Orchestration.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * A description of this Orchestration's purpose.
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     @JsonProperty("team")
-    private ListEventOrchestrations200ResponseAllOfOrchestrationsInnerTeam team;
+    protected ListEventOrchestrations200ResponseAllOfOrchestrationsInnerTeam team;
 
     /**
      * Number of different Service Orchestration being routed to
      */
     @JsonProperty("routes")
-    private Integer routes;
+    protected Integer routes;
 
     /**
      * The date the Orchestration was created at.
      */
     @JsonProperty("created_at")
-    private OffsetDateTime createdAt;
+    protected OffsetDateTime createdAt;
 
     @JsonProperty("created_by")
-    private ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy createdBy;
+    protected ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy createdBy;
 
     /**
      * The date the Orchestration was last updated.
      */
     @JsonProperty("updated_at")
-    private OffsetDateTime updatedAt;
+    protected OffsetDateTime updatedAt;
 
     @JsonProperty("updated_by")
-    private ListEventOrchestrations200ResponseAllOfOrchestrationsInnerUpdatedBy updatedBy;
+    protected ListEventOrchestrations200ResponseAllOfOrchestrationsInnerUpdatedBy updatedBy;
 
     /**
      * Version of the Orchestration.
      */
     @JsonProperty("version")
-    private String version;
+    protected String version;
 
 
 }

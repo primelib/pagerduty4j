@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "runner_type",
     "name",
@@ -29,32 +34,42 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class AutomationActionsRunnerRunbookPostBody {
 
+    /**
+     * Constructs a validated implementation of {@link AutomationActionsRunnerRunbookPostBody}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public AutomationActionsRunnerRunbookPostBody(Consumer<AutomationActionsRunnerRunbookPostBody> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("runner_type")
-    private AutomationActionsRunnerTypeEnum runnerType;
+    protected AutomationActionsRunnerTypeEnum runnerType;
 
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     /**
      * The base URI of the Runbook server to connect to. May only contain alphanumeric characters, periods, underscores and dashes. Specified as the subdomain portion of an RBA host, as in &amp;lt;runbook_base_uri&amp;gt;.runbook.pagerduty.cloud
      */
     @JsonProperty("runbook_base_uri")
-    private String runbookBaseUri;
+    protected String runbookBaseUri;
 
     /**
      * The API key to connect to the Runbook server with. If omitted, the previously stored value will remain unchanged
      */
     @JsonProperty("runbook_api_key")
-    private String runbookApiKey;
+    protected String runbookApiKey;
 
     /**
      * The list of teams associated with the Runner
      */
     @JsonProperty("teams")
-    private List<TeamReference> teams;
+    protected List<TeamReference> teams;
 
 
 }

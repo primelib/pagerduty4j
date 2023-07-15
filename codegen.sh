@@ -6,9 +6,7 @@ PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # test
 case $1 in
   "update")
-    echo "> running update"
-    # update openapi spec
-    # NOTE: this openapi spec is crafted by hand
+    echo "> updating openapi spec"
     EVENTSV2_SPEC="$PROJECT_DIR/events-v2/openapi.json"
     curl -o "$EVENTSV2_SPEC" https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/events-v2/openapiv3.json
     jq '.info.title="PagerDuty Events V2"' "$EVENTSV2_SPEC" | sponge "$EVENTSV2_SPEC" # overwrite name

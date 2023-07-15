@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "annotate",
     "event_action",
@@ -30,29 +35,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EventRuleActionsCommon {
 
+    /**
+     * Constructs a validated implementation of {@link EventRuleActionsCommon}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public EventRuleActionsCommon(Consumer<EventRuleActionsCommon> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("annotate")
-    private EventRuleActionsCommonAnnotate annotate;
+    protected EventRuleActionsCommonAnnotate annotate;
 
     @JsonProperty("event_action")
-    private EventRuleActionsCommonEventAction eventAction;
+    protected EventRuleActionsCommonEventAction eventAction;
 
     /**
      * Dynamically extract values to set and modify new and existing PD-CEF fields.
      */
     @JsonProperty("extractions")
-    private List<EventRuleActionsCommonExtractionsInner> extractions;
+    protected List<EventRuleActionsCommonExtractionsInner> extractions;
 
     @JsonProperty("priority")
-    private EventRuleActionsCommonPriority priority;
+    protected EventRuleActionsCommonPriority priority;
 
     @JsonProperty("severity")
-    private EventRuleActionsCommonSeverity severity;
+    protected EventRuleActionsCommonSeverity severity;
 
     @JsonProperty("suppress")
-    private EventRuleActionsCommonSuppress suppress;
+    protected EventRuleActionsCommonSuppress suppress;
 
     @JsonProperty("suspend")
-    private EventRuleActionsCommonSuspend suspend;
+    protected EventRuleActionsCommonSuspend suspend;
 
 
 }

@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "name",
@@ -31,49 +36,59 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CustomFieldsFieldValue {
 
     /**
+     * Constructs a validated implementation of {@link CustomFieldsFieldValue}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public CustomFieldsFieldValue(Consumer<CustomFieldsFieldValue> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * Id of the field.
      */
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * The name of the field. May include ASCII characters, specifically lowercase letters, digits, and underescores. The `name` for a Field must be unique.
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * Determines the type of the reference.
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * The human-readable name of the field. This must be unique across an account.
      */
     @JsonProperty("display_name")
-    private String displayName;
+    protected String displayName;
 
     /**
      * The type of data this field contains. In combination with the `data_type` field.
      */
     @JsonProperty("field_type")
-    private FieldTypeEnum fieldType;
+    protected FieldTypeEnum fieldType;
 
     /**
      * The kind of data the custom field is allowed to contain.
      */
     @JsonProperty("data_type")
-    private DataTypeEnum dataType;
+    protected DataTypeEnum dataType;
 
     /**
      * A description of the data this field contains.
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     @JsonProperty("value")
-    private CustomFieldsFieldValueValue value;
+    protected CustomFieldsFieldValueValue value;
 
 
     /**

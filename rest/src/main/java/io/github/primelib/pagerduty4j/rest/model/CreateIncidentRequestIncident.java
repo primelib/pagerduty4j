@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "title",
@@ -33,47 +38,57 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateIncidentRequestIncident {
 
+    /**
+     * Constructs a validated implementation of {@link CreateIncidentRequestIncident}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public CreateIncidentRequestIncident(Consumer<CreateIncidentRequestIncident> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * A succinct description of the nature, symptoms, cause, or effect of the incident.
      */
     @JsonProperty("title")
-    private String title;
+    protected String title;
 
     @JsonProperty("service")
-    private ServiceReference service;
+    protected ServiceReference service;
 
     @JsonProperty("priority")
-    private PriorityReference priority;
+    protected PriorityReference priority;
 
     /**
      * The urgency of the incident
      */
     @JsonProperty("urgency")
-    private UrgencyEnum urgency;
+    protected UrgencyEnum urgency;
 
     @JsonProperty("body")
-    private IncidentBody body;
+    protected IncidentBody body;
 
     /**
      * A string which identifies the incident. Sending subsequent requests referencing the same service and with the same incident_key will result in those requests being rejected if an open incident matches that incident_key.
      */
     @JsonProperty("incident_key")
-    private String incidentKey;
+    protected String incidentKey;
 
     /**
      * Assign the incident to these assignees. Cannot be specified if an escalation policy is given.
      */
     @JsonProperty("assignments")
-    private List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments;
+    protected List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments;
 
     @JsonProperty("escalation_policy")
-    private EscalationPolicyReference escalationPolicy;
+    protected EscalationPolicyReference escalationPolicy;
 
     @JsonProperty("conference_bridge")
-    private ConferenceBridge conferenceBridge;
+    protected ConferenceBridge conferenceBridge;
 
 
     @AllArgsConstructor

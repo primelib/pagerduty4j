@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -17,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -41,80 +46,90 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateAutomationActionsRunner201ResponseRunner {
 
+    /**
+     * Constructs a validated implementation of {@link CreateAutomationActionsRunner201ResponseRunner}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public CreateAutomationActionsRunner201ResponseRunner(Consumer<CreateAutomationActionsRunner201ResponseRunner> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
-    private String summary;
+    protected String summary;
 
     /**
      * A string that determines the schema of the object. This must be the standard name for the entity, suffixed by `_reference` if the object is a reference.
      */
     @JsonProperty("type")
-    private String type;
+    protected String type;
 
     /**
      * the API show URL at which the object is accessible
      */
     @JsonProperty("self")
-    private String self;
+    protected String self;
 
     /**
      * a URL at which the entity is uniquely displayed in the Web app
      */
     @JsonProperty("html_url")
-    private String htmlUrl;
+    protected String htmlUrl;
 
     @JsonProperty("runner_type")
-    private AutomationActionsRunnerTypeEnum runnerType;
+    protected AutomationActionsRunnerTypeEnum runnerType;
 
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     @JsonProperty("last_seen")
-    private OffsetDateTime lastSeen;
+    protected OffsetDateTime lastSeen;
 
     @JsonProperty("status")
-    private AutomationActionsRunnerStatusEnum status;
+    protected AutomationActionsRunnerStatusEnum status;
 
     @JsonProperty("creation_time")
-    private OffsetDateTime creationTime;
+    protected OffsetDateTime creationTime;
 
     /**
      * The base URI of the Runbook server to connect to. May only contain alphanumeric characters, periods, underscores and dashes. Specified as the subdomain portion of an RBA host, as in &amp;lt;runbook_base_uri&amp;gt;.runbook.pagerduty.cloud
      */
     @JsonProperty("runbook_base_uri")
-    private String runbookBaseUri;
+    protected String runbookBaseUri;
 
     /**
      * The list of teams associated with the Runner
      */
     @JsonProperty("teams")
-    private List<TeamReference> teams;
+    protected List<TeamReference> teams;
 
     @JsonProperty("privileges")
-    private AutomationActionsUserPermissions privileges;
+    protected AutomationActionsUserPermissions privileges;
 
     @JsonProperty("associated_actions")
-    private AutomationActionsRunnerAllOfAssociatedActions associatedActions;
+    protected AutomationActionsRunnerAllOfAssociatedActions associatedActions;
 
     /**
      * Additional metadata
      */
     @JsonProperty("metadata")
-    private Object metadata;
+    protected Object metadata;
 
     /**
      * Secret used for authentication of sidecar runner_types
      */
     @JsonProperty("secret")
-    private String secret;
+    protected String secret;
 
 
 }

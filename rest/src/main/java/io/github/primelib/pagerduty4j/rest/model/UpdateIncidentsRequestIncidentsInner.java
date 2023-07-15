@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -16,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "id",
     "type",
@@ -34,55 +39,65 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdateIncidentsRequestIncidentsInner {
 
     /**
+     * Constructs a validated implementation of {@link UpdateIncidentsRequestIncidentsInner}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public UpdateIncidentsRequestIncidentsInner(Consumer<UpdateIncidentsRequestIncidentsInner> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The id of the incident to update.
      */
     @JsonProperty("id")
-    private String id;
+    protected String id;
 
     /**
      * The incident type.
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * The new status of the incident.
      */
     @JsonProperty("status")
-    private StatusEnum status;
+    protected StatusEnum status;
 
     /**
      * The resolution for this incident if status is set to resolved.
      */
     @JsonProperty("resolution")
-    private String resolution;
+    protected String resolution;
 
     /**
      * A succinct description of the nature, symptoms, cause, or effect of the incident.
      */
     @JsonProperty("title")
-    private String title;
+    protected String title;
 
     @JsonProperty("priority")
-    private PriorityReference priority;
+    protected PriorityReference priority;
 
     /**
      * Escalate the incident to this level in the escalation policy.
      */
     @JsonProperty("escalation_level")
-    private Integer escalationLevel;
+    protected Integer escalationLevel;
 
     /**
      * Assign the incident to these assignees.
      */
     @JsonProperty("assignments")
-    private List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments;
+    protected List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments;
 
     @JsonProperty("escalation_policy")
-    private EscalationPolicyReference escalationPolicy;
+    protected EscalationPolicyReference escalationPolicy;
 
     @JsonProperty("conference_bridge")
-    private ConferenceBridge conferenceBridge;
+    protected ConferenceBridge conferenceBridge;
 
 
     /**

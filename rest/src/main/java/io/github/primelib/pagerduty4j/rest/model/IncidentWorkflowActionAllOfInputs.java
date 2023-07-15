@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "name",
     "description",
@@ -32,52 +37,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IncidentWorkflowActionAllOfInputs {
 
     /**
+     * Constructs a validated implementation of {@link IncidentWorkflowActionAllOfInputs}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowActionAllOfInputs(Consumer<IncidentWorkflowActionAllOfInputs> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * The name of the Input
      */
     @JsonProperty("name")
-    private String name;
+    protected String name;
 
     /**
      * Describes what the purpose of the Input
      */
     @JsonProperty("description")
-    private String description;
+    protected String description;
 
     /**
      * The data type of this Input
      */
     @JsonProperty("type")
-    private TypeEnum type;
+    protected TypeEnum type;
 
     /**
      * Serialized form of the default value that the input will take
      */
     @JsonProperty("default_value")
-    private String defaultValue;
+    protected String defaultValue;
 
     /**
      * Whether a value must be provided for this input
      */
     @JsonProperty("is_required")
-    private Boolean isRequired;
+    protected Boolean isRequired;
 
     /**
      * If true then this input will not be shown to users when configuring this action
      */
     @JsonProperty("is_hidden")
-    private Boolean isHidden;
+    protected Boolean isHidden;
 
     @JsonProperty("advanced")
-    private Boolean advanced;
+    protected Boolean advanced;
 
     @JsonProperty("metadata")
-    private String metadata;
+    protected String metadata;
 
     /**
      * The configured value of the Input
      */
     @JsonProperty("connection_type_id")
-    private String connectionTypeId;
+    protected String connectionTypeId;
 
 
     /**

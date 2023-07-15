@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "src",
     "href",
@@ -25,14 +30,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ChangeEventAllOfImages {
 
+    /**
+     * Constructs a validated implementation of {@link ChangeEventAllOfImages}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public ChangeEventAllOfImages(Consumer<ChangeEventAllOfImages> spec) {
+        spec.accept(this);
+    }
+
     @JsonProperty("src")
-    private String src;
+    protected String src;
 
     @JsonProperty("href")
-    private String href;
+    protected String href;
 
     @JsonProperty("alt")
-    private String alt;
+    protected String alt;
 
 
 }

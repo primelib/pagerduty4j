@@ -1,9 +1,13 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.function.Consumer;
+import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -15,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@Accessors(fluent = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "message",
     "rule_id",
@@ -28,34 +33,44 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdateOrchPathGlobal200ResponseAllOfWarningsInner {
 
     /**
+     * Constructs a validated implementation of {@link UpdateOrchPathGlobal200ResponseAllOfWarningsInner}.
+     *
+     * @param spec the specification to process
+     */
+    @ApiStatus.Internal
+    public UpdateOrchPathGlobal200ResponseAllOfWarningsInner(Consumer<UpdateOrchPathGlobal200ResponseAllOfWarningsInner> spec) {
+        spec.accept(this);
+    }
+
+    /**
      * A description of the warning and any potential side effects.
      */
     @JsonProperty("message")
-    private String message;
+    protected String message;
 
     /**
      * The ID of the rule using the feature.
      */
     @JsonProperty("rule_id")
-    private String ruleId;
+    protected String ruleId;
 
     /**
      * The feature that the current account plan does not have access to.
      */
     @JsonProperty("feature")
-    private FeatureEnum feature;
+    protected FeatureEnum feature;
 
     /**
      * Specifies whether the feature is a part of the rule's conditions, or its actions.
      */
     @JsonProperty("feature_type")
-    private FeatureTypeEnum featureType;
+    protected FeatureTypeEnum featureType;
 
     /**
      * The type of warning that is being returned for the rule.
      */
     @JsonProperty("warning_type")
-    private WarningTypeEnum warningType;
+    protected WarningTypeEnum warningType;
 
 
     /**
