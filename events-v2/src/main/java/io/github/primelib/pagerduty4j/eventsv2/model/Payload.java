@@ -80,27 +80,17 @@ public class Payload {
     private Object customDetails;
 
 
-public enum SeverityEnum {
+    /**
+     * The perceived severity of the status the event is describing withrespect to the affected system.
+     */
+    @AllArgsConstructor
+    public enum SeverityEnum {
         CRITICAL("critical"),
         WARNING("warning"),
         ERROR("error"),
         INFO("info");
-    
-    private final String text;
 
-    /**
-     * @param text
-     */
-    SeverityEnum(final String text) {
-        this.text = text;
+        private final String value;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Enum#toString()
-     */
-    @Override
-    public String toString() {
-        return text;
-    }
-}
 }

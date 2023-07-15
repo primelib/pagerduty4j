@@ -55,6 +55,18 @@ case $1 in
     docker run -it --rm -v $(pwd):/project ghcr.io/primelib/primecodegen:0.0.1 \
         primecodegen generate \
         -e auto \
+        -i "/project/events-v2/openapi.json" \
+        -o "/project/events-v2" \
+        -c "/project/events-v2/openapi-generator.json" \
+        --openapi-normalizer SIMPLIFY_ONEOF_ANYOF=true \
+        --openapi-normalizer SIMPLIFY_BOOLEAN_ENUM=true \
+        --openapi-normalizer REMOVE_ANYOF_ONEOF_AND_KEEP_PROPERTIES_ONLY=true \
+        --openapi-normalizer REFACTOR_ALLOF_WITH_PROPERTIES_ONLY=true \
+        --skip-validate-spec
+
+    docker run -it --rm -v $(pwd):/project ghcr.io/primelib/primecodegen:0.0.1 \
+        primecodegen generate \
+        -e auto \
         -i "/project/rest/openapi.json" \
         -o "/project/rest" \
         -c "/project/rest/openapi-generator.json" \

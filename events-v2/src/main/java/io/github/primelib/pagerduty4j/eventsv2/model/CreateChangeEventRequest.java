@@ -31,7 +31,7 @@ public class CreateChangeEventRequest {
     private ChangeEventPayload payload;
 
     /**
-     * The GUID of one of your Events API V2 integrations. This is the \"Integration Key\" listed on the Events API V2 integration's detail page.
+     * The GUID of one of your Events API V2 integrations. This is the "Integration Key" listed on the Events API V2 integration's detail page.
      */
     @JsonProperty("routing_key")
     private String routingKey;

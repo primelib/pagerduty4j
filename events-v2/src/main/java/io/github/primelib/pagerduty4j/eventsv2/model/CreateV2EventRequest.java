@@ -35,7 +35,7 @@ public class CreateV2EventRequest {
     private Payload payload;
 
     /**
-     * The GUID of one of your Events API V2 integrations. This is the \"Integration Key\" listed on the Events API V2 integration's detail page.
+     * The GUID of one of your Events API V2 integrations. This is the "Integration Key" listed on the Events API V2 integration's detail page.
      */
     @JsonProperty("routing_key")
     private String routingKey;
@@ -77,26 +77,16 @@ public class CreateV2EventRequest {
     private List<ImagesInner> images;
 
 
-public enum EventActionEnum {
+    /**
+     * The type of event. Can be `trigger`, `acknowledge` or `resolve`.
+     */
+    @AllArgsConstructor
+    public enum EventActionEnum {
         TRIGGER("trigger"),
         ACKNOWLEDGE("acknowledge"),
         RESOLVE("resolve");
-    
-    private final String text;
 
-    /**
-     * @param text
-     */
-    EventActionEnum(final String text) {
-        this.text = text;
+        private final String value;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Enum#toString()
-     */
-    @Override
-    public String toString() {
-        return text;
-    }
-}
 }

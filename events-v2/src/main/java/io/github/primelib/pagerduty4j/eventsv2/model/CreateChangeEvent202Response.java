@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateChangeEvent202Response {
 
     /**
-     * Returns \"success\" if successful, or a short error message in case of a failure.
+     * Returns "success" if successful, or a short error message in case of a failure.
      */
     @JsonProperty("status")
     private String status;
@@ -38,7 +38,7 @@ public class CreateChangeEvent202Response {
     private String dedupKey;
 
     /**
-     * A description of the problem, or \"Event processed\" if successful.
+     * A description of the problem, or "Event processed" if successful.
      */
     @JsonProperty("message")
     private String message;
