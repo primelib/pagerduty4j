@@ -5,7 +5,10 @@ import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.eventsv2.api.PagerDutyEventsV2Api;
 import io.github.primelib.pagerduty4j.eventsv2.auth.AuthInterceptor;
+
+import com.fasterxml.jackson.module.blackbird.BlackbirdModule;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -43,9 +46,12 @@ import java.util.function.Consumer;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class PagerDutyEventsV2Factory {
     private static final ObjectMapper MAPPER = JsonMapper.builder()
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+            .enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .propertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE)
             .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+            .addModule(new BlackbirdModule())
             .build();
 
     public static <T> T create(Consumer<PagerDutyEventsV2FactorySpec<T>> spec) {
@@ -60,8 +66,8 @@ public class PagerDutyEventsV2Factory {
                     s.applySpec(config);
                 });
                 return config.api().getConstructor(PagerDutyEventsV2Api.class).newInstance(api);
-            } catch (Exception e) {
-                throw new IllegalArgumentException("api must have a constructor with one parameter of type PagerDutyEventsV2Api");
+            } catch (Exception ex) {
+                throw new IllegalArgumentException("api must have a constructor with one parameter of type PagerDutyEventsV2Api", ex);
             }
         }
     }

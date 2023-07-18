@@ -1,8 +1,6 @@
 package io.github.primelib.pagerduty4j.rest.spec;
 
-import java.util.Objects;
 import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
@@ -32,14 +30,6 @@ public class GetAnalyticsMetricsIncidentsServiceOperationSpec {
     public static Boolean VALIDATION_ENABLED = true;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.
-     * You __MUST__ pass in this header and the above value.
-     * Do not use this endpoint in production, as it may change! 
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "analytics-v2";
-
-    /**
      * Parameters and filters to apply to the dataset.
      */
     @Nullable 
@@ -63,7 +53,6 @@ public class GetAnalyticsMetricsIncidentsServiceOperationSpec {
      * @throws NullPointerException
      */
     public void validate() {
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
     }
 
 }

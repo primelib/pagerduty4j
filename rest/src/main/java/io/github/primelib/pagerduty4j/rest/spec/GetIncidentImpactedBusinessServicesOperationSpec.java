@@ -37,12 +37,6 @@ public class GetIncidentImpactedBusinessServicesOperationSpec {
     private String id;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change!
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "business-impact-early-access";
-
-    /**
      * Constructs a validated implementation of {@link GetIncidentImpactedBusinessServicesOperationSpec}.
      *
      * @param spec the specification to process
@@ -61,7 +55,6 @@ public class GetIncidentImpactedBusinessServicesOperationSpec {
      */
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
     }
 
 }

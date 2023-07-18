@@ -1,8 +1,6 @@
 package io.github.primelib.pagerduty4j.rest.spec;
 
-import java.util.Objects;
 import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.NotNull;
 import javax.annotation.processing.Generated;
 
 import lombok.AccessLevel;
@@ -30,12 +28,6 @@ public class GetBusinessServicePriorityThresholdsOperationSpec {
     public static Boolean VALIDATION_ENABLED = true;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change!
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "business-impact-early-access";
-
-    /**
      * Constructs a validated implementation of {@link GetBusinessServicePriorityThresholdsOperationSpec}.
      *
      * @param spec the specification to process
@@ -53,7 +45,6 @@ public class GetBusinessServicePriorityThresholdsOperationSpec {
      * @throws NullPointerException
      */
     public void validate() {
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
     }
 
 }

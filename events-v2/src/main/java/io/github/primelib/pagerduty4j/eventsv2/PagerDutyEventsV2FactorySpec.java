@@ -32,7 +32,7 @@ public final class PagerDutyEventsV2FactorySpec<T> {
      * The name of the backend to use
      */
     @NotNull
-    private String backendName = "pagerduty4j";
+    private String backendName = "pagerduty4j-events-v2";
 
     /**
      * The API interface to use

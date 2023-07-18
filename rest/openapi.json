@@ -1778,7 +1778,8 @@
         "in": "header",
         "description": "This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!\n",
         "name": "X-EARLY-ACCESS",
-        "required": true
+        "required": true,
+        "x-param-static": "true"
       },
       "early_access_status-update-notification-rules": {
         "name": "X-EARLY-ACCESS",
@@ -1791,7 +1792,8 @@
           "enum": [
             "status-update-notification-rules"
           ]
-        }
+        },
+        "x-param-static": "true"
       },
       "early_access_bis": {
         "schema": {
@@ -1801,7 +1803,8 @@
         "in": "header",
         "name": "X-EARLY-ACCESS",
         "description": "This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change!",
-        "required": true
+        "required": true,
+        "x-param-static": "true"
       },
       "early_access_status_dashboards": {
         "schema": {
@@ -1811,7 +1814,8 @@
         "in": "header",
         "name": "X-EARLY-ACCESS",
         "description": "This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `status-dashboards`. Do not use this endpoint in production, as it may change!",
-        "required": true
+        "required": true,
+        "x-param-static": "true"
       },
       "webhooks_filter_type": {
         "name": "filter_type",

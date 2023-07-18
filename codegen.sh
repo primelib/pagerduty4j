@@ -16,7 +16,11 @@ case $1 in
     jq '.info.title="PagerDuty REST"' "$REST_SPEC" | sponge "$REST_SPEC" # overwrite name
     jq 'walk(if type == "object" and .discriminator and .discriminator.mapping then del(.discriminator.mapping) else . end)' "$REST_SPEC" | sponge "$REST_SPEC" # remove any discriminator.mapping as the files are missing
     jq '.components.parameters.header_Accept."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to Accept header
-    jq '.components.parameters."header_Content-Type"."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to Accept header
+    jq '.components.parameters."header_Content-Type"."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to Content-Type header
+    jq '.components.parameters."early_access_analytics"."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to early access headers
+    jq '.components.parameters."early_access_bis"."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to early access headers
+    jq '.components.parameters."early_access_status-update-notification-rules"."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to early access headers
+    jq '.components.parameters."early_access_status_dashboards"."x-param-static"="true"' "$REST_SPEC" | sponge "$REST_SPEC" # add x-param-static to early access headers
     # delete endpoints with broken specification
     jq 'del(.paths."/extensions")' "$REST_SPEC" | sponge "$REST_SPEC"
     # bad references

@@ -7,6 +7,7 @@ import io.github.primelib.pagerduty4j.eventsv2.model.CreateChangeEvent202Respons
 import io.github.primelib.pagerduty4j.eventsv2.model.CreateChangeEventRequest;
 import io.github.primelib.pagerduty4j.eventsv2.model.CreateV2EventRequest;
 import feign.RequestLine;
+import feign.Headers;
 
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public interface PagerDutyEventsV2Api {
@@ -19,7 +20,10 @@ public interface PagerDutyEventsV2Api {
      * @param createChangeEventRequest  (required)
      */
     @RequestLine("POST /change/enqueue")
-    CreateChangeEvent202Response createChangeEvent( @NotNull CreateChangeEventRequest createChangeEventRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateChangeEvent202Response createChangeEvent(@NotNull CreateChangeEventRequest createChangeEventRequest);
 
     /**
      * Send an event to PagerDuty
@@ -29,6 +33,9 @@ public interface PagerDutyEventsV2Api {
      * @param createV2EventRequest  (required)
      */
     @RequestLine("POST /enqueue")
-    CreateChangeEvent202Response createV2Event( @NotNull CreateV2EventRequest createV2EventRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateChangeEvent202Response createV2Event(@NotNull CreateV2EventRequest createV2EventRequest);
 
 }

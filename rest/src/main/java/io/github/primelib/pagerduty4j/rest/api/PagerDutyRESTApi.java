@@ -229,7 +229,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateIncidentWorkflowTriggerRequest associateServiceToIncidentWorkflowTrigger(@Param("id") @NotNull String id,  @Nullable AssociateServiceToIncidentWorkflowTriggerRequest associateServiceToIncidentWorkflowTriggerRequest);
+    CreateIncidentWorkflowTriggerRequest associateServiceToIncidentWorkflowTrigger(@Param("id") @NotNull String id, @Nullable AssociateServiceToIncidentWorkflowTriggerRequest associateServiceToIncidentWorkflowTriggerRequest);
 
     /**
      * Convert a Service's Event Rules into Event Orchestration Rules
@@ -267,7 +267,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAddon201Response createAddon( @Nullable CreateAddonRequest createAddonRequest);
+    CreateAddon201Response createAddon(@Nullable CreateAddonRequest createAddonRequest);
 
     /**
      * Create an Automation Action
@@ -281,7 +281,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationAction201Response createAutomationAction( @NotNull CreateAutomationActionRequest createAutomationActionRequest);
+    CreateAutomationAction201Response createAutomationAction(@NotNull CreateAutomationActionRequest createAutomationActionRequest);
 
     /**
      * Create an Invocation
@@ -296,7 +296,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationActionInvocation201Response createAutomationActionInvocation(@Param("id") @NotNull String id,  @NotNull CreateAutomationActionInvocationRequest createAutomationActionInvocationRequest);
+    CreateAutomationActionInvocation201Response createAutomationActionInvocation(@Param("id") @NotNull String id, @NotNull CreateAutomationActionInvocationRequest createAutomationActionInvocationRequest);
 
     /**
      * Associate an Automation Action with a service
@@ -311,7 +311,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationActionServiceAssocationRequest createAutomationActionServiceAssocation(@Param("id") @NotNull String id,  @NotNull CreateAutomationActionServiceAssocationRequest createAutomationActionServiceAssocationRequest);
+    CreateAutomationActionServiceAssocationRequest createAutomationActionServiceAssocation(@Param("id") @NotNull String id, @NotNull CreateAutomationActionServiceAssocationRequest createAutomationActionServiceAssocationRequest);
 
     /**
      * Associate an Automation Action with a team
@@ -326,7 +326,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationActionTeamAssociationRequest createAutomationActionTeamAssociation(@Param("id") @NotNull String id,  @NotNull CreateAutomationActionTeamAssociationRequest createAutomationActionTeamAssociationRequest);
+    CreateAutomationActionTeamAssociationRequest createAutomationActionTeamAssociation(@Param("id") @NotNull String id, @NotNull CreateAutomationActionTeamAssociationRequest createAutomationActionTeamAssociationRequest);
 
     /**
      * Create an Automation Action runner.
@@ -340,7 +340,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationActionsRunner201Response createAutomationActionsRunner( @NotNull CreateAutomationActionsRunnerRequest createAutomationActionsRunnerRequest);
+    CreateAutomationActionsRunner201Response createAutomationActionsRunner(@NotNull CreateAutomationActionsRunnerRequest createAutomationActionsRunnerRequest);
 
     /**
      * Associate a runner with a team
@@ -355,7 +355,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationActionTeamAssociationRequest createAutomationActionsRunnerTeamAssociation(@Param("id") @NotNull String id,  @NotNull CreateAutomationActionTeamAssociationRequest createAutomationActionTeamAssociationRequest);
+    CreateAutomationActionTeamAssociationRequest createAutomationActionsRunnerTeamAssociation(@Param("id") @NotNull String id, @NotNull CreateAutomationActionTeamAssociationRequest createAutomationActionTeamAssociationRequest);
 
     /**
      * Create a Business Service
@@ -373,7 +373,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateBusinessService200Response createBusinessService( @Nullable CreateBusinessServiceRequest createBusinessServiceRequest);
+    CreateBusinessService200Response createBusinessService(@Nullable CreateBusinessServiceRequest createBusinessServiceRequest);
 
     /**
      * Create Business Service Account Subscription
@@ -400,9 +400,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /business_services/{id}/subscribers")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    CreateBusinessServiceNotificationSubscribers200Response createBusinessServiceNotificationSubscribers(@Param("id") @NotNull String id,  @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
+    CreateBusinessServiceNotificationSubscribers200Response createBusinessServiceNotificationSubscribers(@Param("id") @NotNull String id, @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
 
     /**
      * Create a Change Event
@@ -426,7 +427,10 @@ public interface PagerDutyRESTApi {
      * @param createCustomFieldsFieldRequest  (optional)
      */
     @RequestLine("POST /incidents/custom_fields")
-    CreateCustomFieldsFieldRequest createCustomFieldsField( @Nullable CreateCustomFieldsFieldRequest createCustomFieldsFieldRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateCustomFieldsFieldRequest createCustomFieldsField(@Nullable CreateCustomFieldsFieldRequest createCustomFieldsFieldRequest);
 
     /**
      * Create a Field Option
@@ -438,7 +442,10 @@ public interface PagerDutyRESTApi {
      * @param createCustomFieldsFieldOptionRequest  (optional)
      */
     @RequestLine("POST /incidents/custom_fields/{field_id}/field_options")
-    CreateCustomFieldsFieldOptionRequest createCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId,  @Nullable CreateCustomFieldsFieldOptionRequest createCustomFieldsFieldOptionRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateCustomFieldsFieldOptionRequest createCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId, @Nullable CreateCustomFieldsFieldOptionRequest createCustomFieldsFieldOptionRequest);
 
     /**
      * Assign tags
@@ -457,7 +464,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    Object createEntityTypeByIdChangeTags(@Param("entity_type") @NotNull String entityType, @Param("id") @NotNull String id,  @Nullable CreateEntityTypeByIdChangeTagsRequest createEntityTypeByIdChangeTagsRequest);
+    Object createEntityTypeByIdChangeTags(@Param("entity_type") @NotNull String entityType, @Param("id") @NotNull String id, @Nullable CreateEntityTypeByIdChangeTagsRequest createEntityTypeByIdChangeTagsRequest);
 
     /**
      * Create an escalation policy
@@ -476,7 +483,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateEscalationPolicyRequest createEscalationPolicy(@Param("From") @Nullable String from,  @Nullable CreateEscalationPolicyRequest createEscalationPolicyRequest);
+    CreateEscalationPolicyRequest createEscalationPolicy(@Param("From") @Nullable String from, @Nullable CreateEscalationPolicyRequest createEscalationPolicyRequest);
 
     /**
      * Create an Incident
@@ -495,7 +502,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateIncident201Response createIncident(@Param("From") @NotNull String from,  @Nullable CreateIncidentRequest createIncidentRequest);
+    CreateIncident201Response createIncident(@Param("From") @NotNull String from, @Nullable CreateIncidentRequest createIncidentRequest);
 
     /**
      * Create a note on an incident
@@ -516,7 +523,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateIncidentNote200Response createIncidentNote(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable CreateIncidentNoteRequest createIncidentNoteRequest);
+    CreateIncidentNote200Response createIncidentNote(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentNoteRequest createIncidentNoteRequest);
 
     /**
      * Add Notification Subscribers
@@ -529,9 +536,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /incidents/{id}/status_updates/subscribers")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    CreateBusinessServiceNotificationSubscribers200Response createIncidentNotificationSubscribers(@Param("id") @NotNull String id,  @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
+    CreateBusinessServiceNotificationSubscribers200Response createIncidentNotificationSubscribers(@Param("id") @NotNull String id, @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
 
     /**
      * Create a responder request for an incident
@@ -551,7 +559,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateIncidentResponderRequest200Response createIncidentResponderRequest(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable CreateIncidentResponderRequestRequest createIncidentResponderRequestRequest);
+    CreateIncidentResponderRequest200Response createIncidentResponderRequest(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentResponderRequestRequest createIncidentResponderRequestRequest);
 
     /**
      * Snooze an incident
@@ -571,7 +579,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateIncident201Response createIncidentSnooze(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable CreateIncidentSnoozeRequest createIncidentSnoozeRequest);
+    CreateIncident201Response createIncidentSnooze(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentSnoozeRequest createIncidentSnoozeRequest);
 
     /**
      * Create a status update on an incident
@@ -591,7 +599,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateIncidentStatusUpdate200Response createIncidentStatusUpdate(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable CreateIncidentStatusUpdateRequest createIncidentStatusUpdateRequest);
+    CreateIncidentStatusUpdate200Response createIncidentStatusUpdate(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentStatusUpdateRequest createIncidentStatusUpdateRequest);
 
     /**
      * Start an Incident Workflow Instance
@@ -608,7 +616,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateIncidentWorkflowInstance201Response createIncidentWorkflowInstance(@Param("id") @NotNull String id,  @Nullable CreateIncidentWorkflowInstanceRequest createIncidentWorkflowInstanceRequest);
+    CreateIncidentWorkflowInstance201Response createIncidentWorkflowInstance(@Param("id") @NotNull String id, @Nullable CreateIncidentWorkflowInstanceRequest createIncidentWorkflowInstanceRequest);
 
     /**
      * Create a Trigger
@@ -623,7 +631,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateIncidentWorkflowTriggerRequest createIncidentWorkflowTrigger( @Nullable CreateIncidentWorkflowTriggerRequest createIncidentWorkflowTriggerRequest);
+    CreateIncidentWorkflowTriggerRequest createIncidentWorkflowTrigger(@Nullable CreateIncidentWorkflowTriggerRequest createIncidentWorkflowTriggerRequest);
 
     /**
      * Create a maintenance window
@@ -642,7 +650,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateMaintenanceWindowRequest createMaintenanceWindow(@Param("From") @NotNull String from,  @Nullable CreateMaintenanceWindowRequest createMaintenanceWindowRequest);
+    CreateMaintenanceWindowRequest createMaintenanceWindow(@Param("From") @NotNull String from, @Nullable CreateMaintenanceWindowRequest createMaintenanceWindowRequest);
 
     /**
      * Create a Response Play
@@ -663,7 +671,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateResponsePlay201Response createResponsePlay(@Param("From") @NotNull String from,  @Nullable CreateResponsePlayRequest createResponsePlayRequest);
+    CreateResponsePlay201Response createResponsePlay(@Param("From") @NotNull String from, @Nullable CreateResponsePlayRequest createResponsePlayRequest);
 
     /**
      * Create a Ruleset
@@ -680,7 +688,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateRuleset201Response createRuleset( @Nullable CreateRulesetRequest createRulesetRequest);
+    CreateRuleset201Response createRuleset(@Nullable CreateRulesetRequest createRulesetRequest);
 
     /**
      * Create an Event Rule
@@ -699,7 +707,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateRulesetEventRule201Response createRulesetEventRule(@Param("id") @NotNull String id,  @Nullable CreateRulesetEventRuleRequest createRulesetEventRuleRequest);
+    CreateRulesetEventRule201Response createRulesetEventRule(@Param("id") @NotNull String id, @Nullable CreateRulesetEventRuleRequest createRulesetEventRuleRequest);
 
     /**
      * Create a schedule
@@ -717,7 +725,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateScheduleRequest createSchedule(@Param("overflow") @Nullable Boolean overflow,  @Nullable CreateScheduleRequest createScheduleRequest);
+    CreateScheduleRequest createSchedule(@Param("overflow") @Nullable Boolean overflow, @Nullable CreateScheduleRequest createScheduleRequest);
 
     /**
      * Create one or more overrides
@@ -736,7 +744,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    Set<CreateScheduleOverride201ResponseInner> createScheduleOverride(@Param("id") @NotNull String id,  @NotNull CreateScheduleOverrideRequest createScheduleOverrideRequest);
+    Set<CreateScheduleOverride201ResponseInner> createScheduleOverride(@Param("id") @NotNull String id, @NotNull CreateScheduleOverrideRequest createScheduleOverrideRequest);
 
     /**
      * Preview a schedule
@@ -756,7 +764,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateScheduleRequest createSchedulePreview(@Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("overflow") @Nullable Boolean overflow,  @Nullable CreateScheduleRequest createScheduleRequest);
+    CreateScheduleRequest createSchedulePreview(@Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("overflow") @Nullable Boolean overflow, @Nullable CreateScheduleRequest createScheduleRequest);
 
     /**
      * Create a service
@@ -776,7 +784,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceRequest createService( @Nullable CreateServiceRequest createServiceRequest);
+    CreateServiceRequest createService(@Nullable CreateServiceRequest createServiceRequest);
 
     /**
      * Associate service dependencies
@@ -794,7 +802,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceDependency200Response createServiceDependency( @Nullable CreateServiceDependencyRequest createServiceDependencyRequest);
+    CreateServiceDependency200Response createServiceDependency(@Nullable CreateServiceDependencyRequest createServiceDependencyRequest);
 
     /**
      * Create an Event Rule on a Service
@@ -810,7 +818,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceEventRule201Response createServiceEventRule(@Param("id") @NotNull String id,  @Nullable CreateServiceEventRuleRequest createServiceEventRuleRequest);
+    CreateServiceEventRule201Response createServiceEventRule(@Param("id") @NotNull String id, @Nullable CreateServiceEventRuleRequest createServiceEventRuleRequest);
 
     /**
      * Create a new integration
@@ -828,7 +836,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceIntegrationRequest createServiceIntegration(@Param("id") @NotNull String id,  @Nullable CreateServiceIntegrationRequest createServiceIntegrationRequest);
+    CreateServiceIntegrationRequest createServiceIntegration(@Param("id") @NotNull String id, @Nullable CreateServiceIntegrationRequest createServiceIntegrationRequest);
 
     /**
      * Create a tag
@@ -845,7 +853,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateTagsRequest createTags( @Nullable CreateTagsRequest createTagsRequest);
+    CreateTagsRequest createTags(@Nullable CreateTagsRequest createTagsRequest);
 
     /**
      * Create a team
@@ -862,7 +870,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateTeamRequest createTeam( @Nullable CreateTeamRequest createTeamRequest);
+    CreateTeamRequest createTeam(@Nullable CreateTeamRequest createTeamRequest);
 
     /**
      * Create Team Notification Subscriptions
@@ -875,9 +883,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /teams/{id}/notification_subscriptions")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    CreateBusinessServiceNotificationSubscribers200Response createTeamNotificationSubscriptions(@Param("id") @NotNull String id,  @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
+    CreateBusinessServiceNotificationSubscribers200Response createTeamNotificationSubscriptions(@Param("id") @NotNull String id, @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
 
     /**
      * Create a template
@@ -888,7 +897,10 @@ public interface PagerDutyRESTApi {
      * @param createTemplateRequest  (required)
      */
     @RequestLine("POST /templates")
-    CreateTemplate201Response createTemplate( @NotNull CreateTemplateRequest createTemplateRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateTemplate201Response createTemplate(@NotNull CreateTemplateRequest createTemplateRequest);
 
     /**
      * Create a user
@@ -907,7 +919,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateUserRequest createUser(@Param("From") @NotNull String from,  @Nullable CreateUserRequest createUserRequest);
+    CreateUserRequest createUser(@Param("From") @NotNull String from, @Nullable CreateUserRequest createUserRequest);
 
     /**
      * Create a user contact method
@@ -925,7 +937,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserContactMethod201Response createUserContactMethod(@Param("id") @NotNull String id,  @Nullable CreateUserContactMethodRequest createUserContactMethodRequest);
+    CreateUserContactMethod201Response createUserContactMethod(@Param("id") @NotNull String id, @Nullable CreateUserContactMethodRequest createUserContactMethodRequest);
 
     /**
      * Create a User Handoff Notification Rule
@@ -941,7 +953,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserHandoffNotificationRuleRequest createUserHandoffNotificationRule(@Param("id") @NotNull String id,  @Nullable CreateUserHandoffNotificationRuleRequest createUserHandoffNotificationRuleRequest);
+    CreateUserHandoffNotificationRuleRequest createUserHandoffNotificationRule(@Param("id") @NotNull String id, @Nullable CreateUserHandoffNotificationRuleRequest createUserHandoffNotificationRuleRequest);
 
     /**
      * Create a user notification rule
@@ -959,7 +971,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserNotificationRuleRequest createUserNotificationRule(@Param("id") @NotNull String id,  @Nullable CreateUserNotificationRuleRequest createUserNotificationRuleRequest);
+    CreateUserNotificationRuleRequest createUserNotificationRule(@Param("id") @NotNull String id, @Nullable CreateUserNotificationRuleRequest createUserNotificationRuleRequest);
 
     /**
      * Create Notification Subcriptions
@@ -972,9 +984,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /users/{id}/notification_subscriptions")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    CreateBusinessServiceNotificationSubscribers200Response createUserNotificationSubscriptions(@Param("id") @NotNull String id,  @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
+    CreateBusinessServiceNotificationSubscribers200Response createUserNotificationSubscriptions(@Param("id") @NotNull String id, @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
 
     /**
      * Create a user status update notification rule
@@ -985,7 +998,6 @@ public interface PagerDutyRESTApi {
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
      * Scoped OAuth requires: `users.write` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change!  (required)
      * @param id                   The ID of the resource. (required)
      * @param createUserStatusUpdateNotificationRuleRequest The status update notification rule to be created. (optional)
      */
@@ -993,9 +1005,9 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    CreateUserStatusUpdateNotificationRule201Response createUserStatusUpdateNotificationRule(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("id") @NotNull String id,  @Nullable CreateUserStatusUpdateNotificationRuleRequest createUserStatusUpdateNotificationRuleRequest);
+    CreateUserStatusUpdateNotificationRule201Response createUserStatusUpdateNotificationRule(@Param("id") @NotNull String id, @Nullable CreateUserStatusUpdateNotificationRuleRequest createUserStatusUpdateNotificationRuleRequest);
 
     /**
      * Create a webhook subscription
@@ -1010,7 +1022,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateWebhookSubscriptionRequest createWebhookSubscription( @Nullable CreateWebhookSubscriptionRequest createWebhookSubscriptionRequest);
+    CreateWebhookSubscriptionRequest createWebhookSubscription(@Nullable CreateWebhookSubscriptionRequest createWebhookSubscriptionRequest);
 
     /**
      * Delete an Add-on
@@ -1126,14 +1138,13 @@ public interface PagerDutyRESTApi {
      * Clears the Priority Threshold for the account.
      * If the priority threshold is cleared, any Incident with a Priority set will be able to impact Business Services. Scoped OAuth requires: `services.write` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      */
     @RequestLine("DELETE /business_services/priority_thresholds")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access"
     })
-    void deleteBusinessServicePriorityThresholds(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS);
+    void deleteBusinessServicePriorityThresholds();
 
     /**
      * Delete a Field
@@ -1404,7 +1415,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceDependency200Response deleteServiceDependency( @Nullable DeleteServiceDependencyRequest deleteServiceDependencyRequest);
+    CreateServiceDependency200Response deleteServiceDependency(@Nullable DeleteServiceDependencyRequest deleteServiceDependencyRequest);
 
     /**
      * Delete an Event Rule from a Service
@@ -1642,7 +1653,6 @@ public interface PagerDutyRESTApi {
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
      * Scoped OAuth requires: `users.write` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change!  (required)
      * @param id                   The ID of the resource. (required)
      * @param statusUpdateNotificationRuleId The status update notification rule ID on the user. (required)
      */
@@ -1650,9 +1660,9 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    void deleteUserStatusUpdateNotificationRule(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId);
+    void deleteUserStatusUpdateNotificationRule(@Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId);
 
     /**
      * Delete a webhook subscription
@@ -1763,16 +1773,15 @@ public interface PagerDutyRESTApi {
      * Example metrics include Time to Respond, Responder Type, and Response Status. See metric definitions below. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incident responses appear in the Analytics API. Scoped OAuth requires: `analytics.read` 
      *
      * @param id                   The ID of the resource. (required)
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!  (required)
      * @param getAnalyticsIncidentResponsesByIdRequest Parameters to apply to the dataset. (optional)
      */
     @RequestLine("GET /analytics/raw/incidents/{id}/responses")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: analytics-v2"
     })
-    GetAnalyticsIncidentResponsesById200Response getAnalyticsIncidentResponsesById(@Param("id") @NotNull String id, @Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable GetAnalyticsIncidentResponsesByIdRequest getAnalyticsIncidentResponsesByIdRequest);
+    GetAnalyticsIncidentResponsesById200Response getAnalyticsIncidentResponsesById(@Param("id") @NotNull String id, @Nullable GetAnalyticsIncidentResponsesByIdRequest getAnalyticsIncidentResponsesByIdRequest);
 
     /**
      * Get raw data - multiple incidents
@@ -1782,16 +1791,15 @@ public interface PagerDutyRESTApi {
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: `analytics.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!  (required)
      * @param getAnalyticsIncidentsRequest Parameters and filters to apply to the dataset. (optional)
      */
     @RequestLine("POST /analytics/raw/incidents")
     @Headers({
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}", 
+        "X-EARLY-ACCESS: analytics-v2", 
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetAnalyticsIncidents200Response getAnalyticsIncidents(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable GetAnalyticsIncidentsRequest getAnalyticsIncidentsRequest);
+    GetAnalyticsIncidents200Response getAnalyticsIncidents(@Nullable GetAnalyticsIncidentsRequest getAnalyticsIncidentsRequest);
 
     /**
      * Get raw data - single incident
@@ -1802,15 +1810,14 @@ public interface PagerDutyRESTApi {
      * Scoped OAuth requires: `analytics.read` 
      *
      * @param id                   The ID of the resource. (required)
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!  (required)
      */
     @RequestLine("GET /analytics/raw/incidents/{id}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: analytics-v2"
     })
-    AnalyticsRawIncident getAnalyticsIncidentsById(@Param("id") @NotNull String id, @Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS);
+    AnalyticsRawIncident getAnalyticsIncidentsById(@Param("id") @NotNull String id);
 
     /**
      * Get aggregated incident data
@@ -1820,16 +1827,15 @@ public interface PagerDutyRESTApi {
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: `analytics.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!  (required)
      * @param analyticsModel       Parameters and filters to apply to the dataset. (optional)
      */
     @RequestLine("POST /analytics/metrics/incidents/all")
     @Headers({
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}", 
+        "X-EARLY-ACCESS: analytics-v2", 
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsAll(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable AnalyticsModel analyticsModel);
+    GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsAll(@Nullable AnalyticsModel analyticsModel);
 
     /**
      * Get aggregated service data
@@ -1840,16 +1846,15 @@ public interface PagerDutyRESTApi {
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: `analytics.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!  (required)
      * @param analyticsModel       Parameters and filters to apply to the dataset. (optional)
      */
     @RequestLine("POST /analytics/metrics/incidents/services")
     @Headers({
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}", 
+        "X-EARLY-ACCESS: analytics-v2", 
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsService(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable AnalyticsModel analyticsModel);
+    GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsService(@Nullable AnalyticsModel analyticsModel);
 
     /**
      * Get aggregated team data
@@ -1860,16 +1865,15 @@ public interface PagerDutyRESTApi {
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: `analytics.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.  You __MUST__ pass in this header and the above value.  Do not use this endpoint in production, as it may change!  (required)
      * @param analyticsModel       Parameters and filters to apply to the dataset. (optional)
      */
     @RequestLine("POST /analytics/metrics/incidents/teams")
     @Headers({
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}", 
+        "X-EARLY-ACCESS: analytics-v2", 
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsTeam(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable AnalyticsModel analyticsModel);
+    GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsTeam(@Nullable AnalyticsModel analyticsModel);
 
     /**
      * Get an Automation Action
@@ -2042,16 +2046,15 @@ public interface PagerDutyRESTApi {
      * The returned Business Services are sorted first by Impact, secondarily by most recently impacted, and finally by name.
      * To get impact information about a specific set of Business Services, use the `ids[]` parameter. Scoped OAuth requires: `services.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      * @param ids                  The IDs of the resources. (optional)
      */
     @RequestLine("GET /business_services/impacts?additional_fields[]={additionalFields}&ids[]={ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceImpacts(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("additional_fields[]") @Nullable String additionalFields, @Param("ids[]") @Nullable String ids);
+    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceImpacts(@Param("additional_fields[]") @Nullable String additionalFields, @Param("ids[]") @Nullable String ids);
 
     /**
      * Get the global priority threshold for a Business Service to be considered impacted by an Incident
@@ -2060,14 +2063,13 @@ public interface PagerDutyRESTApi {
      * Currently, there is a `global_threshold` that can be set for the account.
      * Incidents that have a priority meeting or exceeding this threshold will be considered impacting on any Business Service that depends on the Service to which the Incident belongs. Scoped OAuth requires: `services.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      */
     @RequestLine("GET /business_services/priority_thresholds")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServicePriorityThresholds200Response getBusinessServicePriorityThresholds(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS);
+    GetBusinessServicePriorityThresholds200Response getBusinessServicePriorityThresholds();
 
     /**
      * Get Business Service dependencies
@@ -2108,16 +2110,15 @@ public interface PagerDutyRESTApi {
      * To get impact information about a specific set of Business Services, use the `ids[]` parameter on the `/business_services/impacts` endpoint. Scoped OAuth requires: `services.read` 
      *
      * @param id                   The ID of the resource. (required)
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      * @param ids                  The IDs of the resources. (optional)
      */
     @RequestLine("GET /business_services/{id}/supporting_services/impacts?additional_fields[]={additionalFields}&ids[]={ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceSupportingServiceImpacts(@Param("id") @NotNull String id, @Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("additional_fields[]") @Nullable String additionalFields, @Param("ids[]") @Nullable String ids);
+    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceSupportingServiceImpacts(@Param("id") @NotNull String id, @Param("additional_fields[]") @Nullable String additionalFields, @Param("ids[]") @Nullable String ids);
 
     /**
      * List Impactors affecting Business Services
@@ -2127,15 +2128,14 @@ public interface PagerDutyRESTApi {
      * To get Impactors for a specific set of Business Services, use the `ids[]` parameter.
      * The returned Impactors are sorted first by priority and secondarily by their creation date. Scoped OAuth requires: `services.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      * @param ids                  The IDs of the resources. (optional)
      */
     @RequestLine("GET /business_services/impactors?ids[]={ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServiceTopLevelImpactors200Response getBusinessServiceTopLevelImpactors(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("ids[]") @Nullable String ids);
+    GetBusinessServiceTopLevelImpactors200Response getBusinessServiceTopLevelImpactors(@Param("ids[]") @Nullable String ids);
 
     /**
      * Get a Change Event
@@ -2310,14 +2310,13 @@ public interface PagerDutyRESTApi {
      * Retrieve a list of Business Services that are being impacted by the given Incident. Scoped OAuth requires: `incidents.read` 
      *
      * @param id                   The ID of the resource. (required)
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      */
     @RequestLine("GET /incidents/{id}/business_services/impacts")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetIncidentImpactedBusinessServices200Response getIncidentImpactedBusinessServices(@Param("id") @NotNull String id, @Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS);
+    GetIncidentImpactedBusinessServices200Response getIncidentImpactedBusinessServices(@Param("id") @NotNull String id);
 
     /**
      * List Notification Subscribers
@@ -3136,7 +3135,6 @@ public interface PagerDutyRESTApi {
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
      * Scoped OAuth requires: `users.read` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change!  (required)
      * @param id                   The ID of the resource. (required)
      * @param statusUpdateNotificationRuleId The status update notification rule ID on the user. (required)
      * @param include              Array of additional details to include. (optional)
@@ -3145,9 +3143,9 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    GetUserStatusUpdateNotificationRule200Response getUserStatusUpdateNotificationRule(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId, @Param("include[]") @Nullable String include);
+    GetUserStatusUpdateNotificationRule200Response getUserStatusUpdateNotificationRule(@Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId, @Param("include[]") @Nullable String include);
 
     /**
      * List a user's status update notification rules
@@ -3159,16 +3157,15 @@ public interface PagerDutyRESTApi {
      * Scoped OAuth requires: `users.read` 
      *
      * @param id                   The ID of the resource. (required)
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change!  (required)
      * @param include              Array of additional details to include. (optional)
      */
     @RequestLine("GET /users/{id}/status_update_notification_rules?include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    GetUserStatusUpdateNotificationRules200Response getUserStatusUpdateNotificationRules(@Param("id") @NotNull String id, @Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("include[]") @Nullable String include);
+    GetUserStatusUpdateNotificationRules200Response getUserStatusUpdateNotificationRules(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
 
     /**
      * Get a vendor
@@ -4196,7 +4193,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    MergeIncidents200Response mergeIncidents(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable MergeIncidentsRequest mergeIncidentsRequest);
+    MergeIncidents200Response mergeIncidents(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable MergeIncidentsRequest mergeIncidentsRequest);
 
     /**
      * Migrate an Integration from one Event Orchestration to another
@@ -4214,7 +4211,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListOrchestrationIntegrations200Response migrateOrchestrationIntegration(@Param("id") @NotNull String id,  @Nullable MigrateOrchestrationIntegrationRequest migrateOrchestrationIntegrationRequest);
+    ListOrchestrationIntegrations200Response migrateOrchestrationIntegration(@Param("id") @NotNull String id, @Nullable MigrateOrchestrationIntegrationRequest migrateOrchestrationIntegrationRequest);
 
     /**
      * Create an Incident Workflow
@@ -4230,7 +4227,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    PostIncidentWorkflowRequest postIncidentWorkflow( @Nullable PostIncidentWorkflowRequest postIncidentWorkflowRequest);
+    PostIncidentWorkflowRequest postIncidentWorkflow(@Nullable PostIncidentWorkflowRequest postIncidentWorkflowRequest);
 
     /**
      * Create an Orchestration
@@ -4247,7 +4244,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    PostOrchestration201Response postOrchestration( @Nullable PostOrchestrationRequest postOrchestrationRequest);
+    PostOrchestration201Response postOrchestration(@Nullable PostOrchestrationRequest postOrchestrationRequest);
 
     /**
      * Create an Integration for an Event Orchestration
@@ -4265,22 +4262,22 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    PostOrchestrationIntegration201Response postOrchestrationIntegration(@Param("id") @NotNull String id,  @Nullable PostOrchestrationIntegrationRequest postOrchestrationIntegrationRequest);
+    PostOrchestrationIntegration201Response postOrchestrationIntegration(@Param("id") @NotNull String id, @Nullable PostOrchestrationIntegrationRequest postOrchestrationIntegrationRequest);
 
     /**
      * Set the Account-level priority threshold for Business Service impact.
      * <p>
      * Set the Account-level priority threshold for Business Service. Scoped OAuth requires: `services.write` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      * @param putBusinessServicePriorityThresholdsRequest Set the `id` and `order` of the global Priority Threshold. These values can be obtained by calling the `/priorities` endpoint.  Once set, Incidents must be at or above the specified level in order to impact Business Services.  An exception to this rule is if the Incident has been added to the incident directly using the `PUT /incidents/{id}/business_services/{business_service_id}/impacts` endpoint. (optional)
      */
     @RequestLine("PUT /business_services/priority_thresholds")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access", 
+        "Content-Type: application/json"
     })
-    PutBusinessServicePriorityThresholds200Response putBusinessServicePriorityThresholds(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable PutBusinessServicePriorityThresholdsRequest putBusinessServicePriorityThresholdsRequest);
+    PutBusinessServicePriorityThresholds200Response putBusinessServicePriorityThresholds(@Nullable PutBusinessServicePriorityThresholdsRequest putBusinessServicePriorityThresholdsRequest);
 
     /**
      * Manually change an Incident's Impact on a Business Service.
@@ -4289,15 +4286,15 @@ public interface PagerDutyRESTApi {
      *
      * @param id                   The ID of the resource. (required)
      * @param businessServiceId    The business service ID. (required)
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change! (required)
      * @param putIncidentManualBusinessServiceAssociationRequest The `impacted` relation will cause the Business Service and any Services that it supports to become impacted by this incident.  The `not_impacted` relation will remove the Incident's Impact from the specified Business Service.  The effect of adding or removing Impact to a Business Service in this way will also change the propagation of Impact to other Services supported by that Business Service. (optional)
      */
     @RequestLine("PUT /incidents/{id}/business_services/{business_service_id}/impacts")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: business-impact-early-access", 
+        "Content-Type: application/json"
     })
-    PutIncidentManualBusinessServiceAssociation200Response putIncidentManualBusinessServiceAssociation(@Param("id") @NotNull String id, @Param("business_service_id") @NotNull String businessServiceId, @Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS,  @Nullable PutIncidentManualBusinessServiceAssociationRequest putIncidentManualBusinessServiceAssociationRequest);
+    PutIncidentManualBusinessServiceAssociation200Response putIncidentManualBusinessServiceAssociation(@Param("id") @NotNull String id, @Param("business_service_id") @NotNull String businessServiceId, @Nullable PutIncidentManualBusinessServiceAssociationRequest putIncidentManualBusinessServiceAssociationRequest);
 
     /**
      * Update an Incident Workflow
@@ -4314,7 +4311,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    PostIncidentWorkflowRequest putIncidentWorkflow(@Param("id") @NotNull String id,  @Nullable PostIncidentWorkflowRequest postIncidentWorkflowRequest);
+    PostIncidentWorkflowRequest putIncidentWorkflow(@Param("id") @NotNull String id, @Nullable PostIncidentWorkflowRequest postIncidentWorkflowRequest);
 
     /**
      * Delete Business Service Account Subscription
@@ -4341,9 +4338,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /business_services/{id}/unsubscribe")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    RemoveBusinessServiceNotificationSubscriber200Response removeBusinessServiceNotificationSubscriber(@Param("id") @NotNull String id,  @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
+    RemoveBusinessServiceNotificationSubscriber200Response removeBusinessServiceNotificationSubscriber(@Param("id") @NotNull String id, @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
 
     /**
      * Remove Notification Subscriber
@@ -4356,9 +4354,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /incidents/{id}/status_updates/unsubscribe")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    RemoveBusinessServiceNotificationSubscriber200Response removeIncidentNotificationSubscribers(@Param("id") @NotNull String id,  @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
+    RemoveBusinessServiceNotificationSubscriber200Response removeIncidentNotificationSubscribers(@Param("id") @NotNull String id, @Nullable CreateBusinessServiceNotificationSubscribersRequest createBusinessServiceNotificationSubscribersRequest);
 
     /**
      * <p>
@@ -4370,9 +4369,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /teams/{id}/notification_subscriptions/unsubscribe")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    RemoveBusinessServiceNotificationSubscriber200Response removeTeamNotificationSubscriptions(@Param("id") @NotNull String id,  @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
+    RemoveBusinessServiceNotificationSubscriber200Response removeTeamNotificationSubscriptions(@Param("id") @NotNull String id, @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
 
     /**
      * Render a template
@@ -4384,7 +4384,10 @@ public interface PagerDutyRESTApi {
      * @param renderTemplateRequest  (required)
      */
     @RequestLine("POST /templates/{id}/render")
-    RenderedTemplate renderTemplate(@Param("id") @NotNull String id,  @NotNull RenderTemplateRequest renderTemplateRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    RenderedTemplate renderTemplate(@Param("id") @NotNull String id, @NotNull RenderTemplateRequest renderTemplateRequest);
 
     /**
      * Run a response play
@@ -4406,7 +4409,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    RunResponsePlay200Response runResponsePlay(@Param("response_play_id") @NotNull String responsePlayId, @Param("From") @NotNull String from,  @Nullable MergeIncidents200Response mergeIncidents200Response);
+    RunResponsePlay200Response runResponsePlay(@Param("response_play_id") @NotNull String responsePlayId, @Param("From") @NotNull String from, @Nullable MergeIncidents200Response mergeIncidents200Response);
 
     /**
      * Update Custom Field Values
@@ -4418,7 +4421,10 @@ public interface PagerDutyRESTApi {
      * @param setIncidentFieldValuesRequest  (optional)
      */
     @RequestLine("PUT /incidents/{id}/custom_fields/values")
-    GetIncidentFieldValues200Response setIncidentFieldValues(@Param("id") @NotNull String id,  @Nullable SetIncidentFieldValuesRequest setIncidentFieldValuesRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    GetIncidentFieldValues200Response setIncidentFieldValues(@Param("id") @NotNull String id, @Nullable SetIncidentFieldValuesRequest setIncidentFieldValuesRequest);
 
     /**
      * Test a webhook subscription
@@ -4446,9 +4452,10 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /users/{id}/notification_subscriptions/unsubscribe")
     @Headers({
-        "Accept: application/vnd.pagerduty+json;version=2"
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
     })
-    RemoveBusinessServiceNotificationSubscriber200Response unsubscribeUserNotificationSubscriptions(@Param("id") @NotNull String id,  @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
+    RemoveBusinessServiceNotificationSubscriber200Response unsubscribeUserNotificationSubscriptions(@Param("id") @NotNull String id, @Nullable CreateTeamNotificationSubscriptionsRequest createTeamNotificationSubscriptionsRequest);
 
     /**
      * Update an Add-on
@@ -4467,7 +4474,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAddonRequest updateAddon(@Param("id") @NotNull String id,  @Nullable CreateAddonRequest createAddonRequest);
+    CreateAddonRequest updateAddon(@Param("id") @NotNull String id, @Nullable CreateAddonRequest createAddonRequest);
 
     /**
      * Update an Automation Action
@@ -4482,7 +4489,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateAutomationAction201Response updateAutomationAction(@Param("id") @NotNull String id,  @NotNull UpdateAutomationActionRequest updateAutomationActionRequest);
+    CreateAutomationAction201Response updateAutomationAction(@Param("id") @NotNull String id, @NotNull UpdateAutomationActionRequest updateAutomationActionRequest);
 
     /**
      * Update an Automation Action runner
@@ -4497,7 +4504,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetAutomationActionsRunner200Response updateAutomationActionsRunner(@Param("id") @NotNull String id,  @NotNull UpdateAutomationActionsRunnerRequest updateAutomationActionsRunnerRequest);
+    GetAutomationActionsRunner200Response updateAutomationActionsRunner(@Param("id") @NotNull String id, @NotNull UpdateAutomationActionsRunnerRequest updateAutomationActionsRunnerRequest);
 
     /**
      * Update a Business Service
@@ -4515,7 +4522,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateBusinessService200Response updateBusinessService(@Param("id") @NotNull String id,  @Nullable UpdateBusinessServiceRequest updateBusinessServiceRequest);
+    CreateBusinessService200Response updateBusinessService(@Param("id") @NotNull String id, @Nullable UpdateBusinessServiceRequest updateBusinessServiceRequest);
 
     /**
      * Update a Change Event
@@ -4531,7 +4538,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetChangeEvent200Response updateChangeEvent(@Param("id") @NotNull String id,  @Nullable UpdateChangeEventRequest updateChangeEventRequest);
+    GetChangeEvent200Response updateChangeEvent(@Param("id") @NotNull String id, @Nullable UpdateChangeEventRequest updateChangeEventRequest);
 
     /**
      * Update a Field
@@ -4543,7 +4550,10 @@ public interface PagerDutyRESTApi {
      * @param updateCustomFieldsFieldRequest  (optional)
      */
     @RequestLine("PUT /incidents/custom_fields/{field_id}")
-    UpdateCustomFieldsField200Response updateCustomFieldsField(@Param("field_id") @NotNull String fieldId,  @Nullable UpdateCustomFieldsFieldRequest updateCustomFieldsFieldRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    UpdateCustomFieldsField200Response updateCustomFieldsField(@Param("field_id") @NotNull String fieldId, @Nullable UpdateCustomFieldsFieldRequest updateCustomFieldsFieldRequest);
 
     /**
      * Update a Field Option
@@ -4556,7 +4566,10 @@ public interface PagerDutyRESTApi {
      * @param updateCustomFieldsFieldOptionRequest  (optional)
      */
     @RequestLine("PUT /incidents/custom_fields/{field_id}/field_options/{field_option_id}")
-    CreateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId, @Param("field_option_id") @NotNull String fieldOptionId,  @Nullable UpdateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOptionRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId, @Param("field_option_id") @NotNull String fieldOptionId, @Nullable UpdateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOptionRequest);
 
     /**
      * Update an escalation policy
@@ -4574,7 +4587,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateEscalationPolicyRequest updateEscalationPolicy(@Param("id") @NotNull String id,  @Nullable CreateEscalationPolicyRequest createEscalationPolicyRequest);
+    CreateEscalationPolicyRequest updateEscalationPolicy(@Param("id") @NotNull String id, @Nullable CreateEscalationPolicyRequest createEscalationPolicyRequest);
 
     /**
      * Update an extension
@@ -4592,7 +4605,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetExtension200Response updateExtension(@Param("id") @NotNull String id,  @Nullable GetExtension200Response getExtension200Response);
+    GetExtension200Response updateExtension(@Param("id") @NotNull String id, @Nullable GetExtension200Response getExtension200Response);
 
     /**
      * Update an incident
@@ -4612,7 +4625,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    UpdateIncident200Response updateIncident(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable UpdateIncidentRequest updateIncidentRequest);
+    UpdateIncident200Response updateIncident(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable UpdateIncidentRequest updateIncidentRequest);
 
     /**
      * Update an alert
@@ -4634,7 +4647,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    GetIncidentAlert200Response updateIncidentAlert(@Param("id") @NotNull String id, @Param("alert_id") @NotNull String alertId, @Param("From") @NotNull String from,  @Nullable GetIncidentAlert200Response getIncidentAlert200Response);
+    GetIncidentAlert200Response updateIncidentAlert(@Param("id") @NotNull String id, @Param("alert_id") @NotNull String alertId, @Param("From") @NotNull String from, @Nullable GetIncidentAlert200Response getIncidentAlert200Response);
 
     /**
      * Manage alerts
@@ -4658,7 +4671,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    ListIncidentAlerts200Response updateIncidentAlerts(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total,  @Nullable UpdateIncidentAlertsRequest updateIncidentAlertsRequest);
+    ListIncidentAlerts200Response updateIncidentAlerts(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Nullable UpdateIncidentAlertsRequest updateIncidentAlertsRequest);
 
     /**
      * Update a Trigger
@@ -4674,7 +4687,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateIncidentWorkflowTriggerRequest updateIncidentWorkflowTrigger(@Param("id") @NotNull String id,  @Nullable CreateIncidentWorkflowTriggerRequest createIncidentWorkflowTriggerRequest);
+    CreateIncidentWorkflowTriggerRequest updateIncidentWorkflowTrigger(@Param("id") @NotNull String id, @Nullable CreateIncidentWorkflowTriggerRequest createIncidentWorkflowTriggerRequest);
 
     /**
      * Manage incidents
@@ -4698,7 +4711,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    ListIncidents200Response updateIncidents(@Param("From") @NotNull String from, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total,  @Nullable UpdateIncidentsRequest updateIncidentsRequest);
+    ListIncidents200Response updateIncidents(@Param("From") @NotNull String from, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Nullable UpdateIncidentsRequest updateIncidentsRequest);
 
     /**
      * Update log entry channel information.
@@ -4717,7 +4730,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    void updateLogEntryChannel(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable UpdateLogEntryChannelRequest updateLogEntryChannelRequest);
+    void updateLogEntryChannel(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable UpdateLogEntryChannelRequest updateLogEntryChannelRequest);
 
     /**
      * Update a maintenance window
@@ -4735,7 +4748,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateMaintenanceWindowRequest updateMaintenanceWindow(@Param("id") @NotNull String id,  @Nullable CreateMaintenanceWindowRequest createMaintenanceWindowRequest);
+    CreateMaintenanceWindowRequest updateMaintenanceWindow(@Param("id") @NotNull String id, @Nullable CreateMaintenanceWindowRequest createMaintenanceWindowRequest);
 
     /**
      * Update the Service Orchestration active status for a Service
@@ -4753,7 +4766,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetOrchActiveStatus200Response updateOrchActiveStatus(@Param("service_id") @NotNull String serviceId,  @Nullable GetOrchActiveStatus200Response getOrchActiveStatus200Response);
+    GetOrchActiveStatus200Response updateOrchActiveStatus(@Param("service_id") @NotNull String serviceId, @Nullable GetOrchActiveStatus200Response getOrchActiveStatus200Response);
 
     /**
      * Update the Global Orchestration for an Event Orchestration
@@ -4771,7 +4784,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    UpdateOrchPathGlobal200Response updateOrchPathGlobal(@Param("id") @NotNull String id,  @Nullable OrchestrationGlobal orchestrationGlobal);
+    UpdateOrchPathGlobal200Response updateOrchPathGlobal(@Param("id") @NotNull String id, @Nullable OrchestrationGlobal orchestrationGlobal);
 
     /**
      * Update the Router for an Event Orchestration
@@ -4789,7 +4802,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    UpdateOrchPathRouter200Response updateOrchPathRouter(@Param("id") @NotNull String id,  @Nullable OrchestrationRouter orchestrationRouter);
+    UpdateOrchPathRouter200Response updateOrchPathRouter(@Param("id") @NotNull String id, @Nullable OrchestrationRouter orchestrationRouter);
 
     /**
      * Update the Service Orchestration for a Service
@@ -4807,7 +4820,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    UpdateOrchPathService200Response updateOrchPathService(@Param("service_id") @NotNull String serviceId,  @Nullable ServiceOrchestration serviceOrchestration);
+    UpdateOrchPathService200Response updateOrchPathService(@Param("service_id") @NotNull String serviceId, @Nullable ServiceOrchestration serviceOrchestration);
 
     /**
      * Update the Unrouted Orchestration for an Event Orchestration
@@ -4826,7 +4839,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    UpdateOrchPathUnrouted200Response updateOrchPathUnrouted(@Param("id") @NotNull String id,  @Nullable OrchestrationUnrouted orchestrationUnrouted);
+    UpdateOrchPathUnrouted200Response updateOrchPathUnrouted(@Param("id") @NotNull String id, @Nullable OrchestrationUnrouted orchestrationUnrouted);
 
     /**
      * Update an Orchestration
@@ -4844,7 +4857,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    PostOrchestration201Response updateOrchestration(@Param("id") @NotNull String id,  @Nullable PostOrchestrationRequest postOrchestrationRequest);
+    PostOrchestration201Response updateOrchestration(@Param("id") @NotNull String id, @Nullable PostOrchestrationRequest postOrchestrationRequest);
 
     /**
      * Update an Integration for an Event Orchestration
@@ -4863,7 +4876,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    PostOrchestrationIntegration201Response updateOrchestrationIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId,  @Nullable PostOrchestrationIntegrationRequest postOrchestrationIntegrationRequest);
+    PostOrchestrationIntegration201Response updateOrchestrationIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId, @Nullable PostOrchestrationIntegrationRequest postOrchestrationIntegrationRequest);
 
     /**
      * Update a Response Play
@@ -4885,7 +4898,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateResponsePlay201Response updateResponsePlay(@Param("id") @NotNull String id, @Param("From") @NotNull String from,  @Nullable CreateResponsePlayRequest createResponsePlayRequest);
+    CreateResponsePlay201Response updateResponsePlay(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateResponsePlayRequest createResponsePlayRequest);
 
     /**
      * Update a Ruleset
@@ -4903,7 +4916,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateRuleset201Response updateRuleset(@Param("id") @NotNull String id,  @Nullable UpdateRulesetRequest updateRulesetRequest);
+    CreateRuleset201Response updateRuleset(@Param("id") @NotNull String id, @Nullable UpdateRulesetRequest updateRulesetRequest);
 
     /**
      * Update an Event Rule
@@ -4923,7 +4936,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateRulesetEventRule201Response updateRulesetEventRule(@Param("id") @NotNull String id, @Param("rule_id") @NotNull String ruleId,  @Nullable UpdateRulesetEventRuleRequest updateRulesetEventRuleRequest);
+    CreateRulesetEventRule201Response updateRulesetEventRule(@Param("id") @NotNull String id, @Param("rule_id") @NotNull String ruleId, @Nullable UpdateRulesetEventRuleRequest updateRulesetEventRuleRequest);
 
     /**
      * Update a schedule
@@ -4942,7 +4955,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateScheduleRequest updateSchedule(@Param("id") @NotNull String id, @Param("overflow") @Nullable Boolean overflow,  @Nullable CreateScheduleRequest createScheduleRequest);
+    CreateScheduleRequest updateSchedule(@Param("id") @NotNull String id, @Param("overflow") @Nullable Boolean overflow, @Nullable CreateScheduleRequest createScheduleRequest);
 
     /**
      * Update a service
@@ -4961,7 +4974,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceRequest updateService(@Param("id") @NotNull String id,  @Nullable CreateServiceRequest createServiceRequest);
+    CreateServiceRequest updateService(@Param("id") @NotNull String id, @Nullable CreateServiceRequest createServiceRequest);
 
     /**
      * Update an Event Rule on a Service
@@ -4978,7 +4991,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceEventRule201Response updateServiceEventRule(@Param("id") @NotNull String id, @Param("rule_id") @NotNull String ruleId,  @Nullable UpdateServiceEventRuleRequest updateServiceEventRuleRequest);
+    CreateServiceEventRule201Response updateServiceEventRule(@Param("id") @NotNull String id, @Param("rule_id") @NotNull String ruleId, @Nullable UpdateServiceEventRuleRequest updateServiceEventRuleRequest);
 
     /**
      * Update an existing integration
@@ -4997,7 +5010,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceIntegrationRequest updateServiceIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId,  @Nullable CreateServiceIntegrationRequest createServiceIntegrationRequest);
+    CreateServiceIntegrationRequest updateServiceIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId, @Nullable CreateServiceIntegrationRequest createServiceIntegrationRequest);
 
     /**
      * Update a team
@@ -5015,7 +5028,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateTeamRequest updateTeam(@Param("id") @NotNull String id,  @Nullable CreateTeamRequest createTeamRequest);
+    CreateTeamRequest updateTeam(@Param("id") @NotNull String id, @Nullable CreateTeamRequest createTeamRequest);
 
     /**
      * Add an escalation policy to a team
@@ -5052,7 +5065,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    void updateTeamUser(@Param("id") @NotNull String id, @Param("user_id") @NotNull String userId,  @Nullable UpdateTeamUserRequest updateTeamUserRequest);
+    void updateTeamUser(@Param("id") @NotNull String id, @Param("user_id") @NotNull String userId, @Nullable UpdateTeamUserRequest updateTeamUserRequest);
 
     /**
      * Update a template
@@ -5064,7 +5077,10 @@ public interface PagerDutyRESTApi {
      * @param createTemplateRequest  (required)
      */
     @RequestLine("PUT /templates/{id}")
-    CreateTemplate201Response updateTemplate(@Param("id") @NotNull String id,  @NotNull CreateTemplateRequest createTemplateRequest);
+    @Headers({
+        "Content-Type: application/json"
+    })
+    CreateTemplate201Response updateTemplate(@Param("id") @NotNull String id, @NotNull CreateTemplateRequest createTemplateRequest);
 
     /**
      * Update a user
@@ -5082,7 +5098,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserRequest updateUser(@Param("id") @NotNull String id,  @Nullable CreateUserRequest createUserRequest);
+    CreateUserRequest updateUser(@Param("id") @NotNull String id, @Nullable CreateUserRequest createUserRequest);
 
     /**
      * Update a user's contact method
@@ -5101,7 +5117,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserContactMethod201Response updateUserContactMethod(@Param("id") @NotNull String id, @Param("contact_method_id") @NotNull String contactMethodId,  @Nullable CreateUserContactMethodRequest createUserContactMethodRequest);
+    CreateUserContactMethod201Response updateUserContactMethod(@Param("id") @NotNull String id, @Param("contact_method_id") @NotNull String contactMethodId, @Nullable CreateUserContactMethodRequest createUserContactMethodRequest);
 
     /**
      * Update a User's Handoff Notification Rule
@@ -5118,7 +5134,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    UpdateUserHandoffNotification200Response updateUserHandoffNotification(@Param("id") @NotNull String id, @Param("oncall_handoff_notification_rule_id") @NotNull String oncallHandoffNotificationRuleId,  @Nullable CreateUserHandoffNotificationRuleRequest createUserHandoffNotificationRuleRequest);
+    UpdateUserHandoffNotification200Response updateUserHandoffNotification(@Param("id") @NotNull String id, @Param("oncall_handoff_notification_rule_id") @NotNull String oncallHandoffNotificationRuleId, @Nullable CreateUserHandoffNotificationRuleRequest createUserHandoffNotificationRuleRequest);
 
     /**
      * Update a user's notification rule
@@ -5137,7 +5153,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    UpdateUserNotificationRule200Response updateUserNotificationRule(@Param("id") @NotNull String id, @Param("notification_rule_id") @NotNull String notificationRuleId,  @Nullable CreateUserNotificationRuleRequest createUserNotificationRuleRequest);
+    UpdateUserNotificationRule200Response updateUserNotificationRule(@Param("id") @NotNull String id, @Param("notification_rule_id") @NotNull String notificationRuleId, @Nullable CreateUserNotificationRuleRequest createUserNotificationRuleRequest);
 
     /**
      * Update a user's status update notification rule
@@ -5148,7 +5164,6 @@ public interface PagerDutyRESTApi {
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
      * Scoped OAuth requires: `users.write` 
      *
-     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change!  (required)
      * @param id                   The ID of the resource. (required)
      * @param statusUpdateNotificationRuleId The status update notification rule ID on the user. (required)
      * @param createUserStatusUpdateNotificationRule201Response The user's status update notification rule to be updated. (optional)
@@ -5157,9 +5172,9 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+        "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    UpdateUserStatusUpdateNotificationRule200Response updateUserStatusUpdateNotificationRule(@Param("X-EARLY-ACCESS") @NotNull String X_EARLY_ACCESS, @Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId,  @Nullable CreateUserStatusUpdateNotificationRule201Response createUserStatusUpdateNotificationRule201Response);
+    UpdateUserStatusUpdateNotificationRule200Response updateUserStatusUpdateNotificationRule(@Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId, @Nullable CreateUserStatusUpdateNotificationRule201Response createUserStatusUpdateNotificationRule201Response);
 
     /**
      * Update a webhook subscription
@@ -5176,6 +5191,6 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateWebhookSubscriptionRequest updateWebhookSubscription(@Param("id") @NotNull String id,  @Nullable WebhookSubscriptionUpdate webhookSubscriptionUpdate);
+    CreateWebhookSubscriptionRequest updateWebhookSubscription(@Param("id") @NotNull String id, @Nullable WebhookSubscriptionUpdate webhookSubscriptionUpdate);
 
 }

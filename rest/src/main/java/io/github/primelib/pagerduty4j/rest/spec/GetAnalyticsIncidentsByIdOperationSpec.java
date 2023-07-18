@@ -36,14 +36,6 @@ public class GetAnalyticsIncidentsByIdOperationSpec {
     private String id;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time.
-     * You __MUST__ pass in this header and the above value.
-     * Do not use this endpoint in production, as it may change! 
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "analytics-v2";
-
-    /**
      * Constructs a validated implementation of {@link GetAnalyticsIncidentsByIdOperationSpec}.
      *
      * @param spec the specification to process
@@ -62,7 +54,6 @@ public class GetAnalyticsIncidentsByIdOperationSpec {
      */
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
     }
 
 }

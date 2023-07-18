@@ -33,7 +33,7 @@ public final class PagerDutyRESTFactorySpec<T> {
      * The name of the backend to use
      */
     @NotNull
-    private String backendName = "pagerduty4j";
+    private String backendName = "pagerduty4j-rest";
 
     /**
      * The API interface to use

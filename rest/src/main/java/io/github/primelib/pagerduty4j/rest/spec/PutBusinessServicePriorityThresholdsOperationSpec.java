@@ -1,8 +1,6 @@
 package io.github.primelib.pagerduty4j.rest.spec;
 
-import java.util.Objects;
 import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
@@ -33,12 +31,6 @@ public class PutBusinessServicePriorityThresholdsOperationSpec {
     public static Boolean VALIDATION_ENABLED = true;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value `business-impact-early-access`. Do not use this endpoint in production, as it may change!
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "business-impact-early-access";
-
-    /**
      * Set the `id` and `order` of the global Priority Threshold. These values can be obtained by calling the `/priorities` endpoint.
      * Once set, Incidents must be at or above the specified level in order to impact Business Services.
      * An exception to this rule is if the Incident has been added to the incident directly using the `PUT /incidents/{id}/business_services/{business_service_id}/impacts` endpoint.
@@ -64,7 +56,6 @@ public class PutBusinessServicePriorityThresholdsOperationSpec {
      * @throws NullPointerException
      */
     public void validate() {
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
     }
 
 }

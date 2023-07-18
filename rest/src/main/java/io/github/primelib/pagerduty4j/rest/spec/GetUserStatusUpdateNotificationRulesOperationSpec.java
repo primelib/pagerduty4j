@@ -38,12 +38,6 @@ public class GetUserStatusUpdateNotificationRulesOperationSpec {
     private String id;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change! 
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "status-update-notification-rules";
-
-    /**
      * Array of additional details to include.
      */
     @Nullable 
@@ -68,7 +62,6 @@ public class GetUserStatusUpdateNotificationRulesOperationSpec {
      */
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
     }
 
 }

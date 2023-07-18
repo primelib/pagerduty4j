@@ -1057,7 +1057,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public CreateUserStatusUpdateNotificationRule201Response createUserStatusUpdateNotificationRule(Consumer<CreateUserStatusUpdateNotificationRuleOperationSpec> spec) {
         CreateUserStatusUpdateNotificationRuleOperationSpec r = new CreateUserStatusUpdateNotificationRuleOperationSpec(spec);
-        return api.createUserStatusUpdateNotificationRule(r.X_EARLY_ACCESS(), r.id(), r.createUserStatusUpdateNotificationRuleRequest());
+        return api.createUserStatusUpdateNotificationRule(r.id(), r.createUserStatusUpdateNotificationRuleRequest());
     }
 
     /**
@@ -1165,7 +1165,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public void deleteBusinessServicePriorityThresholds(Consumer<DeleteBusinessServicePriorityThresholdsOperationSpec> spec) {
         DeleteBusinessServicePriorityThresholdsOperationSpec r = new DeleteBusinessServicePriorityThresholdsOperationSpec(spec);
-        api.deleteBusinessServicePriorityThresholds(r.X_EARLY_ACCESS());
+        api.deleteBusinessServicePriorityThresholds();
     }
 
     /**
@@ -1587,7 +1587,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public void deleteUserStatusUpdateNotificationRule(Consumer<DeleteUserStatusUpdateNotificationRuleOperationSpec> spec) {
         DeleteUserStatusUpdateNotificationRuleOperationSpec r = new DeleteUserStatusUpdateNotificationRuleOperationSpec(spec);
-        api.deleteUserStatusUpdateNotificationRule(r.X_EARLY_ACCESS(), r.id(), r.statusUpdateNotificationRuleId());
+        api.deleteUserStatusUpdateNotificationRule(r.id(), r.statusUpdateNotificationRuleId());
     }
 
     /**
@@ -1678,7 +1678,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetAnalyticsIncidentResponsesById200Response getAnalyticsIncidentResponsesById(Consumer<GetAnalyticsIncidentResponsesByIdOperationSpec> spec) {
         GetAnalyticsIncidentResponsesByIdOperationSpec r = new GetAnalyticsIncidentResponsesByIdOperationSpec(spec);
-        return api.getAnalyticsIncidentResponsesById(r.id(), r.X_EARLY_ACCESS(), r.getAnalyticsIncidentResponsesByIdRequest());
+        return api.getAnalyticsIncidentResponsesById(r.id(), r.getAnalyticsIncidentResponsesByIdRequest());
     }
 
     /**
@@ -1692,7 +1692,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetAnalyticsIncidents200Response getAnalyticsIncidents(Consumer<GetAnalyticsIncidentsOperationSpec> spec) {
         GetAnalyticsIncidentsOperationSpec r = new GetAnalyticsIncidentsOperationSpec(spec);
-        return api.getAnalyticsIncidents(r.X_EARLY_ACCESS(), r.getAnalyticsIncidentsRequest());
+        return api.getAnalyticsIncidents(r.getAnalyticsIncidentsRequest());
     }
 
     /**
@@ -1706,7 +1706,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public AnalyticsRawIncident getAnalyticsIncidentsById(Consumer<GetAnalyticsIncidentsByIdOperationSpec> spec) {
         GetAnalyticsIncidentsByIdOperationSpec r = new GetAnalyticsIncidentsByIdOperationSpec(spec);
-        return api.getAnalyticsIncidentsById(r.id(), r.X_EARLY_ACCESS());
+        return api.getAnalyticsIncidentsById(r.id());
     }
 
     /**
@@ -1720,7 +1720,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsAll(Consumer<GetAnalyticsMetricsIncidentsAllOperationSpec> spec) {
         GetAnalyticsMetricsIncidentsAllOperationSpec r = new GetAnalyticsMetricsIncidentsAllOperationSpec(spec);
-        return api.getAnalyticsMetricsIncidentsAll(r.X_EARLY_ACCESS(), r.analyticsModel());
+        return api.getAnalyticsMetricsIncidentsAll(r.analyticsModel());
     }
 
     /**
@@ -1735,7 +1735,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsService(Consumer<GetAnalyticsMetricsIncidentsServiceOperationSpec> spec) {
         GetAnalyticsMetricsIncidentsServiceOperationSpec r = new GetAnalyticsMetricsIncidentsServiceOperationSpec(spec);
-        return api.getAnalyticsMetricsIncidentsService(r.X_EARLY_ACCESS(), r.analyticsModel());
+        return api.getAnalyticsMetricsIncidentsService(r.analyticsModel());
     }
 
     /**
@@ -1750,7 +1750,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsTeam(Consumer<GetAnalyticsMetricsIncidentsTeamOperationSpec> spec) {
         GetAnalyticsMetricsIncidentsTeamOperationSpec r = new GetAnalyticsMetricsIncidentsTeamOperationSpec(spec);
-        return api.getAnalyticsMetricsIncidentsTeam(r.X_EARLY_ACCESS(), r.analyticsModel());
+        return api.getAnalyticsMetricsIncidentsTeam(r.analyticsModel());
     }
 
     /**
@@ -1888,7 +1888,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceImpacts(Consumer<GetBusinessServiceImpactsOperationSpec> spec) {
         GetBusinessServiceImpactsOperationSpec r = new GetBusinessServiceImpactsOperationSpec(spec);
-        return api.getBusinessServiceImpacts(r.X_EARLY_ACCESS(), r.additionalFields(), r.ids());
+        return api.getBusinessServiceImpacts(r.additionalFields(), r.ids());
     }
 
     /**
@@ -1901,7 +1901,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetBusinessServicePriorityThresholds200Response getBusinessServicePriorityThresholds(Consumer<GetBusinessServicePriorityThresholdsOperationSpec> spec) {
         GetBusinessServicePriorityThresholdsOperationSpec r = new GetBusinessServicePriorityThresholdsOperationSpec(spec);
-        return api.getBusinessServicePriorityThresholds(r.X_EARLY_ACCESS());
+        return api.getBusinessServicePriorityThresholds();
     }
 
     /**
@@ -1940,7 +1940,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceSupportingServiceImpacts(Consumer<GetBusinessServiceSupportingServiceImpactsOperationSpec> spec) {
         GetBusinessServiceSupportingServiceImpactsOperationSpec r = new GetBusinessServiceSupportingServiceImpactsOperationSpec(spec);
-        return api.getBusinessServiceSupportingServiceImpacts(r.id(), r.X_EARLY_ACCESS(), r.additionalFields(), r.ids());
+        return api.getBusinessServiceSupportingServiceImpacts(r.id(), r.additionalFields(), r.ids());
     }
 
     /**
@@ -1954,7 +1954,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetBusinessServiceTopLevelImpactors200Response getBusinessServiceTopLevelImpactors(Consumer<GetBusinessServiceTopLevelImpactorsOperationSpec> spec) {
         GetBusinessServiceTopLevelImpactorsOperationSpec r = new GetBusinessServiceTopLevelImpactorsOperationSpec(spec);
-        return api.getBusinessServiceTopLevelImpactors(r.X_EARLY_ACCESS(), r.ids());
+        return api.getBusinessServiceTopLevelImpactors(r.ids());
     }
 
     /**
@@ -2101,7 +2101,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetIncidentImpactedBusinessServices200Response getIncidentImpactedBusinessServices(Consumer<GetIncidentImpactedBusinessServicesOperationSpec> spec) {
         GetIncidentImpactedBusinessServicesOperationSpec r = new GetIncidentImpactedBusinessServicesOperationSpec(spec);
-        return api.getIncidentImpactedBusinessServices(r.id(), r.X_EARLY_ACCESS());
+        return api.getIncidentImpactedBusinessServices(r.id());
     }
 
     /**
@@ -2751,7 +2751,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetUserStatusUpdateNotificationRule200Response getUserStatusUpdateNotificationRule(Consumer<GetUserStatusUpdateNotificationRuleOperationSpec> spec) {
         GetUserStatusUpdateNotificationRuleOperationSpec r = new GetUserStatusUpdateNotificationRuleOperationSpec(spec);
-        return api.getUserStatusUpdateNotificationRule(r.X_EARLY_ACCESS(), r.id(), r.statusUpdateNotificationRuleId(), r.include());
+        return api.getUserStatusUpdateNotificationRule(r.id(), r.statusUpdateNotificationRuleId(), r.include());
     }
 
     /**
@@ -2766,7 +2766,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public GetUserStatusUpdateNotificationRules200Response getUserStatusUpdateNotificationRules(Consumer<GetUserStatusUpdateNotificationRulesOperationSpec> spec) {
         GetUserStatusUpdateNotificationRulesOperationSpec r = new GetUserStatusUpdateNotificationRulesOperationSpec(spec);
-        return api.getUserStatusUpdateNotificationRules(r.id(), r.X_EARLY_ACCESS(), r.include());
+        return api.getUserStatusUpdateNotificationRules(r.id(), r.include());
     }
 
     /**
@@ -3529,7 +3529,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public PutBusinessServicePriorityThresholds200Response putBusinessServicePriorityThresholds(Consumer<PutBusinessServicePriorityThresholdsOperationSpec> spec) {
         PutBusinessServicePriorityThresholdsOperationSpec r = new PutBusinessServicePriorityThresholdsOperationSpec(spec);
-        return api.putBusinessServicePriorityThresholds(r.X_EARLY_ACCESS(), r.putBusinessServicePriorityThresholdsRequest());
+        return api.putBusinessServicePriorityThresholds(r.putBusinessServicePriorityThresholdsRequest());
     }
 
     /**
@@ -3540,7 +3540,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public PutIncidentManualBusinessServiceAssociation200Response putIncidentManualBusinessServiceAssociation(Consumer<PutIncidentManualBusinessServiceAssociationOperationSpec> spec) {
         PutIncidentManualBusinessServiceAssociationOperationSpec r = new PutIncidentManualBusinessServiceAssociationOperationSpec(spec);
-        return api.putIncidentManualBusinessServiceAssociation(r.id(), r.businessServiceId(), r.X_EARLY_ACCESS(), r.putIncidentManualBusinessServiceAssociationRequest());
+        return api.putIncidentManualBusinessServiceAssociation(r.id(), r.businessServiceId(), r.putIncidentManualBusinessServiceAssociationRequest());
     }
 
     /**
@@ -4201,7 +4201,7 @@ public class PagerDutyRESTConsumerApi {
      */
     public UpdateUserStatusUpdateNotificationRule200Response updateUserStatusUpdateNotificationRule(Consumer<UpdateUserStatusUpdateNotificationRuleOperationSpec> spec) {
         UpdateUserStatusUpdateNotificationRuleOperationSpec r = new UpdateUserStatusUpdateNotificationRuleOperationSpec(spec);
-        return api.updateUserStatusUpdateNotificationRule(r.X_EARLY_ACCESS(), r.id(), r.statusUpdateNotificationRuleId(), r.createUserStatusUpdateNotificationRule201Response());
+        return api.updateUserStatusUpdateNotificationRule(r.id(), r.statusUpdateNotificationRuleId(), r.createUserStatusUpdateNotificationRule201Response());
     }
 
     /**

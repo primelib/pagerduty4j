@@ -32,12 +32,6 @@ public class UpdateUserStatusUpdateNotificationRuleOperationSpec {
     public static Boolean VALIDATION_ENABLED = true;
 
     /**
-     * This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header and the above value. Do not use this endpoint in production, as it may change! 
-     */
-    @NotNull 
-    private String X_EARLY_ACCESS = "status-update-notification-rules";
-
-    /**
      * The ID of the resource.
      */
     @NotNull 
@@ -73,7 +67,6 @@ public class UpdateUserStatusUpdateNotificationRuleOperationSpec {
      * @throws NullPointerException
      */
     public void validate() {
-        Objects.requireNonNull(X_EARLY_ACCESS, "X_EARLY_ACCESS is a required parameter!");
         Objects.requireNonNull(id, "id is a required parameter!");
         Objects.requireNonNull(statusUpdateNotificationRuleId, "statusUpdateNotificationRuleId is a required parameter!");
     }

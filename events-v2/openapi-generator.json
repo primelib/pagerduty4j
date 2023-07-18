@@ -8,6 +8,16 @@
 		"supportingFiles": false
 	},
 	"additionalProperties": {
-		"projectName": "pagerduty4j"
+		"projectName": "pagerduty4j-events-v2",
+		"projectDescription": "A Java Wrapper for the PagerDuty Events V2 API",
+		"projectRepository":  "github.com/primelib/pagerduty4j",
+		"projectInceptionYear":  "2023",
+		"projectLicenseName": "MIT",
+		"projectLicenseUrl": "https://github.com/primelib/pagerduty4j/blob/main/LICENSE",
+		"projectArtifactGroupId": "io.github.primelib",
+		"projectArtifactId": "pagerduty4j-events-v2",
+		"projectMaintainerId": "PhilippHeuer",
+		"projectMaintainerName": "Philipp Heuer",
+		"projectMaintainerEMail": "git@philippheuer.me"
 	}
 }
