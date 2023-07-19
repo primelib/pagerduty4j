@@ -428,7 +428,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /incidents/custom_fields")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateCustomFieldsFieldRequest createCustomFieldsField(@Nullable CreateCustomFieldsFieldRequest createCustomFieldsFieldRequest);
 
@@ -443,7 +444,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /incidents/custom_fields/{field_id}/field_options")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateCustomFieldsFieldOptionRequest createCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId, @Nullable CreateCustomFieldsFieldOptionRequest createCustomFieldsFieldOptionRequest);
 
@@ -481,7 +483,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateEscalationPolicyRequest createEscalationPolicy(@Param("From") @Nullable String from, @Nullable CreateEscalationPolicyRequest createEscalationPolicyRequest);
 
@@ -500,7 +502,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateIncident201Response createIncident(@Param("From") @NotNull String from, @Nullable CreateIncidentRequest createIncidentRequest);
 
@@ -521,7 +523,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateIncidentNote200Response createIncidentNote(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentNoteRequest createIncidentNoteRequest);
 
@@ -557,7 +559,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateIncidentResponderRequest200Response createIncidentResponderRequest(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentResponderRequestRequest createIncidentResponderRequestRequest);
 
@@ -577,7 +579,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateIncident201Response createIncidentSnooze(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentSnoozeRequest createIncidentSnoozeRequest);
 
@@ -597,7 +599,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateIncidentStatusUpdate200Response createIncidentStatusUpdate(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateIncidentStatusUpdateRequest createIncidentStatusUpdateRequest);
 
@@ -648,7 +650,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateMaintenanceWindowRequest createMaintenanceWindow(@Param("From") @NotNull String from, @Nullable CreateMaintenanceWindowRequest createMaintenanceWindowRequest);
 
@@ -669,7 +671,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateResponsePlay201Response createResponsePlay(@Param("From") @NotNull String from, @Nullable CreateResponsePlayRequest createResponsePlayRequest);
 
@@ -898,7 +900,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /templates")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateTemplate201Response createTemplate(@NotNull CreateTemplateRequest createTemplateRequest);
 
@@ -917,7 +920,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateUserRequest createUser(@Param("From") @NotNull String from, @Nullable CreateUserRequest createUserRequest);
 
@@ -1155,6 +1158,9 @@ public interface PagerDutyRESTApi {
      * @param fieldId              The ID of the field. (required)
      */
     @RequestLine("DELETE /incidents/custom_fields/{field_id}")
+    @Headers({
+        "Accept: application/json"
+    })
     void deleteCustomFieldsField(@Param("field_id") @NotNull String fieldId);
 
     /**
@@ -1167,6 +1173,9 @@ public interface PagerDutyRESTApi {
      * @param fieldOptionId        The ID of the field option. (required)
      */
     @RequestLine("DELETE /incidents/custom_fields/{field_id}/field_options/{field_option_id}")
+    @Headers({
+        "Accept: application/json"
+    })
     void deleteCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId, @Param("field_option_id") @NotNull String fieldOptionId);
 
     /**
@@ -1305,7 +1314,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     void deleteResponsePlay(@Param("id") @NotNull String id, @Param("From") @NotNull String from);
 
@@ -1480,7 +1489,7 @@ public interface PagerDutyRESTApi {
      * @param id                   The ID of the resource. (required)
      * @param reassignmentTeam     Team to reassign unresolved incident to. If an unresolved incident exists on both the reassignment team and the team being deleted, a duplicate will not be made. If not supplied, unresolved incidents will be made account-level.  (optional)
      */
-    @RequestLine("DELETE /teams/{id}?reassignment_team={reassignmentTeam}")
+    @RequestLine("DELETE /teams/{id}?reassignment_team={reassignment_team}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -1532,6 +1541,9 @@ public interface PagerDutyRESTApi {
      * @param id                   The ID of the resource. (required)
      */
     @RequestLine("DELETE /templates/{id}")
+    @Headers({
+        "Accept: application/json"
+    })
     void deleteTemplate(@Param("id") @NotNull String id);
 
     /**
@@ -1759,7 +1771,7 @@ public interface PagerDutyRESTApi {
      * @param serviceId            Filters results to include the ones associated with the specified service (optional)
      * @param actionType           Filters results to include the ones matching the specified action type (optional)
      */
-    @RequestLine("GET /automation_actions/actions?limit={limit}&cursor={cursor}&name={name}&runner_id={runnerId}&classification={classification}&team_id={teamId}&service_id={serviceId}&action_type={actionType}")
+    @RequestLine("GET /automation_actions/actions?limit={limit}&cursor={cursor}&name={name}&runner_id={runner_id}&classification={classification}&team_id={team_id}&service_id={service_id}&action_type={action_type}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -2020,7 +2032,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetAutomationActionsRunners200Response getAutomationActionsRunners(@Param("limit") @Nullable Integer limit, @Param("cursor") @Nullable String cursor, @Param("name") @Nullable String name, @Param("include[]") @Nullable Set<String> include);
+    GetAutomationActionsRunners200Response getAutomationActionsRunners(@Param("limit") @Nullable Integer limit, @Param("cursor") @Nullable String cursor, @Param("name") @Nullable String name, @Param("include") @Nullable Set<String> include);
 
     /**
      * Get a Business Service
@@ -2049,12 +2061,12 @@ public interface PagerDutyRESTApi {
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      * @param ids                  The IDs of the resources. (optional)
      */
-    @RequestLine("GET /business_services/impacts?additional_fields[]={additionalFields}&ids[]={ids}")
+    @RequestLine("GET /business_services/impacts?additional_fields[]={additional_fields}&ids[]={ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceImpacts(@Param("additional_fields[]") @Nullable String additionalFields, @Param("ids[]") @Nullable String ids);
+    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceImpacts(@Param("additional_fields") @Nullable String additionalFields, @Param("ids") @Nullable String ids);
 
     /**
      * Get the global priority threshold for a Business Service to be considered impacted by an Incident
@@ -2113,12 +2125,12 @@ public interface PagerDutyRESTApi {
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      * @param ids                  The IDs of the resources. (optional)
      */
-    @RequestLine("GET /business_services/{id}/supporting_services/impacts?additional_fields[]={additionalFields}&ids[]={ids}")
+    @RequestLine("GET /business_services/{id}/supporting_services/impacts?additional_fields[]={additional_fields}&ids[]={ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceSupportingServiceImpacts(@Param("id") @NotNull String id, @Param("additional_fields[]") @Nullable String additionalFields, @Param("ids[]") @Nullable String ids);
+    GetBusinessServiceSupportingServiceImpacts200Response getBusinessServiceSupportingServiceImpacts(@Param("id") @NotNull String id, @Param("additional_fields") @Nullable String additionalFields, @Param("ids") @Nullable String ids);
 
     /**
      * List Impactors affecting Business Services
@@ -2135,7 +2147,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "X-EARLY-ACCESS: business-impact-early-access"
     })
-    GetBusinessServiceTopLevelImpactors200Response getBusinessServiceTopLevelImpactors(@Param("ids[]") @Nullable String ids);
+    GetBusinessServiceTopLevelImpactors200Response getBusinessServiceTopLevelImpactors(@Param("ids") @Nullable String ids);
 
     /**
      * Get a Change Event
@@ -2167,7 +2179,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserRequest getCurrentUser(@Param("include[]") @Nullable String include);
+    CreateUserRequest getCurrentUser(@Param("include") @Nullable String include);
 
     /**
      * Get a Field
@@ -2179,7 +2191,10 @@ public interface PagerDutyRESTApi {
      * @param include              Array of additional details to include. (optional)
      */
     @RequestLine("GET /incidents/custom_fields/{field_id}?include[]={include}")
-    CreateCustomFieldsFieldRequest getCustomFieldsField(@Param("field_id") @NotNull String fieldId, @Param("include[]") @Nullable String include);
+    @Headers({
+        "Accept: application/json"
+    })
+    CreateCustomFieldsFieldRequest getCustomFieldsField(@Param("field_id") @NotNull String fieldId, @Param("include") @Nullable String include);
 
     /**
      * Get tags for entities
@@ -2218,7 +2233,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateEscalationPolicyRequest getEscalationPolicy(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    CreateEscalationPolicyRequest getEscalationPolicy(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get an extension
@@ -2236,7 +2251,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetExtension200Response getExtension(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    GetExtension200Response getExtension(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get an extension vendor
@@ -2271,7 +2286,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateIncident201Response getIncident(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    CreateIncident201Response getIncident(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get an alert
@@ -2302,6 +2317,9 @@ public interface PagerDutyRESTApi {
      * @param id                   The ID of the resource. (required)
      */
     @RequestLine("GET /incidents/{id}/custom_fields/values")
+    @Headers({
+        "Accept: application/json"
+    })
     GetIncidentFieldValues200Response getIncidentFieldValues(@Param("id") @NotNull String id);
 
     /**
@@ -2389,12 +2407,12 @@ public interface PagerDutyRESTApi {
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param include              Array of additional Models to include in response. (optional)
      */
-    @RequestLine("GET /log_entries/{id}?time_zone={timeZone}&include[]={include}")
+    @RequestLine("GET /log_entries/{id}?time_zone={time_zone}&include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetLogEntry200Response getLogEntry(@Param("id") @NotNull String id, @Param("time_zone") @Nullable String timeZone, @Param("include[]") @Nullable String include);
+    GetLogEntry200Response getLogEntry(@Param("id") @NotNull String id, @Param("time_zone") @Nullable String timeZone, @Param("include") @Nullable String include);
 
     /**
      * Get a maintenance window
@@ -2412,7 +2430,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateMaintenanceWindowRequest getMaintenanceWindow(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    CreateMaintenanceWindowRequest getMaintenanceWindow(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get the Service Orchestration active status for a Service
@@ -2481,7 +2499,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ServiceOrchestration getOrchPathService(@Param("service_id") @NotNull String serviceId, @Param("include[]") @Nullable String include);
+    ServiceOrchestration getOrchPathService(@Param("service_id") @NotNull String serviceId, @Param("include") @Nullable String include);
 
     /**
      * Get the Unrouted Orchestration for an Event Orchestration
@@ -2547,12 +2565,12 @@ public interface PagerDutyRESTApi {
      * @param since                The start of the date range over which you want to search. (optional)
      * @param additionalDetails    Array of additional attributes to any of the returned incidents for related incidents. (optional)
      */
-    @RequestLine("GET /incidents/{id}/outlier_incident?since={since}&additional_details[]={additionalDetails}")
+    @RequestLine("GET /incidents/{id}/outlier_incident?since={since}&additional_details[]={additional_details}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetOutlierIncident200Response getOutlierIncident(@Param("id") @NotNull String id, @Param("since") @Nullable OffsetDateTime since, @Param("additional_details[]") @Nullable String additionalDetails);
+    GetOutlierIncident200Response getOutlierIncident(@Param("id") @NotNull String id, @Param("since") @Nullable OffsetDateTime since, @Param("additional_details") @Nullable String additionalDetails);
 
     /**
      * Get Past Incidents
@@ -2585,7 +2603,7 @@ public interface PagerDutyRESTApi {
      * @param serviceId            Specifies a filter to limit the scope of reporting to a particular service (optional)
      * @param suspendedBy          Specifies a filter to scope the response to either alerts suspended by Auto Pause or Event Rules. (optional)
      */
-    @RequestLine("GET /paused_incident_reports/alerts?since={since}&until={until}&service_id={serviceId}&suspended_by={suspendedBy}")
+    @RequestLine("GET /paused_incident_reports/alerts?since={since}&until={until}&service_id={service_id}&suspended_by={suspended_by}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -2605,7 +2623,7 @@ public interface PagerDutyRESTApi {
      * @param serviceId            Specifies a filter to limit the scope of reporting to a particular service (optional)
      * @param suspendedBy          Specifies a filter to scope the response to either alerts suspended by Auto Pause or Event Rules. (optional)
      */
-    @RequestLine("GET /paused_incident_reports/counts?since={since}&until={until}&service_id={serviceId}&suspended_by={suspendedBy}")
+    @RequestLine("GET /paused_incident_reports/counts?since={since}&until={until}&service_id={service_id}&suspended_by={suspended_by}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -2622,12 +2640,12 @@ public interface PagerDutyRESTApi {
      * @param id                   The ID of the resource. (required)
      * @param additionalDetails    Array of additional attributes to any of the returned incidents for related incidents. (optional)
      */
-    @RequestLine("GET /incidents/{id}/related_incidents?additional_details[]={additionalDetails}")
+    @RequestLine("GET /incidents/{id}/related_incidents?additional_details[]={additional_details}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetRelatedIncidents200Response getRelatedIncidents(@Param("id") @NotNull String id, @Param("additional_details[]") @Nullable String additionalDetails);
+    GetRelatedIncidents200Response getRelatedIncidents(@Param("id") @NotNull String id, @Param("additional_details") @Nullable String additionalDetails);
 
     /**
      * Get a Response Play
@@ -2646,7 +2664,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateResponsePlay201Response getResponsePlay(@Param("id") @NotNull String id, @Param("From") @Nullable String from);
 
@@ -2696,7 +2714,7 @@ public interface PagerDutyRESTApi {
      * @param since                The start of the date range over which you want to show schedule entries. Defaults to 2 weeks before until if an until is given. (optional)
      * @param until                The end of the date range over which you want to show schedule entries. Defaults to 2 weeks after since if a since is given. (optional)
      */
-    @RequestLine("GET /schedules/{id}?time_zone={timeZone}&since={since}&until={until}")
+    @RequestLine("GET /schedules/{id}?time_zone={time_zone}&since={since}&until={until}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -2719,7 +2737,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceRequest getService(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    CreateServiceRequest getService(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get an Event Rule from a Service
@@ -2754,7 +2772,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateServiceIntegrationRequest getServiceIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId, @Param("include[]") @Nullable String include);
+    CreateServiceIntegrationRequest getServiceIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId, @Param("include") @Nullable String include);
 
     /**
      * Get a single Status Dashboard by `id`
@@ -2797,11 +2815,11 @@ public interface PagerDutyRESTApi {
      * @param id                   The ID of the resource. (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      */
-    @RequestLine("GET /status_dashboards/{id}/service_impacts?additional_fields[]={additionalFields}")
+    @RequestLine("GET /status_dashboards/{id}/service_impacts?additional_fields[]={additional_fields}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2"
     })
-    GetBusinessServiceSupportingServiceImpacts200Response getStatusDashboardServiceImpactsById(@Param("id") @NotNull String id, @Param("additional_fields[]") @Nullable String additionalFields);
+    GetBusinessServiceSupportingServiceImpacts200Response getStatusDashboardServiceImpactsById(@Param("id") @NotNull String id, @Param("additional_fields") @Nullable String additionalFields);
 
     /**
      * Get impacted Business Services for a
@@ -2816,11 +2834,11 @@ public interface PagerDutyRESTApi {
      * @param urlSlug              The `url_slug` for a status dashboard (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      */
-    @RequestLine("GET /status_dashboards/url_slugs/{url_slug}/service_impacts?additional_fields[]={additionalFields}")
+    @RequestLine("GET /status_dashboards/url_slugs/{url_slug}/service_impacts?additional_fields[]={additional_fields}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2"
     })
-    GetBusinessServiceSupportingServiceImpacts200Response getStatusDashboardServiceImpactsByUrlSlug(@Param("url_slug") @NotNull String urlSlug, @Param("additional_fields[]") @Nullable String additionalFields);
+    GetBusinessServiceSupportingServiceImpacts200Response getStatusDashboardServiceImpactsByUrlSlug(@Param("url_slug") @NotNull String urlSlug, @Param("additional_fields") @Nullable String additionalFields);
 
     /**
      * Get a tag
@@ -2876,7 +2894,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateTeamRequest getTeam(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    CreateTeamRequest getTeam(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * List Team Notification Subscriptions
@@ -2918,6 +2936,9 @@ public interface PagerDutyRESTApi {
      * @param id                   The ID of the resource. (required)
      */
     @RequestLine("GET /templates/{id}")
+    @Headers({
+        "Accept: application/json"
+    })
     CreateTemplate201Response getTemplate(@Param("id") @NotNull String id);
 
     /**
@@ -2933,7 +2954,10 @@ public interface PagerDutyRESTApi {
      * @param templateType         Filters templates by type. (optional, defaults to status_update)
      * @param sortBy               Used to specify both the field you wish to sort the results on (name/created_at), as well as the direction (asc/desc) of the results. The sort_by field and direction should be separated by a colon. Sort direction defaults to ascending. (optional, defaults to created_at:asc)
      */
-    @RequestLine("GET /templates?limit={limit}&offset={offset}&total={total}&query={query}&template_type={templateType}&sort_by={sortBy}")
+    @RequestLine("GET /templates?limit={limit}&offset={offset}&total={total}&query={query}&template_type={template_type}&sort_by={sort_by}")
+    @Headers({
+        "Accept: application/json"
+    })
     GetTemplates200Response getTemplates(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("template_type") @Nullable String templateType, @Param("sort_by") @Nullable String sortBy);
 
     /**
@@ -2952,7 +2976,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserRequest getUser(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    CreateUserRequest getUser(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get a user's contact method
@@ -3052,7 +3076,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserNotificationRuleRequest getUserNotificationRule(@Param("id") @NotNull String id, @Param("notification_rule_id") @NotNull String notificationRuleId, @Param("include[]") @Nullable String include);
+    CreateUserNotificationRuleRequest getUserNotificationRule(@Param("id") @NotNull String id, @Param("notification_rule_id") @NotNull String notificationRuleId, @Param("include") @Nullable String include);
 
     /**
      * List a user's notification rules
@@ -3071,7 +3095,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    GetUserNotificationRules200Response getUserNotificationRules(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include, @Param("urgency") @Nullable String urgency);
+    GetUserNotificationRules200Response getUserNotificationRules(@Param("id") @NotNull String id, @Param("include") @Nullable String include, @Param("urgency") @Nullable String urgency);
 
     /**
      * List Notification Subscriptions
@@ -3145,7 +3169,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    GetUserStatusUpdateNotificationRule200Response getUserStatusUpdateNotificationRule(@Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId, @Param("include[]") @Nullable String include);
+    GetUserStatusUpdateNotificationRule200Response getUserStatusUpdateNotificationRule(@Param("id") @NotNull String id, @Param("status_update_notification_rule_id") @NotNull String statusUpdateNotificationRuleId, @Param("include") @Nullable String include);
 
     /**
      * List a user's status update notification rules
@@ -3165,7 +3189,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "X-EARLY-ACCESS: status-update-notification-rules"
     })
-    GetUserStatusUpdateNotificationRules200Response getUserStatusUpdateNotificationRules(@Param("id") @NotNull String id, @Param("include[]") @Nullable String include);
+    GetUserStatusUpdateNotificationRules200Response getUserStatusUpdateNotificationRules(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get a vendor
@@ -3229,12 +3253,12 @@ public interface PagerDutyRESTApi {
      * @param serviceIds           Filters the results, showing only Add-ons for the given services (optional)
      * @param filter               Filters the results, showing only Add-ons of the given type (optional)
      */
-    @RequestLine("GET /addons?limit={limit}&offset={offset}&total={total}&include[]={include}&service_ids[]={serviceIds}&filter={filter}")
+    @RequestLine("GET /addons?limit={limit}&offset={offset}&total={total}&include[]={include}&service_ids[]={service_ids}&filter={filter}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListAddon200Response listAddon(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include[]") @Nullable String include, @Param("service_ids[]") @Nullable Set<String> serviceIds, @Param("filter") @Nullable String filter);
+    ListAddon200Response listAddon(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include") @Nullable String include, @Param("service_ids") @Nullable Set<String> serviceIds, @Param("filter") @Nullable String filter);
 
     /**
      * List audit records
@@ -3258,12 +3282,12 @@ public interface PagerDutyRESTApi {
      * @param methodTruncatedToken Method truncated_token filter. Must be qualified by providing the `method_type` param. (optional)
      * @param actions              Action filter (optional)
      */
-    @RequestLine("GET /audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}&root_resource_types[]={rootResourceTypes}&actor_type={actorType}&actor_id={actorId}&method_type={methodType}&method_truncated_token={methodTruncatedToken}&actions[]={actions}")
+    @RequestLine("GET /audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}&root_resource_types[]={root_resource_types}&actor_type={actor_type}&actor_id={actor_id}&method_type={method_type}&method_truncated_token={method_truncated_token}&actions[]={actions}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    AuditRecordResponseSchema listAuditRecords(@Param("limit") @Nullable Integer limit, @Param("cursor") @Nullable String cursor, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("root_resource_types[]") @Nullable String rootResourceTypes, @Param("actor_type") @Nullable String actorType, @Param("actor_id") @Nullable String actorId, @Param("method_type") @Nullable String methodType, @Param("method_truncated_token") @Nullable String methodTruncatedToken, @Param("actions[]") @Nullable String actions);
+    AuditRecordResponseSchema listAuditRecords(@Param("limit") @Nullable Integer limit, @Param("cursor") @Nullable String cursor, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("root_resource_types") @Nullable String rootResourceTypes, @Param("actor_type") @Nullable String actorType, @Param("actor_id") @Nullable String actorId, @Param("method_type") @Nullable String methodType, @Param("method_truncated_token") @Nullable String methodTruncatedToken, @Param("actions") @Nullable String actions);
 
     /**
      * List Invocations
@@ -3273,7 +3297,7 @@ public interface PagerDutyRESTApi {
      * @param incidentId           Incident ID (required)
      * @param invocationState      Invocation state (optional)
      */
-    @RequestLine("GET /automation_actions/invocations?invocation_state={invocationState}&incident_id={incidentId}")
+    @RequestLine("GET /automation_actions/invocations?invocation_state={invocation_state}&incident_id={incident_id}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -3313,12 +3337,12 @@ public interface PagerDutyRESTApi {
      * @param since                The start of the date range over which you want to search, as a UTC ISO 8601 datetime string. Will return an HTTP 400 for non-UTC datetimes. (optional)
      * @param until                The end of the date range over which you want to search, as a UTC ISO 8601 datetime string. Will return an HTTP 400 for non-UTC datetimes. (optional)
      */
-    @RequestLine("GET /change_events?limit={limit}&offset={offset}&total={total}&team_ids[]={teamIds}&integration_ids[]={integrationIds}&since={since}&until={until}")
+    @RequestLine("GET /change_events?limit={limit}&offset={offset}&total={total}&team_ids[]={team_ids}&integration_ids[]={integration_ids}&since={since}&until={until}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListChangeEvents200Response listChangeEvents(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("integration_ids[]") @Nullable Set<String> integrationIds, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until);
+    ListChangeEvents200Response listChangeEvents(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids") @Nullable Set<String> teamIds, @Param("integration_ids") @Nullable Set<String> integrationIds, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until);
 
     /**
      * List Field Options
@@ -3329,6 +3353,9 @@ public interface PagerDutyRESTApi {
      * @param fieldId              The ID of the field. (required)
      */
     @RequestLine("GET /incidents/custom_fields/{field_id}/field_options")
+    @Headers({
+        "Accept: application/json"
+    })
     ListCustomFieldsFieldOptions200Response listCustomFieldsFieldOptions(@Param("field_id") @NotNull String fieldId);
 
     /**
@@ -3340,7 +3367,10 @@ public interface PagerDutyRESTApi {
      * @param include              Array of additional details to include. (optional)
      */
     @RequestLine("GET /incidents/custom_fields?include[]={include}")
-    ListCustomFieldsFields200Response listCustomFieldsFields(@Param("include[]") @Nullable String include);
+    @Headers({
+        "Accept: application/json"
+    })
+    ListCustomFieldsFields200Response listCustomFieldsFields(@Param("include") @Nullable String include);
 
     /**
      * List escalation policies
@@ -3359,12 +3389,12 @@ public interface PagerDutyRESTApi {
      * @param include              Array of additional Models to include in response. (optional)
      * @param sortBy               Used to specify the field you wish to sort the results on. (optional, defaults to name)
      */
-    @RequestLine("GET /escalation_policies?limit={limit}&offset={offset}&total={total}&query={query}&user_ids[]={userIds}&team_ids[]={teamIds}&include[]={include}&sort_by={sortBy}")
+    @RequestLine("GET /escalation_policies?limit={limit}&offset={offset}&total={total}&query={query}&user_ids[]={user_ids}&team_ids[]={team_ids}&include[]={include}&sort_by={sort_by}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListEscalationPolicies200Response listEscalationPolicies(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("user_ids[]") @Nullable Set<String> userIds, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("include[]") @Nullable String include, @Param("sort_by") @Nullable String sortBy);
+    ListEscalationPolicies200Response listEscalationPolicies(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("user_ids") @Nullable Set<String> userIds, @Param("team_ids") @Nullable Set<String> teamIds, @Param("include") @Nullable String include, @Param("sort_by") @Nullable String sortBy);
 
     /**
      * List audit records for an escalation policy
@@ -3399,7 +3429,7 @@ public interface PagerDutyRESTApi {
      * @param offset               Offset to start pagination search results. (optional)
      * @param sortBy               Used to specify the field you wish to sort the results on. (optional, defaults to name:asc)
      */
-    @RequestLine("GET /event_orchestrations?limit={limit}&offset={offset}&sort_by={sortBy}")
+    @RequestLine("GET /event_orchestrations?limit={limit}&offset={offset}&sort_by={sort_by}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -3442,12 +3472,12 @@ public interface PagerDutyRESTApi {
      * @param sortBy               Used to specify both the field you wish to sort the results on (created_at/resolved_at), as well as the direction (asc/desc) of the results. The sort_by field and direction should be separated by a colon. A maximum of two fields can be included, separated by a comma. Sort direction defaults to ascending. (optional)
      * @param include              Array of additional details to include. (optional)
      */
-    @RequestLine("GET /incidents/{id}/alerts?limit={limit}&offset={offset}&total={total}&alert_key={alertKey}&statuses[]={statuses}&sort_by={sortBy}&include[]={include}")
+    @RequestLine("GET /incidents/{id}/alerts?limit={limit}&offset={offset}&total={total}&alert_key={alert_key}&statuses[]={statuses}&sort_by={sort_by}&include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListIncidentAlerts200Response listIncidentAlerts(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("alert_key") @Nullable String alertKey, @Param("statuses[]") @Nullable String statuses, @Param("sort_by") @Nullable String sortBy, @Param("include[]") @Nullable String include);
+    ListIncidentAlerts200Response listIncidentAlerts(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("alert_key") @Nullable String alertKey, @Param("statuses") @Nullable String statuses, @Param("sort_by") @Nullable String sortBy, @Param("include") @Nullable String include);
 
     /**
      * List log entries for an incident
@@ -3468,12 +3498,12 @@ public interface PagerDutyRESTApi {
      * @param isOverview           If `true`, will return a subset of log entries that show only the most important changes to the incident. (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      */
-    @RequestLine("GET /incidents/{id}/log_entries?limit={limit}&offset={offset}&total={total}&time_zone={timeZone}&since={since}&until={until}&is_overview={isOverview}&include[]={include}")
+    @RequestLine("GET /incidents/{id}/log_entries?limit={limit}&offset={offset}&total={total}&time_zone={time_zone}&since={since}&until={until}&is_overview={is_overview}&include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListIncidentLogEntries200Response listIncidentLogEntries(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("time_zone") @Nullable String timeZone, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("is_overview") @Nullable Boolean isOverview, @Param("include[]") @Nullable String include);
+    ListIncidentLogEntries200Response listIncidentLogEntries(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("time_zone") @Nullable String timeZone, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("is_overview") @Nullable Boolean isOverview, @Param("include") @Nullable String include);
 
     /**
      * List notes for an incident
@@ -3542,7 +3572,7 @@ public interface PagerDutyRESTApi {
      * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
      * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
      */
-    @RequestLine("GET /incident_workflows/triggers?workflow_id={workflowId}&incident_id={incidentId}&service_id={serviceId}&trigger_type={triggerType}&workflow_name_contains={workflowNameContains}&sort_by={sortBy}&limit={limit}&cursor={cursor}")
+    @RequestLine("GET /incident_workflows/triggers?workflow_id={workflow_id}&incident_id={incident_id}&service_id={service_id}&trigger_type={trigger_type}&workflow_name_contains={workflow_name_contains}&sort_by={sort_by}&limit={limit}&cursor={cursor}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
@@ -3568,7 +3598,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListIncidentWorkflows200Response listIncidentWorkflows(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("include[]") @Nullable String include);
+    ListIncidentWorkflows200Response listIncidentWorkflows(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("include") @Nullable String include);
 
     /**
      * List incidents
@@ -3594,12 +3624,12 @@ public interface PagerDutyRESTApi {
      * @param since                The start of the date range over which you want to search. Maximum range is 6 months and default is 1 month. (optional)
      * @param until                The end of the date range over which you want to search. Maximum range is 6 months and default is 1 month. (optional)
      */
-    @RequestLine("GET /incidents?limit={limit}&offset={offset}&total={total}&date_range={dateRange}&incident_key={incidentKey}&service_ids[]={serviceIds}&team_ids[]={teamIds}&user_ids[]={userIds}&urgencies[]={urgencies}&time_zone={timeZone}&statuses[]={statuses}&sort_by={sortBy}&include[]={include}&since={since}&until={until}")
+    @RequestLine("GET /incidents?limit={limit}&offset={offset}&total={total}&date_range={date_range}&incident_key={incident_key}&service_ids[]={service_ids}&team_ids[]={team_ids}&user_ids[]={user_ids}&urgencies[]={urgencies}&time_zone={time_zone}&statuses[]={statuses}&sort_by={sort_by}&include[]={include}&since={since}&until={until}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListIncidents200Response listIncidents(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("date_range") @Nullable String dateRange, @Param("incident_key") @Nullable String incidentKey, @Param("service_ids[]") @Nullable Set<String> serviceIds, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("user_ids[]") @Nullable Set<String> userIds, @Param("urgencies[]") @Nullable String urgencies, @Param("time_zone") @Nullable String timeZone, @Param("statuses[]") @Nullable String statuses, @Param("sort_by") @Nullable Set<String> sortBy, @Param("include[]") @Nullable String include, @Param("since") @Nullable String since, @Param("until") @Nullable String until);
+    ListIncidents200Response listIncidents(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("date_range") @Nullable String dateRange, @Param("incident_key") @Nullable String incidentKey, @Param("service_ids") @Nullable Set<String> serviceIds, @Param("team_ids") @Nullable Set<String> teamIds, @Param("user_ids") @Nullable Set<String> userIds, @Param("urgencies") @Nullable String urgencies, @Param("time_zone") @Nullable String timeZone, @Param("statuses") @Nullable String statuses, @Param("sort_by") @Nullable Set<String> sortBy, @Param("include") @Nullable String include, @Param("since") @Nullable String since, @Param("until") @Nullable String until);
 
     /**
      * List License Allocations
@@ -3649,12 +3679,12 @@ public interface PagerDutyRESTApi {
      * @param include              Array of additional Models to include in response. (optional)
      * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
      */
-    @RequestLine("GET /log_entries?limit={limit}&offset={offset}&total={total}&time_zone={timeZone}&since={since}&until={until}&is_overview={isOverview}&include[]={include}&team_ids[]={teamIds}")
+    @RequestLine("GET /log_entries?limit={limit}&offset={offset}&total={total}&time_zone={time_zone}&since={since}&until={until}&is_overview={is_overview}&include[]={include}&team_ids[]={team_ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListIncidentLogEntries200Response listLogEntries(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("time_zone") @Nullable String timeZone, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("is_overview") @Nullable Boolean isOverview, @Param("include[]") @Nullable String include, @Param("team_ids[]") @Nullable Set<String> teamIds);
+    ListIncidentLogEntries200Response listLogEntries(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("time_zone") @Nullable String timeZone, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("is_overview") @Nullable Boolean isOverview, @Param("include") @Nullable String include, @Param("team_ids") @Nullable Set<String> teamIds);
 
     /**
      * List maintenance windows
@@ -3673,12 +3703,12 @@ public interface PagerDutyRESTApi {
      * @param include              Array of additional Models to include in response. (optional)
      * @param filter               Only return maintenance windows in a given state. (optional)
      */
-    @RequestLine("GET /maintenance_windows?query={query}&limit={limit}&offset={offset}&total={total}&team_ids[]={teamIds}&service_ids[]={serviceIds}&include[]={include}&filter={filter}")
+    @RequestLine("GET /maintenance_windows?query={query}&limit={limit}&offset={offset}&total={total}&team_ids[]={team_ids}&service_ids[]={service_ids}&include[]={include}&filter={filter}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListMaintenanceWindows200Response listMaintenanceWindows(@Param("query") @Nullable String query, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("service_ids[]") @Nullable List<String> serviceIds, @Param("include[]") @Nullable String include, @Param("filter") @Nullable String filter);
+    ListMaintenanceWindows200Response listMaintenanceWindows(@Param("query") @Nullable String query, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids") @Nullable Set<String> teamIds, @Param("service_ids") @Nullable List<String> serviceIds, @Param("include") @Nullable String include, @Param("filter") @Nullable String filter);
 
     /**
      * List notifications
@@ -3697,12 +3727,12 @@ public interface PagerDutyRESTApi {
      * @param filter               Return notification of this type only. (optional)
      * @param include              Array of additional details to include. (optional)
      */
-    @RequestLine("GET /notifications?limit={limit}&offset={offset}&total={total}&time_zone={timeZone}&since={since}&until={until}&filter={filter}&include[]={include}")
+    @RequestLine("GET /notifications?limit={limit}&offset={offset}&total={total}&time_zone={time_zone}&since={since}&until={until}&filter={filter}&include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListNotifications200Response listNotifications(@Param("since") @NotNull OffsetDateTime since, @Param("until") @NotNull OffsetDateTime until, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("time_zone") @Nullable String timeZone, @Param("filter") @Nullable String filter, @Param("include[]") @Nullable String include);
+    ListNotifications200Response listNotifications(@Param("since") @NotNull OffsetDateTime since, @Param("until") @NotNull OffsetDateTime until, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("time_zone") @Nullable String timeZone, @Param("filter") @Nullable String filter, @Param("include") @Nullable String include);
 
     /**
      * List all of the on-calls
@@ -3724,12 +3754,12 @@ public interface PagerDutyRESTApi {
      * @param until                The end of the time range over which you want to search. If an on-call period overlaps with the range, it will be included in the result. Defaults to current time. On-call shifts are limited to 90 days in the future, and the `until` time cannot be before the `since` time. (optional)
      * @param earliest             This will filter on-calls such that only the earliest on-call for each combination of escalation policy, escalation level, and user is returned. This is useful for determining when the "next" on-calls are for a given set of filters. (optional)
      */
-    @RequestLine("GET /oncalls?time_zone={timeZone}&limit={limit}&offset={offset}&total={total}&include[]={include}&user_ids[]={userIds}&escalation_policy_ids[]={escalationPolicyIds}&schedule_ids[]={scheduleIds}&since={since}&until={until}&earliest={earliest}")
+    @RequestLine("GET /oncalls?time_zone={time_zone}&limit={limit}&offset={offset}&total={total}&include[]={include}&user_ids[]={user_ids}&escalation_policy_ids[]={escalation_policy_ids}&schedule_ids[]={schedule_ids}&since={since}&until={until}&earliest={earliest}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListOnCalls200Response listOnCalls(@Param("time_zone") @Nullable String timeZone, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include[]") @Nullable String include, @Param("user_ids[]") @Nullable Set<String> userIds, @Param("escalation_policy_ids[]") @Nullable Set<String> escalationPolicyIds, @Param("schedule_ids[]") @Nullable Set<String> scheduleIds, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("earliest") @Nullable Boolean earliest);
+    ListOnCalls200Response listOnCalls(@Param("time_zone") @Nullable String timeZone, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include") @Nullable String include, @Param("user_ids") @Nullable Set<String> userIds, @Param("escalation_policy_ids") @Nullable Set<String> escalationPolicyIds, @Param("schedule_ids") @Nullable Set<String> scheduleIds, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("earliest") @Nullable Boolean earliest);
 
     /**
      * List Integrations for an Event Orchestration
@@ -3782,11 +3812,11 @@ public interface PagerDutyRESTApi {
      * @deprecated
      */
     @Deprecated
-    @RequestLine("GET /response_plays?query={query}&filter_for_manual_run={filterForManualRun}")
+    @RequestLine("GET /response_plays?query={query}&filter_for_manual_run={filter_for_manual_run}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     ListResponsePlays200Response listResponsePlays(@Param("query") @Nullable String query, @Param("filter_for_manual_run") @Nullable Boolean filterForManualRun, @Param("From") @Nullable String from);
 
@@ -3889,7 +3919,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListSchedules200Response listSchedules(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("include[]") @Nullable String include);
+    ListSchedules200Response listSchedules(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("query") @Nullable String query, @Param("include") @Nullable String include);
 
     /**
      * List audit records for a schedule
@@ -3948,12 +3978,12 @@ public interface PagerDutyRESTApi {
      * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
      * @param integrationIds       An array of integration IDs. Only results related to these integrations will be returned. (optional)
      */
-    @RequestLine("GET /services/{id}/change_events?since={since}&until={until}&limit={limit}&offset={offset}&total={total}&team_ids[]={teamIds}&integration_ids[]={integrationIds}")
+    @RequestLine("GET /services/{id}/change_events?since={since}&until={until}&limit={limit}&offset={offset}&total={total}&team_ids[]={team_ids}&integration_ids[]={integration_ids}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListChangeEvents200Response listServiceChangeEvents(@Param("id") @NotNull String id, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("integration_ids[]") @Nullable Set<String> integrationIds);
+    ListChangeEvents200Response listServiceChangeEvents(@Param("id") @NotNull String id, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids") @Nullable Set<String> teamIds, @Param("integration_ids") @Nullable Set<String> integrationIds);
 
     /**
      * List Service's Event Rules
@@ -3972,7 +4002,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListServiceEventRules200Response listServiceEventRules(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include[]") @Nullable String include);
+    ListServiceEventRules200Response listServiceEventRules(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include") @Nullable String include);
 
     /**
      * List services
@@ -3991,12 +4021,12 @@ public interface PagerDutyRESTApi {
      * @param sortBy               Used to specify the field you wish to sort the results on. (optional, defaults to name)
      * @param include              Array of additional details to include. (optional)
      */
-    @RequestLine("GET /services?query={query}&limit={limit}&offset={offset}&total={total}&team_ids[]={teamIds}&time_zone={timeZone}&sort_by={sortBy}&include[]={include}")
+    @RequestLine("GET /services?query={query}&limit={limit}&offset={offset}&total={total}&team_ids[]={team_ids}&time_zone={time_zone}&sort_by={sort_by}&include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListServices200Response listServices(@Param("query") @Nullable String query, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("time_zone") @Nullable String timeZone, @Param("sort_by") @Nullable String sortBy, @Param("include[]") @Nullable String include);
+    ListServices200Response listServices(@Param("query") @Nullable String query, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("team_ids") @Nullable Set<String> teamIds, @Param("time_zone") @Nullable String timeZone, @Param("sort_by") @Nullable String sortBy, @Param("include") @Nullable String include);
 
     /**
      * List Status Dashboards
@@ -4050,7 +4080,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListTeamUsers200Response listTeamUsers(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include[]") @Nullable String include);
+    ListTeamUsers200Response listTeamUsers(@Param("id") @NotNull String id, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include") @Nullable String include);
 
     /**
      * List teams
@@ -4108,12 +4138,12 @@ public interface PagerDutyRESTApi {
      * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      */
-    @RequestLine("GET /users?query={query}&team_ids[]={teamIds}&limit={limit}&offset={offset}&total={total}&include[]={include}")
+    @RequestLine("GET /users?query={query}&team_ids[]={team_ids}&limit={limit}&offset={offset}&total={total}&include[]={include}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListUsers200Response listUsers(@Param("query") @Nullable String query, @Param("team_ids[]") @Nullable Set<String> teamIds, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include[]") @Nullable String include);
+    ListUsers200Response listUsers(@Param("query") @Nullable String query, @Param("team_ids") @Nullable Set<String> teamIds, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include") @Nullable String include);
 
     /**
      * List audit records for a user
@@ -4169,7 +4199,7 @@ public interface PagerDutyRESTApi {
      * @param filterType           The type of resource to filter upon. (optional)
      * @param filterId             The id of the resource to filter upon. (optional)
      */
-    @RequestLine("GET /webhook_subscriptions?limit={limit}&offset={offset}&total={total}&filter_type={filterType}&filter_id={filterId}")
+    @RequestLine("GET /webhook_subscriptions?limit={limit}&offset={offset}&total={total}&filter_type={filter_type}&filter_id={filter_id}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2"
     })
@@ -4191,7 +4221,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     MergeIncidents200Response mergeIncidents(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable MergeIncidentsRequest mergeIncidentsRequest);
 
@@ -4385,7 +4415,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("POST /templates/{id}/render")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     RenderedTemplate renderTemplate(@Param("id") @NotNull String id, @NotNull RenderTemplateRequest renderTemplateRequest);
 
@@ -4407,7 +4438,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     RunResponsePlay200Response runResponsePlay(@Param("response_play_id") @NotNull String responsePlayId, @Param("From") @NotNull String from, @Nullable MergeIncidents200Response mergeIncidents200Response);
 
@@ -4422,7 +4453,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("PUT /incidents/{id}/custom_fields/values")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     GetIncidentFieldValues200Response setIncidentFieldValues(@Param("id") @NotNull String id, @Nullable SetIncidentFieldValuesRequest setIncidentFieldValuesRequest);
 
@@ -4551,7 +4583,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("PUT /incidents/custom_fields/{field_id}")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     UpdateCustomFieldsField200Response updateCustomFieldsField(@Param("field_id") @NotNull String fieldId, @Nullable UpdateCustomFieldsFieldRequest updateCustomFieldsFieldRequest);
 
@@ -4567,7 +4600,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("PUT /incidents/custom_fields/{field_id}/field_options/{field_option_id}")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOption(@Param("field_id") @NotNull String fieldId, @Param("field_option_id") @NotNull String fieldOptionId, @Nullable UpdateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOptionRequest);
 
@@ -4623,7 +4657,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     UpdateIncident200Response updateIncident(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable UpdateIncidentRequest updateIncidentRequest);
 
@@ -4645,7 +4679,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     GetIncidentAlert200Response updateIncidentAlert(@Param("id") @NotNull String id, @Param("alert_id") @NotNull String alertId, @Param("From") @NotNull String from, @Nullable GetIncidentAlert200Response getIncidentAlert200Response);
 
@@ -4669,7 +4703,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     ListIncidentAlerts200Response updateIncidentAlerts(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Nullable UpdateIncidentAlertsRequest updateIncidentAlertsRequest);
 
@@ -4709,7 +4743,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     ListIncidents200Response updateIncidents(@Param("From") @NotNull String from, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Nullable UpdateIncidentsRequest updateIncidentsRequest);
 
@@ -4728,7 +4762,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     void updateLogEntryChannel(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable UpdateLogEntryChannelRequest updateLogEntryChannelRequest);
 
@@ -4896,7 +4930,7 @@ public interface PagerDutyRESTApi {
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json", 
-        "From: {from}"
+        "From: {From}"
     })
     CreateResponsePlay201Response updateResponsePlay(@Param("id") @NotNull String id, @Param("From") @NotNull String from, @Nullable CreateResponsePlayRequest createResponsePlayRequest);
 
@@ -5078,7 +5112,8 @@ public interface PagerDutyRESTApi {
      */
     @RequestLine("PUT /templates/{id}")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateTemplate201Response updateTemplate(@Param("id") @NotNull String id, @NotNull CreateTemplateRequest createTemplateRequest);
 

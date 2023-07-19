@@ -21,7 +21,8 @@ public interface PagerDutyEventsV2Api {
      */
     @RequestLine("POST /change/enqueue")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateChangeEvent202Response createChangeEvent(@NotNull CreateChangeEventRequest createChangeEventRequest);
 
@@ -34,7 +35,8 @@ public interface PagerDutyEventsV2Api {
      */
     @RequestLine("POST /enqueue")
     @Headers({
-        "Content-Type: application/json"
+        "Content-Type: application/json", 
+        "Accept: application/json"
     })
     CreateChangeEvent202Response createV2Event(@NotNull CreateV2EventRequest createV2EventRequest);
 

@@ -59,6 +59,15 @@ public final class PagerDutyEventsV2FactorySpec<T> {
     private MeterRegistry meterRegistry = new CompositeMeterRegistry();
 
     /**
+     * the feign log level
+     * <p>
+     * Defaults to {@code none}.
+     * Allowed values are: {@code none}, {@code basic}, {@code headers}, {@code full}
+     */
+    @NotNull
+    private String logLevel = "none";
+
+    /**
      * Constructs a validated implementation of {@link PagerDutyEventsV2Api}.
      *
      * @param spec the specification to process
@@ -81,6 +90,7 @@ public final class PagerDutyEventsV2FactorySpec<T> {
         if (baseUrl.isEmpty()) {
             throw new IllegalArgumentException("baseUrl must not be empty");
         }
+        Objects.requireNonNull(logLevel, "logLevel must not be null");
     }
 
     public void applySpec(PagerDutyEventsV2FactorySpec<?> spec) {
