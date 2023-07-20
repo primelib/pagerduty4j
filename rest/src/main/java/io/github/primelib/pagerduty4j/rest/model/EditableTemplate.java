@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * EditableTemplate
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "template_type",
     "name",
@@ -32,17 +39,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class EditableTemplate {
 
     /**
-     * Constructs a validated implementation of {@link EditableTemplate}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public EditableTemplate(Consumer<EditableTemplate> spec) {
-        spec.accept(this);
-    }
-
-    /**
-     * The type of template (`status_update` is the only supported template at this time)
+     * The type of template ({@code status_update} is the only supported template at this time)
      */
     @JsonProperty("template_type")
     protected TemplateTypeEnum templateType;
@@ -62,9 +59,34 @@ public class EditableTemplate {
     @JsonProperty("templated_fields")
     protected EditableTemplateTemplatedFields templatedFields;
 
+    /**
+     * Constructs a validated instance of {@link EditableTemplate}.
+     *
+     * @param spec the specification to process
+     */
+    public EditableTemplate(Consumer<EditableTemplate> spec) {
+        spec.accept(this);
+    }
 
     /**
-     * The type of template (`status_update` is the only supported template at this time)
+     * Constructs a validated instance of {@link EditableTemplate}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EditableTemplate(Consumer)} instead.
+     * @param templateType The type of template ({@code status_update} is the only supported template at this time)
+     * @param name The name of the template
+     * @param description Description of the template
+     * @param templatedFields var.name
+     */
+    @ApiStatus.Internal
+    public EditableTemplate(TemplateTypeEnum templateType, String name, String description, EditableTemplateTemplatedFields templatedFields) {
+        this.templateType = templateType;
+        this.name = name;
+        this.description = description;
+        this.templatedFields = templatedFields;
+    }
+
+    /**
+     * The type of template ({@code status_update} is the only supported template at this time)
      */
     @AllArgsConstructor
     public enum TemplateTypeEnum {

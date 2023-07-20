@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ContentBasedAlertGroupingConfiguration
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "aggregate",
     "fields"
@@ -31,17 +38,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ContentBasedAlertGroupingConfiguration {
 
     /**
-     * Constructs a validated implementation of {@link ContentBasedAlertGroupingConfiguration}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ContentBasedAlertGroupingConfiguration(Consumer<ContentBasedAlertGroupingConfiguration> spec) {
-        spec.accept(this);
-    }
-
-    /**
-     * Whether Alerts should be grouped if `all` or `any` specified fields match. If `all` is selected, an exact match on every specified field name must occur for Alerts to be grouped. If `any` is selected, Alerts will be grouped when there is an exact match on at least one of the specified fields.
+     * Whether Alerts should be grouped if {@code all} or {@code any} specified fields match. If {@code all} is selected, an exact match on every specified field name must occur for Alerts to be grouped. If {@code any} is selected, Alerts will be grouped when there is an exact match on at least one of the specified fields.
      */
     @JsonProperty("aggregate")
     protected AggregateEnum aggregate;
@@ -50,11 +47,32 @@ public class ContentBasedAlertGroupingConfiguration {
      * The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match
      */
     @JsonProperty("fields")
-    protected List fields = null;
-
+    protected List fields;
 
     /**
-     * Whether Alerts should be grouped if `all` or `any` specified fields match. If `all` is selected, an exact match on every specified field name must occur for Alerts to be grouped. If `any` is selected, Alerts will be grouped when there is an exact match on at least one of the specified fields.
+     * Constructs a validated instance of {@link ContentBasedAlertGroupingConfiguration}.
+     *
+     * @param spec the specification to process
+     */
+    public ContentBasedAlertGroupingConfiguration(Consumer<ContentBasedAlertGroupingConfiguration> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link ContentBasedAlertGroupingConfiguration}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ContentBasedAlertGroupingConfiguration(Consumer)} instead.
+     * @param aggregate Whether Alerts should be grouped if {@code all} or {@code any} specified fields match. If {@code all} is selected, an exact match on every specified field name must occur for Alerts to be grouped. If {@code any} is selected, Alerts will be grouped when there is an exact match on at least one of the specified fields.
+     * @param fields The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match
+     */
+    @ApiStatus.Internal
+    public ContentBasedAlertGroupingConfiguration(AggregateEnum aggregate, List fields) {
+        this.aggregate = aggregate;
+        this.fields = fields;
+    }
+
+    /**
+     * Whether Alerts should be grouped if {@code all} or {@code any} specified fields match. If {@code all} is selected, an exact match on every specified field name must occur for Alerts to be grouped. If {@code any} is selected, Alerts will be grouped when there is an exact match on at least one of the specified fields.
      */
     @AllArgsConstructor
     public enum AggregateEnum {

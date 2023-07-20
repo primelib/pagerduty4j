@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ServiceOrchestrationAllOfOrchestrationPath
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "migrated_at",
     "migrated_by",
@@ -39,17 +46,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ServiceOrchestrationAllOfOrchestrationPath {
 
     /**
-     * Constructs a validated implementation of {@link ServiceOrchestrationAllOfOrchestrationPath}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ServiceOrchestrationAllOfOrchestrationPath(Consumer<ServiceOrchestrationAllOfOrchestrationPath> spec) {
-        spec.accept(this);
-    }
-
-    /**
-     * The date/time the service's Event Rules were converted to this Service Orchestration. This property is only included if the `migrated_metadata` query parameter is provided.
+     * The date/time the service's Event Rules were converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
      */
     @JsonProperty("migrated_at")
     protected OffsetDateTime migratedAt;
@@ -61,13 +58,13 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
     protected ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedFrom migratedFrom;
 
     /**
-     * The status indicating whether the service's Event Rules were successfully converted to this Service Orchestration. This property is only included if the `migrated_metadata` query parameter is provided.
+     * The status indicating whether the service's Event Rules were successfully converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
      */
     @JsonProperty("migrated_status")
     protected MigratedStatusEnum migratedStatus;
 
     /**
-     * Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the `migrated_metadata` query parameter is provided.
+     * Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the {@code migrated_metadata} query parameter is provided.
      */
     @JsonProperty("migrated_via")
     protected MigratedViaEnum migratedVia;
@@ -76,7 +73,7 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
      * Indicates that these are sets of rules belonging to a service.
      */
     @JsonProperty("type")
-    protected String type = "service";
+    protected String type;
 
     @JsonProperty("parent")
     protected ServiceOrchestrationAllOfOrchestrationPathAllOfParent parent;
@@ -90,9 +87,44 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
     @JsonProperty("catch_all")
     protected ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll catchAll;
 
+    /**
+     * Constructs a validated instance of {@link ServiceOrchestrationAllOfOrchestrationPath}.
+     *
+     * @param spec the specification to process
+     */
+    public ServiceOrchestrationAllOfOrchestrationPath(Consumer<ServiceOrchestrationAllOfOrchestrationPath> spec) {
+        spec.accept(this);
+    }
 
     /**
-     * The status indicating whether the service's Event Rules were successfully converted to this Service Orchestration. This property is only included if the `migrated_metadata` query parameter is provided.
+     * Constructs a validated instance of {@link ServiceOrchestrationAllOfOrchestrationPath}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestrationAllOfOrchestrationPath(Consumer)} instead.
+     * @param migratedAt The date/time the service's Event Rules were converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
+     * @param migratedBy var.name
+     * @param migratedFrom var.name
+     * @param migratedStatus The status indicating whether the service's Event Rules were successfully converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
+     * @param migratedVia Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the {@code migrated_metadata} query parameter is provided.
+     * @param type Indicates that these are sets of rules belonging to a service.
+     * @param parent var.name
+     * @param sets A Service Orchestration must contain at least a "start" set, but can contain any number of additional sets that are routed to by other rules to form a directional graph.
+     * @param catchAll var.name
+     */
+    @ApiStatus.Internal
+    public ServiceOrchestrationAllOfOrchestrationPath(OffsetDateTime migratedAt, ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedBy migratedBy, ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedFrom migratedFrom, MigratedStatusEnum migratedStatus, MigratedViaEnum migratedVia, String type, ServiceOrchestrationAllOfOrchestrationPathAllOfParent parent, List<ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInner> sets, ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll catchAll) {
+        this.migratedAt = migratedAt;
+        this.migratedBy = migratedBy;
+        this.migratedFrom = migratedFrom;
+        this.migratedStatus = migratedStatus;
+        this.migratedVia = migratedVia;
+        this.type = type;
+        this.parent = parent;
+        this.sets = sets;
+        this.catchAll = catchAll;
+    }
+
+    /**
+     * The status indicating whether the service's Event Rules were successfully converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
      */
     @AllArgsConstructor
     public enum MigratedStatusEnum {
@@ -102,7 +134,7 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
     }
 
     /**
-     * Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the `migrated_metadata` query parameter is provided.
+     * Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the {@code migrated_metadata} query parameter is provided.
      */
     @AllArgsConstructor
     public enum MigratedViaEnum {

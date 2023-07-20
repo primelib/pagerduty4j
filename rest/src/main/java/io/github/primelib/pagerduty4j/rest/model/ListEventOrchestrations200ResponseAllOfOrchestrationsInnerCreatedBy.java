@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -18,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "type",
@@ -30,16 +36,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("listEventOrchestrations_200_response_allOf_orchestrations_inner_created_by")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy {
-
-    /**
-     * Constructs a validated implementation of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy(Consumer<ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("id")
     protected String id;
@@ -56,5 +52,28 @@ public class ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy
     @JsonProperty("self")
     protected String self;
 
+    /**
+     * Constructs a validated instance of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy}.
+     *
+     * @param spec the specification to process
+     */
+    public ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy(Consumer<ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy(Consumer)} instead.
+     * @param id var.name
+     * @param type A string that determines the schema of the object
+     * @param self The API show URL at which the object is accessible
+     */
+    @ApiStatus.Internal
+    public ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy(String id, String type, String self) {
+        this.id = id;
+        this.type = type;
+        this.self = self;
+    }
 
 }

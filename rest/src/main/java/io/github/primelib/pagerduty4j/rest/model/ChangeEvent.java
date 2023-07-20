@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ChangeEvent
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -42,16 +49,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ChangeEvent {
 
-    /**
-     * Constructs a validated implementation of {@link ChangeEvent}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ChangeEvent(Consumer<ChangeEvent> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
@@ -65,7 +62,7 @@ public class ChangeEvent {
      * The type of object being created.
      */
     @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.CHANGE_EVENT;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
@@ -121,6 +118,49 @@ public class ChangeEvent {
     @JsonProperty("custom_details")
     protected Object customDetails;
 
+    /**
+     * Constructs a validated instance of {@link ChangeEvent}.
+     *
+     * @param spec the specification to process
+     */
+    public ChangeEvent(Consumer<ChangeEvent> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link ChangeEvent}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ChangeEvent(Consumer)} instead.
+     * @param id var.name
+     * @param summary A brief text summary of the event. Displayed in PagerDuty to provide information about the change. The maximum permitted length of this property is 1024 characters.
+     * @param type The type of object being created.
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param timestamp The time at which the emitting tool detected or generated the event.
+     * @param services An array containing Service objects that this change event is associated with.
+     * @param integration var.name
+     * @param routingKey This is the 32 character Integration Key for an Integration on a Service. The same Integration Key can be used for both alert and change events.
+     * @param source The unique name of the location where the Change Event occurred.
+     * @param links List of links to include.
+     * @param images var.name
+     * @param customDetails Additional details about the change event.
+     */
+    @ApiStatus.Internal
+    public ChangeEvent(String id, String summary, TypeEnum type, String self, String htmlUrl, OffsetDateTime timestamp, List<ServiceReference> services, ChangeEventAllOfIntegration integration, String routingKey, String source, List<ChangeEventAllOfLinks> links, List<ChangeEventAllOfImages> images, Object customDetails) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.timestamp = timestamp;
+        this.services = services;
+        this.integration = integration;
+        this.routingKey = routingKey;
+        this.source = source;
+        this.links = links;
+        this.images = images;
+        this.customDetails = customDetails;
+    }
 
     /**
      * The type of object being created.

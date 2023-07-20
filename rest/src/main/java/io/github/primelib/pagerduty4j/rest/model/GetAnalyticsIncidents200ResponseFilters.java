@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * GetAnalyticsIncidents200ResponseFilters
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "created_at_start",
     "created_at_end",
@@ -35,16 +42,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("getAnalyticsIncidents_200_response_filters")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetAnalyticsIncidents200ResponseFilters {
-
-    /**
-     * Constructs a validated implementation of {@link GetAnalyticsIncidents200ResponseFilters}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public GetAnalyticsIncidents200ResponseFilters(Consumer<GetAnalyticsIncidents200ResponseFilters> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The lower boundary for the created_at range filter applied to the results.
@@ -94,6 +91,39 @@ public class GetAnalyticsIncidents200ResponseFilters {
     @JsonProperty("priority_names")
     protected List<String> priorityNames;
 
+    /**
+     * Constructs a validated instance of {@link GetAnalyticsIncidents200ResponseFilters}.
+     *
+     * @param spec the specification to process
+     */
+    public GetAnalyticsIncidents200ResponseFilters(Consumer<GetAnalyticsIncidents200ResponseFilters> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetAnalyticsIncidents200ResponseFilters}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsIncidents200ResponseFilters(Consumer)} instead.
+     * @param createdAtStart The lower boundary for the created_at range filter applied to the results.
+     * @param createdAtEnd The upper boundary for the created_at range filter applied to the results.
+     * @param urgency The urgency filter applied to the results.
+     * @param major The [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents) filter applied to the results.
+     * @param teamIds The team_ids filter applied to the results.
+     * @param serviceIds The service_ids filter applied to the results.
+     * @param priorityIds The priority_ids filter applied to the results.
+     * @param priorityNames The priority_names filter applied to the results.
+     */
+    @ApiStatus.Internal
+    public GetAnalyticsIncidents200ResponseFilters(String createdAtStart, String createdAtEnd, UrgencyEnum urgency, Boolean major, List<String> teamIds, List<String> serviceIds, List<String> priorityIds, List<String> priorityNames) {
+        this.createdAtStart = createdAtStart;
+        this.createdAtEnd = createdAtEnd;
+        this.urgency = urgency;
+        this.major = major;
+        this.teamIds = teamIds;
+        this.serviceIds = serviceIds;
+        this.priorityIds = priorityIds;
+        this.priorityNames = priorityNames;
+    }
 
     /**
      * The urgency filter applied to the results.

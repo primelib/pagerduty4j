@@ -5,8 +5,13 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -18,9 +23,13 @@ import java.util.function.Consumer;
  * <p>
  * Get a webhook subscription
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetWebhookSubscriptionOperationSpec {
     /**
@@ -36,13 +45,27 @@ public class GetWebhookSubscriptionOperationSpec {
     private String id;
 
     /**
-     * Constructs a validated implementation of {@link GetWebhookSubscriptionOperationSpec}.
+     * Constructs a validated instance of {@link GetWebhookSubscriptionOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public GetWebhookSubscriptionOperationSpec(Consumer<GetWebhookSubscriptionOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetWebhookSubscriptionOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     */
+    @ApiStatus.Internal
+    public GetWebhookSubscriptionOperationSpec(String id) {
+        this.id = id;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -55,5 +78,4 @@ public class GetWebhookSubscriptionOperationSpec {
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
     }
-
 }

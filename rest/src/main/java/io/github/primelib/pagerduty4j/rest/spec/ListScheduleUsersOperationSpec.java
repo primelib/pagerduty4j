@@ -8,8 +8,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import java.time.OffsetDateTime;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -21,9 +26,13 @@ import java.util.function.Consumer;
  * <p>
  * List users on call.
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ListScheduleUsersOperationSpec {
     /**
@@ -51,13 +60,31 @@ public class ListScheduleUsersOperationSpec {
     private OffsetDateTime until;
 
     /**
-     * Constructs a validated implementation of {@link ListScheduleUsersOperationSpec}.
+     * Constructs a validated instance of {@link ListScheduleUsersOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public ListScheduleUsersOperationSpec(Consumer<ListScheduleUsersOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link ListScheduleUsersOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param since                The start of the date range over which you want to search.
+     * @param until                The end of the date range over which you want to search.
+     */
+    @ApiStatus.Internal
+    public ListScheduleUsersOperationSpec(String id, OffsetDateTime since, OffsetDateTime until) {
+        this.id = id;
+        this.since = since;
+        this.until = until;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -70,5 +97,4 @@ public class ListScheduleUsersOperationSpec {
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
     }
-
 }

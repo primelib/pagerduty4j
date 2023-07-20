@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * IncidentUrgencyType
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type",
     "urgency"
@@ -30,27 +37,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IncidentUrgencyType {
 
     /**
-     * Constructs a validated implementation of {@link IncidentUrgencyType}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public IncidentUrgencyType(Consumer<IncidentUrgencyType> spec) {
-        spec.accept(this);
-    }
-
-    /**
      * The type of incident urgency: whether it's constant, or it's dependent on the support hours.
      */
     @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.CONSTANT;
+    protected TypeEnum type;
 
     /**
      * The incidents' urgency, if type is constant.
      */
     @JsonProperty("urgency")
-    protected UrgencyEnum urgency = UrgencyEnum.HIGH;
+    protected UrgencyEnum urgency;
 
+    /**
+     * Constructs a validated instance of {@link IncidentUrgencyType}.
+     *
+     * @param spec the specification to process
+     */
+    public IncidentUrgencyType(Consumer<IncidentUrgencyType> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link IncidentUrgencyType}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentUrgencyType(Consumer)} instead.
+     * @param type The type of incident urgency: whether it's constant, or it's dependent on the support hours.
+     * @param urgency The incidents' urgency, if type is constant.
+     */
+    @ApiStatus.Internal
+    public IncidentUrgencyType(TypeEnum type, UrgencyEnum urgency) {
+        this.type = type;
+        this.urgency = urgency;
+    }
 
     /**
      * The type of incident urgency: whether it's constant, or it's dependent on the support hours.

@@ -4,8 +4,13 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -17,9 +22,13 @@ import java.util.function.Consumer;
  * <p>
  * Get the current user
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetCurrentUserOperationSpec {
     /**
@@ -35,7 +44,7 @@ public class GetCurrentUserOperationSpec {
     private String include;
 
     /**
-     * Constructs a validated implementation of {@link GetCurrentUserOperationSpec}.
+     * Constructs a validated instance of {@link GetCurrentUserOperationSpec}.
      *
      * @param spec the specification to process
      */
@@ -47,11 +56,24 @@ public class GetCurrentUserOperationSpec {
     }
 
     /**
+     * Constructs a validated instance of {@link GetCurrentUserOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param include              Array of additional Models to include in response.
+     */
+    @ApiStatus.Internal
+    public GetCurrentUserOperationSpec(String include) {
+        this.include = include;
+
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
      * Validates the Spec, will throw a exception if required parameters are missing
      *
      * @throws NullPointerException
      */
     public void validate() {
     }
-
 }

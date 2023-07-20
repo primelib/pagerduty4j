@@ -6,8 +6,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -19,9 +24,13 @@ import java.util.function.Consumer;
  * <p>
  * Get a log entry
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetLogEntryOperationSpec {
     /**
@@ -49,13 +58,31 @@ public class GetLogEntryOperationSpec {
     private String include;
 
     /**
-     * Constructs a validated implementation of {@link GetLogEntryOperationSpec}.
+     * Constructs a validated instance of {@link GetLogEntryOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public GetLogEntryOperationSpec(Consumer<GetLogEntryOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetLogEntryOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone.
+     * @param include              Array of additional Models to include in response.
+     */
+    @ApiStatus.Internal
+    public GetLogEntryOperationSpec(String id, String timeZone, String include) {
+        this.id = id;
+        this.timeZone = timeZone;
+        this.include = include;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -68,5 +95,4 @@ public class GetLogEntryOperationSpec {
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
     }
-
 }

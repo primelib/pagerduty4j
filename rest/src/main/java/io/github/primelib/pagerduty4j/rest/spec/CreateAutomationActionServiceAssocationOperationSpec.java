@@ -6,8 +6,13 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.model.CreateAutomationActionServiceAssocationRequest;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -19,9 +24,13 @@ import java.util.function.Consumer;
  * <p>
  * Associate an Automation Action with a service
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateAutomationActionServiceAssocationOperationSpec {
     /**
@@ -42,13 +51,29 @@ public class CreateAutomationActionServiceAssocationOperationSpec {
     private CreateAutomationActionServiceAssocationRequest createAutomationActionServiceAssocationRequest;
 
     /**
-     * Constructs a validated implementation of {@link CreateAutomationActionServiceAssocationOperationSpec}.
+     * Constructs a validated instance of {@link CreateAutomationActionServiceAssocationOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public CreateAutomationActionServiceAssocationOperationSpec(Consumer<CreateAutomationActionServiceAssocationOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link CreateAutomationActionServiceAssocationOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param createAutomationActionServiceAssocationRequest 
+     */
+    @ApiStatus.Internal
+    public CreateAutomationActionServiceAssocationOperationSpec(String id, CreateAutomationActionServiceAssocationRequest createAutomationActionServiceAssocationRequest) {
+        this.id = id;
+        this.createAutomationActionServiceAssocationRequest = createAutomationActionServiceAssocationRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -62,5 +87,4 @@ public class CreateAutomationActionServiceAssocationOperationSpec {
         Objects.requireNonNull(id, "id is a required parameter!");
         Objects.requireNonNull(createAutomationActionServiceAssocationRequest, "createAutomationActionServiceAssocationRequest is a required parameter!");
     }
-
 }

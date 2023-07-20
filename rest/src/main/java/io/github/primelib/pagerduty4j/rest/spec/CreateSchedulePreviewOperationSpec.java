@@ -6,8 +6,13 @@ import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.model.CreateScheduleRequest;
 import java.time.OffsetDateTime;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -19,9 +24,13 @@ import java.util.function.Consumer;
  * <p>
  * Preview a schedule
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateSchedulePreviewOperationSpec {
     /**
@@ -43,11 +52,11 @@ public class CreateSchedulePreviewOperationSpec {
     private OffsetDateTime until;
 
     /**
-     * Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter `overflow=true` is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from `2011-06-01T10:00:00Z` to `2011-06-01T14:00:00Z`:
-     *  - If you don't pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T10:00:00Z` and end of `2011-06-01T14:00:00Z`. - If you do pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T00:00:00Z` and end of `2011-06-02T00:00:00Z`. 
+     * Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:
+     *  - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}. 
      */
     @Nullable 
-    private Boolean overflow = false;
+    private Boolean overflow;
 
     /**
      * The schedule to be previewed.
@@ -56,7 +65,7 @@ public class CreateSchedulePreviewOperationSpec {
     private CreateScheduleRequest createScheduleRequest;
 
     /**
-     * Constructs a validated implementation of {@link CreateSchedulePreviewOperationSpec}.
+     * Constructs a validated instance of {@link CreateSchedulePreviewOperationSpec}.
      *
      * @param spec the specification to process
      */
@@ -68,11 +77,30 @@ public class CreateSchedulePreviewOperationSpec {
     }
 
     /**
+     * Constructs a validated instance of {@link CreateSchedulePreviewOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param since                The start of the date range over which you want to search.
+     * @param until                The end of the date range over which you want to search.
+     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:   - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}. 
+     * @param createScheduleRequest The schedule to be previewed.
+     */
+    @ApiStatus.Internal
+    public CreateSchedulePreviewOperationSpec(OffsetDateTime since, OffsetDateTime until, Boolean overflow, CreateScheduleRequest createScheduleRequest) {
+        this.since = since;
+        this.until = until;
+        this.overflow = overflow;
+        this.createScheduleRequest = createScheduleRequest;
+
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
      * Validates the Spec, will throw a exception if required parameters are missing
      *
      * @throws NullPointerException
      */
     public void validate() {
     }
-
 }

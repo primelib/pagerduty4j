@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * OrchestrationWarningIneligible
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "message",
     "rule_id",
@@ -31,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("OrchestrationWarningIneligible")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class OrchestrationWarningIneligible {
-
-    /**
-     * Constructs a validated implementation of {@link OrchestrationWarningIneligible}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public OrchestrationWarningIneligible(Consumer<OrchestrationWarningIneligible> spec) {
-        spec.accept(this);
-    }
 
     /**
      * A description of the warning and any potential side effects.
@@ -72,6 +69,33 @@ public class OrchestrationWarningIneligible {
     @JsonProperty("warning_type")
     protected WarningTypeEnum warningType;
 
+    /**
+     * Constructs a validated instance of {@link OrchestrationWarningIneligible}.
+     *
+     * @param spec the specification to process
+     */
+    public OrchestrationWarningIneligible(Consumer<OrchestrationWarningIneligible> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link OrchestrationWarningIneligible}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationWarningIneligible(Consumer)} instead.
+     * @param message A description of the warning and any potential side effects.
+     * @param ruleId The ID of the rule using the feature.
+     * @param feature The feature that the current account plan does not have access to.
+     * @param featureType Specifies whether the feature is a part of the rule's conditions, or its actions.
+     * @param warningType The type of warning that is being returned for the rule.
+     */
+    @ApiStatus.Internal
+    public OrchestrationWarningIneligible(String message, String ruleId, FeatureEnum feature, FeatureTypeEnum featureType, WarningTypeEnum warningType) {
+        this.message = message;
+        this.ruleId = ruleId;
+        this.feature = feature;
+        this.featureType = featureType;
+        this.warningType = warningType;
+    }
 
     /**
      * The feature that the current account plan does not have access to.

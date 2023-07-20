@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * HandoffNotificationRule
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "notify_advance_in_minutes",
@@ -30,16 +37,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("HandoffNotificationRule")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class HandoffNotificationRule {
-
-    /**
-     * Constructs a validated implementation of {@link HandoffNotificationRule}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public HandoffNotificationRule(Consumer<HandoffNotificationRule> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("id")
     protected String id;
@@ -54,11 +51,36 @@ public class HandoffNotificationRule {
      * The type of handoff being created.
      */
     @JsonProperty("handoff_type")
-    protected HandoffTypeEnum handoffType = HandoffTypeEnum.BOTH;
+    protected HandoffTypeEnum handoffType;
 
     @JsonProperty("contact_method")
     protected ContactMethodReference contactMethod;
 
+    /**
+     * Constructs a validated instance of {@link HandoffNotificationRule}.
+     *
+     * @param spec the specification to process
+     */
+    public HandoffNotificationRule(Consumer<HandoffNotificationRule> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link HandoffNotificationRule}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #HandoffNotificationRule(Consumer)} instead.
+     * @param id var.name
+     * @param notifyAdvanceInMinutes The delay before firing the rule, in minutes.
+     * @param handoffType The type of handoff being created.
+     * @param contactMethod var.name
+     */
+    @ApiStatus.Internal
+    public HandoffNotificationRule(String id, Integer notifyAdvanceInMinutes, HandoffTypeEnum handoffType, ContactMethodReference contactMethod) {
+        this.id = id;
+        this.notifyAdvanceInMinutes = notifyAdvanceInMinutes;
+        this.handoffType = handoffType;
+        this.contactMethod = contactMethod;
+    }
 
     /**
      * The type of handoff being created.

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * UpdateIncidentRequestIncident
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type",
     "status",
@@ -37,16 +44,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("updateIncident_request_incident")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UpdateIncidentRequestIncident {
-
-    /**
-     * Constructs a validated implementation of {@link UpdateIncidentRequestIncident}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public UpdateIncidentRequestIncident(Consumer<UpdateIncidentRequestIncident> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The incident type.
@@ -99,6 +96,43 @@ public class UpdateIncidentRequestIncident {
     @JsonProperty("conference_bridge")
     protected ConferenceBridge conferenceBridge;
 
+    /**
+     * Constructs a validated instance of {@link UpdateIncidentRequestIncident}.
+     *
+     * @param spec the specification to process
+     */
+    public UpdateIncidentRequestIncident(Consumer<UpdateIncidentRequestIncident> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link UpdateIncidentRequestIncident}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateIncidentRequestIncident(Consumer)} instead.
+     * @param type The incident type.
+     * @param status The new status of the incident.
+     * @param priority var.name
+     * @param resolution The resolution for this incident if status is set to resolved.
+     * @param title The new title of the incident.
+     * @param escalationLevel Escalate the incident to this level in the escalation policy.
+     * @param assignments Assign the incident to these assignees.
+     * @param escalationPolicy var.name
+     * @param urgency The urgency of the incident.
+     * @param conferenceBridge var.name
+     */
+    @ApiStatus.Internal
+    public UpdateIncidentRequestIncident(TypeEnum type, StatusEnum status, PriorityReference priority, String resolution, String title, Integer escalationLevel, List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments, EscalationPolicyReference escalationPolicy, UrgencyEnum urgency, ConferenceBridge conferenceBridge) {
+        this.type = type;
+        this.status = status;
+        this.priority = priority;
+        this.resolution = resolution;
+        this.title = title;
+        this.escalationLevel = escalationLevel;
+        this.assignments = assignments;
+        this.escalationPolicy = escalationPolicy;
+        this.urgency = urgency;
+        this.conferenceBridge = conferenceBridge;
+    }
 
     /**
      * The incident type.

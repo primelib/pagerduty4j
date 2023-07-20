@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * AutoPauseNotificationsParameters
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "enabled",
     "timeout"
@@ -30,20 +37,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AutoPauseNotificationsParameters {
 
     /**
-     * Constructs a validated implementation of {@link AutoPauseNotificationsParameters}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public AutoPauseNotificationsParameters(Consumer<AutoPauseNotificationsParameters> spec) {
-        spec.accept(this);
-    }
-
-    /**
      * Indicates whether alerts should be automatically suspended when identified as transient
      */
     @JsonProperty("enabled")
-    protected Boolean enabled = false;
+    protected Boolean enabled;
 
     /**
      * Indicates in seconds how long alerts should be suspended before triggering
@@ -51,6 +48,27 @@ public class AutoPauseNotificationsParameters {
     @JsonProperty("timeout")
     protected TimeoutEnum timeout;
 
+    /**
+     * Constructs a validated instance of {@link AutoPauseNotificationsParameters}.
+     *
+     * @param spec the specification to process
+     */
+    public AutoPauseNotificationsParameters(Consumer<AutoPauseNotificationsParameters> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link AutoPauseNotificationsParameters}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutoPauseNotificationsParameters(Consumer)} instead.
+     * @param enabled Indicates whether alerts should be automatically suspended when identified as transient
+     * @param timeout Indicates in seconds how long alerts should be suspended before triggering
+     */
+    @ApiStatus.Internal
+    public AutoPauseNotificationsParameters(Boolean enabled, TimeoutEnum timeout) {
+        this.enabled = enabled;
+        this.timeout = timeout;
+    }
 
     /**
      * Indicates in seconds how long alerts should be suspended before triggering

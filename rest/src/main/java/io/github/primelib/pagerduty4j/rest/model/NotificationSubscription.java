@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * NotificationSubscription
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "subscriber_id",
     "subscriber_type",
@@ -31,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("NotificationSubscription")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class NotificationSubscription {
-
-    /**
-     * Constructs a validated implementation of {@link NotificationSubscription}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public NotificationSubscription(Consumer<NotificationSubscription> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The ID of the entity being subscribed
@@ -72,6 +69,33 @@ public class NotificationSubscription {
     @JsonProperty("account_id")
     protected String accountId;
 
+    /**
+     * Constructs a validated instance of {@link NotificationSubscription}.
+     *
+     * @param spec the specification to process
+     */
+    public NotificationSubscription(Consumer<NotificationSubscription> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link NotificationSubscription}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #NotificationSubscription(Consumer)} instead.
+     * @param subscriberId The ID of the entity being subscribed
+     * @param subscriberType The type of the entity being subscribed
+     * @param subscribableId The ID of the entity being subscribed to
+     * @param subscribableType The type of the entity being subscribed to
+     * @param accountId The ID of the account belonging to the subscriber entity
+     */
+    @ApiStatus.Internal
+    public NotificationSubscription(String subscriberId, SubscriberTypeEnum subscriberType, String subscribableId, SubscribableTypeEnum subscribableType, String accountId) {
+        this.subscriberId = subscriberId;
+        this.subscriberType = subscriberType;
+        this.subscribableId = subscribableId;
+        this.subscribableType = subscribableType;
+        this.accountId = accountId;
+    }
 
     /**
      * The type of the entity being subscribed

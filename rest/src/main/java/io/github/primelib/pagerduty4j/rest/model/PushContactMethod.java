@@ -3,11 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -20,11 +22,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * PushContactMethod
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true)
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @JsonPropertyOrder({
     "type",
     "device_type",
@@ -35,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("PushContactMethod")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class PushContactMethod extends ContactMethod {
-
-    /**
-     * Constructs a validated implementation of {@link PushContactMethod}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public PushContactMethod(Consumer<PushContactMethod> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("type")
     protected ContactMethodType type;
@@ -70,6 +63,34 @@ public class PushContactMethod extends ContactMethod {
     @JsonProperty("blacklisted")
     protected Boolean blacklisted;
 
+    /**
+     * Constructs a validated instance of {@link PushContactMethod}.
+     *
+     * @param spec the specification to process
+     */
+    public PushContactMethod(Consumer<PushContactMethod> spec) {
+        super();
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link PushContactMethod}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PushContactMethod(Consumer)} instead.
+     * @param type var.name
+     * @param deviceType The type of device.
+     * @param sounds var.name
+     * @param createdAt Time at which the contact method was created.
+     * @param blacklisted If true, this phone has been blacklisted by PagerDuty and no messages will be sent to it.
+     */
+    @ApiStatus.Internal
+    public PushContactMethod(ContactMethodType type, DeviceTypeEnum deviceType, List<PushContactMethodSound> sounds, OffsetDateTime createdAt, Boolean blacklisted) {
+        this.type = type;
+        this.deviceType = deviceType;
+        this.sounds = sounds;
+        this.createdAt = createdAt;
+        this.blacklisted = blacklisted;
+    }
 
     /**
      * The type of device.

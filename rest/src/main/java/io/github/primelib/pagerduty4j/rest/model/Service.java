@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Service
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -54,21 +61,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Service {
 
-    /**
-     * Constructs a validated implementation of {@link Service}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Service(Consumer<Service> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
@@ -77,7 +74,7 @@ public class Service {
      * The type of object being created.
      */
     @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.SERVICE;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
@@ -104,16 +101,16 @@ public class Service {
     protected String description;
 
     /**
-     * Time in seconds that an incident is automatically resolved if left open for that long. Value is `null` if the feature is disabled. Value must not be negative. Setting this field to `0`, `null` (or unset in POST request) will disable the feature.
+     * Time in seconds that an incident is automatically resolved if left open for that long. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
      */
     @JsonProperty("auto_resolve_timeout")
-    protected Integer autoResolveTimeout = 14400;
+    protected Integer autoResolveTimeout;
 
     /**
-     * Time in seconds that an incident changes to the Triggered State after being Acknowledged. Value is `null` if the feature is disabled. Value must not be negative. Setting this field to `0`, `null` (or unset in POST request) will disable the feature.
+     * Time in seconds that an incident changes to the Triggered State after being Acknowledged. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
      */
     @JsonProperty("acknowledgement_timeout")
-    protected Integer acknowledgementTimeout = 1800;
+    protected Integer acknowledgementTimeout;
 
     /**
      * The date/time when this service was created
@@ -123,10 +120,10 @@ public class Service {
 
     /**
      * The current state of the Service. Valid statuses are:
-     *  - `active`: The service is enabled and has no open incidents. This is the only status a service can be created with. - `warning`: The service is enabled and has one or more acknowledged incidents. - `critical`: The service is enabled and has one or more triggered incidents. - `maintenance`: The service is under maintenance, no new incidents will be triggered during maintenance mode. - `disabled`: The service is disabled and will not have any new triggered incidents. 
+     *  - {@code active}: The service is enabled and has no open incidents. This is the only status a service can be created with. - {@code warning}: The service is enabled and has one or more acknowledged incidents. - {@code critical}: The service is enabled and has one or more triggered incidents. - {@code maintenance}: The service is under maintenance, no new incidents will be triggered during maintenance mode. - {@code disabled}: The service is disabled and will not have any new triggered incidents. 
      */
     @JsonProperty("status")
-    protected StatusEnum status = StatusEnum.ACTIVE;
+    protected StatusEnum status;
 
     /**
      * The date/time when the most recent incident was created for this service.
@@ -147,7 +144,7 @@ public class Service {
     protected List<TeamReference> teams;
 
     /**
-     * An array containing Integration objects that belong to this service. If `integrations` is passed as an argument, these are full objects - otherwise, these are references.
+     * An array containing Integration objects that belong to this service. If {@code integrations} is passed as an argument, these are full objects - otherwise, these are references.
      */
     @JsonProperty("integrations")
     protected List<IntegrationReference> integrations;
@@ -180,13 +177,13 @@ public class Service {
     protected AlertGroupingParameters alertGroupingParameters;
 
     /**
-     * Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. There are three available options: * null - No alert grouping on the service. Each alert will create a separate incident; * "time" - All alerts within a specified duration will be grouped into the same incident. This duration is set in the `alert_grouping_timeout` setting (described below). Available on Standard, Enterprise, and Event Intelligence plans; * "intelligent" - Alerts will be intelligently grouped based on a machine learning model that looks at the alert summary, timing, and the history of grouped alerts. Available on Enterprise and Event Intelligence plans 
+     * Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. There are three available options: * null - No alert grouping on the service. Each alert will create a separate incident; * "time" - All alerts within a specified duration will be grouped into the same incident. This duration is set in the {@code alert_grouping_timeout} setting (described below). Available on Standard, Enterprise, and Event Intelligence plans; * "intelligent" - Alerts will be intelligently grouped based on a machine learning model that looks at the alert summary, timing, and the history of grouped alerts. Available on Enterprise and Event Intelligence plans 
      */
     @JsonProperty("alert_grouping")
     protected AlertGroupingEnum alertGrouping;
 
     /**
-     * The duration in minutes within which to automatically group incoming alerts. This setting applies only when `alert_grouping` is set to `time`. To continue grouping alerts until the Incident is resolved, set this value to `0`. 
+     * The duration in minutes within which to automatically group incoming alerts. This setting applies only when {@code alert_grouping} is set to {@code time}. To continue grouping alerts until the Incident is resolved, set this value to {@code 0}. 
      */
     @JsonProperty("alert_grouping_timeout")
     protected Integer alertGroupingTimeout;
@@ -194,6 +191,73 @@ public class Service {
     @JsonProperty("auto_pause_notifications_parameters")
     protected AutoPauseNotificationsParameters autoPauseNotificationsParameters;
 
+    /**
+     * Constructs a validated instance of {@link Service}.
+     *
+     * @param spec the specification to process
+     */
+    public Service(Consumer<Service> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link Service}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Service(Consumer)} instead.
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param type The type of object being created.
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param name The name of the service.
+     * @param description The user-provided description of the service.
+     * @param autoResolveTimeout Time in seconds that an incident is automatically resolved if left open for that long. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
+     * @param acknowledgementTimeout Time in seconds that an incident changes to the Triggered State after being Acknowledged. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
+     * @param createdAt The date/time when this service was created
+     * @param status The current state of the Service. Valid statuses are:   - {@code active}: The service is enabled and has no open incidents. This is the only status a service can be created with. - {@code warning}: The service is enabled and has one or more acknowledged incidents. - {@code critical}: The service is enabled and has one or more triggered incidents. - {@code maintenance}: The service is under maintenance, no new incidents will be triggered during maintenance mode. - {@code disabled}: The service is disabled and will not have any new triggered incidents. 
+     * @param lastIncidentTimestamp The date/time when the most recent incident was created for this service.
+     * @param escalationPolicy var.name
+     * @param responsePlay var.name
+     * @param teams The set of teams associated with this service.
+     * @param integrations An array containing Integration objects that belong to this service. If {@code integrations} is passed as an argument, these are full objects - otherwise, these are references.
+     * @param incidentUrgencyRule var.name
+     * @param supportHours var.name
+     * @param scheduledActions An array containing scheduled actions for the service.
+     * @param addons The array of Add-ons associated with this service.
+     * @param alertCreation Whether a service creates only incidents, or both alerts and incidents. A service must create alerts in order to enable incident merging. * "create_incidents" - The service will create one incident and zero alerts for each incoming event. * "create_alerts_and_incidents" - The service will create one incident and one associated alert for each incoming event. 
+     * @param alertGroupingParameters var.name
+     * @param alertGrouping Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. There are three available options: * null - No alert grouping on the service. Each alert will create a separate incident; * "time" - All alerts within a specified duration will be grouped into the same incident. This duration is set in the {@code alert_grouping_timeout} setting (described below). Available on Standard, Enterprise, and Event Intelligence plans; * "intelligent" - Alerts will be intelligently grouped based on a machine learning model that looks at the alert summary, timing, and the history of grouped alerts. Available on Enterprise and Event Intelligence plans 
+     * @param alertGroupingTimeout The duration in minutes within which to automatically group incoming alerts. This setting applies only when {@code alert_grouping} is set to {@code time}. To continue grouping alerts until the Incident is resolved, set this value to {@code 0}. 
+     * @param autoPauseNotificationsParameters var.name
+     */
+    @ApiStatus.Internal
+    public Service(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, Integer autoResolveTimeout, Integer acknowledgementTimeout, OffsetDateTime createdAt, StatusEnum status, OffsetDateTime lastIncidentTimestamp, EscalationPolicyReference escalationPolicy, ServiceAllOfResponsePlay responsePlay, List<TeamReference> teams, List<IntegrationReference> integrations, IncidentUrgencyRule incidentUrgencyRule, SupportHours supportHours, List<ScheduledAction> scheduledActions, List<AddonReference> addons, AlertCreationEnum alertCreation, AlertGroupingParameters alertGroupingParameters, AlertGroupingEnum alertGrouping, Integer alertGroupingTimeout, AutoPauseNotificationsParameters autoPauseNotificationsParameters) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.name = name;
+        this.description = description;
+        this.autoResolveTimeout = autoResolveTimeout;
+        this.acknowledgementTimeout = acknowledgementTimeout;
+        this.createdAt = createdAt;
+        this.status = status;
+        this.lastIncidentTimestamp = lastIncidentTimestamp;
+        this.escalationPolicy = escalationPolicy;
+        this.responsePlay = responsePlay;
+        this.teams = teams;
+        this.integrations = integrations;
+        this.incidentUrgencyRule = incidentUrgencyRule;
+        this.supportHours = supportHours;
+        this.scheduledActions = scheduledActions;
+        this.addons = addons;
+        this.alertCreation = alertCreation;
+        this.alertGroupingParameters = alertGroupingParameters;
+        this.alertGrouping = alertGrouping;
+        this.alertGroupingTimeout = alertGroupingTimeout;
+        this.autoPauseNotificationsParameters = autoPauseNotificationsParameters;
+    }
 
     /**
      * The type of object being created.
@@ -207,7 +271,7 @@ public class Service {
 
     /**
      * The current state of the Service. Valid statuses are:
-     *  - `active`: The service is enabled and has no open incidents. This is the only status a service can be created with. - `warning`: The service is enabled and has one or more acknowledged incidents. - `critical`: The service is enabled and has one or more triggered incidents. - `maintenance`: The service is under maintenance, no new incidents will be triggered during maintenance mode. - `disabled`: The service is disabled and will not have any new triggered incidents. 
+     *  - {@code active}: The service is enabled and has no open incidents. This is the only status a service can be created with. - {@code warning}: The service is enabled and has one or more acknowledged incidents. - {@code critical}: The service is enabled and has one or more triggered incidents. - {@code maintenance}: The service is under maintenance, no new incidents will be triggered during maintenance mode. - {@code disabled}: The service is disabled and will not have any new triggered incidents. 
      */
     @AllArgsConstructor
     public enum StatusEnum {
@@ -232,7 +296,7 @@ public class Service {
     }
 
     /**
-     * Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. There are three available options: * null - No alert grouping on the service. Each alert will create a separate incident; * "time" - All alerts within a specified duration will be grouped into the same incident. This duration is set in the `alert_grouping_timeout` setting (described below). Available on Standard, Enterprise, and Event Intelligence plans; * "intelligent" - Alerts will be intelligently grouped based on a machine learning model that looks at the alert summary, timing, and the history of grouped alerts. Available on Enterprise and Event Intelligence plans 
+     * Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. There are three available options: * null - No alert grouping on the service. Each alert will create a separate incident; * "time" - All alerts within a specified duration will be grouped into the same incident. This duration is set in the {@code alert_grouping_timeout} setting (described below). Available on Standard, Enterprise, and Event Intelligence plans; * "intelligent" - Alerts will be intelligently grouped based on a machine learning model that looks at the alert summary, timing, and the history of grouped alerts. Available on Enterprise and Event Intelligence plans 
      */
     @AllArgsConstructor
     public enum AlertGroupingEnum {

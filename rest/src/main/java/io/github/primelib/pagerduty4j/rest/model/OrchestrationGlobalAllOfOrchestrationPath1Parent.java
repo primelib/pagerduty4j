@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * OrchestrationGlobalAllOfOrchestrationPath1Parent
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "type"
@@ -30,24 +37,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrchestrationGlobalAllOfOrchestrationPath1Parent {
 
     /**
-     * Constructs a validated implementation of {@link OrchestrationGlobalAllOfOrchestrationPath1Parent}.
+     * ID of the Global Event Orchestration these Global Rules belongs to.
+     */
+    @JsonProperty("id")
+    protected Object id;
+
+    @JsonProperty("type")
+    protected TypeEnum type;
+
+    /**
+     * Constructs a validated instance of {@link OrchestrationGlobalAllOfOrchestrationPath1Parent}.
      *
      * @param spec the specification to process
      */
-    @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPath1Parent(Consumer<OrchestrationGlobalAllOfOrchestrationPath1Parent> spec) {
         spec.accept(this);
     }
 
     /**
-     * ID of the Global Event Orchestration these Global Rules belongs to.
+     * Constructs a validated instance of {@link OrchestrationGlobalAllOfOrchestrationPath1Parent}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath1Parent(Consumer)} instead.
+     * @param id ID of the Global Event Orchestration these Global Rules belongs to.
+     * @param type var.name
      */
-    @JsonProperty("id")
-    protected Object id = null;
-
-    @JsonProperty("type")
-    protected TypeEnum type;
-
+    @ApiStatus.Internal
+    public OrchestrationGlobalAllOfOrchestrationPath1Parent(Object id, TypeEnum type) {
+        this.id = id;
+        this.type = type;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

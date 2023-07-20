@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -18,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * CustomFieldsEditableFieldDefaultValueOneOf4
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "value"
 })
@@ -29,18 +35,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CustomFieldsEditableFieldDefaultValueOneOf4 {
 
+    @JsonProperty("value")
+    protected OffsetDateTime value;
+
     /**
-     * Constructs a validated implementation of {@link CustomFieldsEditableFieldDefaultValueOneOf4}.
+     * Constructs a validated instance of {@link CustomFieldsEditableFieldDefaultValueOneOf4}.
      *
      * @param spec the specification to process
      */
-    @ApiStatus.Internal
     public CustomFieldsEditableFieldDefaultValueOneOf4(Consumer<CustomFieldsEditableFieldDefaultValueOneOf4> spec) {
         spec.accept(this);
     }
 
-    @JsonProperty("value")
-    protected OffsetDateTime value;
-
+    /**
+     * Constructs a validated instance of {@link CustomFieldsEditableFieldDefaultValueOneOf4}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldDefaultValueOneOf4(Consumer)} instead.
+     * @param value var.name
+     */
+    @ApiStatus.Internal
+    public CustomFieldsEditableFieldDefaultValueOneOf4(OffsetDateTime value) {
+        this.value = value;
+    }
 
 }

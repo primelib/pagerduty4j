@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * TagsToRemove
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type",
     "id"
@@ -28,16 +35,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("Tags_to_remove_")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class TagsToRemove {
-
-    /**
-     * Constructs a validated implementation of {@link TagsToRemove}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public TagsToRemove(Consumer<TagsToRemove> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("type")
     protected TypeEnum type;
@@ -48,6 +45,27 @@ public class TagsToRemove {
     @JsonProperty("id")
     protected String id;
 
+    /**
+     * Constructs a validated instance of {@link TagsToRemove}.
+     *
+     * @param spec the specification to process
+     */
+    public TagsToRemove(Consumer<TagsToRemove> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link TagsToRemove}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #TagsToRemove(Consumer)} instead.
+     * @param type var.name
+     * @param id The id of the tag
+     */
+    @ApiStatus.Internal
+    public TagsToRemove(TypeEnum type, String id) {
+        this.type = type;
+        this.id = id;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

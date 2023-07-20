@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * CreateUserContactMethod201Response
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "contact_method"
 })
@@ -28,18 +34,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateUserContactMethod201Response {
 
+    @JsonProperty("contact_method")
+    protected GetUserContactMethods200ResponseContactMethodsInner contactMethod;
+
     /**
-     * Constructs a validated implementation of {@link CreateUserContactMethod201Response}.
+     * Constructs a validated instance of {@link CreateUserContactMethod201Response}.
      *
      * @param spec the specification to process
      */
-    @ApiStatus.Internal
     public CreateUserContactMethod201Response(Consumer<CreateUserContactMethod201Response> spec) {
         spec.accept(this);
     }
 
-    @JsonProperty("contact_method")
-    protected GetUserContactMethods200ResponseContactMethodsInner contactMethod;
-
+    /**
+     * Constructs a validated instance of {@link CreateUserContactMethod201Response}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserContactMethod201Response(Consumer)} instead.
+     * @param contactMethod var.name
+     */
+    @ApiStatus.Internal
+    public CreateUserContactMethod201Response(GetUserContactMethods200ResponseContactMethodsInner contactMethod) {
+        this.contactMethod = contactMethod;
+    }
 
 }

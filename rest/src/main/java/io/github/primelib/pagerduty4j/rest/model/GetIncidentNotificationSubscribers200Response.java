@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * GetIncidentNotificationSubscribers200Response
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "offset",
     "limit",
@@ -33,16 +39,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("getIncidentNotificationSubscribers_200_response")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetIncidentNotificationSubscribers200Response {
-
-    /**
-     * Constructs a validated implementation of {@link GetIncidentNotificationSubscribers200Response}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public GetIncidentNotificationSubscribers200Response(Consumer<GetIncidentNotificationSubscribers200Response> spec) {
-        spec.accept(this);
-    }
 
     /**
      * Echoes offset pagination property.
@@ -77,5 +73,34 @@ public class GetIncidentNotificationSubscribers200Response {
     @JsonProperty("account_id")
     protected String accountId;
 
+    /**
+     * Constructs a validated instance of {@link GetIncidentNotificationSubscribers200Response}.
+     *
+     * @param spec the specification to process
+     */
+    public GetIncidentNotificationSubscribers200Response(Consumer<GetIncidentNotificationSubscribers200Response> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetIncidentNotificationSubscribers200Response}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetIncidentNotificationSubscribers200Response(Consumer)} instead.
+     * @param offset Echoes offset pagination property.
+     * @param limit Echoes limit pagination property.
+     * @param more Indicates if there are additional records to return
+     * @param total The total number of records matching the given query.
+     * @param subscribers var.name
+     * @param accountId The ID of the account belonging to the subscriber entity
+     */
+    @ApiStatus.Internal
+    public GetIncidentNotificationSubscribers200Response(Integer offset, Integer limit, Boolean more, Integer total, List<NotificationSubscriberWithContext> subscribers, String accountId) {
+        this.offset = offset;
+        this.limit = limit;
+        this.more = more;
+        this.total = total;
+        this.subscribers = subscribers;
+        this.accountId = accountId;
+    }
 
 }

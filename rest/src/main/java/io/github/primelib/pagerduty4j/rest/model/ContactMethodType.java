@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ContactMethodType
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type"
 })
@@ -29,21 +36,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ContactMethodType {
 
     /**
-     * Constructs a validated implementation of {@link ContactMethodType}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ContactMethodType(Consumer<ContactMethodType> spec) {
-        spec.accept(this);
-    }
-
-    /**
      * The type of contact method being created.
      */
     @JsonProperty("type")
     protected TypeEnum type;
 
+    /**
+     * Constructs a validated instance of {@link ContactMethodType}.
+     *
+     * @param spec the specification to process
+     */
+    public ContactMethodType(Consumer<ContactMethodType> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link ContactMethodType}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ContactMethodType(Consumer)} instead.
+     * @param type The type of contact method being created.
+     */
+    @ApiStatus.Internal
+    public ContactMethodType(TypeEnum type) {
+        this.type = type;
+    }
 
     /**
      * The type of contact method being created.

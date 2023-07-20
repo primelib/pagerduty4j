@@ -9,7 +9,11 @@ import javax.annotation.processing.Generated;
 import java.util.Set;
 import io.github.primelib.pagerduty4j.rest.model.UpdateIncidentsRequest;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -21,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Manage incidents
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UpdateIncidentsOperationSpec {
     /**
@@ -51,11 +59,11 @@ public class UpdateIncidentsOperationSpec {
     private Integer offset;
 
     /**
-     * By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.
+     * By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.
      * See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information. 
      */
     @Nullable 
-    private Boolean total = false;
+    private Boolean total;
 
     /**
      */
@@ -63,13 +71,35 @@ public class UpdateIncidentsOperationSpec {
     private UpdateIncidentsRequest updateIncidentsRequest;
 
     /**
-     * Constructs a validated implementation of {@link UpdateIncidentsOperationSpec}.
+     * Constructs a validated instance of {@link UpdateIncidentsOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public UpdateIncidentsOperationSpec(Consumer<UpdateIncidentsOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link UpdateIncidentsOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param from                 The email address of a valid user associated with the account making the request.
+     * @param limit                The number of results per page.
+     * @param offset               Offset to start pagination search results.
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information. 
+     * @param updateIncidentsRequest 
+     */
+    @ApiStatus.Internal
+    public UpdateIncidentsOperationSpec(String from, Integer limit, Integer offset, Boolean total, UpdateIncidentsRequest updateIncidentsRequest) {
+        this.from = from;
+        this.limit = limit;
+        this.offset = offset;
+        this.total = total;
+        this.updateIncidentsRequest = updateIncidentsRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -82,5 +112,4 @@ public class UpdateIncidentsOperationSpec {
     public void validate() {
         Objects.requireNonNull(from, "from is a required parameter!");
     }
-
 }

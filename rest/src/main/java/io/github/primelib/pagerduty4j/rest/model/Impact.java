@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Impact
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "name",
@@ -31,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("Impact")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Impact {
-
-    /**
-     * Constructs a validated implementation of {@link Impact}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Impact(Consumer<Impact> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("id")
     protected String id;
@@ -63,6 +60,33 @@ public class Impact {
     @JsonProperty("additional_fields")
     protected ImpactAdditionalFields additionalFields;
 
+    /**
+     * Constructs a validated instance of {@link Impact}.
+     *
+     * @param spec the specification to process
+     */
+    public Impact(Consumer<Impact> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link Impact}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Impact(Consumer)} instead.
+     * @param id var.name
+     * @param name var.name
+     * @param type The kind of object that has been impacted
+     * @param status The current impact status of the object
+     * @param additionalFields var.name
+     */
+    @ApiStatus.Internal
+    public Impact(String id, String name, TypeEnum type, StatusEnum status, ImpactAdditionalFields additionalFields) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.status = status;
+        this.additionalFields = additionalFields;
+    }
 
     /**
      * The kind of object that has been impacted

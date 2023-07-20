@@ -24,6 +24,11 @@ PagerDutyRESTConsumerApi client = PagerDutyRESTFactory.create(spec -> {
     spec.api(PagerDutyRESTConsumerApi.class);
     spec.baseUrl("https://api.pagerduty.com");
     spec.apiKeyAuth(authSpec -> authSpec.apiKey("<token>"));
+    // optional: http proxy
+    spec.httpProxy(proxySpec -> {
+        proxySpec.host("localhost");
+        proxySpec.port(8080);
+    });
 });
 
 client.listIncidentAlerts(spec -> {
@@ -39,6 +44,11 @@ PagerDutyRESTApi client = PagerDutyRESTFactory.create(spec -> {
     spec.api(PagerDutyRESTApi.class);
     spec.baseUrl("https://api.pagerduty.com");
     spec.apiKeyAuth(authSpec -> authSpec.apiKey("<token>"));
+    // optional: http proxy
+    spec.httpProxy(proxySpec -> {
+        proxySpec.host("localhost");
+        proxySpec.port(8080);
+    });
 });
 
 client.listIncidentAlerts("15", 100, null, null, null, null, null, null);
@@ -68,6 +78,11 @@ implementation("io.github.primelib:pagerduty4j-events-v2:<latestVersion>")
 PagerDutyEventsV2ConsumerApi client = PagerDutyEventsV2Factory.create(spec -> {
     spec.api(PagerDutyEventsV2ConsumerApi.class);
     spec.baseUrl("https://events.pagerduty.com/v2");
+    // optional: http proxy
+    spec.httpProxy(proxySpec -> {
+        proxySpec.host("localhost");
+        proxySpec.port(8080);
+    });
 });
 
 client.createChangeEvent(spec -> {
@@ -87,6 +102,11 @@ client.createChangeEvent(spec -> {
 PagerDutyEventsV2Api client = PagerDutyEventsV2Factory.create(spec -> {
     spec.api(PagerDutyEventsV2Api.class);
     spec.baseUrl("https://events.pagerduty.com/v2");
+    // optional: http proxy
+    spec.httpProxy(proxySpec -> {
+        proxySpec.host("localhost");
+        proxySpec.port(8080);
+    });
 });
 
 client.createChangeEvent(new CreateChangeEventRequest(new ChangeEventPayload("<summary>", null, "<source>", null), "<routingKey>", null, null));

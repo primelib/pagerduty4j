@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * IncidentsRespondersReference
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "state",
     "user",
@@ -33,16 +39,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("IncidentsRespondersReference")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class IncidentsRespondersReference {
-
-    /**
-     * Constructs a validated implementation of {@link IncidentsRespondersReference}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public IncidentsRespondersReference(Consumer<IncidentsRespondersReference> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The status of the responder being added to the incident
@@ -71,5 +67,36 @@ public class IncidentsRespondersReference {
     @JsonProperty("requested_at")
     protected String requestedAt;
 
+    /**
+     * Constructs a validated instance of {@link IncidentsRespondersReference}.
+     *
+     * @param spec the specification to process
+     */
+    public IncidentsRespondersReference(Consumer<IncidentsRespondersReference> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link IncidentsRespondersReference}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentsRespondersReference(Consumer)} instead.
+     * @param state The status of the responder being added to the incident
+     * @param user var.name
+     * @param incident var.name
+     * @param updatedAt var.name
+     * @param message The message sent with the responder request
+     * @param requester var.name
+     * @param requestedAt var.name
+     */
+    @ApiStatus.Internal
+    public IncidentsRespondersReference(String state, UserReference user, IncidentReference incident, String updatedAt, String message, UserReference requester, String requestedAt) {
+        this.state = state;
+        this.user = user;
+        this.incident = incident;
+        this.updatedAt = updatedAt;
+        this.message = message;
+        this.requester = requester;
+        this.requestedAt = requestedAt;
+    }
 
 }

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Integration
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -44,21 +51,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Integration {
 
-    /**
-     * Constructs a validated implementation of {@link Integration}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Integration(Consumer<Integration> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
@@ -132,6 +129,53 @@ public class Integration {
     @JsonProperty("email_filters")
     protected Set<IntegrationAllOfEmailFilters> emailFilters;
 
+    /**
+     * Constructs a validated instance of {@link Integration}.
+     *
+     * @param spec the specification to process
+     */
+    public Integration(Consumer<Integration> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link Integration}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Integration(Consumer)} instead.
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param type var.name
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param name The name of this integration.
+     * @param service var.name
+     * @param createdAt The date/time when this integration was created.
+     * @param vendor var.name
+     * @param integrationEmail Specify for generic_email_inbound_integration. Must be set to an email address @your-subdomain.pagerduty.com
+     * @param emailIncidentCreation Specify for generic_email_inbound_integration
+     * @param emailFilterMode Specify for generic_email_inbound_integration. May override email_incident_creation
+     * @param emailParsers Specify for generic_email_inbound_integration.
+     * @param emailParsingFallback Specify for generic_email_inbound_integration.
+     * @param emailFilters Specify for generic_email_inbound_integration.
+     */
+    @ApiStatus.Internal
+    public Integration(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, ServiceReference service, OffsetDateTime createdAt, VendorReference vendor, String integrationEmail, EmailIncidentCreationEnum emailIncidentCreation, EmailFilterModeEnum emailFilterMode, Set<EmailParser> emailParsers, EmailParsingFallbackEnum emailParsingFallback, Set<IntegrationAllOfEmailFilters> emailFilters) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.name = name;
+        this.service = service;
+        this.createdAt = createdAt;
+        this.vendor = vendor;
+        this.integrationEmail = integrationEmail;
+        this.emailIncidentCreation = emailIncidentCreation;
+        this.emailFilterMode = emailFilterMode;
+        this.emailParsers = emailParsers;
+        this.emailParsingFallback = emailParsingFallback;
+        this.emailFilters = emailFilters;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * EventRuleAllOfActions
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "annotate",
     "event_action",
@@ -35,16 +41,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("EventRule_allOf_actions")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EventRuleAllOfActions {
-
-    /**
-     * Constructs a validated implementation of {@link EventRuleAllOfActions}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public EventRuleAllOfActions(Consumer<EventRuleAllOfActions> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("annotate")
     protected EventRuleActionsCommonAnnotate annotate;
@@ -73,5 +69,38 @@ public class EventRuleAllOfActions {
     @JsonProperty("route")
     protected EventRuleAllOfActionsAllOfRoute route;
 
+    /**
+     * Constructs a validated instance of {@link EventRuleAllOfActions}.
+     *
+     * @param spec the specification to process
+     */
+    public EventRuleAllOfActions(Consumer<EventRuleAllOfActions> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link EventRuleAllOfActions}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EventRuleAllOfActions(Consumer)} instead.
+     * @param annotate var.name
+     * @param eventAction var.name
+     * @param extractions Dynamically extract values to set and modify new and existing PD-CEF fields.
+     * @param priority var.name
+     * @param severity var.name
+     * @param suppress var.name
+     * @param suspend var.name
+     * @param route var.name
+     */
+    @ApiStatus.Internal
+    public EventRuleAllOfActions(EventRuleActionsCommonAnnotate annotate, EventRuleActionsCommonEventAction eventAction, List<EventRuleActionsCommonExtractionsInner> extractions, EventRuleActionsCommonPriority priority, EventRuleActionsCommonSeverity severity, EventRuleActionsCommonSuppress suppress, EventRuleActionsCommonSuspend suspend, EventRuleAllOfActionsAllOfRoute route) {
+        this.annotate = annotate;
+        this.eventAction = eventAction;
+        this.extractions = extractions;
+        this.priority = priority;
+        this.severity = severity;
+        this.suppress = suppress;
+        this.suspend = suspend;
+        this.route = route;
+    }
 
 }

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * EventRuleActionsCommonSuppress
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "value",
     "threshold_value",
@@ -30,16 +37,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("EventRuleActionsCommon_suppress")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EventRuleActionsCommonSuppress {
-
-    /**
-     * Constructs a validated implementation of {@link EventRuleActionsCommonSuppress}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public EventRuleActionsCommonSuppress(Consumer<EventRuleActionsCommonSuppress> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("value")
     protected Boolean value;
@@ -62,6 +59,31 @@ public class EventRuleActionsCommonSuppress {
     @JsonProperty("threshold_time_amount")
     protected Integer thresholdTimeAmount;
 
+    /**
+     * Constructs a validated instance of {@link EventRuleActionsCommonSuppress}.
+     *
+     * @param spec the specification to process
+     */
+    public EventRuleActionsCommonSuppress(Consumer<EventRuleActionsCommonSuppress> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link EventRuleActionsCommonSuppress}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EventRuleActionsCommonSuppress(Consumer)} instead.
+     * @param value var.name
+     * @param thresholdValue The number of occurences needed during the window of time to trigger the theshold.
+     * @param thresholdTimeUnit The time unit for the window of time.
+     * @param thresholdTimeAmount The amount of time units for the window of time.
+     */
+    @ApiStatus.Internal
+    public EventRuleActionsCommonSuppress(Boolean value, Integer thresholdValue, ThresholdTimeUnitEnum thresholdTimeUnit, Integer thresholdTimeAmount) {
+        this.value = value;
+        this.thresholdValue = thresholdValue;
+        this.thresholdTimeUnit = thresholdTimeUnit;
+        this.thresholdTimeAmount = thresholdTimeAmount;
+    }
 
     /**
      * The time unit for the window of time.

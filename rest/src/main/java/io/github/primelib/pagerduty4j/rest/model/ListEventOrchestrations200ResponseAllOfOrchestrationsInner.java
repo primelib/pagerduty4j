@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ListEventOrchestrations200ResponseAllOfOrchestrationsInner
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "self",
@@ -39,16 +45,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("listEventOrchestrations_200_response_allOf_orchestrations_inner")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ListEventOrchestrations200ResponseAllOfOrchestrationsInner {
-
-    /**
-     * Constructs a validated implementation of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInner}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ListEventOrchestrations200ResponseAllOfOrchestrationsInner(Consumer<ListEventOrchestrations200ResponseAllOfOrchestrationsInner> spec) {
-        spec.accept(this);
-    }
 
     /**
      * ID of the Orchestration.
@@ -107,5 +103,44 @@ public class ListEventOrchestrations200ResponseAllOfOrchestrationsInner {
     @JsonProperty("version")
     protected String version;
 
+    /**
+     * Constructs a validated instance of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInner}.
+     *
+     * @param spec the specification to process
+     */
+    public ListEventOrchestrations200ResponseAllOfOrchestrationsInner(Consumer<ListEventOrchestrations200ResponseAllOfOrchestrationsInner> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link ListEventOrchestrations200ResponseAllOfOrchestrationsInner}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListEventOrchestrations200ResponseAllOfOrchestrationsInner(Consumer)} instead.
+     * @param id ID of the Orchestration.
+     * @param self The API show URL at which the object is accessible
+     * @param name Name of the Orchestration.
+     * @param description A description of this Orchestration's purpose.
+     * @param team var.name
+     * @param routes Number of different Service Orchestration being routed to
+     * @param createdAt The date the Orchestration was created at.
+     * @param createdBy var.name
+     * @param updatedAt The date the Orchestration was last updated.
+     * @param updatedBy var.name
+     * @param version Version of the Orchestration.
+     */
+    @ApiStatus.Internal
+    public ListEventOrchestrations200ResponseAllOfOrchestrationsInner(String id, String self, String name, String description, ListEventOrchestrations200ResponseAllOfOrchestrationsInnerTeam team, Integer routes, OffsetDateTime createdAt, ListEventOrchestrations200ResponseAllOfOrchestrationsInnerCreatedBy createdBy, OffsetDateTime updatedAt, ListEventOrchestrations200ResponseAllOfOrchestrationsInnerUpdatedBy updatedBy, String version) {
+        this.id = id;
+        this.self = self;
+        this.name = name;
+        this.description = description;
+        this.team = team;
+        this.routes = routes;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+        this.updatedBy = updatedBy;
+        this.version = version;
+    }
 
 }

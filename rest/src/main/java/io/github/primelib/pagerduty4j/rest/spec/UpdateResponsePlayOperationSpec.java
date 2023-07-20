@@ -7,8 +7,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.model.CreateResponsePlayRequest;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -20,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Update a Response Play
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UpdateResponsePlayOperationSpec {
     /**
@@ -50,13 +59,31 @@ public class UpdateResponsePlayOperationSpec {
     private CreateResponsePlayRequest createResponsePlayRequest;
 
     /**
-     * Constructs a validated implementation of {@link UpdateResponsePlayOperationSpec}.
+     * Constructs a validated instance of {@link UpdateResponsePlayOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public UpdateResponsePlayOperationSpec(Consumer<UpdateResponsePlayOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link UpdateResponsePlayOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param from                 The email address of a valid user associated with the account making the request.
+     * @param createResponsePlayRequest The Response Play to be updated.
+     */
+    @ApiStatus.Internal
+    public UpdateResponsePlayOperationSpec(String id, String from, CreateResponsePlayRequest createResponsePlayRequest) {
+        this.id = id;
+        this.from = from;
+        this.createResponsePlayRequest = createResponsePlayRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -70,5 +97,4 @@ public class UpdateResponsePlayOperationSpec {
         Objects.requireNonNull(id, "id is a required parameter!");
         Objects.requireNonNull(from, "from is a required parameter!");
     }
-
 }

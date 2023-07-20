@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * OrchestrationRouterAllOfOrchestrationPathCatchAllActions
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "route_to"
 })
@@ -29,20 +35,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrchestrationRouterAllOfOrchestrationPathCatchAllActions {
 
     /**
-     * Constructs a validated implementation of {@link OrchestrationRouterAllOfOrchestrationPathCatchAllActions}.
+     * With a value of 'unrouted', all events are sent to the Unrouted Orchestration.
+     */
+    @JsonProperty("route_to")
+    protected String routeTo;
+
+    /**
+     * Constructs a validated instance of {@link OrchestrationRouterAllOfOrchestrationPathCatchAllActions}.
      *
      * @param spec the specification to process
      */
-    @ApiStatus.Internal
     public OrchestrationRouterAllOfOrchestrationPathCatchAllActions(Consumer<OrchestrationRouterAllOfOrchestrationPathCatchAllActions> spec) {
         spec.accept(this);
     }
 
     /**
-     * With a value of 'unrouted', all events are sent to the Unrouted Orchestration.
+     * Constructs a validated instance of {@link OrchestrationRouterAllOfOrchestrationPathCatchAllActions}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationRouterAllOfOrchestrationPathCatchAllActions(Consumer)} instead.
+     * @param routeTo With a value of 'unrouted', all events are sent to the Unrouted Orchestration.
      */
-    @JsonProperty("route_to")
-    protected String routeTo = "unrouted";
-
+    @ApiStatus.Internal
+    public OrchestrationRouterAllOfOrchestrationPathCatchAllActions(String routeTo) {
+        this.routeTo = routeTo;
+    }
 
 }

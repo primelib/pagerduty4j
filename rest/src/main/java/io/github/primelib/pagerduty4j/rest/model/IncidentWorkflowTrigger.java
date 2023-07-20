@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * IncidentWorkflowTrigger
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -41,21 +48,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class IncidentWorkflowTrigger {
 
-    /**
-     * Constructs a validated implementation of {@link IncidentWorkflowTrigger}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public IncidentWorkflowTrigger(Consumer<IncidentWorkflowTrigger> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
@@ -114,6 +111,49 @@ public class IncidentWorkflowTrigger {
     @JsonProperty("permissions")
     protected IncidentWorkflowTriggerAllOfPermissions permissions;
 
+    /**
+     * Constructs a validated instance of {@link IncidentWorkflowTrigger}.
+     *
+     * @param spec the specification to process
+     */
+    public IncidentWorkflowTrigger(Consumer<IncidentWorkflowTrigger> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link IncidentWorkflowTrigger}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowTrigger(Consumer)} instead.
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param type var.name
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param triggerTypeName Human readable name for the trigger type
+     * @param triggerType var.name
+     * @param condition A PCL condition string.  If specified, the trigger will execute when the condition is met on an incident.  If unspecified, the trigger will execute on incident creation.  Required if trigger_type is “conditional”, not allowed if trigger_type is “manual”. 
+     * @param triggerUrl var.name
+     * @param workflow var.name
+     * @param services An optional array of Services associated with this workflow. Incidents in any of the listed Services are eligible to fire this Trigger
+     * @param isSubscribedToAllServices Indicates that the Trigger should be associated with All Services
+     * @param permissions var.name
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowTrigger(String id, String summary, TypeEnum type, String self, String htmlUrl, String triggerTypeName, TriggerTypeEnum triggerType, String condition, String triggerUrl, IncidentWorkflowTriggerAllOfWorkflow workflow, List<IncidentWorkflowTriggerAllOfServices> services, Boolean isSubscribedToAllServices, IncidentWorkflowTriggerAllOfPermissions permissions) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.triggerTypeName = triggerTypeName;
+        this.triggerType = triggerType;
+        this.condition = condition;
+        this.triggerUrl = triggerUrl;
+        this.workflow = workflow;
+        this.services = services;
+        this.isSubscribedToAllServices = isSubscribedToAllServices;
+        this.permissions = permissions;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ResolveReason
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type",
     "incident"
@@ -30,24 +37,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ResolveReason {
 
     /**
-     * Constructs a validated implementation of {@link ResolveReason}.
+     * The reason the incident was resolved. The only reason currently supported is merge.
+     */
+    @JsonProperty("type")
+    protected TypeEnum type;
+
+    @JsonProperty("incident")
+    protected IncidentReference incident;
+
+    /**
+     * Constructs a validated instance of {@link ResolveReason}.
      *
      * @param spec the specification to process
      */
-    @ApiStatus.Internal
     public ResolveReason(Consumer<ResolveReason> spec) {
         spec.accept(this);
     }
 
     /**
-     * The reason the incident was resolved. The only reason currently supported is merge.
+     * Constructs a validated instance of {@link ResolveReason}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ResolveReason(Consumer)} instead.
+     * @param type The reason the incident was resolved. The only reason currently supported is merge.
+     * @param incident var.name
      */
-    @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.MERGE_RESOLVE_REASON;
-
-    @JsonProperty("incident")
-    protected IncidentReference incident;
-
+    @ApiStatus.Internal
+    public ResolveReason(TypeEnum type, IncidentReference incident) {
+        this.type = type;
+        this.incident = incident;
+    }
 
     /**
      * The reason the incident was resolved. The only reason currently supported is merge.

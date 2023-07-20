@@ -3,13 +3,15 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -19,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * UpdateIncidentsRequest
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "incidents"
 })
@@ -31,20 +36,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdateIncidentsRequest {
 
     /**
-     * Constructs a validated implementation of {@link UpdateIncidentsRequest}.
+     * An array of incidents, including the parameters to update.
+     */
+    @JsonProperty("incidents")
+    protected List<UpdateIncidentsRequestIncidentsInner> incidents;
+
+    /**
+     * Constructs a validated instance of {@link UpdateIncidentsRequest}.
      *
      * @param spec the specification to process
      */
-    @ApiStatus.Internal
     public UpdateIncidentsRequest(Consumer<UpdateIncidentsRequest> spec) {
         spec.accept(this);
     }
 
     /**
-     * An array of incidents, including the parameters to update.
+     * Constructs a validated instance of {@link UpdateIncidentsRequest}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateIncidentsRequest(Consumer)} instead.
+     * @param incidents An array of incidents, including the parameters to update.
      */
-    @JsonProperty("incidents")
-    protected List<UpdateIncidentsRequestIncidentsInner> incidents = new ArrayList<>();
-
+    @ApiStatus.Internal
+    public UpdateIncidentsRequest(List<UpdateIncidentsRequestIncidentsInner> incidents) {
+        this.incidents = incidents;
+    }
 
 }

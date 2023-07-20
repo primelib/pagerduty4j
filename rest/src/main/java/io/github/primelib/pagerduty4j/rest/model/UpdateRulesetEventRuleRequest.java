@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * UpdateRulesetEventRuleRequest
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "rule",
     "rule_id"
@@ -28,16 +34,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("updateRulesetEventRule_request")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UpdateRulesetEventRuleRequest {
-
-    /**
-     * Constructs a validated implementation of {@link UpdateRulesetEventRuleRequest}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public UpdateRulesetEventRuleRequest(Consumer<UpdateRulesetEventRuleRequest> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("rule")
     protected EventRule rule;
@@ -48,5 +44,26 @@ public class UpdateRulesetEventRuleRequest {
     @JsonProperty("rule_id")
     protected String ruleId;
 
+    /**
+     * Constructs a validated instance of {@link UpdateRulesetEventRuleRequest}.
+     *
+     * @param spec the specification to process
+     */
+    public UpdateRulesetEventRuleRequest(Consumer<UpdateRulesetEventRuleRequest> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link UpdateRulesetEventRuleRequest}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateRulesetEventRuleRequest(Consumer)} instead.
+     * @param rule var.name
+     * @param ruleId The id of the Event Rule to update.
+     */
+    @ApiStatus.Internal
+    public UpdateRulesetEventRuleRequest(EventRule rule, String ruleId) {
+        this.rule = rule;
+        this.ruleId = ruleId;
+    }
 
 }

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * MigrateOrchestrationIntegrationRequest
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "source_id",
     "source_type",
@@ -31,23 +38,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MigrateOrchestrationIntegrationRequest {
 
     /**
-     * Constructs a validated implementation of {@link MigrateOrchestrationIntegrationRequest}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public MigrateOrchestrationIntegrationRequest(Consumer<MigrateOrchestrationIntegrationRequest> spec) {
-        spec.accept(this);
-    }
-
-    /**
      * The ID of the Event Orchestration you'll be moving the Integration away from
      */
     @JsonProperty("source_id")
     protected String sourceId;
 
     /**
-     * The type of of the `source_id` object
+     * The type of of the {@code source_id} object
      */
     @JsonProperty("source_type")
     protected SourceTypeEnum sourceType;
@@ -58,9 +55,32 @@ public class MigrateOrchestrationIntegrationRequest {
     @JsonProperty("integration_id")
     protected String integrationId;
 
+    /**
+     * Constructs a validated instance of {@link MigrateOrchestrationIntegrationRequest}.
+     *
+     * @param spec the specification to process
+     */
+    public MigrateOrchestrationIntegrationRequest(Consumer<MigrateOrchestrationIntegrationRequest> spec) {
+        spec.accept(this);
+    }
 
     /**
-     * The type of of the `source_id` object
+     * Constructs a validated instance of {@link MigrateOrchestrationIntegrationRequest}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #MigrateOrchestrationIntegrationRequest(Consumer)} instead.
+     * @param sourceId The ID of the Event Orchestration you'll be moving the Integration away from
+     * @param sourceType The type of of the {@code source_id} object
+     * @param integrationId The ID of the Integration you'll be moving
+     */
+    @ApiStatus.Internal
+    public MigrateOrchestrationIntegrationRequest(String sourceId, SourceTypeEnum sourceType, String integrationId) {
+        this.sourceId = sourceId;
+        this.sourceType = sourceType;
+        this.integrationId = integrationId;
+    }
+
+    /**
+     * The type of of the {@code source_id} object
      */
     @AllArgsConstructor
     public enum SourceTypeEnum {

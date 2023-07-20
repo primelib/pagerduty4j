@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * WebhooksV1Message
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "type",
@@ -32,16 +39,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("WebhooksV1Message")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class WebhooksV1Message {
-
-    /**
-     * Constructs a validated implementation of {@link WebhooksV1Message}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public WebhooksV1Message(Consumer<WebhooksV1Message> spec) {
-        spec.accept(this);
-    }
 
     /**
      * Uniquely identifies this outgoing webhook message; can be used for idempotency when processing the messages.
@@ -64,6 +61,31 @@ public class WebhooksV1Message {
     @JsonProperty("data")
     protected WebhooksV1MessageData data;
 
+    /**
+     * Constructs a validated instance of {@link WebhooksV1Message}.
+     *
+     * @param spec the specification to process
+     */
+    public WebhooksV1Message(Consumer<WebhooksV1Message> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link WebhooksV1Message}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1Message(Consumer)} instead.
+     * @param id Uniquely identifies this outgoing webhook message; can be used for idempotency when processing the messages.
+     * @param type The type of action being reported by this message.
+     * @param createdOn The date/time when the incident changed state.
+     * @param data var.name
+     */
+    @ApiStatus.Internal
+    public WebhooksV1Message(UUID id, TypeEnum type, OffsetDateTime createdOn, WebhooksV1MessageData data) {
+        this.id = id;
+        this.type = type;
+        this.createdOn = createdOn;
+        this.data = data;
+    }
 
     /**
      * The type of action being reported by this message.

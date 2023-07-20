@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Template
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "template_type",
     "name",
@@ -39,17 +46,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Template {
 
     /**
-     * Constructs a validated implementation of {@link Template}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Template(Consumer<Template> spec) {
-        spec.accept(this);
-    }
-
-    /**
-     * The type of template (`status_update` is the only supported template at this time)
+     * The type of template ({@code status_update} is the only supported template at this time)
      */
     @JsonProperty("template_type")
     protected TemplateTypeEnum templateType;
@@ -73,7 +70,7 @@ public class Template {
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
@@ -99,9 +96,48 @@ public class Template {
     @JsonProperty("updated_by")
     protected TemplateAllOfUpdatedBy updatedBy;
 
+    /**
+     * Constructs a validated instance of {@link Template}.
+     *
+     * @param spec the specification to process
+     */
+    public Template(Consumer<Template> spec) {
+        spec.accept(this);
+    }
 
     /**
-     * The type of template (`status_update` is the only supported template at this time)
+     * Constructs a validated instance of {@link Template}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Template(Consumer)} instead.
+     * @param templateType The type of template ({@code status_update} is the only supported template at this time)
+     * @param name The name of the template
+     * @param description Description of the template
+     * @param templatedFields var.name
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param type var.name
+     * @param createdBy var.name
+     * @param updatedBy var.name
+     */
+    @ApiStatus.Internal
+    public Template(TemplateTypeEnum templateType, String name, String description, EditableTemplateTemplatedFields templatedFields, String id, String summary, String self, String htmlUrl, TypeEnum type, UserReference createdBy, TemplateAllOfUpdatedBy updatedBy) {
+        this.templateType = templateType;
+        this.name = name;
+        this.description = description;
+        this.templatedFields = templatedFields;
+        this.id = id;
+        this.summary = summary;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.type = type;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+    }
+
+    /**
+     * The type of template ({@code status_update} is the only supported template at this time)
      */
     @AllArgsConstructor
     public enum TemplateTypeEnum {

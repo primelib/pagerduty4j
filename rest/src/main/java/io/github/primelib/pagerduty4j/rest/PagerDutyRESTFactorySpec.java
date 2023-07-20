@@ -54,6 +54,15 @@ public final class PagerDutyRESTFactorySpec<T> {
     private List<AuthMethod> auth = new ArrayList<>(5);
 
     /**
+     * The proxy server to use, if applicable
+     * <p>
+     * Defaults to {@code null}.
+     * Set to {@code PagerDutyRESTProxySpec.detect()} to detect the proxy based on the os environment automatically.
+     */
+    @Nullable
+    private PagerDutyRESTProxySpec proxy = null;
+
+    /**
      * MeterRegistry to use for metrics
      */
     @NotNull
@@ -94,6 +103,12 @@ public final class PagerDutyRESTFactorySpec<T> {
         Objects.requireNonNull(logLevel, "logLevel must not be null");
     }
 
+    public PagerDutyRESTProxySpec httpProxy(Consumer<PagerDutyRESTProxySpec> proxySpec) {
+        PagerDutyRESTProxySpec proxy = new PagerDutyRESTProxySpec(proxySpec);
+        proxy(proxy);
+        return proxy;
+    }
+
     public ApiKeyAuthSpec apiKeyAuth(Consumer<ApiKeyAuthSpec> spec) {
         ApiKeyAuthSpec method = new ApiKeyAuthSpec(spec);
         auth.add(method);
@@ -104,6 +119,7 @@ public final class PagerDutyRESTFactorySpec<T> {
         backendName(spec.backendName());
         baseUrl(spec.baseUrl());
         auth(spec.auth());
+        proxy(spec.proxy());
         meterRegistry(spec.meterRegistry());
     }
 }

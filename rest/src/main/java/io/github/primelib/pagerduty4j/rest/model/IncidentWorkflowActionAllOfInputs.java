@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * IncidentWorkflowActionAllOfInputs
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "name",
     "description",
@@ -35,16 +42,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("IncidentWorkflowAction_allOf_inputs")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class IncidentWorkflowActionAllOfInputs {
-
-    /**
-     * Constructs a validated implementation of {@link IncidentWorkflowActionAllOfInputs}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public IncidentWorkflowActionAllOfInputs(Consumer<IncidentWorkflowActionAllOfInputs> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The name of the Input
@@ -94,6 +91,41 @@ public class IncidentWorkflowActionAllOfInputs {
     @JsonProperty("connection_type_id")
     protected String connectionTypeId;
 
+    /**
+     * Constructs a validated instance of {@link IncidentWorkflowActionAllOfInputs}.
+     *
+     * @param spec the specification to process
+     */
+    public IncidentWorkflowActionAllOfInputs(Consumer<IncidentWorkflowActionAllOfInputs> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link IncidentWorkflowActionAllOfInputs}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionAllOfInputs(Consumer)} instead.
+     * @param name The name of the Input
+     * @param description Describes what the purpose of the Input
+     * @param type The data type of this Input
+     * @param defaultValue Serialized form of the default value that the input will take
+     * @param isRequired Whether a value must be provided for this input
+     * @param isHidden If true then this input will not be shown to users when configuring this action
+     * @param advanced var.name
+     * @param metadata var.name
+     * @param connectionTypeId The configured value of the Input
+     */
+    @ApiStatus.Internal
+    public IncidentWorkflowActionAllOfInputs(String name, String description, TypeEnum type, String defaultValue, Boolean isRequired, Boolean isHidden, Boolean advanced, String metadata, String connectionTypeId) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.defaultValue = defaultValue;
+        this.isRequired = isRequired;
+        this.isHidden = isHidden;
+        this.advanced = advanced;
+        this.metadata = metadata;
+        this.connectionTypeId = connectionTypeId;
+    }
 
     /**
      * The data type of this Input

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * CustomFieldsEditableFieldOptionDataOneOf
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "data_type",
     "value"
@@ -30,17 +37,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CustomFieldsEditableFieldOptionDataOneOf {
 
     /**
-     * Constructs a validated implementation of {@link CustomFieldsEditableFieldOptionDataOneOf}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public CustomFieldsEditableFieldOptionDataOneOf(Consumer<CustomFieldsEditableFieldOptionDataOneOf> spec) {
-        spec.accept(this);
-    }
-
-    /**
-     * The kind of data represented by this option. Must match the Field's `data_type`.
+     * The kind of data represented by this option. Must match the Field's {@code data_type}.
      */
     @JsonProperty("data_type")
     protected DataTypeEnum dataType;
@@ -48,9 +45,30 @@ public class CustomFieldsEditableFieldOptionDataOneOf {
     @JsonProperty("value")
     protected String value;
 
+    /**
+     * Constructs a validated instance of {@link CustomFieldsEditableFieldOptionDataOneOf}.
+     *
+     * @param spec the specification to process
+     */
+    public CustomFieldsEditableFieldOptionDataOneOf(Consumer<CustomFieldsEditableFieldOptionDataOneOf> spec) {
+        spec.accept(this);
+    }
 
     /**
-     * The kind of data represented by this option. Must match the Field's `data_type`.
+     * Constructs a validated instance of {@link CustomFieldsEditableFieldOptionDataOneOf}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldOptionDataOneOf(Consumer)} instead.
+     * @param dataType The kind of data represented by this option. Must match the Field's {@code data_type}.
+     * @param value var.name
+     */
+    @ApiStatus.Internal
+    public CustomFieldsEditableFieldOptionDataOneOf(DataTypeEnum dataType, String value) {
+        this.dataType = dataType;
+        this.value = value;
+    }
+
+    /**
+     * The kind of data represented by this option. Must match the Field's {@code data_type}.
      */
     @AllArgsConstructor
     public enum DataTypeEnum {

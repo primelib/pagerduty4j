@@ -7,8 +7,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.model.CreateIncidentNoteRequest;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -20,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Create a note on an incident
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateIncidentNoteOperationSpec {
     /**
@@ -49,13 +58,31 @@ public class CreateIncidentNoteOperationSpec {
     private CreateIncidentNoteRequest createIncidentNoteRequest;
 
     /**
-     * Constructs a validated implementation of {@link CreateIncidentNoteOperationSpec}.
+     * Constructs a validated instance of {@link CreateIncidentNoteOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public CreateIncidentNoteOperationSpec(Consumer<CreateIncidentNoteOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link CreateIncidentNoteOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param from                 The email address of a valid user associated with the account making the request.
+     * @param createIncidentNoteRequest 
+     */
+    @ApiStatus.Internal
+    public CreateIncidentNoteOperationSpec(String id, String from, CreateIncidentNoteRequest createIncidentNoteRequest) {
+        this.id = id;
+        this.from = from;
+        this.createIncidentNoteRequest = createIncidentNoteRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -69,5 +96,4 @@ public class CreateIncidentNoteOperationSpec {
         Objects.requireNonNull(id, "id is a required parameter!");
         Objects.requireNonNull(from, "from is a required parameter!");
     }
-
 }

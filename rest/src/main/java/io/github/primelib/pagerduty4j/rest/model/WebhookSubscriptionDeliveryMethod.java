@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * WebhookSubscriptionDeliveryMethod
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "secret",
@@ -34,16 +41,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class WebhookSubscriptionDeliveryMethod {
 
-    /**
-     * Constructs a validated implementation of {@link WebhookSubscriptionDeliveryMethod}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public WebhookSubscriptionDeliveryMethod(Consumer<WebhookSubscriptionDeliveryMethod> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
@@ -54,7 +51,7 @@ public class WebhookSubscriptionDeliveryMethod {
     protected String secret;
 
     /**
-     * Whether or not this webhook subscription is temporarily disabled. Becomes `true` if the delivery method URL is repeatedly rejected by the server.
+     * Whether or not this webhook subscription is temporarily disabled. Becomes {@code true} if the delivery method URL is repeatedly rejected by the server.
      */
     @JsonProperty("temporarily_disabled")
     protected Boolean temporarilyDisabled;
@@ -63,7 +60,7 @@ public class WebhookSubscriptionDeliveryMethod {
      * Indicates the type of the delivery method.
      */
     @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.HTTP_DELIVERY_METHOD;
+    protected TypeEnum type;
 
     /**
      * The destination URL for webhook delivery.
@@ -75,8 +72,37 @@ public class WebhookSubscriptionDeliveryMethod {
      * Optional headers to be set on this webhook subscription when sent. The header values are redacted in GET requests, but are not redacted on the webhook when delivered to the webhook's endpoint.
      */
     @JsonProperty("custom_headers")
-    protected List customHeaders = null;
+    protected List customHeaders;
 
+    /**
+     * Constructs a validated instance of {@link WebhookSubscriptionDeliveryMethod}.
+     *
+     * @param spec the specification to process
+     */
+    public WebhookSubscriptionDeliveryMethod(Consumer<WebhookSubscriptionDeliveryMethod> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link WebhookSubscriptionDeliveryMethod}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhookSubscriptionDeliveryMethod(Consumer)} instead.
+     * @param id var.name
+     * @param secret The secret used to sign webhook payloads. Only provided on the initial create response.
+     * @param temporarilyDisabled Whether or not this webhook subscription is temporarily disabled. Becomes {@code true} if the delivery method URL is repeatedly rejected by the server.
+     * @param type Indicates the type of the delivery method.
+     * @param url The destination URL for webhook delivery.
+     * @param customHeaders Optional headers to be set on this webhook subscription when sent. The header values are redacted in GET requests, but are not redacted on the webhook when delivered to the webhook's endpoint.
+     */
+    @ApiStatus.Internal
+    public WebhookSubscriptionDeliveryMethod(String id, String secret, Boolean temporarilyDisabled, TypeEnum type, String url, List customHeaders) {
+        this.id = id;
+        this.secret = secret;
+        this.temporarilyDisabled = temporarilyDisabled;
+        this.type = type;
+        this.url = url;
+        this.customHeaders = customHeaders;
+    }
 
     /**
      * Indicates the type of the delivery method.

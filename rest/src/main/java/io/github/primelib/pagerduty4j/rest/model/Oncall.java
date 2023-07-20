@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -18,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Oncall
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "escalation_policy",
     "user",
@@ -33,16 +39,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("Oncall")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Oncall {
-
-    /**
-     * Constructs a validated implementation of {@link Oncall}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Oncall(Consumer<Oncall> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("escalation_policy")
     protected EscalationPolicyReference escalationPolicy;
@@ -60,16 +56,45 @@ public class Oncall {
     protected Integer escalationLevel;
 
     /**
-     * The start of the on-call. If `null`, the on-call is a permanent user on-call.
+     * The start of the on-call. If {@code null}, the on-call is a permanent user on-call.
      */
     @JsonProperty("start")
     protected OffsetDateTime start;
 
     /**
-     * The end of the on-call. If `null`, the user does not go off-call.
+     * The end of the on-call. If {@code null}, the user does not go off-call.
      */
     @JsonProperty("end")
     protected OffsetDateTime end;
 
+    /**
+     * Constructs a validated instance of {@link Oncall}.
+     *
+     * @param spec the specification to process
+     */
+    public Oncall(Consumer<Oncall> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link Oncall}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Oncall(Consumer)} instead.
+     * @param escalationPolicy var.name
+     * @param user var.name
+     * @param schedule var.name
+     * @param escalationLevel The escalation level for the on-call.
+     * @param start The start of the on-call. If {@code null}, the on-call is a permanent user on-call.
+     * @param end The end of the on-call. If {@code null}, the user does not go off-call.
+     */
+    @ApiStatus.Internal
+    public Oncall(EscalationPolicyReference escalationPolicy, UserReference user, ScheduleReference schedule, Integer escalationLevel, OffsetDateTime start, OffsetDateTime end) {
+        this.escalationPolicy = escalationPolicy;
+        this.user = user;
+        this.schedule = schedule;
+        this.escalationLevel = escalationLevel;
+        this.start = start;
+        this.end = end;
+    }
 
 }

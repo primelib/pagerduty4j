@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * EmailParserValueExtractorsInner
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type",
     "part",
@@ -33,16 +40,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EmailParserValueExtractorsInner {
 
-    /**
-     * Constructs a validated implementation of {@link EmailParserValueExtractorsInner}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public EmailParserValueExtractorsInner(Consumer<EmailParserValueExtractorsInner> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("type")
     protected TypeEnum type;
 
@@ -50,7 +47,7 @@ public class EmailParserValueExtractorsInner {
     protected PartEnum part;
 
     /**
-     * The field name to set in the Incident object. Exactly one must use the `value_name` of `incident_key`
+     * The field name to set in the Incident object. Exactly one must use the {@code value_name} of {@code incident_key}
      */
     @JsonProperty("value_name")
     protected String valueName;
@@ -64,6 +61,35 @@ public class EmailParserValueExtractorsInner {
     @JsonProperty("ends_with")
     protected String endsWith;
 
+    /**
+     * Constructs a validated instance of {@link EmailParserValueExtractorsInner}.
+     *
+     * @param spec the specification to process
+     */
+    public EmailParserValueExtractorsInner(Consumer<EmailParserValueExtractorsInner> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link EmailParserValueExtractorsInner}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EmailParserValueExtractorsInner(Consumer)} instead.
+     * @param type var.name
+     * @param part var.name
+     * @param valueName The field name to set in the Incident object. Exactly one must use the {@code value_name} of {@code incident_key}
+     * @param regex var.name
+     * @param startsAfter var.name
+     * @param endsWith var.name
+     */
+    @ApiStatus.Internal
+    public EmailParserValueExtractorsInner(TypeEnum type, PartEnum part, String valueName, String regex, String startsAfter, String endsWith) {
+        this.type = type;
+        this.part = part;
+        this.valueName = valueName;
+        this.regex = regex;
+        this.startsAfter = startsAfter;
+        this.endsWith = endsWith;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

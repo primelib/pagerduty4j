@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * CreateRulesetRequestRuleset
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "self",
@@ -38,16 +45,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("createRuleset_request_ruleset")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CreateRulesetRequestRuleset {
-
-    /**
-     * Constructs a validated implementation of {@link CreateRulesetRequestRuleset}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public CreateRulesetRequestRuleset(Consumer<CreateRulesetRequestRuleset> spec) {
-        spec.accept(this);
-    }
 
     /**
      * ID of the Ruleset.
@@ -97,6 +94,43 @@ public class CreateRulesetRequestRuleset {
     @JsonProperty("team")
     protected RulesetTeam team;
 
+    /**
+     * Constructs a validated instance of {@link CreateRulesetRequestRuleset}.
+     *
+     * @param spec the specification to process
+     */
+    public CreateRulesetRequestRuleset(Consumer<CreateRulesetRequestRuleset> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link CreateRulesetRequestRuleset}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateRulesetRequestRuleset(Consumer)} instead.
+     * @param id ID of the Ruleset.
+     * @param self the API show URL at which the object is accessible
+     * @param type var.name
+     * @param name Name of the Ruleset.
+     * @param routingKeys Routing keys routed to this Ruleset.
+     * @param createdAt The date the Ruleset was created at.
+     * @param creator var.name
+     * @param updatedAt The date the Ruleset was last updated.
+     * @param updater var.name
+     * @param team var.name
+     */
+    @ApiStatus.Internal
+    public CreateRulesetRequestRuleset(String id, String self, TypeEnum type, String name, List<String> routingKeys, OffsetDateTime createdAt, RulesetCreator creator, OffsetDateTime updatedAt, RulesetUpdater updater, RulesetTeam team) {
+        this.id = id;
+        this.self = self;
+        this.type = type;
+        this.name = name;
+        this.routingKeys = routingKeys;
+        this.createdAt = createdAt;
+        this.creator = creator;
+        this.updatedAt = updatedAt;
+        this.updater = updater;
+        this.team = team;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

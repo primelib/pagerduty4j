@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * CustomFieldsEditableFieldOption
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "type",
@@ -32,16 +39,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("CustomFieldsEditableFieldOption")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class CustomFieldsEditableFieldOption {
-
-    /**
-     * Constructs a validated implementation of {@link CustomFieldsEditableFieldOption}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public CustomFieldsEditableFieldOption(Consumer<CustomFieldsEditableFieldOption> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The ID of the resource.
@@ -67,6 +64,33 @@ public class CustomFieldsEditableFieldOption {
     @JsonProperty("data")
     protected CustomFieldsEditableFieldOptionData data;
 
+    /**
+     * Constructs a validated instance of {@link CustomFieldsEditableFieldOption}.
+     *
+     * @param spec the specification to process
+     */
+    public CustomFieldsEditableFieldOption(Consumer<CustomFieldsEditableFieldOption> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link CustomFieldsEditableFieldOption}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldOption(Consumer)} instead.
+     * @param id The ID of the resource.
+     * @param type var.name
+     * @param createdAt The date/time the object was created at.
+     * @param updatedAt The date/time the object was last updated.
+     * @param data var.name
+     */
+    @ApiStatus.Internal
+    public CustomFieldsEditableFieldOption(String id, TypeEnum type, OffsetDateTime createdAt, OffsetDateTime updatedAt, CustomFieldsEditableFieldOptionData data) {
+        this.id = id;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.data = data;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

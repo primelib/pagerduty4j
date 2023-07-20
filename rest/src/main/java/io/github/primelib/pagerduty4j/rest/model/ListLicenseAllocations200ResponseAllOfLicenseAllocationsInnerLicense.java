@@ -3,13 +3,16 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -19,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "description",
@@ -37,16 +43,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("listLicenseAllocations_200_response_allOf_license_allocations_inner_license")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense {
-
-    /**
-     * Constructs a validated implementation of {@link ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense(Consumer<ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense> spec) {
-        spec.accept(this);
-    }
 
     /**
      * Uniquely identifies the resource
@@ -70,7 +66,7 @@ public class ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicens
      * The roles a User with this License can have
      */
     @JsonProperty("valid_roles")
-    protected List<String> validRoles = new ArrayList<>();
+    protected List<String> validRoles;
 
     /**
      * Indicates whether this License is assignable to full or stakeholder Users
@@ -102,6 +98,41 @@ public class ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicens
     @JsonProperty("summary")
     protected String summary;
 
+    /**
+     * Constructs a validated instance of {@link ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense}.
+     *
+     * @param spec the specification to process
+     */
+    public ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense(Consumer<ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense(Consumer)} instead.
+     * @param id Uniquely identifies the resource
+     * @param description Description of the License. May include the names of add-ons associated with the License, if there are any. 
+     * @param name Name of the License. 
+     * @param validRoles The roles a User with this License can have
+     * @param roleGroup Indicates whether this License is assignable to full or stakeholder Users
+     * @param type Type of object
+     * @param self API URL to access the License
+     * @param htmlUrl HTML URL to access the License
+     * @param summary Summary of the License
+     */
+    @ApiStatus.Internal
+    public ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense(String id, String description, String name, List<String> validRoles, RoleGroupEnum roleGroup, String type, String self, String htmlUrl, String summary) {
+        this.id = id;
+        this.description = description;
+        this.name = name;
+        this.validRoles = validRoles;
+        this.roleGroup = roleGroup;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.summary = summary;
+    }
 
     /**
      * Indicates whether this License is assignable to full or stakeholder Users

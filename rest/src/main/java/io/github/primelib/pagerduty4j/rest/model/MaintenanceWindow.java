@@ -3,14 +3,17 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -20,10 +23,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * MaintenanceWindow
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -42,21 +48,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class MaintenanceWindow {
 
-    /**
-     * Constructs a validated implementation of {@link MaintenanceWindow}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public MaintenanceWindow(Consumer<MaintenanceWindow> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
@@ -65,7 +61,7 @@ public class MaintenanceWindow {
      * The type of object being created.
      */
     @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.MAINTENANCE_WINDOW;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
@@ -92,7 +88,7 @@ public class MaintenanceWindow {
     protected OffsetDateTime startTime;
 
     /**
-     * This maintenance window's end time. This is when the services will start creating incidents again. This date must be in the future and after the `start_time`.
+     * This maintenance window's end time. This is when the services will start creating incidents again. This date must be in the future and after the {@code start_time}.
      */
     @JsonProperty("end_time")
     protected OffsetDateTime endTime;
@@ -107,11 +103,52 @@ public class MaintenanceWindow {
     protected UserReference createdBy;
 
     @JsonProperty("services")
-    protected List<ServiceReference> services = new ArrayList<>();
+    protected List<ServiceReference> services;
 
     @JsonProperty("teams")
     protected List<TeamReference> teams;
 
+    /**
+     * Constructs a validated instance of {@link MaintenanceWindow}.
+     *
+     * @param spec the specification to process
+     */
+    public MaintenanceWindow(Consumer<MaintenanceWindow> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link MaintenanceWindow}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #MaintenanceWindow(Consumer)} instead.
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param type The type of object being created.
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param sequenceNumber The order in which the maintenance window was created.
+     * @param startTime This maintenance window's start time. This is when the services will stop creating incidents. If this date is in the past, it will be updated to be the current time.
+     * @param endTime This maintenance window's end time. This is when the services will start creating incidents again. This date must be in the future and after the {@code start_time}.
+     * @param description A description for this maintenance window.
+     * @param createdBy var.name
+     * @param services var.name
+     * @param teams var.name
+     */
+    @ApiStatus.Internal
+    public MaintenanceWindow(String id, String summary, TypeEnum type, String self, String htmlUrl, Integer sequenceNumber, OffsetDateTime startTime, OffsetDateTime endTime, String description, UserReference createdBy, List<ServiceReference> services, List<TeamReference> teams) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.sequenceNumber = sequenceNumber;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.description = description;
+        this.createdBy = createdBy;
+        this.services = services;
+        this.teams = teams;
+    }
 
     /**
      * The type of object being created.

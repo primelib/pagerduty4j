@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * AnalyticsRawIncidentResponses
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "responder_name",
     "responder_id",
@@ -33,16 +40,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("Analytics_Raw_Incident_Responses")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class AnalyticsRawIncidentResponses {
-
-    /**
-     * Constructs a validated implementation of {@link AnalyticsRawIncidentResponses}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public AnalyticsRawIncidentResponses(Consumer<AnalyticsRawIncidentResponses> spec) {
-        spec.accept(this);
-    }
 
     /**
      * Name of the user associated with the Incident Response.
@@ -63,7 +60,7 @@ public class AnalyticsRawIncidentResponses {
     protected ResponseStatusEnum responseStatus;
 
     /**
-     * Type of responder, where `assigned` means the user was added to the Incident via Assignment at Incident creation, `reassigned` means the user was added to the Incident via Reassignment, `escalated` means the user was added via Escalation, and `added_responder` means the user was added via Responder Reqeuest.
+     * Type of responder, where {@code assigned} means the user was added to the Incident via Assignment at Incident creation, {@code reassigned} means the user was added to the Incident via Reassignment, {@code escalated} means the user was added via Escalation, and {@code added_responder} means the user was added via Responder Reqeuest.
      */
     @JsonProperty("responder_type")
     protected ResponderTypeEnum responderType;
@@ -81,11 +78,42 @@ public class AnalyticsRawIncidentResponses {
     protected String respondedAt;
 
     /**
-     * Measures the time it took for the user to respond to the Incident request. In other words, `responded_at - requested_at`.
+     * Measures the time it took for the user to respond to the Incident request. In other words, {@code responded_at - requested_at}.
      */
     @JsonProperty("time_to_respond_seconds")
     protected Integer timeToRespondSeconds;
 
+    /**
+     * Constructs a validated instance of {@link AnalyticsRawIncidentResponses}.
+     *
+     * @param spec the specification to process
+     */
+    public AnalyticsRawIncidentResponses(Consumer<AnalyticsRawIncidentResponses> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link AnalyticsRawIncidentResponses}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsRawIncidentResponses(Consumer)} instead.
+     * @param responderName Name of the user associated with the Incident Response.
+     * @param responderId ID of the user associated with the Incident Response.
+     * @param responseStatus Status of the user's interaction with the Incident notification.
+     * @param responderType Type of responder, where {@code assigned} means the user was added to the Incident via Assignment at Incident creation, {@code reassigned} means the user was added to the Incident via Reassignment, {@code escalated} means the user was added via Escalation, and {@code added_responder} means the user was added via Responder Reqeuest.
+     * @param requestedAt Timestamp of when the user was requested.
+     * @param respondedAt Timestamp of when the user responded to the request.
+     * @param timeToRespondSeconds Measures the time it took for the user to respond to the Incident request. In other words, {@code responded_at - requested_at}.
+     */
+    @ApiStatus.Internal
+    public AnalyticsRawIncidentResponses(String responderName, String responderId, ResponseStatusEnum responseStatus, ResponderTypeEnum responderType, String requestedAt, String respondedAt, Integer timeToRespondSeconds) {
+        this.responderName = responderName;
+        this.responderId = responderId;
+        this.responseStatus = responseStatus;
+        this.responderType = responderType;
+        this.requestedAt = requestedAt;
+        this.respondedAt = respondedAt;
+        this.timeToRespondSeconds = timeToRespondSeconds;
+    }
 
     /**
      * Status of the user's interaction with the Incident notification.
@@ -100,7 +128,7 @@ public class AnalyticsRawIncidentResponses {
     }
 
     /**
-     * Type of responder, where `assigned` means the user was added to the Incident via Assignment at Incident creation, `reassigned` means the user was added to the Incident via Reassignment, `escalated` means the user was added via Escalation, and `added_responder` means the user was added via Responder Reqeuest.
+     * Type of responder, where {@code assigned} means the user was added to the Incident via Assignment at Incident creation, {@code reassigned} means the user was added to the Incident via Reassignment, {@code escalated} means the user was added via Escalation, and {@code added_responder} means the user was added via Responder Reqeuest.
      */
     @AllArgsConstructor
     public enum ResponderTypeEnum {

@@ -53,6 +53,15 @@ public final class PagerDutyEventsV2FactorySpec<T> {
     private List<AuthMethod> auth = new ArrayList<>(5);
 
     /**
+     * The proxy server to use, if applicable
+     * <p>
+     * Defaults to {@code null}.
+     * Set to {@code PagerDutyEventsV2ProxySpec.detect()} to detect the proxy based on the os environment automatically.
+     */
+    @Nullable
+    private PagerDutyEventsV2ProxySpec proxy = null;
+
+    /**
      * MeterRegistry to use for metrics
      */
     @NotNull
@@ -93,10 +102,17 @@ public final class PagerDutyEventsV2FactorySpec<T> {
         Objects.requireNonNull(logLevel, "logLevel must not be null");
     }
 
+    public PagerDutyEventsV2ProxySpec httpProxy(Consumer<PagerDutyEventsV2ProxySpec> proxySpec) {
+        PagerDutyEventsV2ProxySpec proxy = new PagerDutyEventsV2ProxySpec(proxySpec);
+        proxy(proxy);
+        return proxy;
+    }
+
     public void applySpec(PagerDutyEventsV2FactorySpec<?> spec) {
         backendName(spec.backendName());
         baseUrl(spec.baseUrl());
         auth(spec.auth());
+        proxy(spec.proxy());
         meterRegistry(spec.meterRegistry());
     }
 }

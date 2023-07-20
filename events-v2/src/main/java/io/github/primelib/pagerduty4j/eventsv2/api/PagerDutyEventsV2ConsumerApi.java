@@ -21,7 +21,10 @@ public class PagerDutyEventsV2ConsumerApi {
      * Send change events to the PagerDuty Events API
      * <p>
      * Change Events API enables you to send informational events about recent changes such as code deploys and system config changes from any system that can make an outbound HTTP connection. These events do not create incidents and do not send notifications; they are shown in context with incidents on the same PagerDuty service. 
-     * @param spec                 a consumer that takes a spec to prepare the request for execution
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>createChangeEventRequest: </li>
+     * </ul>
      */
     public CreateChangeEvent202Response createChangeEvent(Consumer<CreateChangeEventOperationSpec> spec) {
         CreateChangeEventOperationSpec r = new CreateChangeEventOperationSpec(spec);
@@ -32,7 +35,10 @@ public class PagerDutyEventsV2ConsumerApi {
      * Send an event to PagerDuty
      * <p>
      * Your monitoring tools should send PagerDuty a trigger event to report a new problem, or update an ongoing problem, depending on the event type. 
-     * @param spec                 a consumer that takes a spec to prepare the request for execution
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>createV2EventRequest: </li>
+     * </ul>
      */
     public CreateChangeEvent202Response createV2Event(Consumer<CreateV2EventOperationSpec> spec) {
         CreateV2EventOperationSpec r = new CreateV2EventOperationSpec(spec);

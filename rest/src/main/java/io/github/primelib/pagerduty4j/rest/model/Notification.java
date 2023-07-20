@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Notification
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "type",
@@ -34,16 +41,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("Notification")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Notification {
-
-    /**
-     * Constructs a validated implementation of {@link Notification}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Notification(Consumer<Notification> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("id")
     protected String id;
@@ -61,7 +58,7 @@ public class Notification {
     protected OffsetDateTime startedAt;
 
     /**
-     * The address where the notification was sent. This will be null for notification type `push_notification`.
+     * The address where the notification was sent. This will be null for notification type {@code push_notification}.
      */
     @JsonProperty("address")
     protected String address;
@@ -78,6 +75,37 @@ public class Notification {
     @JsonProperty("status")
     protected String status;
 
+    /**
+     * Constructs a validated instance of {@link Notification}.
+     *
+     * @param spec the specification to process
+     */
+    public Notification(Consumer<Notification> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link Notification}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Notification(Consumer)} instead.
+     * @param id var.name
+     * @param type The type of notification.
+     * @param startedAt The time at which the notification was sent
+     * @param address The address where the notification was sent. This will be null for notification type {@code push_notification}.
+     * @param user var.name
+     * @param conferenceAddress The address of the conference bridge
+     * @param status var.name
+     */
+    @ApiStatus.Internal
+    public Notification(String id, TypeEnum type, OffsetDateTime startedAt, String address, UserReference user, String conferenceAddress, String status) {
+        this.id = id;
+        this.type = type;
+        this.startedAt = startedAt;
+        this.address = address;
+        this.user = user;
+        this.conferenceAddress = conferenceAddress;
+        this.status = status;
+    }
 
     /**
      * The type of notification.

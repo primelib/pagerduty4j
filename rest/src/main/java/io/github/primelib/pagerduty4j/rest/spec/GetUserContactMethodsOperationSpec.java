@@ -6,8 +6,13 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -19,9 +24,13 @@ import java.util.function.Consumer;
  * <p>
  * List a user's contact methods
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetUserContactMethodsOperationSpec {
     /**
@@ -37,13 +46,27 @@ public class GetUserContactMethodsOperationSpec {
     private String id;
 
     /**
-     * Constructs a validated implementation of {@link GetUserContactMethodsOperationSpec}.
+     * Constructs a validated instance of {@link GetUserContactMethodsOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public GetUserContactMethodsOperationSpec(Consumer<GetUserContactMethodsOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetUserContactMethodsOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     */
+    @ApiStatus.Internal
+    public GetUserContactMethodsOperationSpec(String id) {
+        this.id = id;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -56,5 +79,4 @@ public class GetUserContactMethodsOperationSpec {
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
     }
-
 }

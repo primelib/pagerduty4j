@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "severity",
     "event_action",
@@ -31,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("OrchestrationUnrouted_allOf_orchestration_path_catch_all_actions")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions {
-
-    /**
-     * Constructs a validated implementation of {@link OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions(Consumer<OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions> spec) {
-        spec.accept(this);
-    }
 
     /**
      * Set the severity of the resulting alert.
@@ -66,6 +63,31 @@ public class OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions {
     @JsonProperty("extractions")
     protected List<OrchestrationUnroutedAllOfOrchestrationPathCatchAllActionsExtractionsInner> extractions;
 
+    /**
+     * Constructs a validated instance of {@link OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions}.
+     *
+     * @param spec the specification to process
+     */
+    public OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions(Consumer<OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions(Consumer)} instead.
+     * @param severity Set the severity of the resulting alert.
+     * @param eventAction Set whether the resulting alert status is trigger or resolve.
+     * @param variables Populate variables from event payloads and use those variables in other event actions.
+     * @param extractions Dynamically extract values to set and modify new and existing PD-CEF fields.
+     */
+    @ApiStatus.Internal
+    public OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions(SeverityEnum severity, EventActionEnum eventAction, List<OrchestrationUnroutedAllOfOrchestrationPathCatchAllActionsVariablesInner> variables, List<OrchestrationUnroutedAllOfOrchestrationPathCatchAllActionsExtractionsInner> extractions) {
+        this.severity = severity;
+        this.eventAction = eventAction;
+        this.variables = variables;
+        this.extractions = extractions;
+    }
 
     /**
      * Set the severity of the resulting alert.

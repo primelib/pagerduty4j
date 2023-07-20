@@ -7,8 +7,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import java.time.OffsetDateTime;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -20,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Get Outlier Incident
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetOutlierIncidentOperationSpec {
     /**
@@ -50,13 +59,31 @@ public class GetOutlierIncidentOperationSpec {
     private String additionalDetails;
 
     /**
-     * Constructs a validated implementation of {@link GetOutlierIncidentOperationSpec}.
+     * Constructs a validated instance of {@link GetOutlierIncidentOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public GetOutlierIncidentOperationSpec(Consumer<GetOutlierIncidentOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetOutlierIncidentOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param since                The start of the date range over which you want to search.
+     * @param additionalDetails    Array of additional attributes to any of the returned incidents for related incidents.
+     */
+    @ApiStatus.Internal
+    public GetOutlierIncidentOperationSpec(String id, OffsetDateTime since, String additionalDetails) {
+        this.id = id;
+        this.since = since;
+        this.additionalDetails = additionalDetails;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -69,5 +96,4 @@ public class GetOutlierIncidentOperationSpec {
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
     }
-
 }

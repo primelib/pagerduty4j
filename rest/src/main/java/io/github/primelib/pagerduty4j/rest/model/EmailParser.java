@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.Set;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * EmailParser
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "action",
     "match_predicate",
@@ -31,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class EmailParser {
 
-    /**
-     * Constructs a validated implementation of {@link EmailParser}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public EmailParser(Consumer<EmailParser> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("action")
     protected ActionEnum action;
 
@@ -48,11 +45,34 @@ public class EmailParser {
     protected MatchPredicate matchPredicate;
 
     /**
-     * Additional values that will be pulled in to the Incident object. Exactly one value extractor must have a `value_name` of `incident_key`.
+     * Additional values that will be pulled in to the Incident object. Exactly one value extractor must have a {@code value_name} of {@code incident_key}.
      */
     @JsonProperty("value_extractors")
     protected Set<EmailParserValueExtractorsInner> valueExtractors;
 
+    /**
+     * Constructs a validated instance of {@link EmailParser}.
+     *
+     * @param spec the specification to process
+     */
+    public EmailParser(Consumer<EmailParser> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link EmailParser}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EmailParser(Consumer)} instead.
+     * @param action var.name
+     * @param matchPredicate var.name
+     * @param valueExtractors Additional values that will be pulled in to the Incident object. Exactly one value extractor must have a {@code value_name} of {@code incident_key}.
+     */
+    @ApiStatus.Internal
+    public EmailParser(ActionEnum action, MatchPredicate matchPredicate, Set<EmailParserValueExtractorsInner> valueExtractors) {
+        this.action = action;
+        this.matchPredicate = matchPredicate;
+        this.valueExtractors = valueExtractors;
+    }
 
     @AllArgsConstructor
     public enum ActionEnum {

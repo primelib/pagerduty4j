@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * NotificationSubscriberWithContext
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "subscriber_id",
     "subscriber_type",
@@ -31,16 +38,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("NotificationSubscriberWithContext")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class NotificationSubscriberWithContext {
-
-    /**
-     * Constructs a validated implementation of {@link NotificationSubscriberWithContext}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public NotificationSubscriberWithContext(Consumer<NotificationSubscriberWithContext> spec) {
-        spec.accept(this);
-    }
 
     /**
      * The ID of the entity being subscribed
@@ -63,6 +60,31 @@ public class NotificationSubscriberWithContext {
     @JsonProperty("subscribed_via")
     protected List<NotificationSubscriberWithContextSubscribedViaInner> subscribedVia;
 
+    /**
+     * Constructs a validated instance of {@link NotificationSubscriberWithContext}.
+     *
+     * @param spec the specification to process
+     */
+    public NotificationSubscriberWithContext(Consumer<NotificationSubscriberWithContext> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link NotificationSubscriberWithContext}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #NotificationSubscriberWithContext(Consumer)} instead.
+     * @param subscriberId The ID of the entity being subscribed
+     * @param subscriberType The type of the entity being subscribed
+     * @param hasIndirectSubscription If this subcriber has an indirect subscription to this incident via another object
+     * @param subscribedVia var.name
+     */
+    @ApiStatus.Internal
+    public NotificationSubscriberWithContext(String subscriberId, SubscriberTypeEnum subscriberType, Boolean hasIndirectSubscription, List<NotificationSubscriberWithContextSubscribedViaInner> subscribedVia) {
+        this.subscriberId = subscriberId;
+        this.subscriberType = subscriberType;
+        this.hasIndirectSubscription = hasIndirectSubscription;
+        this.subscribedVia = subscribedVia;
+    }
 
     /**
      * The type of the entity being subscribed

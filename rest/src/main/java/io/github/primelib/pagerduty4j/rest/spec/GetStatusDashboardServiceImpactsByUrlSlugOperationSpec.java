@@ -6,8 +6,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -18,11 +23,15 @@ import java.util.function.Consumer;
  * Specification for the GetStatusDashboardServiceImpactsByUrlSlug operation.
  * <p>
  * Get impacted Business Services for a
- * Status Dashboard by `url_slug`
+ * Status Dashboard by {@code url_slug}
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetStatusDashboardServiceImpactsByUrlSlugOperationSpec {
     /**
@@ -32,7 +41,7 @@ public class GetStatusDashboardServiceImpactsByUrlSlugOperationSpec {
     public static Boolean VALIDATION_ENABLED = true;
 
     /**
-     * The `url_slug` for a status dashboard
+     * The {@code url_slug} for a status dashboard
      */
     @NotNull 
     private String urlSlug;
@@ -44,13 +53,29 @@ public class GetStatusDashboardServiceImpactsByUrlSlugOperationSpec {
     private String additionalFields;
 
     /**
-     * Constructs a validated implementation of {@link GetStatusDashboardServiceImpactsByUrlSlugOperationSpec}.
+     * Constructs a validated instance of {@link GetStatusDashboardServiceImpactsByUrlSlugOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public GetStatusDashboardServiceImpactsByUrlSlugOperationSpec(Consumer<GetStatusDashboardServiceImpactsByUrlSlugOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link GetStatusDashboardServiceImpactsByUrlSlugOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param urlSlug              The {@code url_slug} for a status dashboard
+     * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count
+     */
+    @ApiStatus.Internal
+    public GetStatusDashboardServiceImpactsByUrlSlugOperationSpec(String urlSlug, String additionalFields) {
+        this.urlSlug = urlSlug;
+        this.additionalFields = additionalFields;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -63,5 +88,4 @@ public class GetStatusDashboardServiceImpactsByUrlSlugOperationSpec {
     public void validate() {
         Objects.requireNonNull(urlSlug, "urlSlug is a required parameter!");
     }
-
 }

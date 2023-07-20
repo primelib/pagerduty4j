@@ -3,10 +3,13 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.OffsetDateTime;
@@ -19,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * AutomationActionsRunner
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -45,27 +51,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class AutomationActionsRunner {
 
-    /**
-     * Constructs a validated implementation of {@link AutomationActionsRunner}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public AutomationActionsRunner(Consumer<AutomationActionsRunner> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
 
     /**
-     * A string that determines the schema of the object. This must be the standard name for the entity, suffixed by `_reference` if the object is a reference.
+     * A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
      */
     @JsonProperty("type")
     protected String type;
@@ -124,5 +120,54 @@ public class AutomationActionsRunner {
     @JsonProperty("metadata")
     protected Object metadata;
 
+    /**
+     * Constructs a validated instance of {@link AutomationActionsRunner}.
+     *
+     * @param spec the specification to process
+     */
+    public AutomationActionsRunner(Consumer<AutomationActionsRunner> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link AutomationActionsRunner}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsRunner(Consumer)} instead.
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param runnerType var.name
+     * @param name var.name
+     * @param description var.name
+     * @param lastSeen var.name
+     * @param status var.name
+     * @param creationTime var.name
+     * @param runbookBaseUri The base URI of the Runbook server to connect to. May only contain alphanumeric characters, periods, underscores and dashes. Specified as the subdomain portion of an RBA host, as in &amp;lt;runbook_base_uri&amp;gt;.runbook.pagerduty.cloud
+     * @param teams The list of teams associated with the Runner
+     * @param privileges var.name
+     * @param associatedActions var.name
+     * @param metadata Additional metadata
+     */
+    @ApiStatus.Internal
+    public AutomationActionsRunner(String id, String summary, String type, String self, String htmlUrl, AutomationActionsRunnerTypeEnum runnerType, String name, String description, OffsetDateTime lastSeen, AutomationActionsRunnerStatusEnum status, OffsetDateTime creationTime, String runbookBaseUri, List<TeamReference> teams, AutomationActionsUserPermissions privileges, AutomationActionsRunnerAllOfAssociatedActions associatedActions, Object metadata) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.runnerType = runnerType;
+        this.name = name;
+        this.description = description;
+        this.lastSeen = lastSeen;
+        this.status = status;
+        this.creationTime = creationTime;
+        this.runbookBaseUri = runbookBaseUri;
+        this.teams = teams;
+        this.privileges = privileges;
+        this.associatedActions = associatedActions;
+        this.metadata = metadata;
+    }
 
 }

@@ -7,8 +7,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.model.PostIncidentWorkflowRequest;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -20,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Update an Incident Workflow
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class PutIncidentWorkflowOperationSpec {
     /**
@@ -43,13 +52,29 @@ public class PutIncidentWorkflowOperationSpec {
     private PostIncidentWorkflowRequest postIncidentWorkflowRequest;
 
     /**
-     * Constructs a validated implementation of {@link PutIncidentWorkflowOperationSpec}.
+     * Constructs a validated instance of {@link PutIncidentWorkflowOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public PutIncidentWorkflowOperationSpec(Consumer<PutIncidentWorkflowOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link PutIncidentWorkflowOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param postIncidentWorkflowRequest 
+     */
+    @ApiStatus.Internal
+    public PutIncidentWorkflowOperationSpec(String id, PostIncidentWorkflowRequest postIncidentWorkflowRequest) {
+        this.id = id;
+        this.postIncidentWorkflowRequest = postIncidentWorkflowRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -62,5 +87,4 @@ public class PutIncidentWorkflowOperationSpec {
     public void validate() {
         Objects.requireNonNull(id, "id is a required parameter!");
     }
-
 }

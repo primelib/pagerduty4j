@@ -6,9 +6,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import io.github.primelib.pagerduty4j.rest.model.UpdateCustomFieldsFieldOptionRequest;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -20,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Update a Field Option
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UpdateCustomFieldsFieldOptionOperationSpec {
     /**
@@ -49,13 +58,31 @@ public class UpdateCustomFieldsFieldOptionOperationSpec {
     private UpdateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOptionRequest;
 
     /**
-     * Constructs a validated implementation of {@link UpdateCustomFieldsFieldOptionOperationSpec}.
+     * Constructs a validated instance of {@link UpdateCustomFieldsFieldOptionOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public UpdateCustomFieldsFieldOptionOperationSpec(Consumer<UpdateCustomFieldsFieldOptionOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link UpdateCustomFieldsFieldOptionOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param fieldId              The ID of the field.
+     * @param fieldOptionId        The ID of the field option.
+     * @param updateCustomFieldsFieldOptionRequest 
+     */
+    @ApiStatus.Internal
+    public UpdateCustomFieldsFieldOptionOperationSpec(String fieldId, String fieldOptionId, UpdateCustomFieldsFieldOptionRequest updateCustomFieldsFieldOptionRequest) {
+        this.fieldId = fieldId;
+        this.fieldOptionId = fieldOptionId;
+        this.updateCustomFieldsFieldOptionRequest = updateCustomFieldsFieldOptionRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -69,5 +96,4 @@ public class UpdateCustomFieldsFieldOptionOperationSpec {
         Objects.requireNonNull(fieldId, "fieldId is a required parameter!");
         Objects.requireNonNull(fieldOptionId, "fieldOptionId is a required parameter!");
     }
-
 }

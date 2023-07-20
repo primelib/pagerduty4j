@@ -5,8 +5,13 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -18,9 +23,13 @@ import java.util.function.Consumer;
  * <p>
  * List Impactors affecting Business Services
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetBusinessServiceTopLevelImpactorsOperationSpec {
     /**
@@ -36,7 +45,7 @@ public class GetBusinessServiceTopLevelImpactorsOperationSpec {
     private String ids;
 
     /**
-     * Constructs a validated implementation of {@link GetBusinessServiceTopLevelImpactorsOperationSpec}.
+     * Constructs a validated instance of {@link GetBusinessServiceTopLevelImpactorsOperationSpec}.
      *
      * @param spec the specification to process
      */
@@ -48,11 +57,24 @@ public class GetBusinessServiceTopLevelImpactorsOperationSpec {
     }
 
     /**
+     * Constructs a validated instance of {@link GetBusinessServiceTopLevelImpactorsOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param ids                  The IDs of the resources.
+     */
+    @ApiStatus.Internal
+    public GetBusinessServiceTopLevelImpactorsOperationSpec(String ids) {
+        this.ids = ids;
+
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
      * Validates the Spec, will throw a exception if required parameters are missing
      *
      * @throws NullPointerException
      */
     public void validate() {
     }
-
 }

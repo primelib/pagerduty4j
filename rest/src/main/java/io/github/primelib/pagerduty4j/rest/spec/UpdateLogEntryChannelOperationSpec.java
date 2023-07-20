@@ -6,9 +6,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
+import java.util.Set;
 import io.github.primelib.pagerduty4j.rest.model.UpdateLogEntryChannelRequest;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -20,9 +25,13 @@ import java.util.function.Consumer;
  * <p>
  * Update log entry channel information.
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class UpdateLogEntryChannelOperationSpec {
     /**
@@ -50,13 +59,31 @@ public class UpdateLogEntryChannelOperationSpec {
     private UpdateLogEntryChannelRequest updateLogEntryChannelRequest;
 
     /**
-     * Constructs a validated implementation of {@link UpdateLogEntryChannelOperationSpec}.
+     * Constructs a validated instance of {@link UpdateLogEntryChannelOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
     public UpdateLogEntryChannelOperationSpec(Consumer<UpdateLogEntryChannelOperationSpec> spec) {
         spec.accept(this);
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
+     * Constructs a validated instance of {@link UpdateLogEntryChannelOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param id                   The ID of the resource.
+     * @param from                 The email address of a valid user associated with the account making the request.
+     * @param updateLogEntryChannelRequest The log entry channel to be updated.
+     */
+    @ApiStatus.Internal
+    public UpdateLogEntryChannelOperationSpec(String id, String from, UpdateLogEntryChannelRequest updateLogEntryChannelRequest) {
+        this.id = id;
+        this.from = from;
+        this.updateLogEntryChannelRequest = updateLogEntryChannelRequest;
+
         if (VALIDATION_ENABLED)
             validate();
     }
@@ -70,5 +97,4 @@ public class UpdateLogEntryChannelOperationSpec {
         Objects.requireNonNull(id, "id is a required parameter!");
         Objects.requireNonNull(from, "from is a required parameter!");
     }
-
 }

@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,10 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * TagsToAdd
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "type",
     "label",
@@ -29,16 +36,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonTypeName("Tags_to_add")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class TagsToAdd {
-
-    /**
-     * Constructs a validated implementation of {@link TagsToAdd}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public TagsToAdd(Consumer<TagsToAdd> spec) {
-        spec.accept(this);
-    }
 
     @JsonProperty("type")
     protected TypeEnum type;
@@ -55,6 +52,29 @@ public class TagsToAdd {
     @JsonProperty("id")
     protected String id;
 
+    /**
+     * Constructs a validated instance of {@link TagsToAdd}.
+     *
+     * @param spec the specification to process
+     */
+    public TagsToAdd(Consumer<TagsToAdd> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link TagsToAdd}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #TagsToAdd(Consumer)} instead.
+     * @param type var.name
+     * @param label The label of the tag. Should be used when type is "tag".
+     * @param id The id of the tag. Should be used when type is "tag_reference".
+     */
+    @ApiStatus.Internal
+    public TagsToAdd(TypeEnum type, String label, String id) {
+        this.type = type;
+        this.label = label;
+        this.id = id;
+    }
 
     @AllArgsConstructor
     public enum TypeEnum {

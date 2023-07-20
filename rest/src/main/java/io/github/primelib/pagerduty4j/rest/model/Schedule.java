@@ -3,10 +3,14 @@ package io.github.primelib.pagerduty4j.rest.model;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -18,10 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Schedule
  *
  */
-@Data
-@AllArgsConstructor
-@Accessors(fluent = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @JsonPropertyOrder({
     "id",
     "summary",
@@ -42,21 +49,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class Schedule {
 
-    /**
-     * Constructs a validated implementation of {@link Schedule}.
-     *
-     * @param spec the specification to process
-     */
-    @ApiStatus.Internal
-    public Schedule(Consumer<Schedule> spec) {
-        spec.accept(this);
-    }
-
     @JsonProperty("id")
     protected String id;
 
     /**
-     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier.
+     * A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      */
     @JsonProperty("summary")
     protected String summary;
@@ -65,7 +62,7 @@ public class Schedule {
      * The type of object being created.
      */
     @JsonProperty("type")
-    protected TypeEnum type = TypeEnum.SCHEDULE;
+    protected TypeEnum type;
 
     /**
      * the API show URL at which the object is accessible
@@ -127,6 +124,51 @@ public class Schedule {
     @JsonProperty("teams")
     protected List<TeamReference> teams;
 
+    /**
+     * Constructs a validated instance of {@link Schedule}.
+     *
+     * @param spec the specification to process
+     */
+    public Schedule(Consumer<Schedule> spec) {
+        spec.accept(this);
+    }
+
+    /**
+     * Constructs a validated instance of {@link Schedule}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Schedule(Consumer)} instead.
+     * @param id var.name
+     * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
+     * @param type The type of object being created.
+     * @param self the API show URL at which the object is accessible
+     * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param scheduleLayers A list of schedule layers.
+     * @param timeZone The time zone of the schedule.
+     * @param name The name of the schedule
+     * @param description The description of the schedule
+     * @param finalSchedule var.name
+     * @param overridesSubschedule var.name
+     * @param escalationPolicies An array of all of the escalation policies that uses this schedule.
+     * @param users An array of all of the users on the schedule.
+     * @param teams An array of all of the teams on the schedule.
+     */
+    @ApiStatus.Internal
+    public Schedule(String id, String summary, TypeEnum type, String self, String htmlUrl, List<ScheduleLayer> scheduleLayers, String timeZone, String name, String description, SubSchedule finalSchedule, SubSchedule overridesSubschedule, List<EscalationPolicyReference> escalationPolicies, List<UserReference> users, List<TeamReference> teams) {
+        this.id = id;
+        this.summary = summary;
+        this.type = type;
+        this.self = self;
+        this.htmlUrl = htmlUrl;
+        this.scheduleLayers = scheduleLayers;
+        this.timeZone = timeZone;
+        this.name = name;
+        this.description = description;
+        this.finalSchedule = finalSchedule;
+        this.overridesSubschedule = overridesSubschedule;
+        this.escalationPolicies = escalationPolicies;
+        this.users = users;
+        this.teams = teams;
+    }
 
     /**
      * The type of object being created.

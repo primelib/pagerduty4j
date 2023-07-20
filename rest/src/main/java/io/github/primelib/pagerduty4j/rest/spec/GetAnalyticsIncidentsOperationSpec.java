@@ -5,8 +5,13 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsIncidentsRequest;
+import java.util.Set;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import java.util.function.Consumer;
@@ -18,9 +23,13 @@ import java.util.function.Consumer;
  * <p>
  * Get raw data - multiple incidents
  */
-@Data
-@Accessors(fluent = true)
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Accessors(fluent = true, chain = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class GetAnalyticsIncidentsOperationSpec {
     /**
@@ -36,7 +45,7 @@ public class GetAnalyticsIncidentsOperationSpec {
     private GetAnalyticsIncidentsRequest getAnalyticsIncidentsRequest;
 
     /**
-     * Constructs a validated implementation of {@link GetAnalyticsIncidentsOperationSpec}.
+     * Constructs a validated instance of {@link GetAnalyticsIncidentsOperationSpec}.
      *
      * @param spec the specification to process
      */
@@ -48,11 +57,24 @@ public class GetAnalyticsIncidentsOperationSpec {
     }
 
     /**
+     * Constructs a validated instance of {@link GetAnalyticsIncidentsOperationSpec}.
+     * <p>
+     * NOTE: This constructor is not considered stable and may change if the operation is updated.
+     * @param getAnalyticsIncidentsRequest Parameters and filters to apply to the dataset.
+     */
+    @ApiStatus.Internal
+    public GetAnalyticsIncidentsOperationSpec(GetAnalyticsIncidentsRequest getAnalyticsIncidentsRequest) {
+        this.getAnalyticsIncidentsRequest = getAnalyticsIncidentsRequest;
+
+        if (VALIDATION_ENABLED)
+            validate();
+    }
+
+    /**
      * Validates the Spec, will throw a exception if required parameters are missing
      *
      * @throws NullPointerException
      */
     public void validate() {
     }
-
 }

@@ -4,7 +4,6 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
-import lombok.Data;
 
 import io.github.primelib.pagerduty4j.rest.model.AnalyticsModel;
 import io.github.primelib.pagerduty4j.rest.model.AnalyticsRawIncident;
@@ -219,7 +218,7 @@ public interface PagerDutyRESTApi {
      * Associate a Trigger and Service
      * <p>
      * Associate a Service with an existing Incident Workflow Trigger
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param associateServiceToIncidentWorkflowTriggerRequest  (optional)
@@ -240,7 +239,7 @@ public interface PagerDutyRESTApi {
      * 1. Automatically creates Event Orchestration Rules for this Service that will behave identically as this Service's currently configured Event Rules. 2. Makes all existing Event Rules for this Service read-only. All future updates need to be made via the newly created Event Orchestration rules.
      * Sending a request to this API endpoint will **not** change how future events will be processed. If past events for this Service have been evaluated via Event Rules then new events sent to this Service will also continue to be evaluated via the (now read-only) Event Rules. To change this Service so that new events start being evaluated via the newly created Event Orchestration Rules use the "Orchestration &amp;gt; Update the Service Orchestration active status for a Service" API.
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Event Rules will end-of-life soon. We highly recommend that you use this API to [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -256,9 +255,9 @@ public interface PagerDutyRESTApi {
      * <p>
      * Install an Add-on for your account.
      * Addon's are pieces of functionality that developers can write to insert new functionality into PagerDuty's UI.
-     * Given a configuration containing a `src` parameter, that URL will be embedded in an `iframe` on a page that's available to users from a drop-down menu.
+     * Given a configuration containing a {@code src} parameter, that URL will be embedded in an {@code iframe} on a page that's available to users from a drop-down menu.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#add-ons)
-     * Scoped OAuth requires: `addons.write` 
+     * Scoped OAuth requires: {@code addons.write} 
      *
      * @param createAddonRequest   The Add-on to be installed. (optional)
      */
@@ -364,7 +363,7 @@ public interface PagerDutyRESTApi {
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * There is a limit of 5,000 business services per account. If the limit is reached, the API will respond with an error.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param createBusinessServiceRequest  (optional)
      */
@@ -379,7 +378,7 @@ public interface PagerDutyRESTApi {
      * Create Business Service Account Subscription
      * <p>
      * Subscribe your Account to a Business Service.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -393,7 +392,7 @@ public interface PagerDutyRESTApi {
      * Create Business Service Subscribers
      * <p>
      * Subscribe the given entities to the given Business Service.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createBusinessServiceNotificationSubscribersRequest The entities to subscribe. (optional)
@@ -408,7 +407,7 @@ public interface PagerDutyRESTApi {
     /**
      * Create a Change Event
      * <p>
-     * Sending Change Events is documented as part of the V2 Events API. See [`Send Change Event`](https://developer.pagerduty.com/api-reference/b3A6Mjc0ODI2Ng-send-change-events-to-the-pager-duty-events-api). 
+     * Sending Change Events is documented as part of the V2 Events API. See [{@code Send Change Event}](https://developer.pagerduty.com/api-reference/b3A6Mjc0ODI2Ng-send-change-events-to-the-pager-duty-events-api). 
      *
      */
     @RequestLine("POST /change_events")
@@ -422,7 +421,7 @@ public interface PagerDutyRESTApi {
      * Create a Field
      * <p>
      * Create a new Field, along with the Field Options if provided. An account may have up to 10 Fields.
-     * Scoped OAuth requires: `custom_fields.write` 
+     * Scoped OAuth requires: {@code custom_fields.write} 
      *
      * @param createCustomFieldsFieldRequest  (optional)
      */
@@ -436,8 +435,8 @@ public interface PagerDutyRESTApi {
     /**
      * Create a Field Option
      * <p>
-     * Create a new Field Option. Field Options may only be created for Fields that have `field_options`. A Field may have no more than 10 enabled options.
-     * Scoped OAuth requires: `custom_fields.write` 
+     * Create a new Field Option. Field Options may only be created for Fields that have {@code field_options}. A Field may have no more than 10 enabled options.
+     * Scoped OAuth requires: {@code custom_fields.write} 
      *
      * @param fieldId              The ID of the field. (required)
      * @param createCustomFieldsFieldOptionRequest  (optional)
@@ -455,7 +454,7 @@ public interface PagerDutyRESTApi {
      * Assign existing or new tags.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.write` 
+     * Scoped OAuth requires: {@code tags.write} 
      *
      * @param entityType           Type of entity related with the tag (required)
      * @param id                   The ID of the resource. (required)
@@ -474,7 +473,7 @@ public interface PagerDutyRESTApi {
      * Creates a new escalation policy. At least one escalation rule must be provided.
      * Escalation policies define which user should be alerted at which time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#escalation-policies)
-     * Scoped OAuth requires: `escalation_policies.write` 
+     * Scoped OAuth requires: {@code escalation_policies.write} 
      *
      * @param from                 The email address of a valid user associated with the account making the request. This is optional, and is only used for change tracking. (optional)
      * @param createEscalationPolicyRequest The escalation policy to be created. (optional)
@@ -493,7 +492,7 @@ public interface PagerDutyRESTApi {
      * Create an incident synchronously without a corresponding event from a monitoring service.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param createIncidentRequest  (optional)
@@ -513,7 +512,7 @@ public interface PagerDutyRESTApi {
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * A maximum of 2000 notes can be added to an incident.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -531,7 +530,7 @@ public interface PagerDutyRESTApi {
      * Add Notification Subscribers
      * <p>
      * Subscribe the given entities to Incident Status Update Notifications.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createBusinessServiceNotificationSubscribersRequest The entities to subscribe. (optional)
@@ -549,7 +548,7 @@ public interface PagerDutyRESTApi {
      * Send a new responder request for the specified incident.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -569,7 +568,7 @@ public interface PagerDutyRESTApi {
      * Snooze an incident.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -586,10 +585,10 @@ public interface PagerDutyRESTApi {
     /**
      * Create a status update on an incident
      * <p>
-     * Create a new status update for the specified incident. Optionally pass `subject` and `html_message` properties in the request body to override the email notification that gets sent.
+     * Create a new status update for the specified incident. Optionally pass {@code subject} and {@code html_message} properties in the request body to override the email notification that gets sent.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -608,7 +607,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Start an Instance of an Incident Workflow
      * An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
-     * Scoped OAuth requires: `incident_workflows:instances.write` 
+     * Scoped OAuth requires: {@code incident_workflows:instances.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createIncidentWorkflowInstanceRequest  (optional)
@@ -624,7 +623,7 @@ public interface PagerDutyRESTApi {
      * Create a Trigger
      * <p>
      * Create new Incident Workflow Trigger
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param createIncidentWorkflowTriggerRequest  (optional)
      */
@@ -641,7 +640,7 @@ public interface PagerDutyRESTApi {
      * Create a new maintenance window for the specified services. No new incidents will be created for a service that is in maintenance.
      * A Maintenance Window is used to temporarily disable one or more Services for a set period of time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#maintenance-windows)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param createMaintenanceWindowRequest The maintenance window object. (optional)
@@ -660,7 +659,7 @@ public interface PagerDutyRESTApi {
      * Creates a new Response Plays.
      * Response Plays allow you to create packages of Incident Actions that can be applied during an Incident's life cycle.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#response-plays)
-     * Scoped OAuth requires: `response_plays.write` 
+     * Scoped OAuth requires: {@code response_plays.write} 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param createResponsePlayRequest The Response Play to be created. (optional)
@@ -681,7 +680,7 @@ public interface PagerDutyRESTApi {
      * Create a new Ruleset. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
-     * Scoped OAuth requires: `event_rules.write` 
+     * Scoped OAuth requires: {@code event_rules.write} 
      *
      * @param createRulesetRequest  (optional)
      */
@@ -699,7 +698,7 @@ public interface PagerDutyRESTApi {
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
      * Note: Create and Update on rules will accept 'description' or 'summary' interchangeably as an extraction action target. Get and List on rules will always return 'summary' as the target. If you are expecting 'description' please change your automation code to expect 'summary' instead.
-     * Scoped OAuth requires: `event_rules.write` 
+     * Scoped OAuth requires: {@code event_rules.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createRulesetEventRuleRequest  (optional)
@@ -717,9 +716,9 @@ public interface PagerDutyRESTApi {
      * Create a new on-call schedule.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.write` 
+     * Scoped OAuth requires: {@code schedules.write} 
      *
-     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter `overflow=true` is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from `2011-06-01T10:00:00Z` to `2011-06-01T14:00:00Z`:   - If you don't pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T10:00:00Z` and end of `2011-06-01T14:00:00Z`. - If you do pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T00:00:00Z` and end of `2011-06-02T00:00:00Z`.  (optional, defaults to false)
+     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:   - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}.  (optional, defaults to false)
      * @param createScheduleRequest The schedule to be created. (optional)
      */
     @RequestLine("POST /schedules?overflow={overflow}")
@@ -736,7 +735,7 @@ public interface PagerDutyRESTApi {
      * A Schedule determines the time periods that users are On-Call.
      * Note: An older implementation of this endpoint only supported creating a single ocverride per request. That functionality is still supported, but deprecated and may be removed in the future.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.write` 
+     * Scoped OAuth requires: {@code schedules.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createScheduleOverrideRequest The overrides to be created (required)
@@ -754,11 +753,11 @@ public interface PagerDutyRESTApi {
      * Preview what an on-call schedule would look like without saving it.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.write` 
+     * Scoped OAuth requires: {@code schedules.write} 
      *
      * @param since                The start of the date range over which you want to search. (optional)
      * @param until                The end of the date range over which you want to search. (optional)
-     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter `overflow=true` is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from `2011-06-01T10:00:00Z` to `2011-06-01T14:00:00Z`:   - If you don't pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T10:00:00Z` and end of `2011-06-01T14:00:00Z`. - If you do pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T00:00:00Z` and end of `2011-06-02T00:00:00Z`.  (optional, defaults to false)
+     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:   - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}.  (optional, defaults to false)
      * @param createScheduleRequest The schedule to be previewed. (optional)
      */
     @RequestLine("POST /schedules/preview?since={since}&until={until}&overflow={overflow}")
@@ -772,12 +771,12 @@ public interface PagerDutyRESTApi {
      * Create a service
      * <p>
      * Create a new service.
-     * If `status` is included in the request, it must have a value of `active` when creating a new service. If a different status is required, make a second request to update the service.
+     * If {@code status} is included in the request, it must have a value of {@code active} when creating a new service. If a different status is required, make a second request to update the service.
      * A service may represent an application, component, or team you wish to open incidents against.
-     * There is a limit of 25,000 services per account. If the limit is reached, the API will respond with an error. There is also a limit of 100,000 open Incidents per Service. If the limit is reached and `auto_resolve_timeout` is disabled (set to 0 or null), the `auto_resolve_timeout` property will automatically be set to
+     * There is a limit of 25,000 services per account. If the limit is reached, the API will respond with an error. There is also a limit of 100,000 open Incidents per Service. If the limit is reached and {@code auto_resolve_timeout} is disabled (set to 0 or null), the {@code auto_resolve_timeout} property will automatically be set to
      * 84600 (1 day).
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param createServiceRequest The service to be created (optional)
      */
@@ -795,7 +794,7 @@ public interface PagerDutyRESTApi {
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * A service can have a maximum of 2,000 dependencies with a depth limit of 100. If the limit is reached, the API will respond with an error.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param createServiceDependencyRequest  (optional)
      */
@@ -810,7 +809,7 @@ public interface PagerDutyRESTApi {
      * Create an Event Rule on a Service
      * <p>
      * Create a new Event Rule on a Service. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createServiceEventRuleRequest  (optional)
@@ -828,7 +827,7 @@ public interface PagerDutyRESTApi {
      * Create a new integration belonging to a Service.
      * A service may represent an application, component, or team you wish to open incidents against.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createServiceIntegrationRequest The integration to be created (optional)
@@ -846,7 +845,7 @@ public interface PagerDutyRESTApi {
      * Create a Tag.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.write` 
+     * Scoped OAuth requires: {@code tags.write} 
      *
      * @param createTagsRequest     (optional)
      */
@@ -863,7 +862,7 @@ public interface PagerDutyRESTApi {
      * Create a new Team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param createTeamRequest    The team to be created. (optional)
      */
@@ -878,7 +877,7 @@ public interface PagerDutyRESTApi {
      * Create Team Notification Subscriptions
      * <p>
      * Create new Notification Subscriptions for the given Team.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createTeamNotificationSubscriptionsRequest The entities to subscribe to. (optional)
@@ -894,7 +893,7 @@ public interface PagerDutyRESTApi {
      * Create a template
      * <p>
      * Create a new template
-     * Scoped OAuth requires: `templates.write` 
+     * Scoped OAuth requires: {@code templates.write} 
      *
      * @param createTemplateRequest  (required)
      */
@@ -911,7 +910,7 @@ public interface PagerDutyRESTApi {
      * Create a new user.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param createUserRequest    The user to be created. (optional)
@@ -930,7 +929,7 @@ public interface PagerDutyRESTApi {
      * Create a new contact method for the User.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.write` 
+     * Scoped OAuth requires: {@code users:contact_methods.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createUserContactMethodRequest The contact method to be created. (optional)
@@ -946,7 +945,7 @@ public interface PagerDutyRESTApi {
      * Create a User Handoff Notification Rule
      * <p>
      * Create a new Handoff Notification Rule. Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account. For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createUserHandoffNotificationRuleRequest The Handoff Notification Rule to be created. (optional)
@@ -964,7 +963,7 @@ public interface PagerDutyRESTApi {
      * Create a new notification rule.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.write` 
+     * Scoped OAuth requires: {@code users:contact_methods.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createUserNotificationRuleRequest The notification rule to be created. (optional)
@@ -980,7 +979,7 @@ public interface PagerDutyRESTApi {
      * Create Notification Subcriptions
      * <p>
      * Create new Notification Subscriptions for the given User.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createTeamNotificationSubscriptionsRequest The entities to subscribe to. (optional)
@@ -999,7 +998,7 @@ public interface PagerDutyRESTApi {
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createUserStatusUpdateNotificationRuleRequest The status update notification rule to be created. (optional)
@@ -1033,7 +1032,7 @@ public interface PagerDutyRESTApi {
      * Remove an existing Add-on.
      * Addon's are pieces of functionality that developers can write to insert new functionality into PagerDuty's UI.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#add-ons)
-     * Scoped OAuth requires: `addons.write` 
+     * Scoped OAuth requires: {@code addons.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1124,7 +1123,7 @@ public interface PagerDutyRESTApi {
      * Once the service is deleted, it will not be accessible from the web UI and new incidents won't be able to be created for this service.
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1139,7 +1138,7 @@ public interface PagerDutyRESTApi {
      * Deletes the account-level priority threshold for Business Service impact
      * <p>
      * Clears the Priority Threshold for the account.
-     * If the priority threshold is cleared, any Incident with a Priority set will be able to impact Business Services. Scoped OAuth requires: `services.write` 
+     * If the priority threshold is cleared, any Incident with a Priority set will be able to impact Business Services. Scoped OAuth requires: {@code services.write} 
      *
      */
     @RequestLine("DELETE /business_services/priority_thresholds")
@@ -1153,7 +1152,7 @@ public interface PagerDutyRESTApi {
      * Delete a Field
      * <p>
      * Delete a Field. Fields may not be deleted if they are used by a Field Schema.
-     * Scoped OAuth requires: `custom_fields.write` 
+     * Scoped OAuth requires: {@code custom_fields.write} 
      *
      * @param fieldId              The ID of the field. (required)
      */
@@ -1167,7 +1166,7 @@ public interface PagerDutyRESTApi {
      * Delete a Field Option
      * <p>
      * Delete a Field Option.
-     * Scoped OAuth requires: `custom_fields.write` 
+     * Scoped OAuth requires: {@code custom_fields.write} 
      *
      * @param fieldId              The ID of the field. (required)
      * @param fieldOptionId        The ID of the field option. (required)
@@ -1184,7 +1183,7 @@ public interface PagerDutyRESTApi {
      * Deletes an existing escalation policy and rules. The escalation policy must not be in use by any services.
      * Escalation policies define which user should be alerted at which time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#escalation-policies)
-     * Scoped OAuth requires: `escalation_policies.write` 
+     * Scoped OAuth requires: {@code escalation_policies.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1202,7 +1201,7 @@ public interface PagerDutyRESTApi {
      * Once the extension is deleted, it will not be accessible from the web UI and new incidents won't be able to be created for this extension.
      * Extensions are representations of Extension Schema objects that are attached to Services.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#extensions)
-     * Scoped OAuth requires: `extensions.write` 
+     * Scoped OAuth requires: {@code extensions.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1218,7 +1217,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Delete an existing Incident Workflow
      * An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1233,7 +1232,7 @@ public interface PagerDutyRESTApi {
      * Delete a Trigger
      * <p>
      * Delete an existing Incident Workflow Trigger
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1250,7 +1249,7 @@ public interface PagerDutyRESTApi {
      * Delete an existing maintenance window if it's in the future, or end it if it's currently on-going. If the maintenance window has already ended it cannot be deleted.
      * A Maintenance Window is used to temporarily disable one or more Services for a set period of time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#maintenance-windows)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1267,7 +1266,7 @@ public interface PagerDutyRESTApi {
      * Delete a Global Event Orchestration.
      * Once deleted, you will no longer be able to ingest events into PagerDuty using this Orchestration's Routing Key.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      */
@@ -1284,7 +1283,7 @@ public interface PagerDutyRESTApi {
      * Delete an Integration and its associated Routing Key.
      * Once deleted, PagerDuty will drop all future events sent to PagerDuty using the Routing Key.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param integrationId        The ID of an Integration. (required)
@@ -1303,7 +1302,7 @@ public interface PagerDutyRESTApi {
      * WARNING: When the Response Play is deleted, it is also removed from any Services that were using it.
      * Response Plays allow you to create packages of Incident Actions that can be applied to an Incident.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#response-plays)
-     * Scoped OAuth requires: `response_plays.write` 
+     * Scoped OAuth requires: {@code response_plays.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -1324,7 +1323,7 @@ public interface PagerDutyRESTApi {
      * Delete a Ruleset. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
-     * Scoped OAuth requires: `event_rules.write` 
+     * Scoped OAuth requires: {@code event_rules.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1341,7 +1340,7 @@ public interface PagerDutyRESTApi {
      * Delete an Event Rule. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
-     * Scoped OAuth requires: `event_rules.write` 
+     * Scoped OAuth requires: {@code event_rules.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param ruleId               The id of the Event Rule to retrieve. (required)
@@ -1359,7 +1358,7 @@ public interface PagerDutyRESTApi {
      * Delete an on-call schedule.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.write` 
+     * Scoped OAuth requires: {@code schedules.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1379,7 +1378,7 @@ public interface PagerDutyRESTApi {
      * If the override is truncated, the status code will be 200 OK, as opposed to a 204 No Content for a successful delete.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.write` 
+     * Scoped OAuth requires: {@code schedules.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param overrideId           The override ID on the schedule. (required)
@@ -1398,7 +1397,7 @@ public interface PagerDutyRESTApi {
      * Once the service is deleted, it will not be accessible from the web UI and new incidents won't be able to be created for this service.
      * A service may represent an application, component, or team you wish to open incidents against.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1415,7 +1414,7 @@ public interface PagerDutyRESTApi {
      * Disassociate dependencies between two services.
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param deleteServiceDependencyRequest  (optional)
      */
@@ -1430,7 +1429,7 @@ public interface PagerDutyRESTApi {
      * Delete an Event Rule from a Service
      * <p>
      * Delete an Event Rule from a Service. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param ruleId               The id of the Event Rule to retrieve. (required)
@@ -1446,7 +1445,7 @@ public interface PagerDutyRESTApi {
      * Dissociate a Trigger and Service
      * <p>
      * Remove a an existing Service from an Incident Workflow Trigger
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param triggerId            Identifier for the Trigger (required)
      * @param serviceId            Identifier for the Service (required)
@@ -1464,7 +1463,7 @@ public interface PagerDutyRESTApi {
      * Remove an existing Tag.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.write` 
+     * Scoped OAuth requires: {@code tags.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1484,7 +1483,7 @@ public interface PagerDutyRESTApi {
      * Note that the incidents reassignment process is asynchronous and has no guarantee to complete before the API call return.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param reassignmentTeam     Team to reassign unresolved incident to. If an unresolved incident exists on both the reassignment team and the team being deleted, a duplicate will not be made. If not supplied, unresolved incidents will be made account-level.  (optional)
@@ -1502,7 +1501,7 @@ public interface PagerDutyRESTApi {
      * Remove an escalation policy from a team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param escalationPolicyId   The escalation policy ID on the team. (required)
@@ -1520,7 +1519,7 @@ public interface PagerDutyRESTApi {
      * Remove a user from a team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param userId               The user ID on the team. (required)
@@ -1536,7 +1535,7 @@ public interface PagerDutyRESTApi {
      * Delete a template
      * <p>
      * Delete a specific of templates on the account
-     * Scoped OAuth requires: `templates.write` 
+     * Scoped OAuth requires: {@code templates.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1550,12 +1549,12 @@ public interface PagerDutyRESTApi {
      * Delete a user
      * <p>
      * Remove an existing user.
-     * Returns 400 if the user has assigned incidents unless your [pricing plan](https://www.pagerduty.com/pricing) has the `offboarding` feature and the account is [configured](https://support.pagerduty.com/docs/offboarding#section-additional-configurations) appropriately.
+     * Returns 400 if the user has assigned incidents unless your [pricing plan](https://www.pagerduty.com/pricing) has the {@code offboarding} feature and the account is [configured](https://support.pagerduty.com/docs/offboarding#section-additional-configurations) appropriately.
      * Note that the incidents reassignment process is asynchronous and has no guarantee to complete before the api call return.
-     * [*Learn more about `offboarding` feature*](https://support.pagerduty.com/docs/offboarding).
+     * [*Learn more about {@code offboarding} feature*](https://support.pagerduty.com/docs/offboarding).
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1572,7 +1571,7 @@ public interface PagerDutyRESTApi {
      * Remove a user's contact method.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.write` 
+     * Scoped OAuth requires: {@code users:contact_methods.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param contactMethodId      The contact method ID on the user. (required)
@@ -1588,7 +1587,7 @@ public interface PagerDutyRESTApi {
      * Delete a User's Handoff Notification rule
      * <p>
      * Remove a User's Handoff Notification Rule. Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account. For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param oncallHandoffNotificationRuleId The oncall handoff notification rule ID on the user. (required)
@@ -1606,7 +1605,7 @@ public interface PagerDutyRESTApi {
      * Remove a user's notification rule.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.write` 
+     * Scoped OAuth requires: {@code users:contact_methods.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param notificationRuleId   The notification rule ID on the user. (required)
@@ -1625,7 +1624,7 @@ public interface PagerDutyRESTApi {
      * Beginning November 2021, user sessions no longer includes newly issued OAuth tokens.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:sessions.write` 
+     * Scoped OAuth requires: {@code users:sessions.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param type                 The session type for the user session ID. (required)
@@ -1645,7 +1644,7 @@ public interface PagerDutyRESTApi {
      * Beginning November 2021, user sessions no longer includes newly issued OAuth tokens.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:sessions.write` 
+     * Scoped OAuth requires: {@code users:sessions.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1663,7 +1662,7 @@ public interface PagerDutyRESTApi {
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param statusUpdateNotificationRuleId The status update notification rule ID on the user. (required)
@@ -1695,7 +1694,7 @@ public interface PagerDutyRESTApi {
      * Enable an extension that is temporarily disabled. (This API does not require a request body.)
      * Extensions are representations of Extension Schema objects that are attached to Services.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#extensions)
-     * Scoped OAuth requires: `extensions.write` 
+     * Scoped OAuth requires: {@code extensions.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1724,10 +1723,10 @@ public interface PagerDutyRESTApi {
      * Test an ability
      * <p>
      * Test whether your account has a given ability.
-     * "Abilities" describes your account's capabilities by feature name. For example `"teams"`.
+     * "Abilities" describes your account's capabilities by feature name. For example {@code "teams"}.
      * An ability may be available to your account based on things like your pricing plan or account state.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#abilities)
-     * Scoped OAuth requires: `abilities.read` 
+     * Scoped OAuth requires: {@code abilities.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1744,7 +1743,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing Add-on.
      * Addon's are pieces of functionality that developers can write to insert new functionality into PagerDuty's UI.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#add-ons)
-     * Scoped OAuth requires: `addons.read` 
+     * Scoped OAuth requires: {@code addons.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1760,12 +1759,12 @@ public interface PagerDutyRESTApi {
      * <p>
      * Lists Automation Actions matching provided query params.
      * The returned records are sorted by action name in alphabetical order.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set. 
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set. 
      *
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
      * @param name                 Filters results to include the ones matching the name (case insensitive substring matching) (optional)
-     * @param runnerId             Filters results to include the ones linked to the specified runner. Specifying the value `any` filters results to include the ones linked to runners only, thus omitting the results not linked to runners.  (optional)
+     * @param runnerId             Filters results to include the ones linked to the specified runner. Specifying the value {@code any} filters results to include the ones linked to runners only, thus omitting the results not linked to runners.  (optional)
      * @param classification       Filters results to include the ones matching the specified classification (aka category) (optional)
      * @param teamId               Filters results to include the ones associated with the specified team. (optional)
      * @param serviceId            Filters results to include the ones associated with the specified service (optional)
@@ -1782,7 +1781,7 @@ public interface PagerDutyRESTApi {
      * Get raw responses from a single incident
      * <p>
      * Provides enriched responder data for a single incident.
-     * Example metrics include Time to Respond, Responder Type, and Response Status. See metric definitions below. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incident responses appear in the Analytics API. Scoped OAuth requires: `analytics.read` 
+     * Example metrics include Time to Respond, Responder Type, and Response Status. See metric definitions below. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incident responses appear in the Analytics API. Scoped OAuth requires: {@code analytics.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param getAnalyticsIncidentResponsesByIdRequest Parameters to apply to the dataset. (optional)
@@ -1800,8 +1799,8 @@ public interface PagerDutyRESTApi {
      * <p>
      * Provides enriched incident data and metrics for multiple incidents.
      * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics).
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
-     * Scoped OAuth requires: `analytics.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
      *
      * @param getAnalyticsIncidentsRequest Parameters and filters to apply to the dataset. (optional)
      */
@@ -1819,7 +1818,7 @@ public interface PagerDutyRESTApi {
      * Provides enriched incident data and metrics for a single incident.
      * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics).
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
-     * Scoped OAuth requires: `analytics.read` 
+     * Scoped OAuth requires: {@code analytics.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -1836,8 +1835,8 @@ public interface PagerDutyRESTApi {
      * <p>
      * Provides aggregated enriched metrics for incidents.
      * The provided metrics are aggregated by day, week, month using the aggregate_unit parameter, or for the entire period if no aggregate_unit is provided.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
-     * Scoped OAuth requires: `analytics.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
      *
      * @param analyticsModel       Parameters and filters to apply to the dataset. (optional)
      */
@@ -1855,8 +1854,8 @@ public interface PagerDutyRESTApi {
      * Provides aggregated metrics for incidents aggregated into units of time by service.
      * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics). Data can be aggregated by day, week or month in addition to by service, or provided just as a collection of aggregates for each service in the dataset for the entire period.
      * If a unit is provided, each row in the returned dataset will include a 'range_start' timestamp.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
-     * Scoped OAuth requires: `analytics.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
      *
      * @param analyticsModel       Parameters and filters to apply to the dataset. (optional)
      */
@@ -1874,8 +1873,8 @@ public interface PagerDutyRESTApi {
      * Provides aggregated metrics for incidents aggregated into units of time by team.
      * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics). Data can be aggregated by day, week or month in addition to by team, or provided just as a collection of aggregates for each team in the dataset for the entire period.
      * If a unit is provided, each row in the returned dataset will include a 'range_start' timestamp.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A `team_ids` or `service_ids` filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
-     * Scoped OAuth requires: `analytics.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
      *
      * @param analyticsModel       Parameters and filters to apply to the dataset. (optional)
      */
@@ -2020,10 +2019,10 @@ public interface PagerDutyRESTApi {
      * List Automation Action runners
      * <p>
      * Lists Automation Action runners matching provided query params. The returned records are sorted by runner name in alphabetical order.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set. 
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set. 
      *
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
      * @param name                 Filters results to include the ones matching the name (case insensitive substring matching) (optional)
      * @param include              Includes additional data elements into the response (optional)
      */
@@ -2040,7 +2039,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing Business Service.
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2054,9 +2053,9 @@ public interface PagerDutyRESTApi {
     /**
      * List Business Services sorted by impacted status
      * <p>
-     * Retrieve a list top-level Business Services sorted by highest Impact with `status` included. When called without the `ids[]` parameter, this endpoint does not return an exhaustive list of Business Services but rather provides access to the most impacted up to the limit of 200.
+     * Retrieve a list top-level Business Services sorted by highest Impact with {@code status} included. When called without the {@code ids[]} parameter, this endpoint does not return an exhaustive list of Business Services but rather provides access to the most impacted up to the limit of 200.
      * The returned Business Services are sorted first by Impact, secondarily by most recently impacted, and finally by name.
-     * To get impact information about a specific set of Business Services, use the `ids[]` parameter. Scoped OAuth requires: `services.read` 
+     * To get impact information about a specific set of Business Services, use the {@code ids[]} parameter. Scoped OAuth requires: {@code services.read} 
      *
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      * @param ids                  The IDs of the resources. (optional)
@@ -2072,8 +2071,8 @@ public interface PagerDutyRESTApi {
      * Get the global priority threshold for a Business Service to be considered impacted by an Incident
      * <p>
      * Retrieves the priority threshold information for an account.
-     * Currently, there is a `global_threshold` that can be set for the account.
-     * Incidents that have a priority meeting or exceeding this threshold will be considered impacting on any Business Service that depends on the Service to which the Incident belongs. Scoped OAuth requires: `services.read` 
+     * Currently, there is a {@code global_threshold} that can be set for the account.
+     * Incidents that have a priority meeting or exceeding this threshold will be considered impacting on any Business Service that depends on the Service to which the Incident belongs. Scoped OAuth requires: {@code services.read} 
      *
      */
     @RequestLine("GET /business_services/priority_thresholds")
@@ -2089,7 +2088,7 @@ public interface PagerDutyRESTApi {
      * Get all immediate dependencies of any Business Service.
      * Business Services model capabilities that span multiple technical services and that may be owned by several different teams.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2104,7 +2103,7 @@ public interface PagerDutyRESTApi {
      * List Business Service Subscribers
      * <p>
      * Retrieve a list of Notification Subscribers on the Business Service.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Users must be added through `POST /business_services/{id}/subscribers` to be returned from this endpoint. Scoped OAuth requires: `subscribers.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Users must be added through {@code POST /business_services/{id}/subscribers} to be returned from this endpoint. Scoped OAuth requires: {@code subscribers.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2117,9 +2116,9 @@ public interface PagerDutyRESTApi {
     /**
      * List the supporting Business Services for the given Business Service Id, sorted by impacted status.
      * <p>
-     * Retrieve of Business Services that support the given Business Service sorted by highest Impact with `status` included. This endpoint does not return an exhaustive list of Business Services but rather provides access to the most impacted up to the limit of 200.
+     * Retrieve of Business Services that support the given Business Service sorted by highest Impact with {@code status} included. This endpoint does not return an exhaustive list of Business Services but rather provides access to the most impacted up to the limit of 200.
      * The returned Business Services are sorted first by Impact, secondarily by most recently impacted, and finally by name.
-     * To get impact information about a specific set of Business Services, use the `ids[]` parameter on the `/business_services/impacts` endpoint. Scoped OAuth requires: `services.read` 
+     * To get impact information about a specific set of Business Services, use the {@code ids[]} parameter on the {@code /business_services/impacts} endpoint. Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
@@ -2137,8 +2136,8 @@ public interface PagerDutyRESTApi {
      * <p>
      * Retrieve a list of Impactors for the top-level Business Services on the account. Impactors are currently limited to Incidents.
      * This endpoint does not return an exhaustive list of Impactors but rather provides access to the highest priority Impactors for the Business Services in question up to the limit of 200.
-     * To get Impactors for a specific set of Business Services, use the `ids[]` parameter.
-     * The returned Impactors are sorted first by priority and secondarily by their creation date. Scoped OAuth requires: `services.read` 
+     * To get Impactors for a specific set of Business Services, use the {@code ids[]} parameter.
+     * The returned Impactors are sorted first by priority and secondarily by their creation date. Scoped OAuth requires: {@code services.read} 
      *
      * @param ids                  The IDs of the resources. (optional)
      */
@@ -2153,7 +2152,7 @@ public interface PagerDutyRESTApi {
      * Get a Change Event
      * <p>
      * Get details about an existing Change Event.
-     * Scoped OAuth requires: `change_events.read` 
+     * Scoped OAuth requires: {@code change_events.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2185,7 +2184,7 @@ public interface PagerDutyRESTApi {
      * Get a Field
      * <p>
      * Show detailed information about a field.
-     * Scoped OAuth requires: `custom_fields.read` 
+     * Scoped OAuth requires: {@code custom_fields.read} 
      *
      * @param fieldId              The ID of the field. (required)
      * @param include              Array of additional details to include. (optional)
@@ -2202,13 +2201,13 @@ public interface PagerDutyRESTApi {
      * Get related tags for Users, Teams or Escalation Policies.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.read` 
+     * Scoped OAuth requires: {@code tags.read} 
      *
      * @param entityType           Type of entity related with the tag (required)
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /{entity_type}/{id}/tags?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -2223,7 +2222,7 @@ public interface PagerDutyRESTApi {
      * Get information about an existing escalation policy and its rules.
      * Escalation policies define which user should be alerted at which time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#escalation-policies)
-     * Scoped OAuth requires: `escalation_policies.read` 
+     * Scoped OAuth requires: {@code escalation_policies.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional Models to include in response. (optional)
@@ -2241,7 +2240,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing extension.
      * Extensions are representations of Extension Schema objects that are attached to Services.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#extensions)
-     * Scoped OAuth requires: `extensions.read` 
+     * Scoped OAuth requires: {@code extensions.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional details to include. (optional)
@@ -2259,7 +2258,7 @@ public interface PagerDutyRESTApi {
      * Get details about one specific extension vendor.
      * A PagerDuty extension vendor represents a specific type of outbound extension such as Generic Webhook, Slack, ServiceNow.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#extension-schemas)
-     * Scoped OAuth requires: `extension_schemas.read` 
+     * Scoped OAuth requires: {@code extension_schemas.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2276,7 +2275,7 @@ public interface PagerDutyRESTApi {
      * Show detailed information about an incident. Accepts either an incident id, or an incident number.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional details to include. (optional)
@@ -2295,7 +2294,7 @@ public interface PagerDutyRESTApi {
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * When a service sends an event to PagerDuty, an alert and corresponding incident is triggered in PagerDuty.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param alertId              The id of the alert to retrieve. (required)
@@ -2312,7 +2311,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Get custom field values for an incident.
      * &amp;lt;!-- theme: warning --&amp;gt;
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2325,7 +2324,7 @@ public interface PagerDutyRESTApi {
     /**
      * List Business Services impacted by the given Incident
      * <p>
-     * Retrieve a list of Business Services that are being impacted by the given Incident. Scoped OAuth requires: `incidents.read` 
+     * Retrieve a list of Business Services that are being impacted by the given Incident. Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2340,7 +2339,7 @@ public interface PagerDutyRESTApi {
      * List Notification Subscribers
      * <p>
      * Retrieve a list of Notification Subscribers on the Incident.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Users must be added through `POST /incident/{id}/status_updates/subscribers` to be returned from this endpoint. Scoped OAuth requires: `subscribers.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Users must be added through {@code POST /incident/{id}/status_updates/subscribers} to be returned from this endpoint. Scoped OAuth requires: {@code subscribers.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2354,7 +2353,7 @@ public interface PagerDutyRESTApi {
      * Get an Incident Workflow
      * <p>
      * Get an existing Incident Workflow An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
-     * Scoped OAuth requires: `incident_workflows.read` 
+     * Scoped OAuth requires: {@code incident_workflows.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2369,7 +2368,7 @@ public interface PagerDutyRESTApi {
      * Get an Action
      * <p>
      * Get an Incident Workflow Action
-     * Scoped OAuth requires: `incident_workflows.read` 
+     * Scoped OAuth requires: {@code incident_workflows.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2384,7 +2383,7 @@ public interface PagerDutyRESTApi {
      * Get a Trigger
      * <p>
      * Retrieve an existing Incident Workflows Trigger
-     * Scoped OAuth requires: `incident_workflows.read` 
+     * Scoped OAuth requires: {@code incident_workflows.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2401,7 +2400,7 @@ public interface PagerDutyRESTApi {
      * Get details for a specific incident log entry. This method provides additional information you can use to get at raw event data.
      * A log of all the events that happen to an Incident, and these are exposed as Log Entries.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#log-entries)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
@@ -2420,7 +2419,7 @@ public interface PagerDutyRESTApi {
      * Get an existing maintenance window.
      * A Maintenance Window is used to temporarily disable one or more Services for a set period of time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#maintenance-windows)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional Models to include in response. (optional)
@@ -2438,7 +2437,7 @@ public interface PagerDutyRESTApi {
      * Get a Service Orchestration's active status.
      * A Service Orchestration allows you to set an active status based on whether an event will be evaluated against a service orchestration path (true) or service ruleset (false).
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param serviceId            The service ID (required)
      */
@@ -2455,7 +2454,7 @@ public interface PagerDutyRESTApi {
      * Get the Global Orchestration for an Event Orchestration.
      * Global Orchestration Rules allows you to create a set of Event Rules. These rules evaluate against all Events sent to an Event Orchestration. When a matching rule is found, it can modify and enhance the event and can route the event to another set of Global Rules within this Orchestration for further processing.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      */
@@ -2470,9 +2469,9 @@ public interface PagerDutyRESTApi {
      * Get the Router for an Event Orchestration
      * <p>
      * Get a Global Orchestration's Routing Rules.
-     * An Orchestration Router allows you to create a set of Event Rules. The Router evaluates Events you send to this Global Orchestration against each of its rules, one at a time, and routes the event to a specific Service based on the first rule that matches. If an event doesn't match any rules, it'll be sent to service specified in as the `catch_all` or the "Unrouted" Orchestration if no service is specified.
+     * An Orchestration Router allows you to create a set of Event Rules. The Router evaluates Events you send to this Global Orchestration against each of its rules, one at a time, and routes the event to a specific Service based on the first rule that matches. If an event doesn't match any rules, it'll be sent to service specified in as the {@code catch_all} or the "Unrouted" Orchestration if no service is specified.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      */
@@ -2489,7 +2488,7 @@ public interface PagerDutyRESTApi {
      * Get a Service Orchestration.
      * A Service Orchestration allows you to create a set of Event Rules. The Service Orchestration evaluates Events sent to this Service against each of its rules, beginning with the rules in the "start" set. When a matching rule is found, it can modify and enhance the event and can route the event to another set of rules within this Service Orchestration for further processing.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param serviceId            The service ID (required)
      * @param include              Array of additional Models to include in response. (optional)
@@ -2508,7 +2507,7 @@ public interface PagerDutyRESTApi {
      * An Unrouted Orchestration allows you to create a set of Event Rules that will be evaluated against all events that don't match any rules in the Global Orchestration's Router. Events that reach the Unrouted Orchestration will never be routed to a specific Service.
      * The Unrouted Orchestration evaluates Events sent to it against each of its rules, beginning with the rules in the "start" set. When a matching rule is found, it can modify and enhance the event and can route the event to another set of rules within this Unrouted Orchestration for further processing.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      */
@@ -2525,7 +2524,7 @@ public interface PagerDutyRESTApi {
      * Get a Global Event Orchestration.
      * Global Event Orchestrations allow you define a set of Global Rules and Router Rules, so that when you ingest events using the Orchestration's Routing Key your events will have actions applied via the Global Rules &amp; then routed to the correct Service by the Router Rules, based on the event's content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      */
@@ -2542,7 +2541,7 @@ public interface PagerDutyRESTApi {
      * Get an Integration associated with this Event Orchestrations.
      * You can use the Routing Key from this Integration to send events to PagerDuty!
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param integrationId        The ID of an Integration. (required)
@@ -2559,7 +2558,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Gets Outlier Incident information for a given Incident on its Service.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#outlier-incident)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param since                The start of the date range over which you want to search. (optional)
@@ -2577,11 +2576,11 @@ public interface PagerDutyRESTApi {
      * <p>
      * Past Incidents returns Incidents within the past 6 months that have similar metadata and were generated on the same Service as the parent Incident. By default, 5 Past Incidents are returned. Note: This feature is currently available as part of the Event Intelligence package or Digital Operations plan only.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#past_incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results to be returned in the response. (optional, defaults to 5)
-     * @param total                By default the `total` field in the response body is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated with the total number of Past Incidents.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in the response body is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated with the total number of Past Incidents.  (optional, defaults to false)
      */
     @RequestLine("GET /incidents/{id}/past_incidents?limit={limit}&total={total}")
     @Headers({
@@ -2596,7 +2595,7 @@ public interface PagerDutyRESTApi {
      * Returns the 5 most recent alerts that were triggered after being paused and the 5 most recent alerts that were resolved after being paused for a given reporting period (maximum 6 months lookback period).
      * Note: This feature is currently available as part of the Event Intelligence package or Digital Operations plan only.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#paused-incident-reports)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param since                The start of the date range over which you want to search. (optional)
      * @param until                The end of the date range over which you want to search. (optional)
@@ -2616,7 +2615,7 @@ public interface PagerDutyRESTApi {
      * Returns reporting counts for paused Incident usage for a given reporting period (maximum 6 months lookback period).
      * Note: This feature is currently available as part of the Event Intelligence package or Digital Operations plan only.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#paused-incident-reports)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param since                The start of the date range over which you want to search. (optional)
      * @param until                The end of the date range over which you want to search. (optional)
@@ -2635,7 +2634,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Returns the 20 most recent Related Incidents that are impacting other Responders and Services. Note: This feature is currently available as part of the Event Intelligence package or Digital Operations plan only.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#related_incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param additionalDetails    Array of additional attributes to any of the returned incidents for related incidents. (optional)
@@ -2653,7 +2652,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing Response Play.
      * Response Plays allow you to create packages of Incident Actions that can be applied during an Incident's life cycle.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#response-plays)
-     * When using a Global API token, the `From` header is required. Scoped OAuth requires: `response_plays.read` 
+     * When using a Global API token, the {@code From} header is required. Scoped OAuth requires: {@code response_plays.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. This is optional, and is only used for change tracking. (optional)
@@ -2674,7 +2673,7 @@ public interface PagerDutyRESTApi {
      * Get a Ruleset. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
-     * Scoped OAuth requires: `event_rules.read` 
+     * Scoped OAuth requires: {@code event_rules.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2692,7 +2691,7 @@ public interface PagerDutyRESTApi {
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
      * Note: Create and Update on rules will accept 'description' or 'summary' interchangeably as an extraction action target. Get and List on rules will always return 'summary' as the target. If you are expecting 'description' please change your automation code to expect 'summary' instead.
-     * Scoped OAuth requires: `event_rules.read` 
+     * Scoped OAuth requires: {@code event_rules.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param ruleId               The id of the Event Rule to retrieve. (required)
@@ -2707,7 +2706,7 @@ public interface PagerDutyRESTApi {
     /**
      * Get a schedule
      * <p>
-     * Show detailed information about a schedule, including entries for each layer and sub-schedule. Scoped OAuth requires: `schedules.read` 
+     * Show detailed information about a schedule, including entries for each layer and sub-schedule. Scoped OAuth requires: {@code schedules.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
@@ -2727,7 +2726,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing service.
      * A service may represent an application, component, or team you wish to open incidents against.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional details to include. (optional)
@@ -2743,7 +2742,7 @@ public interface PagerDutyRESTApi {
      * Get an Event Rule from a Service
      * <p>
      * Get an Event Rule from a Service. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param ruleId               The id of the Event Rule to retrieve. (required)
@@ -2761,7 +2760,7 @@ public interface PagerDutyRESTApi {
      * Get details about an integration belonging to a service.
      * A service may represent an application, component, or team you wish to open incidents against.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param integrationId        The integration ID on the service. (required)
@@ -2775,10 +2774,10 @@ public interface PagerDutyRESTApi {
     CreateServiceIntegrationRequest getServiceIntegration(@Param("id") @NotNull String id, @Param("integration_id") @NotNull String integrationId, @Param("include") @Nullable String include);
 
     /**
-     * Get a single Status Dashboard by `id`
+     * Get a single Status Dashboard by {@code id}
      * <p>
-     * Get a Status Dashboard by its PagerDuty `id`.
-     * Scoped OAuth requires: `status_dashboards.read` 
+     * Get a Status Dashboard by its PagerDuty {@code id}.
+     * Scoped OAuth requires: {@code status_dashboards.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2789,13 +2788,13 @@ public interface PagerDutyRESTApi {
     GetStatusDashboardById200Response getStatusDashboardById(@Param("id") @NotNull String id);
 
     /**
-     * Get a single Status Dashboard by `url_slug`
+     * Get a single Status Dashboard by {@code url_slug}
      * <p>
-     * Get a Status Dashboard by its PagerDuty `url_slug`.
-     * A `url_slug` is a human-readable reference for a custom Status Dashboard that may be created or changed in the UI. It will generally be a `dash-separated-string-like-this`.
-     * Scoped OAuth requires: `status_dashboards.read` 
+     * Get a Status Dashboard by its PagerDuty {@code url_slug}.
+     * A {@code url_slug} is a human-readable reference for a custom Status Dashboard that may be created or changed in the UI. It will generally be a {@code dash-separated-string-like-this}.
+     * Scoped OAuth requires: {@code status_dashboards.read} 
      *
-     * @param urlSlug              The `url_slug` for a status dashboard (required)
+     * @param urlSlug              The {@code url_slug} for a status dashboard (required)
      */
     @RequestLine("GET /status_dashboards/url_slugs/{url_slug}")
     @Headers({
@@ -2804,13 +2803,13 @@ public interface PagerDutyRESTApi {
     GetStatusDashboardById200Response getStatusDashboardByUrlSlug(@Param("url_slug") @NotNull String urlSlug);
 
     /**
-     * Get impacted Business Services for a Status Dashboard by `id`.
+     * Get impacted Business Services for a Status Dashboard by {@code id}.
      * <p>
-     * Get impacted Business Services for a Status Dashboard by `id`
+     * Get impacted Business Services for a Status Dashboard by {@code id}
      * This endpoint does not return an exhaustive list of Business Services but rather provides access to the most impacted on the specified Status Dashboard up to the limit of 200.
      * The returned Business Services are sorted first by Impact, secondarily by most recently impacted, and finally by name.
-     * To get Impact information about a specific Business Service on the Status Dashboard that does not appear in the Impact-sorted response, use the `ids[]` parameter on the `/business_services/impacts` endpoint.
-     * Scoped OAuth requires: `status_dashboards.read` 
+     * To get Impact information about a specific Business Service on the Status Dashboard that does not appear in the Impact-sorted response, use the {@code ids[]} parameter on the {@code /business_services/impacts} endpoint.
+     * Scoped OAuth requires: {@code status_dashboards.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
@@ -2823,15 +2822,15 @@ public interface PagerDutyRESTApi {
 
     /**
      * Get impacted Business Services for a
-     * Status Dashboard by `url_slug`
+     * Status Dashboard by {@code url_slug}
      * <p>
-     * Get Business Service Impacts for the Business Services on a Status Dashboard by its `url_slug`. A `url_slug` is a human-readable reference for a custom Status Dashboard that may be created or changed in the UI. It will generally be a `dash-separated-string-like-this`.
+     * Get Business Service Impacts for the Business Services on a Status Dashboard by its {@code url_slug}. A {@code url_slug} is a human-readable reference for a custom Status Dashboard that may be created or changed in the UI. It will generally be a {@code dash-separated-string-like-this}.
      * This endpoint does not return an exhaustive list of Business Services but rather provides access to the most impacted on the Status Dashboard up to the limit of 200.
      * The returned Business Services are sorted first by Impact, secondarily by most recently impacted, and finally by name.
-     * To get impact information about a specific Business Service on the Status Dashboard that does not appear in the Impact-sored response, use the `ids[]` parameter on the `/business_services/impacts` endpoint.
-     * Scoped OAuth requires: `status_dashboards.read` 
+     * To get impact information about a specific Business Service on the Status Dashboard that does not appear in the Impact-sored response, use the {@code ids[]} parameter on the {@code /business_services/impacts} endpoint.
+     * Scoped OAuth requires: {@code status_dashboards.read} 
      *
-     * @param urlSlug              The `url_slug` for a status dashboard (required)
+     * @param urlSlug              The {@code url_slug} for a status dashboard (required)
      * @param additionalFields     Provides access to additional fields such as highest priority per business service and total impacted count (optional)
      */
     @RequestLine("GET /status_dashboards/url_slugs/{url_slug}/service_impacts?additional_fields[]={additional_fields}")
@@ -2846,7 +2845,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing Tag.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.read` 
+     * Scoped OAuth requires: {@code tags.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2863,13 +2862,13 @@ public interface PagerDutyRESTApi {
      * Get related Users, Teams or Escalation Policies for the Tag.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.read` 
+     * Scoped OAuth requires: {@code tags.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param entityType           Type of entity related with the tag (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /tags/{id}/{entity_type}?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -2884,7 +2883,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.read` 
+     * Scoped OAuth requires: {@code teams.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional Models to include in response. (optional)
@@ -2900,8 +2899,8 @@ public interface PagerDutyRESTApi {
      * List Team Notification Subscriptions
      * <p>
      * Retrieve a list of Notification Subscriptions the given Team has.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Teams must be added through `POST /teams/{id}/notification_subscriptions` to be returned from this endpoint.
-     * Scoped OAuth requires: `subscribers.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Teams must be added through {@code POST /teams/{id}/notification_subscriptions} to be returned from this endpoint.
+     * Scoped OAuth requires: {@code subscribers.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2914,9 +2913,9 @@ public interface PagerDutyRESTApi {
     /**
      * Get technical service dependencies
      * <p>
-     * Get all immediate dependencies of any technical service. Technical services are also known as `services`.
+     * Get all immediate dependencies of any technical service. Technical services are also known as {@code services}.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2931,7 +2930,7 @@ public interface PagerDutyRESTApi {
      * Get a template
      * <p>
      * Get a single template on the account
-     * Scoped OAuth requires: `templates.read` 
+     * Scoped OAuth requires: {@code templates.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -2945,11 +2944,11 @@ public interface PagerDutyRESTApi {
      * List templates
      * <p>
      * Get a list of all the template on an account
-     * Scoped OAuth requires: `templates.read` 
+     * Scoped OAuth requires: {@code templates.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param query                Template name or description to search (optional)
      * @param templateType         Filters templates by type. (optional, defaults to status_update)
      * @param sortBy               Used to specify both the field you wish to sort the results on (name/created_at), as well as the direction (asc/desc) of the results. The sort_by field and direction should be separated by a colon. Sort direction defaults to ascending. (optional, defaults to created_at:asc)
@@ -2966,7 +2965,7 @@ public interface PagerDutyRESTApi {
      * Get details about an existing user.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional Models to include in response. (optional)
@@ -2984,7 +2983,7 @@ public interface PagerDutyRESTApi {
      * Get details about a User's contact method.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.read` 
+     * Scoped OAuth requires: {@code users:contact_methods.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param contactMethodId      The contact method ID on the user. (required)
@@ -3002,7 +3001,7 @@ public interface PagerDutyRESTApi {
      * List contact methods of your PagerDuty user.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.read` 
+     * Scoped OAuth requires: {@code users:contact_methods.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3017,7 +3016,7 @@ public interface PagerDutyRESTApi {
      * Get a user's handoff notification rule
      * <p>
      * Get details about a User's Handoff Notification Rule. Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account. For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param oncallHandoffNotificationRuleId The oncall handoff notification rule ID on the user. (required)
@@ -3033,7 +3032,7 @@ public interface PagerDutyRESTApi {
      * List a User's Handoff Notification Rules
      * <p>
      * List Handoff Notification Rules of your PagerDuty User. Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account. For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3048,7 +3047,7 @@ public interface PagerDutyRESTApi {
      * Get the License allocated to a User
      * <p>
      * Get the License allocated to a User
-     * Scoped OAuth requires: `licenses.read` 
+     * Scoped OAuth requires: {@code licenses.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3065,7 +3064,7 @@ public interface PagerDutyRESTApi {
      * Get details about a user's notification rule.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.read` 
+     * Scoped OAuth requires: {@code users:contact_methods.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param notificationRuleId   The notification rule ID on the user. (required)
@@ -3084,11 +3083,11 @@ public interface PagerDutyRESTApi {
      * List notification rules of your PagerDuty user.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.read` 
+     * Scoped OAuth requires: {@code users:contact_methods.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional details to include. (optional)
-     * @param urgency              The incident urgency for which the notification rules are applied. If not specified, defaults to `high`. (optional)
+     * @param urgency              The incident urgency for which the notification rules are applied. If not specified, defaults to {@code high}. (optional)
      */
     @RequestLine("GET /users/{id}/notification_rules?include[]={include}&urgency={urgency}")
     @Headers({
@@ -3101,8 +3100,8 @@ public interface PagerDutyRESTApi {
      * List Notification Subscriptions
      * <p>
      * Retrieve a list of Notification Subscriptions the given User has.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Users must be added through `POST /users/{id}/notification_subscriptions` to be returned from this endpoint.
-     * Scoped OAuth requires: `subscribers.read` 
+     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; Users must be added through {@code POST /users/{id}/notification_subscriptions} to be returned from this endpoint.
+     * Scoped OAuth requires: {@code subscribers.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3119,7 +3118,7 @@ public interface PagerDutyRESTApi {
      * Beginning November 2021, user sessions no longer includes newly issued OAuth tokens.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:sessions.read` 
+     * Scoped OAuth requires: {@code users:sessions.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param type                 The session type for the user session ID. (required)
@@ -3139,7 +3138,7 @@ public interface PagerDutyRESTApi {
      * Beginning November 2021, active sessions no longer includes newly issued OAuth tokens.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:sessions.read` 
+     * Scoped OAuth requires: {@code users:sessions.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3157,7 +3156,7 @@ public interface PagerDutyRESTApi {
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param statusUpdateNotificationRuleId The status update notification rule ID on the user. (required)
@@ -3178,7 +3177,7 @@ public interface PagerDutyRESTApi {
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param include              Array of additional details to include. (optional)
@@ -3197,7 +3196,7 @@ public interface PagerDutyRESTApi {
      * Get details about one specific vendor.
      * A PagerDuty Vendor represents a specific type of integration. AWS Cloudwatch, Splunk, Datadog are all examples of vendors
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#vendors)
-     * Scoped OAuth requires: `vendors.read` 
+     * Scoped OAuth requires: {@code vendors.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3225,10 +3224,10 @@ public interface PagerDutyRESTApi {
      * List abilities
      * <p>
      * List all of your account's abilities, by name.
-     * "Abilities" describes your account's capabilities by feature name. For example `"teams"`.
+     * "Abilities" describes your account's capabilities by feature name. For example {@code "teams"}.
      * An ability may be available to your account based on things like your pricing plan or account state.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#abilities)
-     * Scoped OAuth requires: `abilities.read` 
+     * Scoped OAuth requires: {@code abilities.read} 
      *
      */
     @RequestLine("GET /abilities")
@@ -3244,11 +3243,11 @@ public interface PagerDutyRESTApi {
      * List all of the Add-ons installed on your account.
      * Addon's are pieces of functionality that developers can write to insert new functionality into PagerDuty's UI.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#add-ons)
-     * Scoped OAuth requires: `addons.read` 
+     * Scoped OAuth requires: {@code addons.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      * @param serviceIds           Filters the results, showing only Add-ons for the given services (optional)
      * @param filter               Filters the results, showing only Add-ons of the given type (optional)
@@ -3264,22 +3263,22 @@ public interface PagerDutyRESTApi {
      * List audit records
      * <p>
      * List audit trail records matching provided query params or default criteria.
-     * The returned records are sorted by the `execution_time` from newest to oldest.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
+     * The returned records are sorted by the {@code execution_time} from newest to oldest.
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
      * Only admins, account owners, or global API tokens on PagerDuty account [pricing plans](https://www.pagerduty.com/pricing) with the "Audit Trail" feature can access this endpoint.
      * For other role based access to audit records by resource ID, see the resource's API documentation.
      * For more information see the [Audit API Document](https://developer.pagerduty.com/docs/rest-api-v2/audit-records-api/).
-     * Scoped OAuth requires: `audit_records.read` 
+     * Scoped OAuth requires: {@code audit_records.read} 
      *
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
-     * @param since                The start of the date range over which you want to search. If not specified, defaults to `now() - 24 hours` (past 24 hours) (optional)
-     * @param until                The end of the date range over which you want to search. If not specified, defaults to `now()`. May not be more than 31 days after `since`. (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param since                The start of the date range over which you want to search. If not specified, defaults to {@code now() - 24 hours} (past 24 hours) (optional)
+     * @param until                The end of the date range over which you want to search. If not specified, defaults to {@code now()}. May not be more than 31 days after {@code since}. (optional)
      * @param rootResourceTypes    Resource type filter for the root_resource. (optional)
      * @param actorType            Actor type filter. (optional)
-     * @param actorId              Actor Id filter. Must be qualified by providing the `actor_type` param. (optional)
+     * @param actorId              Actor Id filter. Must be qualified by providing the {@code actor_type} param. (optional)
      * @param methodType           Method type filter. (optional)
-     * @param methodTruncatedToken Method truncated_token filter. Must be qualified by providing the `method_type` param. (optional)
+     * @param methodTruncatedToken Method truncated_token filter. Must be qualified by providing the {@code method_type} param. (optional)
      * @param actions              Action filter (optional)
      */
     @RequestLine("GET /audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}&root_resource_types[]={root_resource_types}&actor_type={actor_type}&actor_id={actor_id}&method_type={method_type}&method_truncated_token={method_truncated_token}&actions[]={actions}")
@@ -3310,11 +3309,11 @@ public interface PagerDutyRESTApi {
      * List existing Business Services.
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /business_services?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -3327,12 +3326,12 @@ public interface PagerDutyRESTApi {
      * List Change Events
      * <p>
      * List all of the existing Change Events.
-     * Scoped OAuth requires: `change_events.read` 
+     * Scoped OAuth requires: {@code change_events.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param integrationIds       An array of integration IDs. Only results related to these integrations will be returned. (optional)
      * @param since                The start of the date range over which you want to search, as a UTC ISO 8601 datetime string. Will return an HTTP 400 for non-UTC datetimes. (optional)
      * @param until                The end of the date range over which you want to search, as a UTC ISO 8601 datetime string. Will return an HTTP 400 for non-UTC datetimes. (optional)
@@ -3348,7 +3347,7 @@ public interface PagerDutyRESTApi {
      * List Field Options
      * <p>
      * List all enabled Field Options for a Field.
-     * Scoped OAuth requires: `custom_fields.read` 
+     * Scoped OAuth requires: {@code custom_fields.read} 
      *
      * @param fieldId              The ID of the field. (required)
      */
@@ -3362,7 +3361,7 @@ public interface PagerDutyRESTApi {
      * List Fields
      * <p>
      * List fields.
-     * Scoped OAuth requires: `custom_fields.read` 
+     * Scoped OAuth requires: {@code custom_fields.read} 
      *
      * @param include              Array of additional details to include. (optional)
      */
@@ -3378,14 +3377,14 @@ public interface PagerDutyRESTApi {
      * List all of the existing escalation policies.
      * Escalation policies define which user should be alerted at which time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#escalation-policies)
-     * Scoped OAuth requires: `escalation_policies.read` 
+     * Scoped OAuth requires: {@code escalation_policies.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      * @param userIds              Filters the results, showing only escalation policies on which any of the users is a target. (optional)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param include              Array of additional Models to include in response. (optional)
      * @param sortBy               Used to specify the field you wish to sort the results on. (optional, defaults to name)
      */
@@ -3399,16 +3398,16 @@ public interface PagerDutyRESTApi {
     /**
      * List audit records for an escalation policy
      * <p>
-     * The returned records are sorted by the `execution_time` from newest to oldest.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
+     * The returned records are sorted by the {@code execution_time} from newest to oldest.
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
      * For more information see the [Audit API Document](https://developer.pagerduty.com/docs/rest-api-v2/audit-records-api/).
-     * Scoped OAuth requires: `audit_records.read` 
+     * Scoped OAuth requires: {@code audit_records.read} 
      *
      * @param id                   The ID of the resource. (required)
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
-     * @param since                The start of the date range over which you want to search. If not specified, defaults to `now() - 24 hours` (past 24 hours) (optional)
-     * @param until                The end of the date range over which you want to search. If not specified, defaults to `now()`. May not be more than 31 days after `since`. (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param since                The start of the date range over which you want to search. If not specified, defaults to {@code now() - 24 hours} (past 24 hours) (optional)
+     * @param until                The end of the date range over which you want to search. If not specified, defaults to {@code now()}. May not be more than 31 days after {@code since}. (optional)
      */
     @RequestLine("GET /escalation_policies/{id}/audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}")
     @Headers({
@@ -3423,7 +3422,7 @@ public interface PagerDutyRESTApi {
      * List all Global Event Orchestrations on an Account.
      * Global Event Orchestrations allow you define a set of Global Rules and Router Rules, so that when you ingest events using the Orchestration's Routing Key your events will have actions applied via the Global Rules &amp; then routed to the correct Service by the Router Rules, based on the event's content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
@@ -3442,11 +3441,11 @@ public interface PagerDutyRESTApi {
      * List all extension schemas.
      * A PagerDuty extension vendor represents a specific type of outbound extension such as Generic Webhook, Slack, ServiceNow.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#extension-schemas)
-     * Scoped OAuth requires: `extension_schemas.read` 
+     * Scoped OAuth requires: {@code extension_schemas.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /extension_schemas?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -3461,12 +3460,12 @@ public interface PagerDutyRESTApi {
      * List alerts for the specified incident.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param alertKey             Alert de-duplication key. (optional)
      * @param statuses             Return only alerts with the given statuses. (More status codes may be introduced in the future.) (optional)
      * @param sortBy               Used to specify both the field you wish to sort the results on (created_at/resolved_at), as well as the direction (asc/desc) of the results. The sort_by field and direction should be separated by a colon. A maximum of two fields can be included, separated by a comma. Sort direction defaults to ascending. (optional)
@@ -3486,16 +3485,16 @@ public interface PagerDutyRESTApi {
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * A Log Entry are a record of all events on your account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param since                The start of the date range over which you want to search. (optional)
      * @param until                The end of the date range over which you want to search. (optional)
-     * @param isOverview           If `true`, will return a subset of log entries that show only the most important changes to the incident. (optional, defaults to false)
+     * @param isOverview           If {@code true}, will return a subset of log entries that show only the most important changes to the incident. (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      */
     @RequestLine("GET /incidents/{id}/log_entries?limit={limit}&offset={offset}&total={total}&time_zone={time_zone}&since={since}&until={until}&is_overview={is_overview}&include[]={include}")
@@ -3511,7 +3510,7 @@ public interface PagerDutyRESTApi {
      * List existing notes for the specified incident.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -3528,7 +3527,7 @@ public interface PagerDutyRESTApi {
      * List related Change Events for an Incident, as well as the reason these changes are correlated with the incident.
      * Change events represent service changes such as deploys, build completion, and configuration changes, providing information that is critical during incident triage or hypercare. For more information on change events, see [Change Events](https://support.pagerduty.com/docs/change-events).
      * The Change Correlation feature provides incident responders with recent change events that are most relevant to that incident. Change Correlation informs the responder why a particular change event was surfaced and correlated to an incident based on three key factors which include time, related service, or intelligence (machine learning).
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
@@ -3544,10 +3543,10 @@ public interface PagerDutyRESTApi {
      * List Actions
      * <p>
      * List Incident Workflow Actions
-     * Scoped OAuth requires: `incident_workflows.read` 
+     * Scoped OAuth requires: {@code incident_workflows.read} 
      *
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
      * @param keyword              If provided, only show actions tagged with the specified keyword (optional)
      */
     @RequestLine("GET /incident_workflows/actions?limit={limit}&cursor={cursor}&keyword={keyword}")
@@ -3561,16 +3560,16 @@ public interface PagerDutyRESTApi {
      * List Triggers
      * <p>
      * List existing Incident Workflow Triggers
-     * Scoped OAuth requires: `incident_workflows.read` 
+     * Scoped OAuth requires: {@code incident_workflows.read} 
      *
      * @param workflowId           If provided, only show triggers configured to start the given workflow. Useful for listing all services associated with the given workflow (optional)
-     * @param incidentId           If provided, only show triggers configured on the service of the given incident. Useful for finding manual triggers that are configured on the service for a specific incident. Cannot be specified if `service_id` is provided. (optional)
-     * @param serviceId            If provided, only show triggers configured for incidents in the given service. Useful for listing all workflows associated with the given service. Cannot be specified if `incident_id` is provided. (optional)
+     * @param incidentId           If provided, only show triggers configured on the service of the given incident. Useful for finding manual triggers that are configured on the service for a specific incident. Cannot be specified if {@code service_id} is provided. (optional)
+     * @param serviceId            If provided, only show triggers configured for incidents in the given service. Useful for listing all workflows associated with the given service. Cannot be specified if {@code incident_id} is provided. (optional)
      * @param triggerType          If provided, only show triggers of the given type. For example “manual” to search for manual triggers (optional)
      * @param workflowNameContains If provided, only show triggers configured to start workflows whose name contain the provided value. (optional)
      * @param sortBy               If provided, returns triggers sorted by the specified property. (optional)
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
      */
     @RequestLine("GET /incident_workflows/triggers?workflow_id={workflow_id}&incident_id={incident_id}&service_id={service_id}&trigger_type={trigger_type}&workflow_name_contains={workflow_name_contains}&sort_by={sort_by}&limit={limit}&cursor={cursor}")
     @Headers({
@@ -3585,11 +3584,11 @@ public interface PagerDutyRESTApi {
      * List existing Incident Workflows.
      * This is the best method to use to list all Incident Workflows in your account. If your use case requires listing Incident Workflows associated with a particular Service, you can use the "List Triggers" method to find Incident Workflows configured to start for Incidents in a given Service.
      * An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
-     * Scoped OAuth requires: `incident_workflows.read` 
+     * Scoped OAuth requires: {@code incident_workflows.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      * @param include              Array of additional details to include. (optional)
      */
@@ -3606,20 +3605,20 @@ public interface PagerDutyRESTApi {
      * List existing incidents.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param dateRange            When set to all, the since and until parameters and defaults are ignored. (optional)
      * @param incidentKey          Incident de-duplication key. Incidents with child alerts do not have an incident key; querying by incident key will return incidents whose alerts have alert_key matching the given incident key. (optional)
      * @param serviceIds           Returns only the incidents associated with the passed service(s). This expects one or more service IDs. (optional)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param userIds              Returns only the incidents currently assigned to the passed user(s). This expects one or more user IDs. Note: When using the assigned_to_user filter, you will only receive incidents with statuses of triggered or acknowledged. This is because resolved incidents are not assigned to any user. (optional)
-     * @param urgencies            Array of the urgencies of the incidents to be returned. Defaults to all urgencies. Account must have the `urgencies` ability to do this. (optional)
+     * @param urgencies            Array of the urgencies of the incidents to be returned. Defaults to all urgencies. Account must have the {@code urgencies} ability to do this. (optional)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
-     * @param statuses             Return only incidents with the given statuses. To query multiple statuses, pass `statuses[]` more than once, for example: `https://api.pagerduty.com/incidents?statuses[]=triggered&amp;statuses[]=acknowledged`. (More status codes may be introduced in the future.) (optional)
-     * @param sortBy               Used to specify both the field you wish to sort the results on (incident_number/created_at/resolved_at/urgency), as well as the direction (asc/desc) of the results. The sort_by field and direction should be separated by a colon. A maximum of two fields can be included, separated by a comma. Sort direction defaults to ascending. The account must have the `urgencies` ability to sort by the urgency. (optional)
+     * @param statuses             Return only incidents with the given statuses. To query multiple statuses, pass {@code statuses[]} more than once, for example: {@code https://api.pagerduty.com/incidents?statuses[]=triggered&amp;statuses[]=acknowledged}. (More status codes may be introduced in the future.) (optional)
+     * @param sortBy               Used to specify both the field you wish to sort the results on (incident_number/created_at/resolved_at/urgency), as well as the direction (asc/desc) of the results. The sort_by field and direction should be separated by a colon. A maximum of two fields can be included, separated by a comma. Sort direction defaults to ascending. The account must have the {@code urgencies} ability to sort by the urgency. (optional)
      * @param include              Array of additional details to include. (optional)
      * @param since                The start of the date range over which you want to search. Maximum range is 6 months and default is 1 month. (optional)
      * @param until                The end of the date range over which you want to search. Maximum range is 6 months and default is 1 month. (optional)
@@ -3635,7 +3634,7 @@ public interface PagerDutyRESTApi {
      * List License Allocations
      * <p>
      * List the Licenses allocated to Users within your Account
-     * Scoped OAuth requires: `licenses.read` 
+     * Scoped OAuth requires: {@code licenses.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
@@ -3651,7 +3650,7 @@ public interface PagerDutyRESTApi {
      * List Licenses
      * <p>
      * List the Licenses associated with your Account
-     * Scoped OAuth requires: `licenses.read` 
+     * Scoped OAuth requires: {@code licenses.read} 
      *
      */
     @RequestLine("GET /licenses")
@@ -3667,17 +3666,17 @@ public interface PagerDutyRESTApi {
      * List all of the incident log entries across the entire account.
      * A log of all the events that happen to an Incident, and these are exposed as Log Entries.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#log-entries)
-     * Scoped OAuth requires: `incidents.read` 
+     * Scoped OAuth requires: {@code incidents.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param since                The start of the date range over which you want to search. (optional)
      * @param until                The end of the date range over which you want to search. (optional)
-     * @param isOverview           If `true`, will return a subset of log entries that show only the most important changes to the incident. (optional, defaults to false)
+     * @param isOverview           If {@code true}, will return a subset of log entries that show only the most important changes to the incident. (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      */
     @RequestLine("GET /log_entries?limit={limit}&offset={offset}&total={total}&time_zone={time_zone}&since={since}&until={until}&is_overview={is_overview}&include[]={include}&team_ids[]={team_ids}")
     @Headers({
@@ -3692,13 +3691,13 @@ public interface PagerDutyRESTApi {
      * List existing maintenance windows, optionally filtered by service and/or team, or whether they are from the past, present or future.
      * A Maintenance Window is used to temporarily disable one or more Services for a set period of time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#maintenance-windows)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param serviceIds           An array of service IDs. Only results related to these services will be returned. (optional)
      * @param include              Array of additional Models to include in response. (optional)
      * @param filter               Only return maintenance windows in a given state. (optional)
@@ -3716,13 +3715,13 @@ public interface PagerDutyRESTApi {
      * List notifications for a given time range, optionally filtered by type (sms_notification, email_notification, phone_notification, or push_notification).
      * A Notification is created when an Incident is triggered or escalated.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#notifications)
-     * Scoped OAuth requires: `users:notifications.read` 
+     * Scoped OAuth requires: {@code users:notifications.read} 
      *
      * @param since                The start of the date range over which you want to search. The time element is optional. (required)
      * @param until                The end of the date range over which you want to search. This should be in the same format as since. The size of the date range must be less than 3 months. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param filter               Return notification of this type only. (optional)
      * @param include              Array of additional details to include. (optional)
@@ -3740,18 +3739,18 @@ public interface PagerDutyRESTApi {
      * List the on-call entries during a given time range.
      * An on-call represents a contiguous unit of time for which a User will be on call for a given Escalation Policy and Escalation Rules.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#on-calls)
-     * Scoped OAuth requires: `oncalls.read` 
+     * Scoped OAuth requires: {@code oncalls.read} 
      *
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param include              Array of additional details to include. (optional)
      * @param userIds              Filters the results, showing only on-calls for the specified user IDs. (optional)
      * @param escalationPolicyIds  Filters the results, showing only on-calls for the specified escalation policy IDs. (optional)
-     * @param scheduleIds          Filters the results, showing only on-calls for the specified schedule IDs. If `null` is provided in the array, it includes permanent on-calls due to direct user escalation targets. (optional)
+     * @param scheduleIds          Filters the results, showing only on-calls for the specified schedule IDs. If {@code null} is provided in the array, it includes permanent on-calls due to direct user escalation targets. (optional)
      * @param since                The start of the time range over which you want to search. If an on-call period overlaps with the range, it will be included in the result. Defaults to current time. On-call shifts are limited to 90 days in the future. (optional)
-     * @param until                The end of the time range over which you want to search. If an on-call period overlaps with the range, it will be included in the result. Defaults to current time. On-call shifts are limited to 90 days in the future, and the `until` time cannot be before the `since` time. (optional)
+     * @param until                The end of the time range over which you want to search. If an on-call period overlaps with the range, it will be included in the result. Defaults to current time. On-call shifts are limited to 90 days in the future, and the {@code until} time cannot be before the {@code since} time. (optional)
      * @param earliest             This will filter on-calls such that only the earliest on-call for each combination of escalation policy, escalation level, and user is returned. This is useful for determining when the "next" on-calls are for a given set of filters. (optional)
      */
     @RequestLine("GET /oncalls?time_zone={time_zone}&limit={limit}&offset={offset}&total={total}&include[]={include}&user_ids[]={user_ids}&escalation_policy_ids[]={escalation_policy_ids}&schedule_ids[]={schedule_ids}&since={since}&until={until}&earliest={earliest}")
@@ -3767,7 +3766,7 @@ public interface PagerDutyRESTApi {
      * List the Integrations associated with this Event Orchestrations.
      * You can use a Routing Key from these Integrations to send events to PagerDuty!
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.read` 
+     * Scoped OAuth requires: {@code event_orchestrations.read} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      */
@@ -3784,11 +3783,11 @@ public interface PagerDutyRESTApi {
      * List existing priorities, in order (most to least severe).
      * A priority is a label representing the importance and impact of an incident. This feature is only available on Standard and Enterprise plans.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#priorities)
-     * Scoped OAuth requires: `priorities.read` 
+     * Scoped OAuth requires: {@code priorities.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /priorities?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -3803,8 +3802,8 @@ public interface PagerDutyRESTApi {
      * List all of the existing Response Plays.
      * Response Plays allow you to create packages of Incident Actions that can be applied during an Incident's life cycle.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#response-plays)
-     * When using a Global API token, the `From` header is required.
-     * Scoped OAuth requires: `response_plays.read` 
+     * When using a Global API token, the {@code From} header is required.
+     * Scoped OAuth requires: {@code response_plays.read} 
      *
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      * @param filterForManualRun   When this parameter is present, only those Response Plays that can be run manually will be returned. (optional)
@@ -3827,12 +3826,12 @@ public interface PagerDutyRESTApi {
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
      * Note: Create and Update on rules will accept 'description' or 'summary' interchangeably as an extraction action target. Get and List on rules will always return 'summary' as the target. If you are expecting 'description' please change your automation code to expect 'summary' instead.
-     * Scoped OAuth requires: `event_rules.read` 
+     * Scoped OAuth requires: {@code event_rules.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /rulesets/{id}/rules?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -3847,11 +3846,11 @@ public interface PagerDutyRESTApi {
      * List all Rulesets &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
-     * Scoped OAuth requires: `event_rules.read` 
+     * Scoped OAuth requires: {@code event_rules.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /rulesets?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -3866,7 +3865,7 @@ public interface PagerDutyRESTApi {
      * List overrides for a given time range.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.read` 
+     * Scoped OAuth requires: {@code schedules.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param since                The start of the date range over which you want to search. (required)
@@ -3887,7 +3886,7 @@ public interface PagerDutyRESTApi {
      * List all of the users on call in a given schedule for a given time range.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param since                The start of the date range over which you want to search. (optional)
@@ -3906,11 +3905,11 @@ public interface PagerDutyRESTApi {
      * List the on-call schedules.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.read` 
+     * Scoped OAuth requires: {@code schedules.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      * @param include              Array of additional details to include. (optional)
      */
@@ -3924,16 +3923,16 @@ public interface PagerDutyRESTApi {
     /**
      * List audit records for a schedule
      * <p>
-     * The returned records are sorted by the `execution_time` from newest to oldest.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
+     * The returned records are sorted by the {@code execution_time} from newest to oldest.
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
      * For more information see the [Audit API Document](https://developer.pagerduty.com/docs/rest-api-v2/audit-records-api/).
-     * Scoped OAuth requires: `audit_records.read` 
+     * Scoped OAuth requires: {@code audit_records.read} 
      *
      * @param id                   The ID of the resource. (required)
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
-     * @param since                The start of the date range over which you want to search. If not specified, defaults to `now() - 24 hours` (past 24 hours) (optional)
-     * @param until                The end of the date range over which you want to search. If not specified, defaults to `now()`. May not be more than 31 days after `since`. (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param since                The start of the date range over which you want to search. If not specified, defaults to {@code now() - 24 hours} (past 24 hours) (optional)
+     * @param until                The end of the date range over which you want to search. If not specified, defaults to {@code now()}. May not be more than 31 days after {@code since}. (optional)
      */
     @RequestLine("GET /schedules/{id}/audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}")
     @Headers({
@@ -3945,16 +3944,16 @@ public interface PagerDutyRESTApi {
     /**
      * List audit records for a service
      * <p>
-     * The returned records are sorted by the `execution_time` from newest to oldest.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
+     * The returned records are sorted by the {@code execution_time} from newest to oldest.
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
      * For more information see the [Audit API Document](https://developer.pagerduty.com/docs/rest-api-v2/audit-records-api/).
-     * Scoped OAuth requires: `audit_records.read` 
+     * Scoped OAuth requires: {@code audit_records.read} 
      *
      * @param id                   The ID of the resource. (required)
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
-     * @param since                The start of the date range over which you want to search. If not specified, defaults to `now() - 24 hours` (past 24 hours) (optional)
-     * @param until                The end of the date range over which you want to search. If not specified, defaults to `now()`. May not be more than 31 days after `since`. (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param since                The start of the date range over which you want to search. If not specified, defaults to {@code now() - 24 hours} (past 24 hours) (optional)
+     * @param until                The end of the date range over which you want to search. If not specified, defaults to {@code now()}. May not be more than 31 days after {@code since}. (optional)
      */
     @RequestLine("GET /services/{id}/audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}")
     @Headers({
@@ -3967,15 +3966,15 @@ public interface PagerDutyRESTApi {
      * List Change Events for a service
      * <p>
      * List all of the existing Change Events for a service.
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param since                The start of the date range over which you want to search, as a UTC ISO 8601 datetime string. Will return an HTTP 400 for non-UTC datetimes. (optional)
      * @param until                The end of the date range over which you want to search, as a UTC ISO 8601 datetime string. Will return an HTTP 400 for non-UTC datetimes. (optional)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param integrationIds       An array of integration IDs. Only results related to these integrations will be returned. (optional)
      */
     @RequestLine("GET /services/{id}/change_events?since={since}&until={until}&limit={limit}&offset={offset}&total={total}&team_ids[]={team_ids}&integration_ids[]={integration_ids}")
@@ -3989,12 +3988,12 @@ public interface PagerDutyRESTApi {
      * List Service's Event Rules
      * <p>
      * List Event Rules on a Service. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      */
     @RequestLine("GET /services/{id}/rules?limit={limit}&offset={offset}&total={total}&include[]={include}")
@@ -4010,13 +4009,13 @@ public interface PagerDutyRESTApi {
      * List existing Services.
      * A service may represent an application, component, or team you wish to open incidents against.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.read` 
+     * Scoped OAuth requires: {@code services.read} 
      *
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param sortBy               Used to specify the field you wish to sort the results on. (optional, defaults to name)
      * @param include              Array of additional details to include. (optional)
@@ -4032,7 +4031,7 @@ public interface PagerDutyRESTApi {
      * List Status Dashboards
      * <p>
      * Get all your account's custom Status Dashboard views.
-     * Scoped OAuth requires: `status_dashboards.read` 
+     * Scoped OAuth requires: {@code status_dashboards.read} 
      *
      */
     @RequestLine("GET /status_dashboards")
@@ -4047,11 +4046,11 @@ public interface PagerDutyRESTApi {
      * List all of your account's tags.
      * A Tag is applied to Escalation Policies, Teams or Users and can be used to filter them.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#tags)
-     * Scoped OAuth requires: `tags.read` 
+     * Scoped OAuth requires: {@code tags.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param query                Filters the result, showing only the tags whose label matches the query. (optional)
      */
     @RequestLine("GET /tags?limit={limit}&offset={offset}&total={total}&query={query}")
@@ -4067,12 +4066,12 @@ public interface PagerDutyRESTApi {
      * Get information about members on a team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.read` 
+     * Scoped OAuth requires: {@code teams.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      */
     @RequestLine("GET /teams/{id}/members?limit={limit}&offset={offset}&total={total}&include[]={include}")
@@ -4088,11 +4087,11 @@ public interface PagerDutyRESTApi {
      * List teams of your PagerDuty account, optionally filtered by a search query.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.read` 
+     * Scoped OAuth requires: {@code teams.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
      */
     @RequestLine("GET /teams?limit={limit}&offset={offset}&total={total}&query={query}")
@@ -4105,16 +4104,16 @@ public interface PagerDutyRESTApi {
     /**
      * List audit records for a team
      * <p>
-     * The returned records are sorted by the `execution_time` from newest to oldest.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
+     * The returned records are sorted by the {@code execution_time} from newest to oldest.
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
      * For more information see the [Audit API Document](https://developer.pagerduty.com/docs/rest-api-v2/audit-records-api/).
-     * Scoped OAuth requires: `audit_records.read` 
+     * Scoped OAuth requires: {@code audit_records.read} 
      *
      * @param id                   The ID of the resource. (required)
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
-     * @param since                The start of the date range over which you want to search. If not specified, defaults to `now() - 24 hours` (past 24 hours) (optional)
-     * @param until                The end of the date range over which you want to search. If not specified, defaults to `now()`. May not be more than 31 days after `since`. (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param since                The start of the date range over which you want to search. If not specified, defaults to {@code now() - 24 hours} (past 24 hours) (optional)
+     * @param until                The end of the date range over which you want to search. If not specified, defaults to {@code now()}. May not be more than 31 days after {@code since}. (optional)
      */
     @RequestLine("GET /teams/{id}/audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}")
     @Headers({
@@ -4129,13 +4128,13 @@ public interface PagerDutyRESTApi {
      * List users of your PagerDuty account, optionally filtered by a search query.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.read` 
+     * Scoped OAuth requires: {@code users.read} 
      *
      * @param query                Filters the result, showing only the records whose name matches the query. (optional)
-     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the `teams` ability to use this parameter. (optional)
+     * @param teamIds              An array of team IDs. Only results related to these teams will be returned. Account must have the {@code teams} ability to use this parameter. (optional)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param include              Array of additional Models to include in response. (optional)
      */
     @RequestLine("GET /users?query={query}&team_ids[]={team_ids}&limit={limit}&offset={offset}&total={total}&include[]={include}")
@@ -4149,16 +4148,16 @@ public interface PagerDutyRESTApi {
      * List audit records for a user
      * <p>
      * The response will include audit records with changes that are made to the identified user not changes made by the identified user.
-     *  The returned records are sorted by the `execution_time` from newest to oldest.
-     * See [`Cursor-based pagination`](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
+     *  The returned records are sorted by the {@code execution_time} from newest to oldest.
+     * See [{@code Cursor-based pagination}](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for instructions on how to paginate through the result set.
      * For more information see the [Audit API Document](https://developer.pagerduty.com/docs/rest-api-v2/audit-records-api/).
-     * Scoped OAuth requires: `audit_records.read` 
+     * Scoped OAuth requires: {@code audit_records.read} 
      *
      * @param id                   The ID of the resource. (required)
-     * @param limit                The minimum of the `limit` parameter used in the request or the maximum request size of the API. (optional)
-     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the `next_cursor` field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
-     * @param since                The start of the date range over which you want to search. If not specified, defaults to `now() - 24 hours` (past 24 hours) (optional)
-     * @param until                The end of the date range over which you want to search. If not specified, defaults to `now()`. May not be more than 31 days after `since`. (optional)
+     * @param limit                The minimum of the {@code limit} parameter used in the request or the maximum request size of the API. (optional)
+     * @param cursor               Optional parameter used to request the "next" set of results from an API.  The value provided here is most commonly obtained from the {@code next_cursor} field of the previous request.  When no value is provided, the request starts at the beginning of the result set.  (optional)
+     * @param since                The start of the date range over which you want to search. If not specified, defaults to {@code now() - 24 hours} (past 24 hours) (optional)
+     * @param until                The end of the date range over which you want to search. If not specified, defaults to {@code now()}. May not be more than 31 days after {@code since}. (optional)
      */
     @RequestLine("GET /users/{id}/audit/records?limit={limit}&cursor={cursor}&since={since}&until={until}")
     @Headers({
@@ -4173,11 +4172,11 @@ public interface PagerDutyRESTApi {
      * List all vendors.
      * A PagerDuty Vendor represents a specific type of integration. AWS Cloudwatch, Splunk, Datadog are all examples of vendors
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#vendors)
-     * Scoped OAuth requires: `vendors.read` 
+     * Scoped OAuth requires: {@code vendors.read} 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      */
     @RequestLine("GET /vendors?limit={limit}&offset={offset}&total={total}")
     @Headers({
@@ -4190,12 +4189,12 @@ public interface PagerDutyRESTApi {
      * List webhook subscriptions
      * <p>
      * List existing webhook subscriptions.
-     * The `filter_type` and `filter_id` query parameters may be used to only show subscriptions for a particular _service_ or _team_.
+     * The {@code filter_type} and {@code filter_id} query parameters may be used to only show subscriptions for a particular _service_ or _team_.
      * For more information on webhook subscriptions and how they are used to configure v3 webhooks see the [Webhooks v3 Developer Documentation](https://developer.pagerduty.com/docs/webhooks/v3-overview/). 
      *
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param filterType           The type of resource to filter upon. (optional)
      * @param filterId             The id of the resource to filter upon. (optional)
      */
@@ -4211,7 +4210,7 @@ public interface PagerDutyRESTApi {
      * Merge a list of source incidents into this incident.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -4231,7 +4230,7 @@ public interface PagerDutyRESTApi {
      * Move an Integration and its Routing Key from the Event Orchestration specified in the request payload, to the Event Orchestration specified in the request URL.
      * Any future events sent to this Integration's Routing Key will be processed by this Event Orchestration's Rules.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param migrateOrchestrationIntegrationRequest  (optional)
@@ -4248,7 +4247,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Create a new Incident Workflow
      * An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param postIncidentWorkflowRequest  (optional)
      */
@@ -4265,7 +4264,7 @@ public interface PagerDutyRESTApi {
      * Create a Global Event Orchestration.
      * Global Event Orchestrations allow you define a set of Global Rules and Router Rules, so that when you ingest events using the Orchestration's Routing Key your events will have actions applied via the Global Rules &amp; then routed to the correct Service by the Router Rules, based on the event's content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param postOrchestrationRequest  (optional)
      */
@@ -4282,7 +4281,7 @@ public interface PagerDutyRESTApi {
      * Create an Integration associated with this Event Orchestration.
      * You can then use the Routing Key from this new Integration to send events to PagerDuty!
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param postOrchestrationIntegrationRequest  (optional)
@@ -4297,9 +4296,9 @@ public interface PagerDutyRESTApi {
     /**
      * Set the Account-level priority threshold for Business Service impact.
      * <p>
-     * Set the Account-level priority threshold for Business Service. Scoped OAuth requires: `services.write` 
+     * Set the Account-level priority threshold for Business Service. Scoped OAuth requires: {@code services.write} 
      *
-     * @param putBusinessServicePriorityThresholdsRequest Set the `id` and `order` of the global Priority Threshold. These values can be obtained by calling the `/priorities` endpoint.  Once set, Incidents must be at or above the specified level in order to impact Business Services.  An exception to this rule is if the Incident has been added to the incident directly using the `PUT /incidents/{id}/business_services/{business_service_id}/impacts` endpoint. (optional)
+     * @param putBusinessServicePriorityThresholdsRequest Set the {@code id} and {@code order} of the global Priority Threshold. These values can be obtained by calling the {@code /priorities} endpoint.  Once set, Incidents must be at or above the specified level in order to impact Business Services.  An exception to this rule is if the Incident has been added to the incident directly using the {@code PUT /incidents/{id}/business_services/{business_service_id}/impacts} endpoint. (optional)
      */
     @RequestLine("PUT /business_services/priority_thresholds")
     @Headers({
@@ -4312,11 +4311,11 @@ public interface PagerDutyRESTApi {
     /**
      * Manually change an Incident's Impact on a Business Service.
      * <p>
-     * Change Impact of an Incident on a Business Service. Scoped OAuth requires: `incidents.write` 
+     * Change Impact of an Incident on a Business Service. Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param businessServiceId    The business service ID. (required)
-     * @param putIncidentManualBusinessServiceAssociationRequest The `impacted` relation will cause the Business Service and any Services that it supports to become impacted by this incident.  The `not_impacted` relation will remove the Incident's Impact from the specified Business Service.  The effect of adding or removing Impact to a Business Service in this way will also change the propagation of Impact to other Services supported by that Business Service. (optional)
+     * @param putIncidentManualBusinessServiceAssociationRequest The {@code impacted} relation will cause the Business Service and any Services that it supports to become impacted by this incident.  The {@code not_impacted} relation will remove the Incident's Impact from the specified Business Service.  The effect of adding or removing Impact to a Business Service in this way will also change the propagation of Impact to other Services supported by that Business Service. (optional)
      */
     @RequestLine("PUT /incidents/{id}/business_services/{business_service_id}/impacts")
     @Headers({
@@ -4331,7 +4330,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Update an Incident Workflow
      * An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param postIncidentWorkflowRequest  (optional)
@@ -4347,7 +4346,7 @@ public interface PagerDutyRESTApi {
      * Delete Business Service Account Subscription
      * <p>
      * Unsubscribe your Account from a Business Service.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -4361,7 +4360,7 @@ public interface PagerDutyRESTApi {
      * Remove Business Service Subscribers
      * <p>
      * Unsubscribes the matching Subscribers from a Business Service.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createBusinessServiceNotificationSubscribersRequest The entities to unsubscribe. (optional)
@@ -4377,7 +4376,7 @@ public interface PagerDutyRESTApi {
      * Remove Notification Subscriber
      * <p>
      * Unsubscribes the matching Subscribers from Incident Status Update Notifications.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createBusinessServiceNotificationSubscribersRequest The entities to unsubscribe. (optional)
@@ -4392,7 +4391,7 @@ public interface PagerDutyRESTApi {
     /**
      * <p>
      * Unsubscribe the given Team from Notifications on the matching Subscribable entities.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createTeamNotificationSubscriptionsRequest The entities to unsubscribe from. (optional)
@@ -4407,8 +4406,8 @@ public interface PagerDutyRESTApi {
     /**
      * Render a template
      * <p>
-     * Render a template. This endpoint has a variable request body depending on the template type. For the `status_update` template type, the caller will provide the incident id, and a status update message.
-     * Scoped OAuth requires: `templates.read` 
+     * Render a template. This endpoint has a variable request body depending on the template type. For the {@code status_update} template type, the caller will provide the incident id, and a status update message.
+     * Scoped OAuth requires: {@code templates.read} 
      *
      * @param id                   The ID of the resource. (required)
      * @param renderTemplateRequest  (required)
@@ -4426,7 +4425,7 @@ public interface PagerDutyRESTApi {
      * Run a specified response play on a given incident.
      * Response Plays are a package of Incident Actions that can be applied during an Incident's life cycle.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#response-plays)
-     * Scoped OAuth requires: `response_plays.write` 
+     * Scoped OAuth requires: {@code response_plays.write} 
      *
      * @param responsePlayId       The response play ID of the response play associated with the request. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -4446,7 +4445,7 @@ public interface PagerDutyRESTApi {
      * Update Custom Field Values
      * <p>
      * Set custom field values for an incident.
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param setIncidentFieldValuesRequest  (optional)
@@ -4463,7 +4462,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Test a webhook subscription.
      * Fires a test event against the webhook subscription.
-     * If properly configured, this will deliver the `pagey.ping` webhook event to the destination. 
+     * If properly configured, this will deliver the {@code pagey.ping} webhook event to the destination. 
      *
      * @param id                   The ID of the resource. (required)
      */
@@ -4477,7 +4476,7 @@ public interface PagerDutyRESTApi {
      * Remove Notification Subscriptions
      * <p>
      * Unsubscribe the given User from Notifications on the matching Subscribable entities.
-     * Scoped OAuth requires: `subscribers.write` 
+     * Scoped OAuth requires: {@code subscribers.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createTeamNotificationSubscriptionsRequest The entities to unsubscribe from. (optional)
@@ -4494,9 +4493,9 @@ public interface PagerDutyRESTApi {
      * <p>
      * Update an existing Add-on.
      * Addon's are pieces of functionality that developers can write to insert new functionality into PagerDuty's UI.
-     * Given a configuration containing a `src` parameter, that URL will be embedded in an `iframe` on a page that's available to users from a drop-down menu.
+     * Given a configuration containing a {@code src} parameter, that URL will be embedded in an {@code iframe} on a page that's available to users from a drop-down menu.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#add-ons)
-     * Scoped OAuth requires: `addons.write` 
+     * Scoped OAuth requires: {@code addons.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createAddonRequest   The Add-on to be updated. (optional)
@@ -4544,7 +4543,7 @@ public interface PagerDutyRESTApi {
      * Update an existing Business Service. NOTE that this endpoint also accepts the PATCH verb.
      * Business services model capabilities that span multiple technical services and that may be owned by several different teams.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#business-services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param updateBusinessServiceRequest  (optional)
@@ -4560,7 +4559,7 @@ public interface PagerDutyRESTApi {
      * Update a Change Event
      * <p>
      * Update an existing Change Event
-     * Scoped OAuth requires: `change_events.write` 
+     * Scoped OAuth requires: {@code change_events.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param updateChangeEventRequest The Change Event to be updated. (optional)
@@ -4576,7 +4575,7 @@ public interface PagerDutyRESTApi {
      * Update a Field
      * <p>
      * Update a field.
-     * Scoped OAuth requires: `custom_fields.write` 
+     * Scoped OAuth requires: {@code custom_fields.write} 
      *
      * @param fieldId              The ID of the field. (required)
      * @param updateCustomFieldsFieldRequest  (optional)
@@ -4592,7 +4591,7 @@ public interface PagerDutyRESTApi {
      * Update a Field Option
      * <p>
      * Update Field Option for a Field.
-     * Scoped OAuth requires: `custom_fields.write` 
+     * Scoped OAuth requires: {@code custom_fields.write} 
      *
      * @param fieldId              The ID of the field. (required)
      * @param fieldOptionId        The ID of the field option. (required)
@@ -4611,7 +4610,7 @@ public interface PagerDutyRESTApi {
      * Updates an existing escalation policy and rules.
      * Escalation policies define which user should be alerted at which time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#escalation-policies)
-     * Scoped OAuth requires: `escalation_policies.write` 
+     * Scoped OAuth requires: {@code escalation_policies.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createEscalationPolicyRequest The escalation policy to be updated. (optional)
@@ -4629,7 +4628,7 @@ public interface PagerDutyRESTApi {
      * Update an existing extension.
      * Extensions are representations of Extension Schema objects that are attached to Services.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#extensions)
-     * Scoped OAuth requires: `extensions.write` 
+     * Scoped OAuth requires: {@code extensions.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param getExtension200Response The extension to be updated. (optional)
@@ -4647,7 +4646,7 @@ public interface PagerDutyRESTApi {
      * Acknowledge, resolve, escalate or reassign an incident.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -4668,7 +4667,7 @@ public interface PagerDutyRESTApi {
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * When a service sends an event to PagerDuty, an alert and corresponding incident is triggered in PagerDuty.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param alertId              The id of the alert to retrieve. (required)
@@ -4690,13 +4689,13 @@ public interface PagerDutyRESTApi {
      * An incident represents a problem or an issue that needs to be addressed and resolved. An alert represents a digital signal that was emitted to PagerDuty by the monitoring systems that detected or identified the issue.
      * A maximum of 500 alerts may be updated at a time. If more than this number of alerts are given, the API will respond with status 413 (Request Entity Too Large).
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param updateIncidentAlertsRequest  (optional)
      */
     @RequestLine("PUT /incidents/{id}/alerts?limit={limit}&offset={offset}&total={total}")
@@ -4711,7 +4710,7 @@ public interface PagerDutyRESTApi {
      * Update a Trigger
      * <p>
      * Update an existing Incident Workflow Trigger
-     * Scoped OAuth requires: `incident_workflows.write` 
+     * Scoped OAuth requires: {@code incident_workflows.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createIncidentWorkflowTriggerRequest  (optional)
@@ -4731,12 +4730,12 @@ public interface PagerDutyRESTApi {
      * A maximum of 250 incidents may be updated at a time. If more than this number of incidents are given, the API will respond with status 413 (Request Entity Too Large).
      * Note: the manage incidents API endpoint is rate limited to 500 requests per minute.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param limit                The number of results per page. (optional)
      * @param offset               Offset to start pagination search results. (optional)
-     * @param total                By default the `total` field in pagination responses is set to `null` to provide the fastest possible response times. Set `total` to `true` for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
      * @param updateIncidentsRequest  (optional)
      */
     @RequestLine("PUT /incidents?limit={limit}&offset={offset}&total={total}")
@@ -4752,7 +4751,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Update an existing incident log entry channel.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#log-entries)
-     * Scoped OAuth requires: `incidents.write` 
+     * Scoped OAuth requires: {@code incidents.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -4772,7 +4771,7 @@ public interface PagerDutyRESTApi {
      * Update an existing maintenance window.
      * A Maintenance Window is used to temporarily disable one or more Services for a set period of time.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#maintenance-windows)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createMaintenanceWindowRequest The maintenance window to be updated. (optional)
@@ -4790,7 +4789,7 @@ public interface PagerDutyRESTApi {
      * Update a Service Orchestration's active status.
      * A Service Orchestration allows you to set an active status based on whether an event will be evaluated against a service orchestration path (true) or service ruleset (false).
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param serviceId            The service ID (required)
      * @param getOrchActiveStatus200Response Update Service Orchestration's active status. (optional)
@@ -4808,7 +4807,7 @@ public interface PagerDutyRESTApi {
      * Update the Global Orchestration for an Event Orchestration.
      * Global Orchestration Rules allows you to create a set of Event Rules. These rules evaluate against all Events sent to an Event Orchestration. When a matching rule is found, it can modify and enhance the event and can route the event to another set of Global Rules within this Orchestration for further processing.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param orchestrationGlobal  Update Global Orchestration rules. Omitted rules and rule details are deleted. (optional)
@@ -4824,9 +4823,9 @@ public interface PagerDutyRESTApi {
      * Update the Router for an Event Orchestration
      * <p>
      * Update a Global Orchestration's Routing Rules.
-     * An Orchestration Router allows you to create a set of Event Rules. The Router evaluates Events you send to this Global Orchestration against each of its rules, one at a time, and routes the event to a specific Service based on the first rule that matches. If an event doesn't match any rules, it'll be sent to service specified in as the `catch_all` or the "Unrouted" Orchestration if no service is specified.
+     * An Orchestration Router allows you to create a set of Event Rules. The Router evaluates Events you send to this Global Orchestration against each of its rules, one at a time, and routes the event to a specific Service based on the first rule that matches. If an event doesn't match any rules, it'll be sent to service specified in as the {@code catch_all} or the "Unrouted" Orchestration if no service is specified.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param orchestrationRouter  Updates to Orchestration Router details. Omitted rules and rule details are deleted. (optional)
@@ -4844,7 +4843,7 @@ public interface PagerDutyRESTApi {
      * Update a Service Orchestration.
      * A Service Orchestration allows you to create a set of Event Rules. The Service Orchestration evaluates Events sent to this Service against each of its rules, beginning with the rules in the "start" set. When a matching rule is found, it can modify and enhance the event and can route the event to another set of rules within this Service Orchestration for further processing.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param serviceId            The service ID (required)
      * @param serviceOrchestration Update Service Orchestration rules. Omitted rules and rule details are deleted. (optional)
@@ -4863,7 +4862,7 @@ public interface PagerDutyRESTApi {
      * An Unrouted Orchestration allows you to create a set of Event Rules that will be evaluated against all events that don't match any rules in the Global Orchestration's Router. Events that reach the Unrouted Orchestration will never be routed to a specific Service.
      * The Unrouted Orchestration evaluates Events sent to it against each of its rules, beginning with the rules in the "start" set. When a matching rule is found, it can modify and enhance the event and can route the event to another set of rules within this Unrouted Orchestration for further processing.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param orchestrationUnrouted Updates to Unrouted Orchestration rules. Omitted rules and rule details are deleted. (optional)
@@ -4881,7 +4880,7 @@ public interface PagerDutyRESTApi {
      * Update a Global Event Orchestration.
      * Global Event Orchestrations allow you define a set of Global Rules and Router Rules, so that when you ingest events using the Orchestration's Routing Key your events will have actions applied via the Global Rules &amp; then routed to the correct Service by the Router Rules, based on the event's content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param postOrchestrationRequest  (optional)
@@ -4899,7 +4898,7 @@ public interface PagerDutyRESTApi {
      * Update an Integration associated with this Event Orchestrations.
      * You can use the Routing Key from this Integration to send events to PagerDuty!
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#event-orchestrations)
-     * Scoped OAuth requires: `event_orchestrations.write` 
+     * Scoped OAuth requires: {@code event_orchestrations.write} 
      *
      * @param id                   The ID of an Event Orchestration. (required)
      * @param integrationId        The ID of an Integration. (required)
@@ -4918,7 +4917,7 @@ public interface PagerDutyRESTApi {
      * Updates an existing Response Play.
      * Response Plays allow you to create packages of Incident Actions that can be applied during an Incident's life cycle.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#response-plays)
-     * Scoped OAuth requires: `response_plays.write` 
+     * Scoped OAuth requires: {@code response_plays.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param from                 The email address of a valid user associated with the account making the request. (required)
@@ -4940,7 +4939,7 @@ public interface PagerDutyRESTApi {
      * Update a Ruleset. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
-     * Scoped OAuth requires: `event_rules.write` 
+     * Scoped OAuth requires: {@code event_rules.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param updateRulesetRequest  (optional)
@@ -4959,7 +4958,7 @@ public interface PagerDutyRESTApi {
      * Rulesets allow you to route events to an endpoint and create collections of Event Rules, which define sets of actions to take based on event content.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#rulesets)
      * Note: Create and Update on rules will accept 'description' or 'summary' interchangeably as an extraction action target. Get and List on rules will always return 'summary' as the target. If you are expecting 'description' please change your automation code to expect 'summary' instead.
-     * Scoped OAuth requires: `event_rules.write` 
+     * Scoped OAuth requires: {@code event_rules.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param ruleId               The id of the Event Rule to retrieve. (required)
@@ -4978,10 +4977,10 @@ public interface PagerDutyRESTApi {
      * Update an existing on-call schedule.
      * A Schedule determines the time periods that users are On-Call.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
-     * Scoped OAuth requires: `schedules.write` 
+     * Scoped OAuth requires: {@code schedules.write} 
      *
      * @param id                   The ID of the resource. (required)
-     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter `overflow=true` is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from `2011-06-01T10:00:00Z` to `2011-06-01T14:00:00Z`:   - If you don't pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T10:00:00Z` and end of `2011-06-01T14:00:00Z`. - If you do pass the `overflow=true` parameter, you will get one schedule entry returned with a start of `2011-06-01T00:00:00Z` and end of `2011-06-02T00:00:00Z`.  (optional, defaults to false)
+     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:   - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}.  (optional, defaults to false)
      * @param createScheduleRequest The schedule to be updated. (optional)
      */
     @RequestLine("PUT /schedules/{id}?overflow={overflow}")
@@ -4996,9 +4995,9 @@ public interface PagerDutyRESTApi {
      * <p>
      * Update an existing service.
      * A service may represent an application, component, or team you wish to open incidents against.
-     * There is a limit of 100,000 open Incidents per Service. If the limit is reached and you disable `auto_resolve_timeout` (set to 0 or null), the API will respond with an error.
+     * There is a limit of 100,000 open Incidents per Service. If the limit is reached and you disable {@code auto_resolve_timeout} (set to 0 or null), the API will respond with an error.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createServiceRequest The service to be updated. (optional)
@@ -5014,7 +5013,7 @@ public interface PagerDutyRESTApi {
      * Update an Event Rule on a Service
      * <p>
      * Update an Event Rule on a Service. Note that the endpoint supports partial updates, so any number of the writable fields can be provided. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### End-of-life &amp;gt; Rulesets and Event Rules will end-of-life soon. We highly recommend that you [migrate to Event Orchestration](https://support.pagerduty.com/docs/migrate-to-event-orchestration) as soon as possible so you can take advantage of the new functionality, such as improved UI, rule creation, APIs and Terraform support, advanced conditions, and rule nesting.
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param ruleId               The id of the Event Rule to retrieve. (required)
@@ -5033,7 +5032,7 @@ public interface PagerDutyRESTApi {
      * Update an integration belonging to a Service.
      * A service may represent an application, component, or team you wish to open incidents against.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#services)
-     * Scoped OAuth requires: `services.write` 
+     * Scoped OAuth requires: {@code services.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param integrationId        The integration ID on the service. (required)
@@ -5052,7 +5051,7 @@ public interface PagerDutyRESTApi {
      * Update an existing team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createTeamRequest    The team to be updated. (optional)
@@ -5070,7 +5069,7 @@ public interface PagerDutyRESTApi {
      * Add an escalation policy to a team.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param escalationPolicyId   The escalation policy ID on the team. (required)
@@ -5085,10 +5084,10 @@ public interface PagerDutyRESTApi {
     /**
      * Add a user to a team
      * <p>
-     * Add a user to a team. Attempting to add a user with the `read_only_user` role will return a 400 error.
+     * Add a user to a team. Attempting to add a user with the {@code read_only_user} role will return a 400 error.
      * A team is a collection of Users and Escalation Policies that represent a group of people within an organization.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#teams)
-     * Scoped OAuth requires: `teams.write` 
+     * Scoped OAuth requires: {@code teams.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param userId               The user ID on the team. (required)
@@ -5105,7 +5104,7 @@ public interface PagerDutyRESTApi {
      * Update a template
      * <p>
      * Update an existing template
-     * Scoped OAuth requires: `templates.write` 
+     * Scoped OAuth requires: {@code templates.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createTemplateRequest  (required)
@@ -5123,7 +5122,7 @@ public interface PagerDutyRESTApi {
      * Update an existing user.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param createUserRequest    The user to be updated. (optional)
@@ -5141,7 +5140,7 @@ public interface PagerDutyRESTApi {
      * Update a User's contact method.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.write` 
+     * Scoped OAuth requires: {@code users:contact_methods.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param contactMethodId      The contact method ID on the user. (required)
@@ -5158,7 +5157,7 @@ public interface PagerDutyRESTApi {
      * Update a User's Handoff Notification Rule
      * <p>
      * Update a User's Handoff Notification Rule. Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account. For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param oncallHandoffNotificationRuleId The oncall handoff notification rule ID on the user. (required)
@@ -5177,7 +5176,7 @@ public interface PagerDutyRESTApi {
      * Update a user's notification rule.
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users:contact_methods.write` 
+     * Scoped OAuth requires: {@code users:contact_methods.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param notificationRuleId   The notification rule ID on the user. (required)
@@ -5197,7 +5196,7 @@ public interface PagerDutyRESTApi {
      * Users are members of a PagerDuty account that have the ability to interact with Incidents and other data on the account.
      * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#users)
-     * Scoped OAuth requires: `users.write` 
+     * Scoped OAuth requires: {@code users.write} 
      *
      * @param id                   The ID of the resource. (required)
      * @param statusUpdateNotificationRuleId The status update notification rule ID on the user. (required)
@@ -5216,7 +5215,7 @@ public interface PagerDutyRESTApi {
      * <p>
      * Updates an existing webhook subscription.
      * Only the fields being updated need to be included on the request.
-     * This operation does not support updating the `delivery_method` of the webhook subscription. 
+     * This operation does not support updating the {@code delivery_method} of the webhook subscription. 
      *
      * @param id                   The ID of the resource. (required)
      * @param webhookSubscriptionUpdate  (optional)
