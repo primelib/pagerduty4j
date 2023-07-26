@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.rest.api.PagerDutyRESTApi;
-import io.github.primelib.pagerduty4j.rest.auth.AuthMethod;
 import io.github.primelib.pagerduty4j.rest.auth.ApiKeyAuthSpec;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -16,6 +15,9 @@ import lombok.experimental.Accessors;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.composite.CompositeMeterRegistry;
+
+import io.github.primelib.primecodegenlib.java.feign.common.api.AuthMethod;
+import io.github.primelib.primecodegenlib.java.feign.common.config.ProxySpec;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -57,10 +59,10 @@ public final class PagerDutyRESTFactorySpec<T> {
      * The proxy server to use, if applicable
      * <p>
      * Defaults to {@code null}.
-     * Set to {@code PagerDutyRESTProxySpec.detect()} to detect the proxy based on the os environment automatically.
+     * Set to {@code ProxySpec.detect()} to detect the proxy based on the os environment automatically.
      */
     @Nullable
-    private PagerDutyRESTProxySpec proxy = null;
+    private ProxySpec proxy = null;
 
     /**
      * MeterRegistry to use for metrics
@@ -103,8 +105,8 @@ public final class PagerDutyRESTFactorySpec<T> {
         Objects.requireNonNull(logLevel, "logLevel must not be null");
     }
 
-    public PagerDutyRESTProxySpec httpProxy(Consumer<PagerDutyRESTProxySpec> proxySpec) {
-        PagerDutyRESTProxySpec proxy = new PagerDutyRESTProxySpec(proxySpec);
+    public ProxySpec httpProxy(Consumer<ProxySpec> proxySpec) {
+        ProxySpec proxy = new ProxySpec(proxySpec);
         proxy(proxy);
         return proxy;
     }

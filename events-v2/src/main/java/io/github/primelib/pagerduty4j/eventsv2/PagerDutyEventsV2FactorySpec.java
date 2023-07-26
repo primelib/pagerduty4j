@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import io.github.primelib.pagerduty4j.eventsv2.api.PagerDutyEventsV2Api;
-import io.github.primelib.pagerduty4j.eventsv2.auth.AuthMethod;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +14,9 @@ import lombok.experimental.Accessors;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.composite.CompositeMeterRegistry;
+
+import io.github.primelib.primecodegenlib.java.feign.common.api.AuthMethod;
+import io.github.primelib.primecodegenlib.java.feign.common.config.ProxySpec;
 
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -56,10 +58,10 @@ public final class PagerDutyEventsV2FactorySpec<T> {
      * The proxy server to use, if applicable
      * <p>
      * Defaults to {@code null}.
-     * Set to {@code PagerDutyEventsV2ProxySpec.detect()} to detect the proxy based on the os environment automatically.
+     * Set to {@code ProxySpec.detect()} to detect the proxy based on the os environment automatically.
      */
     @Nullable
-    private PagerDutyEventsV2ProxySpec proxy = null;
+    private ProxySpec proxy = null;
 
     /**
      * MeterRegistry to use for metrics
@@ -102,8 +104,8 @@ public final class PagerDutyEventsV2FactorySpec<T> {
         Objects.requireNonNull(logLevel, "logLevel must not be null");
     }
 
-    public PagerDutyEventsV2ProxySpec httpProxy(Consumer<PagerDutyEventsV2ProxySpec> proxySpec) {
-        PagerDutyEventsV2ProxySpec proxy = new PagerDutyEventsV2ProxySpec(proxySpec);
+    public ProxySpec httpProxy(Consumer<ProxySpec> proxySpec) {
+        ProxySpec proxy = new ProxySpec(proxySpec);
         proxy(proxy);
         return proxy;
     }
