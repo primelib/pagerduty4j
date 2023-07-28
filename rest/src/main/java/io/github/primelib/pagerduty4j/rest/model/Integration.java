@@ -18,6 +18,8 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Integration
@@ -190,7 +192,25 @@ public class Integration {
         SQL_MONITOR_INBOUND_INTEGRATION("sql_monitor_inbound_integration"),
         EVENTS_API_V2_INBOUND_INTEGRATION("events_api_v2_inbound_integration");
 
+        private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static TypeEnum of(String input) {
+            if (input != null) {
+                for (TypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -203,7 +223,25 @@ public class Integration {
         ONLY_IF_NO_OPEN_INCIDENTS("only_if_no_open_incidents"),
         USE_RULES("use_rules");
 
+        private static final EmailIncidentCreationEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static EmailIncidentCreationEnum of(String input) {
+            if (input != null) {
+                for (EmailIncidentCreationEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -215,7 +253,25 @@ public class Integration {
         OR_RULES_EMAIL("or-rules-email"),
         AND_RULES_EMAIL("and-rules-email");
 
+        private static final EmailFilterModeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static EmailFilterModeEnum of(String input) {
+            if (input != null) {
+                for (EmailFilterModeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -226,7 +282,25 @@ public class Integration {
         OPEN_NEW_INCIDENT("open_new_incident"),
         DISCARD("discard");
 
+        private static final EmailParsingFallbackEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static EmailParsingFallbackEnum of(String input) {
+            if (input != null) {
+                for (EmailParsingFallbackEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

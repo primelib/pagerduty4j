@@ -17,6 +17,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * IncidentWorkflowTrigger
@@ -159,7 +161,25 @@ public class IncidentWorkflowTrigger {
     public enum TypeEnum {
         WORKFLOW_TRIGGER("workflow_trigger");
 
+        private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static TypeEnum of(String input) {
+            if (input != null) {
+                for (TypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     @AllArgsConstructor
@@ -167,7 +187,25 @@ public class IncidentWorkflowTrigger {
         CONDITIONAL("conditional"),
         MANUAL("manual");
 
+        private static final TriggerTypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static TriggerTypeEnum of(String input) {
+            if (input != null) {
+                for (TriggerTypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

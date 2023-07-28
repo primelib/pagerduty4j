@@ -18,6 +18,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * ServiceOrchestrationAllOfOrchestrationPath
@@ -130,7 +132,25 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
     public enum MigratedStatusEnum {
         COMPLETED("completed");
 
+        private static final MigratedStatusEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static MigratedStatusEnum of(String input) {
+            if (input != null) {
+                for (MigratedStatusEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -141,7 +161,25 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
         API("API"),
         UI("UI");
 
+        private static final MigratedViaEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static MigratedViaEnum of(String input) {
+            if (input != null) {
+                for (MigratedViaEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

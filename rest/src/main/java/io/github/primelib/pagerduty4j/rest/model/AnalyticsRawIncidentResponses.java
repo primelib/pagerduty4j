@@ -16,6 +16,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * AnalyticsRawIncidentResponses
@@ -124,7 +126,25 @@ public class AnalyticsRawIncidentResponses {
         PENDING("pending"),
         DECLINED("declined");
 
+        private static final ResponseStatusEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static ResponseStatusEnum of(String input) {
+            if (input != null) {
+                for (ResponseStatusEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -137,7 +157,25 @@ public class AnalyticsRawIncidentResponses {
         ESCALATED("escalated"),
         ADDED_RESPONDER("added_responder");
 
+        private static final ResponderTypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static ResponderTypeEnum of(String input) {
+            if (input != null) {
+                for (ResponderTypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

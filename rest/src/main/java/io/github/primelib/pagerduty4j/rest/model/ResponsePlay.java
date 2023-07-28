@@ -17,6 +17,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * ResponsePlay
@@ -204,7 +206,25 @@ public class ResponsePlay {
     public enum TypeEnum {
         RESPONSE_PLAY("response_play");
 
+        private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static TypeEnum of(String input) {
+            if (input != null) {
+                for (TypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -219,7 +239,25 @@ public class ResponsePlay {
         TEAMS("teams"),
         RESPONDERS("responders");
 
+        private static final RunnabilityEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static RunnabilityEnum of(String input) {
+            if (input != null) {
+                for (RunnabilityEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -234,7 +272,25 @@ public class ResponsePlay {
         MANUAL("manual"),
         ZOOM("zoom");
 
+        private static final ConferenceTypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static ConferenceTypeEnum of(String input) {
+            if (input != null) {
+                for (ConferenceTypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

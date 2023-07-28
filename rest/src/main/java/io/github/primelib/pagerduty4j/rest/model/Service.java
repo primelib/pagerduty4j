@@ -18,6 +18,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Service
@@ -266,7 +268,25 @@ public class Service {
     public enum TypeEnum {
         SERVICE("service");
 
+        private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static TypeEnum of(String input) {
+            if (input != null) {
+                for (TypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -281,7 +301,25 @@ public class Service {
         MAINTENANCE("maintenance"),
         DISABLED("disabled");
 
+        private static final StatusEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static StatusEnum of(String input) {
+            if (input != null) {
+                for (StatusEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -292,7 +330,25 @@ public class Service {
         INCIDENTS("create_incidents"),
         ALERTS_AND_INCIDENTS("create_alerts_and_incidents");
 
+        private static final AlertCreationEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static AlertCreationEnum of(String input) {
+            if (input != null) {
+                for (AlertCreationEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     /**
@@ -303,7 +359,25 @@ public class Service {
         TIME("time"),
         INTELLIGENT("intelligent");
 
+        private static final AlertGroupingEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static AlertGroupingEnum of(String input) {
+            if (input != null) {
+                for (AlertGroupingEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

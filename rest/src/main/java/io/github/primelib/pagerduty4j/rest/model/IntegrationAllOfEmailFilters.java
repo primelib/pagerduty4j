@@ -16,6 +16,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * IntegrationAllOfEmailFilters
@@ -103,7 +105,25 @@ public class IntegrationAllOfEmailFilters {
         NO_MATCH("no-match"),
         ALWAYS("always");
 
+        private static final SubjectModeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static SubjectModeEnum of(String input) {
+            if (input != null) {
+                for (SubjectModeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     @AllArgsConstructor
@@ -112,7 +132,25 @@ public class IntegrationAllOfEmailFilters {
         NO_MATCH("no-match"),
         ALWAYS("always");
 
+        private static final BodyModeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static BodyModeEnum of(String input) {
+            if (input != null) {
+                for (BodyModeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
     @AllArgsConstructor
@@ -121,7 +159,25 @@ public class IntegrationAllOfEmailFilters {
         NO_MATCH("no-match"),
         ALWAYS("always");
 
+        private static final FromEmailModeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static FromEmailModeEnum of(String input) {
+            if (input != null) {
+                for (FromEmailModeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

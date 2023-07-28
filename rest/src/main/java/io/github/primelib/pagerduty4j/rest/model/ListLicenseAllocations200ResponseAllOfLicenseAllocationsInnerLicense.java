@@ -17,6 +17,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense
@@ -142,7 +144,25 @@ public class ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicens
         FULLUSER("FullUser"),
         STAKEHOLDER("Stakeholder");
 
+        private static final RoleGroupEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static RoleGroupEnum of(String input) {
+            if (input != null) {
+                for (RoleGroupEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

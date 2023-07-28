@@ -16,6 +16,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * AutoPauseNotificationsParameters
@@ -81,7 +83,25 @@ public class AutoPauseNotificationsParameters {
         NUMBER_600(600),
         NUMBER_900(900);
 
+        private static final TimeoutEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final Integer value;
+
+        @JsonCreator
+        public static TimeoutEnum of(Integer input) {
+            if (input != null) {
+                for (TimeoutEnum v : VALUES) {
+                    if (input == v.value) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public Integer getValue() {
+            return value;
+        }
     }
 
 }

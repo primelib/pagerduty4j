@@ -16,6 +16,8 @@ import lombok.experimental.Accessors;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * RelatedIncidentMachineLearningRelationship
@@ -75,7 +77,25 @@ public class RelatedIncidentMachineLearningRelationship {
         SIMILAR_CONTENTS("similar_contents"),
         PRIOR_FEEDBACK("prior_feedback");
 
+        private static final GroupingClassificationEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
+
+        @JsonCreator
+        public static GroupingClassificationEnum of(String input) {
+            if (input != null) {
+                for (GroupingClassificationEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }
