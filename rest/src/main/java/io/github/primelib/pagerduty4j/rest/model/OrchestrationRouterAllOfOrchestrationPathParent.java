@@ -61,7 +61,7 @@ public class OrchestrationRouterAllOfOrchestrationPathParent {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationRouterAllOfOrchestrationPathParent(Consumer)} instead.
      * @param id ID of the Global Event Orchestration this Router belongs to.
-     * @param type var.name
+     * @param type type
      */
     @ApiStatus.Internal
     public OrchestrationRouterAllOfOrchestrationPathParent(Object id, TypeEnum type) {

@@ -69,11 +69,11 @@ public class AutomationActionsAbstractActionPutBody {
      * Constructs a validated instance of {@link AutomationActionsAbstractActionPutBody}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsAbstractActionPutBody(Consumer)} instead.
-     * @param name var.name
-     * @param description var.name
-     * @param actionClassification var.name
-     * @param actionType var.name
-     * @param runner var.name
+     * @param name name
+     * @param description description
+     * @param actionClassification actionClassification
+     * @param actionType actionType
+     * @param runner runner
      */
     @ApiStatus.Internal
     public AutomationActionsAbstractActionPutBody(String name, String description, AutomationActionsActionClassificationEnum actionClassification, ActionTypeEnum actionType, String runner) {

@@ -71,8 +71,8 @@ public class GetBusinessServiceSupportingServiceImpacts200Response {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetBusinessServiceSupportingServiceImpacts200Response(Consumer)} instead.
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
-     * @param services var.name
-     * @param additionalFields var.name
+     * @param services services
+     * @param additionalFields additionalFields
      */
     @ApiStatus.Internal
     public GetBusinessServiceSupportingServiceImpacts200Response(Integer limit, Boolean more, List<Impact> services, GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditionalFields additionalFields) {

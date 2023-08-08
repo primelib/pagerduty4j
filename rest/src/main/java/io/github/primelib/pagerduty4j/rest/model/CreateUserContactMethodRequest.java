@@ -50,7 +50,7 @@ public class CreateUserContactMethodRequest {
      * Constructs a validated instance of {@link CreateUserContactMethodRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserContactMethodRequest(Consumer)} instead.
-     * @param contactMethod var.name
+     * @param contactMethod contactMethod
      */
     @ApiStatus.Internal
     public CreateUserContactMethodRequest(GetUserContactMethods200ResponseContactMethodsInner contactMethod) {

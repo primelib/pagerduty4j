@@ -54,8 +54,8 @@ public class ServiceEventRuleAllOfTimeFrame {
      * Constructs a validated instance of {@link ServiceEventRuleAllOfTimeFrame}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceEventRuleAllOfTimeFrame(Consumer)} instead.
-     * @param activeBetween var.name
-     * @param scheduledWeekly var.name
+     * @param activeBetween activeBetween
+     * @param scheduledWeekly scheduledWeekly
      */
     @ApiStatus.Internal
     public ServiceEventRuleAllOfTimeFrame(ServiceEventRuleAllOfTimeFrameActiveBetween activeBetween, ServiceEventRuleAllOfTimeFrameScheduledWeekly scheduledWeekly) {

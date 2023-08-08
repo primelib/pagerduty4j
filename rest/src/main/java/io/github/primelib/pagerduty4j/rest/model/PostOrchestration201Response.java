@@ -50,7 +50,7 @@ public class PostOrchestration201Response {
      * Constructs a validated instance of {@link PostOrchestration201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PostOrchestration201Response(Consumer)} instead.
-     * @param orchestration var.name
+     * @param orchestration orchestration
      */
     @ApiStatus.Internal
     public PostOrchestration201Response(Orchestration orchestration) {

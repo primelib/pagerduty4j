@@ -61,7 +61,7 @@ public class GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInn
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInner(Consumer)} instead.
      * @param type The type of relationship. A relationship outlines the reason why two Incidents are considered related.
-     * @param metadata var.name
+     * @param metadata metadata
      */
     @ApiStatus.Internal
     public GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInner(TypeEnum type, GetRelatedIncidents200ResponseRelatedIncidentsInnerRelationshipsInnerMetadata metadata) {

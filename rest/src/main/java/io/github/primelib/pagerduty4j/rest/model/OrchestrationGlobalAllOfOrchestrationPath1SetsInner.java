@@ -51,7 +51,7 @@ public class OrchestrationGlobalAllOfOrchestrationPath1SetsInner {
      * Constructs a validated instance of {@link OrchestrationGlobalAllOfOrchestrationPath1SetsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath1SetsInner(Consumer)} instead.
-     * @param rules var.name
+     * @param rules rules
      */
     @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPath1SetsInner(List<OrchestrationGlobalAllOfOrchestrationPath1SetsInnerRulesInner> rules) {

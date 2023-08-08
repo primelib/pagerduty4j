@@ -68,7 +68,7 @@ public class ScheduledAction {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ScheduledAction(Consumer)} instead.
      * @param type The type of schedule action. Must be set to urgency_change.
-     * @param at var.name
+     * @param at at
      * @param toUrgency Urgency level. Must be set to high.
      */
     @ApiStatus.Internal

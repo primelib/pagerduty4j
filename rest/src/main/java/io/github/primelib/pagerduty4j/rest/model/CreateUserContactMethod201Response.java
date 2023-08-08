@@ -50,7 +50,7 @@ public class CreateUserContactMethod201Response {
      * Constructs a validated instance of {@link CreateUserContactMethod201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserContactMethod201Response(Consumer)} instead.
-     * @param contactMethod var.name
+     * @param contactMethod contactMethod
      */
     @ApiStatus.Internal
     public CreateUserContactMethod201Response(GetUserContactMethods200ResponseContactMethodsInner contactMethod) {

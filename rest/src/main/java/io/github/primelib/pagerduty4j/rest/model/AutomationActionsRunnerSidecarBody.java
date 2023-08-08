@@ -54,8 +54,8 @@ public class AutomationActionsRunnerSidecarBody {
      * Constructs a validated instance of {@link AutomationActionsRunnerSidecarBody}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsRunnerSidecarBody(Consumer)} instead.
-     * @param name var.name
-     * @param description var.name
+     * @param name name
+     * @param description description
      */
     @ApiStatus.Internal
     public AutomationActionsRunnerSidecarBody(String name, String description) {

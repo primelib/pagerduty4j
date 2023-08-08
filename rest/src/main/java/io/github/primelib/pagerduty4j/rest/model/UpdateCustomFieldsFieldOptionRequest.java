@@ -50,7 +50,7 @@ public class UpdateCustomFieldsFieldOptionRequest {
      * Constructs a validated instance of {@link UpdateCustomFieldsFieldOptionRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateCustomFieldsFieldOptionRequest(Consumer)} instead.
-     * @param fieldOption var.name
+     * @param fieldOption fieldOption
      */
     @ApiStatus.Internal
     public UpdateCustomFieldsFieldOptionRequest(CustomFieldsEditableFieldOption fieldOption) {

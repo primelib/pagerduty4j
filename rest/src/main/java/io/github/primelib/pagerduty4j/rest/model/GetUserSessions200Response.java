@@ -51,7 +51,7 @@ public class GetUserSessions200Response {
      * Constructs a validated instance of {@link GetUserSessions200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetUserSessions200Response(Consumer)} instead.
-     * @param userSessions var.name
+     * @param userSessions userSessions
      */
     @ApiStatus.Internal
     public GetUserSessions200Response(List<UserSession> userSessions) {

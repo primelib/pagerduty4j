@@ -90,13 +90,13 @@ public class Notification {
      * Constructs a validated instance of {@link Notification}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Notification(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type The type of notification.
      * @param startedAt The time at which the notification was sent
      * @param address The address where the notification was sent. This will be null for notification type {@code push_notification}.
-     * @param user var.name
+     * @param user user
      * @param conferenceAddress The address of the conference bridge
-     * @param status var.name
+     * @param status status
      */
     @ApiStatus.Internal
     public Notification(String id, TypeEnum type, OffsetDateTime startedAt, String address, UserReference user, String conferenceAddress, String status) {

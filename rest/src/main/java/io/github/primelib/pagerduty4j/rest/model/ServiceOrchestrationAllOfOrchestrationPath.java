@@ -103,14 +103,14 @@ public class ServiceOrchestrationAllOfOrchestrationPath {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestrationAllOfOrchestrationPath(Consumer)} instead.
      * @param migratedAt The date/time the service's Event Rules were converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
-     * @param migratedBy var.name
-     * @param migratedFrom var.name
+     * @param migratedBy migratedBy
+     * @param migratedFrom migratedFrom
      * @param migratedStatus The status indicating whether the service's Event Rules were successfully converted to this Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
      * @param migratedVia Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the {@code migrated_metadata} query parameter is provided.
      * @param type Indicates that these are sets of rules belonging to a service.
-     * @param parent var.name
+     * @param parent parent
      * @param sets A Service Orchestration must contain at least a "start" set, but can contain any number of additional sets that are routed to by other rules to form a directional graph.
-     * @param catchAll var.name
+     * @param catchAll catchAll
      */
     @ApiStatus.Internal
     public ServiceOrchestrationAllOfOrchestrationPath(OffsetDateTime migratedAt, ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedBy migratedBy, ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedFrom migratedFrom, MigratedStatusEnum migratedStatus, MigratedViaEnum migratedVia, String type, ServiceOrchestrationAllOfOrchestrationPathAllOfParent parent, List<ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInner> sets, ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll catchAll) {

@@ -50,7 +50,7 @@ public class OrchestrationUnrouted {
      * Constructs a validated instance of {@link OrchestrationUnrouted}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationUnrouted(Consumer)} instead.
-     * @param orchestrationPath var.name
+     * @param orchestrationPath orchestrationPath
      */
     @ApiStatus.Internal
     public OrchestrationUnrouted(OrchestrationUnroutedAllOfOrchestrationPath orchestrationPath) {

@@ -64,7 +64,7 @@ public class AutomationActionsProcessAutomationJobActionDataReference {
      * Constructs a validated instance of {@link AutomationActionsProcessAutomationJobActionDataReference}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsProcessAutomationJobActionDataReference(Consumer)} instead.
-     * @param processAutomationJobId var.name
+     * @param processAutomationJobId processAutomationJobId
      * @param processAutomationJobArguments Arguments to pass to the Process Automation job. The maxLength value is specified in bytes.
      * @param processAutomationNodeFilter Node filter for the Process Automation job. The maxLength value is specified in bytes. Filter syntax: https://docs.rundeck.com/docs/manual/11-node-filters.html#node-filter-syntax
      */

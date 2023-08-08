@@ -54,7 +54,7 @@ public class AutomationActionsUserPermissions {
      * Constructs a validated instance of {@link AutomationActionsUserPermissions}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsUserPermissions(Consumer)} instead.
-     * @param permissions var.name
+     * @param permissions permissions
      */
     @ApiStatus.Internal
     public AutomationActionsUserPermissions(List<PermissionsEnum> permissions) {

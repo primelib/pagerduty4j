@@ -71,8 +71,8 @@ public class IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration(Consumer)} instead.
      * @param actionId The identifier of the Action to execute
      * @param description Description of the Action
-     * @param inputs var.name
-     * @param outputs var.name
+     * @param inputs inputs
+     * @param outputs outputs
      */
     @ApiStatus.Internal
     public IncidentWorkflowAllOfStepsInnerAllOfActionConfiguration(String actionId, String description, List<IncidentWorkflowAllOfStepsInnerAllOfActionConfigurationInputsInner> inputs, List<IncidentWorkflowAllOfStepsInnerAllOfActionConfigurationOutputsInner> outputs) {

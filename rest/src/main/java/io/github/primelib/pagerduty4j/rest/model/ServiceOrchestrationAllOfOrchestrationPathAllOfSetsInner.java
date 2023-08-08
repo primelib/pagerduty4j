@@ -51,7 +51,7 @@ public class ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInner {
      * Constructs a validated instance of {@link ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInner(Consumer)} instead.
-     * @param rules var.name
+     * @param rules rules
      */
     @ApiStatus.Internal
     public ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInner(List<ServiceOrchestrationAllOfOrchestrationPathAllOfSetsInnerRulesInner> rules) {

@@ -112,8 +112,8 @@ public class IncidentWorkflowActionAllOfInputs {
      * @param defaultValue Serialized form of the default value that the input will take
      * @param isRequired Whether a value must be provided for this input
      * @param isHidden If true then this input will not be shown to users when configuring this action
-     * @param advanced var.name
-     * @param metadata var.name
+     * @param advanced advanced
+     * @param metadata metadata
      * @param connectionTypeId The configured value of the Input
      */
     @ApiStatus.Internal

@@ -58,9 +58,9 @@ public class ChangeEventAllOfImages {
      * Constructs a validated instance of {@link ChangeEventAllOfImages}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ChangeEventAllOfImages(Consumer)} instead.
-     * @param src var.name
-     * @param href var.name
-     * @param alt var.name
+     * @param src src
+     * @param href href
+     * @param alt alt
      */
     @ApiStatus.Internal
     public ChangeEventAllOfImages(String src, String href, String alt) {

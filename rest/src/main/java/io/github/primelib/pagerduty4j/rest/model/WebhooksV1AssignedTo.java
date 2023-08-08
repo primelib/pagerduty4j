@@ -59,7 +59,7 @@ public class WebhooksV1AssignedTo {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1AssignedTo(Consumer)} instead.
      * @param at Time at which the assignment was created.
-     * @param object var.name
+     * @param object object
      */
     @ApiStatus.Internal
     public WebhooksV1AssignedTo(OffsetDateTime at, WebhooksV1AssignedToObject object) {

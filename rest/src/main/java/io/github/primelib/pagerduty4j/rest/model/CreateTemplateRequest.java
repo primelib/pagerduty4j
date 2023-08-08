@@ -50,7 +50,7 @@ public class CreateTemplateRequest {
      * Constructs a validated instance of {@link CreateTemplateRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateTemplateRequest(Consumer)} instead.
-     * @param template var.name
+     * @param template template
      */
     @ApiStatus.Internal
     public CreateTemplateRequest(EditableTemplate template) {

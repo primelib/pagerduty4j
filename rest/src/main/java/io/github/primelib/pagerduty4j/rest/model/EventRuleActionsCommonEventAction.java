@@ -53,7 +53,7 @@ public class EventRuleActionsCommonEventAction {
      * Constructs a validated instance of {@link EventRuleActionsCommonEventAction}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EventRuleActionsCommonEventAction(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public EventRuleActionsCommonEventAction(ValueEnum value) {

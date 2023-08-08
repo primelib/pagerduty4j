@@ -58,9 +58,9 @@ public class StatusDashboard {
      * Constructs a validated instance of {@link StatusDashboard}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #StatusDashboard(Consumer)} instead.
-     * @param id var.name
-     * @param urlSlug var.name
-     * @param name var.name
+     * @param id id
+     * @param urlSlug urlSlug
+     * @param name name
      */
     @ApiStatus.Internal
     public StatusDashboard(String id, String urlSlug, String name) {

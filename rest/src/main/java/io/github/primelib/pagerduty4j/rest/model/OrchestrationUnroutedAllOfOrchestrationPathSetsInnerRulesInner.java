@@ -50,7 +50,7 @@ public class OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInner {
      * Constructs a validated instance of {@link OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInner(Consumer)} instead.
-     * @param actions var.name
+     * @param actions actions
      */
     @ApiStatus.Internal
     public OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInner(OrchestrationUnroutedAllOfOrchestrationPathSetsInnerRulesInnerActions actions) {

@@ -50,7 +50,7 @@ public class CreateIncidentWorkflowInstanceRequest {
      * Constructs a validated instance of {@link CreateIncidentWorkflowInstanceRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateIncidentWorkflowInstanceRequest(Consumer)} instead.
-     * @param incidentWorkflowInstance var.name
+     * @param incidentWorkflowInstance incidentWorkflowInstance
      */
     @ApiStatus.Internal
     public CreateIncidentWorkflowInstanceRequest(CreateIncidentWorkflowInstanceRequestIncidentWorkflowInstance incidentWorkflowInstance) {

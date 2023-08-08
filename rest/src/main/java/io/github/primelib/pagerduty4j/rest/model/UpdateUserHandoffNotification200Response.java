@@ -50,7 +50,7 @@ public class UpdateUserHandoffNotification200Response {
      * Constructs a validated instance of {@link UpdateUserHandoffNotification200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateUserHandoffNotification200Response(Consumer)} instead.
-     * @param oncallHandoffNotificationRule var.name
+     * @param oncallHandoffNotificationRule oncallHandoffNotificationRule
      */
     @ApiStatus.Internal
     public UpdateUserHandoffNotification200Response(HandoffNotificationRule oncallHandoffNotificationRule) {

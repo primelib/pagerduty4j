@@ -139,7 +139,7 @@ public class Schedule {
      * Constructs a validated instance of {@link Schedule}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Schedule(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -148,8 +148,8 @@ public class Schedule {
      * @param timeZone The time zone of the schedule.
      * @param name The name of the schedule
      * @param description The description of the schedule
-     * @param finalSchedule var.name
-     * @param overridesSubschedule var.name
+     * @param finalSchedule finalSchedule
+     * @param overridesSubschedule overridesSubschedule
      * @param escalationPolicies An array of all of the escalation policies that uses this schedule.
      * @param users An array of all of the users on the schedule.
      * @param teams An array of all of the teams on the schedule.

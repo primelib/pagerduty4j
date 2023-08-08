@@ -126,19 +126,19 @@ public class IncidentWorkflowTrigger {
      * Constructs a validated instance of {@link IncidentWorkflowTrigger}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowTrigger(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type var.name
+     * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param triggerTypeName Human readable name for the trigger type
-     * @param triggerType var.name
+     * @param triggerType triggerType
      * @param condition A PCL condition string.  If specified, the trigger will execute when the condition is met on an incident.  If unspecified, the trigger will execute on incident creation.  Required if trigger_type is “conditional”, not allowed if trigger_type is “manual”. 
-     * @param triggerUrl var.name
-     * @param workflow var.name
+     * @param triggerUrl triggerUrl
+     * @param workflow workflow
      * @param services An optional array of Services associated with this workflow. Incidents in any of the listed Services are eligible to fire this Trigger
      * @param isSubscribedToAllServices Indicates that the Trigger should be associated with All Services
-     * @param permissions var.name
+     * @param permissions permissions
      */
     @ApiStatus.Internal
     public IncidentWorkflowTrigger(String id, String summary, TypeEnum type, String self, String htmlUrl, String triggerTypeName, TriggerTypeEnum triggerType, String condition, String triggerUrl, IncidentWorkflowTriggerAllOfWorkflow workflow, List<IncidentWorkflowTriggerAllOfServices> services, Boolean isSubscribedToAllServices, IncidentWorkflowTriggerAllOfPermissions permissions) {

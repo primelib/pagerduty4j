@@ -50,7 +50,7 @@ public class CreateAutomationActionTeamAssociationRequest {
      * Constructs a validated instance of {@link CreateAutomationActionTeamAssociationRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionTeamAssociationRequest(Consumer)} instead.
-     * @param team var.name
+     * @param team team
      */
     @ApiStatus.Internal
     public CreateAutomationActionTeamAssociationRequest(TeamReference team) {

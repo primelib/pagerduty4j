@@ -50,7 +50,7 @@ public class CreateServiceIntegrationRequest {
      * Constructs a validated instance of {@link CreateServiceIntegrationRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateServiceIntegrationRequest(Consumer)} instead.
-     * @param integration var.name
+     * @param integration integration
      */
     @ApiStatus.Internal
     public CreateServiceIntegrationRequest(Integration integration) {

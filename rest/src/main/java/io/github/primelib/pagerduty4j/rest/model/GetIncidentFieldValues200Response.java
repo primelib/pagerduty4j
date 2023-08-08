@@ -51,7 +51,7 @@ public class GetIncidentFieldValues200Response {
      * Constructs a validated instance of {@link GetIncidentFieldValues200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetIncidentFieldValues200Response(Consumer)} instead.
-     * @param customFields var.name
+     * @param customFields customFields
      */
     @ApiStatus.Internal
     public GetIncidentFieldValues200Response(List<CustomFieldsFieldValue> customFields) {

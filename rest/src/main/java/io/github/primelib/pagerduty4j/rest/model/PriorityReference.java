@@ -78,9 +78,9 @@ public class PriorityReference {
      * Constructs a validated instance of {@link PriorityReference}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PriorityReference(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type var.name
+     * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      */

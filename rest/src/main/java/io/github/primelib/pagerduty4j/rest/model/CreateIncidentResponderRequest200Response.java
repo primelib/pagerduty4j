@@ -50,7 +50,7 @@ public class CreateIncidentResponderRequest200Response {
      * Constructs a validated instance of {@link CreateIncidentResponderRequest200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateIncidentResponderRequest200Response(Consumer)} instead.
-     * @param responderRequest var.name
+     * @param responderRequest responderRequest
      */
     @ApiStatus.Internal
     public CreateIncidentResponderRequest200Response(ResponderRequest responderRequest) {

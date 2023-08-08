@@ -76,9 +76,9 @@ public class WebhooksV1Service {
      * Constructs a validated instance of {@link WebhooksV1Service}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1Service(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param name The name of the service.
-     * @param htmlUrl var.name
+     * @param htmlUrl htmlUrl
      * @param deletedAt The date/time the service was deleted, if it has been removed.
      * @param description The description of the service.
      */

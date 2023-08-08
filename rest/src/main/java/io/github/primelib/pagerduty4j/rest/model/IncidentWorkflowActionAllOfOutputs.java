@@ -68,7 +68,7 @@ public class IncidentWorkflowActionAllOfOutputs {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionAllOfOutputs(Consumer)} instead.
      * @param name The name of the Output
-     * @param description var.name
+     * @param description description
      * @param type The data type produced by this Output
      */
     @ApiStatus.Internal

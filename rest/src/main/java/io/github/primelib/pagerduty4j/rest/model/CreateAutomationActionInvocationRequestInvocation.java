@@ -50,7 +50,7 @@ public class CreateAutomationActionInvocationRequestInvocation {
      * Constructs a validated instance of {@link CreateAutomationActionInvocationRequestInvocation}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionInvocationRequestInvocation(Consumer)} instead.
-     * @param metadata var.name
+     * @param metadata metadata
      */
     @ApiStatus.Internal
     public CreateAutomationActionInvocationRequestInvocation(CreateAutomationActionInvocationRequestInvocationMetadata metadata) {

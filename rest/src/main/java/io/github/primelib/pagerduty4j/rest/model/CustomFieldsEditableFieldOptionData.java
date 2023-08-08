@@ -61,7 +61,7 @@ public class CustomFieldsEditableFieldOptionData {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldOptionData(Consumer)} instead.
      * @param dataType The kind of data represented by this option. Must match the Field's {@code data_type}.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsEditableFieldOptionData(DataTypeEnum dataType, String value) {

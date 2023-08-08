@@ -50,7 +50,7 @@ public class MergeIncidents200Response {
      * Constructs a validated instance of {@link MergeIncidents200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #MergeIncidents200Response(Consumer)} instead.
-     * @param incident var.name
+     * @param incident incident
      */
     @ApiStatus.Internal
     public MergeIncidents200Response(IncidentReference incident) {

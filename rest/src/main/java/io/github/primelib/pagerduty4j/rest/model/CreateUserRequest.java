@@ -50,7 +50,7 @@ public class CreateUserRequest {
      * Constructs a validated instance of {@link CreateUserRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequest(Consumer)} instead.
-     * @param user var.name
+     * @param user user
      */
     @ApiStatus.Internal
     public CreateUserRequest(User user) {

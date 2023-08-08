@@ -68,7 +68,7 @@ public class ListStatusDashboards200Response {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListStatusDashboards200Response(Consumer)} instead.
      * @param limit The minimum of the {@code limit} parameter used in the request or the maximum request size of the API.
      * @param nextCursor An opaque string than will deliver the next set of results when provided as the {@code cursor} parameter in a subsequent request.  A {@code null} value for this field indicates that there are no additional results. 
-     * @param statusDashboards var.name
+     * @param statusDashboards statusDashboards
      */
     @ApiStatus.Internal
     public ListStatusDashboards200Response(Integer limit, String nextCursor, List<StatusDashboard> statusDashboards) {

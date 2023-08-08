@@ -54,8 +54,8 @@ public class ChangeEventAllOfLinks {
      * Constructs a validated instance of {@link ChangeEventAllOfLinks}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ChangeEventAllOfLinks(Consumer)} instead.
-     * @param href var.name
-     * @param text var.name
+     * @param href href
+     * @param text text
      */
     @ApiStatus.Internal
     public ChangeEventAllOfLinks(String href, String text) {

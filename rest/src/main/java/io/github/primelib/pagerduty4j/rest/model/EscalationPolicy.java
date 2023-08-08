@@ -125,7 +125,7 @@ public class EscalationPolicy {
      * Constructs a validated instance of {@link EscalationPolicy}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EscalationPolicy(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -134,8 +134,8 @@ public class EscalationPolicy {
      * @param description Escalation policy description.
      * @param numLoops The number of times the escalation policy will repeat after reaching the end of its escalation.
      * @param onCallHandoffNotifications Determines how on call handoff notifications will be sent for users on the escalation policy. Defaults to "if_has_services".
-     * @param escalationRules var.name
-     * @param services var.name
+     * @param escalationRules escalationRules
+     * @param services services
      * @param teams Team associated with the policy. Account must have the {@code teams} ability to use this parameter. Only one team may be associated with the policy.
      */
     @ApiStatus.Internal

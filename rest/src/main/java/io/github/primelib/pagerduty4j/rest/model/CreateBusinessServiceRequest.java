@@ -50,7 +50,7 @@ public class CreateBusinessServiceRequest {
      * Constructs a validated instance of {@link CreateBusinessServiceRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateBusinessServiceRequest(Consumer)} instead.
-     * @param businessService var.name
+     * @param businessService businessService
      */
     @ApiStatus.Internal
     public CreateBusinessServiceRequest(CreateBusinessServiceRequestBusinessService businessService) {

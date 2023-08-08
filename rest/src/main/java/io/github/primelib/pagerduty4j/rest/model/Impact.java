@@ -75,11 +75,11 @@ public class Impact {
      * Constructs a validated instance of {@link Impact}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Impact(Consumer)} instead.
-     * @param id var.name
-     * @param name var.name
+     * @param id id
+     * @param name name
      * @param type The kind of object that has been impacted
      * @param status The current impact status of the object
-     * @param additionalFields var.name
+     * @param additionalFields additionalFields
      */
     @ApiStatus.Internal
     public Impact(String id, String name, TypeEnum type, StatusEnum status, ImpactAdditionalFields additionalFields) {

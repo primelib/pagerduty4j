@@ -54,8 +54,8 @@ public class GetBusinessServiceServiceDependencies200ResponseRelationshipsInnerD
      * Constructs a validated instance of {@link GetBusinessServiceServiceDependencies200ResponseRelationshipsInnerDependentService}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetBusinessServiceServiceDependencies200ResponseRelationshipsInnerDependentService(Consumer)} instead.
-     * @param id var.name
-     * @param type var.name
+     * @param id id
+     * @param type type
      */
     @ApiStatus.Internal
     public GetBusinessServiceServiceDependencies200ResponseRelationshipsInnerDependentService(String id, String type) {

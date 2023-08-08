@@ -50,7 +50,7 @@ public class AssociateServiceToIncidentWorkflowTriggerRequestService {
      * Constructs a validated instance of {@link AssociateServiceToIncidentWorkflowTriggerRequestService}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AssociateServiceToIncidentWorkflowTriggerRequestService(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      */
     @ApiStatus.Internal
     public AssociateServiceToIncidentWorkflowTriggerRequestService(String id) {

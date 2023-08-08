@@ -50,7 +50,7 @@ public class WebhooksV1IncidentDataTriggerSummaryData {
      * Constructs a validated instance of {@link WebhooksV1IncidentDataTriggerSummaryData}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1IncidentDataTriggerSummaryData(Consumer)} instead.
-     * @param subject var.name
+     * @param subject subject
      */
     @ApiStatus.Internal
     public WebhooksV1IncidentDataTriggerSummaryData(String subject) {

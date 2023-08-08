@@ -68,10 +68,10 @@ public class WebhooksV1AssignedToUser {
      * Constructs a validated instance of {@link WebhooksV1AssignedToUser}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1AssignedToUser(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param name The user's name.
      * @param email The user's email address.
-     * @param htmlUrl var.name
+     * @param htmlUrl htmlUrl
      */
     @ApiStatus.Internal
     public WebhooksV1AssignedToUser(String id, String name, String email, String htmlUrl) {

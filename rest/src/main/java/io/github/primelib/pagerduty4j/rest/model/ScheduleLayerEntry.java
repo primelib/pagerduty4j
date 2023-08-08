@@ -65,7 +65,7 @@ public class ScheduleLayerEntry {
      * Constructs a validated instance of {@link ScheduleLayerEntry}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ScheduleLayerEntry(Consumer)} instead.
-     * @param user var.name
+     * @param user user
      * @param start The start time of this entry.
      * @param end The end time of this entry. If null, the entry does not end.
      */

@@ -50,7 +50,7 @@ public class CreateCustomFieldsFieldOptionRequest {
      * Constructs a validated instance of {@link CreateCustomFieldsFieldOptionRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateCustomFieldsFieldOptionRequest(Consumer)} instead.
-     * @param fieldOption var.name
+     * @param fieldOption fieldOption
      */
     @ApiStatus.Internal
     public CreateCustomFieldsFieldOptionRequest(CustomFieldsFieldOption fieldOption) {

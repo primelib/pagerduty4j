@@ -79,7 +79,7 @@ public class WebhooksV1Message {
      * @param id Uniquely identifies this outgoing webhook message; can be used for idempotency when processing the messages.
      * @param type The type of action being reported by this message.
      * @param createdOn The date/time when the incident changed state.
-     * @param data var.name
+     * @param data data
      */
     @ApiStatus.Internal
     public WebhooksV1Message(UUID id, TypeEnum type, OffsetDateTime createdOn, WebhooksV1MessageData data) {

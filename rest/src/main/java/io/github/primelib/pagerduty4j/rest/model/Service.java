@@ -206,7 +206,7 @@ public class Service {
      * Constructs a validated instance of {@link Service}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Service(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -218,19 +218,19 @@ public class Service {
      * @param createdAt The date/time when this service was created
      * @param status The current state of the Service. Valid statuses are:   - {@code active}: The service is enabled and has no open incidents. This is the only status a service can be created with. - {@code warning}: The service is enabled and has one or more acknowledged incidents. - {@code critical}: The service is enabled and has one or more triggered incidents. - {@code maintenance}: The service is under maintenance, no new incidents will be triggered during maintenance mode. - {@code disabled}: The service is disabled and will not have any new triggered incidents. 
      * @param lastIncidentTimestamp The date/time when the most recent incident was created for this service.
-     * @param escalationPolicy var.name
-     * @param responsePlay var.name
+     * @param escalationPolicy escalationPolicy
+     * @param responsePlay responsePlay
      * @param teams The set of teams associated with this service.
      * @param integrations An array containing Integration objects that belong to this service. If {@code integrations} is passed as an argument, these are full objects - otherwise, these are references.
-     * @param incidentUrgencyRule var.name
-     * @param supportHours var.name
+     * @param incidentUrgencyRule incidentUrgencyRule
+     * @param supportHours supportHours
      * @param scheduledActions An array containing scheduled actions for the service.
      * @param addons The array of Add-ons associated with this service.
      * @param alertCreation Whether a service creates only incidents, or both alerts and incidents. A service must create alerts in order to enable incident merging. * "create_incidents" - The service will create one incident and zero alerts for each incoming event. * "create_alerts_and_incidents" - The service will create one incident and one associated alert for each incoming event. 
-     * @param alertGroupingParameters var.name
+     * @param alertGroupingParameters alertGroupingParameters
      * @param alertGrouping Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. There are three available options: * null - No alert grouping on the service. Each alert will create a separate incident; * "time" - All alerts within a specified duration will be grouped into the same incident. This duration is set in the {@code alert_grouping_timeout} setting (described below). Available on Standard, Enterprise, and Event Intelligence plans; * "intelligent" - Alerts will be intelligently grouped based on a machine learning model that looks at the alert summary, timing, and the history of grouped alerts. Available on Enterprise and Event Intelligence plans 
      * @param alertGroupingTimeout The duration in minutes within which to automatically group incoming alerts. This setting applies only when {@code alert_grouping} is set to {@code time}. To continue grouping alerts until the Incident is resolved, set this value to {@code 0}. 
-     * @param autoPauseNotificationsParameters var.name
+     * @param autoPauseNotificationsParameters autoPauseNotificationsParameters
      */
     @ApiStatus.Internal
     public Service(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, Integer autoResolveTimeout, Integer acknowledgementTimeout, OffsetDateTime createdAt, StatusEnum status, OffsetDateTime lastIncidentTimestamp, EscalationPolicyReference escalationPolicy, ServiceAllOfResponsePlay responsePlay, List<TeamReference> teams, List<IntegrationReference> integrations, IncidentUrgencyRule incidentUrgencyRule, SupportHours supportHours, List<ScheduledAction> scheduledActions, List<AddonReference> addons, AlertCreationEnum alertCreation, AlertGroupingParameters alertGroupingParameters, AlertGroupingEnum alertGrouping, Integer alertGroupingTimeout, AutoPauseNotificationsParameters autoPauseNotificationsParameters) {

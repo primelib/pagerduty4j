@@ -59,7 +59,7 @@ public class Acknowledgement {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Acknowledgement(Consumer)} instead.
      * @param at Time at which the acknowledgement was created.
-     * @param acknowledger var.name
+     * @param acknowledger acknowledger
      */
     @ApiStatus.Internal
     public Acknowledgement(OffsetDateTime at, AcknowledgerReference acknowledger) {

@@ -54,8 +54,8 @@ public class CreateServiceDependency200ResponseRelationshipsInnerSupportingServi
      * Constructs a validated instance of {@link CreateServiceDependency200ResponseRelationshipsInnerSupportingService}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateServiceDependency200ResponseRelationshipsInnerSupportingService(Consumer)} instead.
-     * @param id var.name
-     * @param type var.name
+     * @param id id
+     * @param type type
      */
     @ApiStatus.Internal
     public CreateServiceDependency200ResponseRelationshipsInnerSupportingService(String id, String type) {

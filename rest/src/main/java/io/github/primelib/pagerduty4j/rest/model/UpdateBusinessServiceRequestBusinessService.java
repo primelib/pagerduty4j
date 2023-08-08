@@ -74,7 +74,7 @@ public class UpdateBusinessServiceRequestBusinessService {
      * @param name The name of the Business Service.
      * @param description The description of the Business Service.
      * @param pointOfContact The owner of the Business Service.
-     * @param team var.name
+     * @param team team
      */
     @ApiStatus.Internal
     public UpdateBusinessServiceRequestBusinessService(String name, String description, String pointOfContact, Team2 team) {

@@ -83,7 +83,7 @@ public class ListExtensionSchemas200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param extensionSchemas var.name
+     * @param extensionSchemas extensionSchemas
      */
     @ApiStatus.Internal
     public ListExtensionSchemas200Response(Integer offset, Integer limit, Boolean more, Integer total, List<ExtensionSchema> extensionSchemas) {

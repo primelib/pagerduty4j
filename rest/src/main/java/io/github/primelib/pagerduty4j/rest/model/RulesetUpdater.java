@@ -64,7 +64,7 @@ public class RulesetUpdater {
      * Constructs a validated instance of {@link RulesetUpdater}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RulesetUpdater(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type A string that determines the schema of the object
      * @param self The API show URL at which the object is accessible
      */

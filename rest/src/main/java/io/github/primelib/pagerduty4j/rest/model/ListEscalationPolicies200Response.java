@@ -83,7 +83,7 @@ public class ListEscalationPolicies200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param escalationPolicies var.name
+     * @param escalationPolicies escalationPolicies
      */
     @ApiStatus.Internal
     public ListEscalationPolicies200Response(Integer offset, Integer limit, Boolean more, Integer total, List<EscalationPolicy> escalationPolicies) {

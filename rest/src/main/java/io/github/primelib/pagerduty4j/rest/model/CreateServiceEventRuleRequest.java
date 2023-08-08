@@ -50,7 +50,7 @@ public class CreateServiceEventRuleRequest {
      * Constructs a validated instance of {@link CreateServiceEventRuleRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateServiceEventRuleRequest(Consumer)} instead.
-     * @param rule var.name
+     * @param rule rule
      */
     @ApiStatus.Internal
     public CreateServiceEventRuleRequest(ServiceEventRule rule) {

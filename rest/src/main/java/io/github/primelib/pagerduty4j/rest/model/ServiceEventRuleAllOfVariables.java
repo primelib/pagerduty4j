@@ -69,7 +69,7 @@ public class ServiceEventRuleAllOfVariables {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceEventRuleAllOfVariables(Consumer)} instead.
      * @param type The type of operation to populate the variable.
      * @param name The name of the variable.
-     * @param parameters var.name
+     * @param parameters parameters
      */
     @ApiStatus.Internal
     public ServiceEventRuleAllOfVariables(TypeEnum type, String name, ServiceEventRuleAllOfParameters parameters) {

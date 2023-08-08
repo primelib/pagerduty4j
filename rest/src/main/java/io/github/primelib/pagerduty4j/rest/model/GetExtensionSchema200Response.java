@@ -50,7 +50,7 @@ public class GetExtensionSchema200Response {
      * Constructs a validated instance of {@link GetExtensionSchema200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetExtensionSchema200Response(Consumer)} instead.
-     * @param extensionSchema var.name
+     * @param extensionSchema extensionSchema
      */
     @ApiStatus.Internal
     public GetExtensionSchema200Response(ExtensionSchema extensionSchema) {

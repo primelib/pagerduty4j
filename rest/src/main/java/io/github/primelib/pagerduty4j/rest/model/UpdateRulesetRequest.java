@@ -50,7 +50,7 @@ public class UpdateRulesetRequest {
      * Constructs a validated instance of {@link UpdateRulesetRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateRulesetRequest(Consumer)} instead.
-     * @param ruleset var.name
+     * @param ruleset ruleset
      */
     @ApiStatus.Internal
     public UpdateRulesetRequest(Ruleset ruleset) {

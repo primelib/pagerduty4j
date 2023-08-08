@@ -58,7 +58,7 @@ public class CustomFieldsEditableFieldValueOneOf1 {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldValueOneOf1(Consumer)} instead.
      * @param id The ID of the Field.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsEditableFieldValueOneOf1(String id, CustomFieldsFieldValueValue value) {

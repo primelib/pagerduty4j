@@ -61,7 +61,7 @@ public class ServiceEventRuleAllOfConditionsSubconditions {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceEventRuleAllOfConditionsSubconditions(Consumer)} instead.
      * @param operator The type of operator to apply.
-     * @param parameters var.name
+     * @param parameters parameters
      */
     @ApiStatus.Internal
     public ServiceEventRuleAllOfConditionsSubconditions(OperatorEnum operator, ServiceEventRuleAllOfConditionsParameters parameters) {

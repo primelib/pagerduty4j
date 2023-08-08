@@ -55,8 +55,8 @@ public class ListTeamUsers200ResponseAllOfMembersInner {
      * Constructs a validated instance of {@link ListTeamUsers200ResponseAllOfMembersInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListTeamUsers200ResponseAllOfMembersInner(Consumer)} instead.
-     * @param user var.name
-     * @param role var.name
+     * @param user user
+     * @param role role
      */
     @ApiStatus.Internal
     public ListTeamUsers200ResponseAllOfMembersInner(UserReference user, String role) {

@@ -50,7 +50,7 @@ public class PostOrchestrationRequest {
      * Constructs a validated instance of {@link PostOrchestrationRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PostOrchestrationRequest(Consumer)} instead.
-     * @param orchestration var.name
+     * @param orchestration orchestration
      */
     @ApiStatus.Internal
     public PostOrchestrationRequest(Orchestration orchestration) {

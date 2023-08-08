@@ -50,7 +50,7 @@ public class OrchestrationGlobalAllOfOrchestrationPath1CatchAll {
      * Constructs a validated instance of {@link OrchestrationGlobalAllOfOrchestrationPath1CatchAll}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath1CatchAll(Consumer)} instead.
-     * @param actions var.name
+     * @param actions actions
      */
     @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPath1CatchAll(OrchestrationGlobalAllOfOrchestrationPath1CatchAllActions actions) {

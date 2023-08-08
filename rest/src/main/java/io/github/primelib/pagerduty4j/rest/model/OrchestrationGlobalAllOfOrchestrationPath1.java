@@ -70,9 +70,9 @@ public class OrchestrationGlobalAllOfOrchestrationPath1 {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath1(Consumer)} instead.
      * @param type Indicates that these are a set of "global" rules.
-     * @param parent var.name
+     * @param parent parent
      * @param sets You must define at least a "start" set, but you can also define any number of additional sets that are routed to by other rules to form a directional graph.
-     * @param catchAll var.name
+     * @param catchAll catchAll
      */
     @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPath1(String type, OrchestrationGlobalAllOfOrchestrationPath1Parent parent, List<OrchestrationGlobalAllOfOrchestrationPath1SetsInner> sets, OrchestrationGlobalAllOfOrchestrationPath1CatchAll catchAll) {

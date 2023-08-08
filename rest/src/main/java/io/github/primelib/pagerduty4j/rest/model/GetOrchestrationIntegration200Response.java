@@ -50,7 +50,7 @@ public class GetOrchestrationIntegration200Response {
      * Constructs a validated instance of {@link GetOrchestrationIntegration200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetOrchestrationIntegration200Response(Consumer)} instead.
-     * @param integration var.name
+     * @param integration integration
      */
     @ApiStatus.Internal
     public GetOrchestrationIntegration200Response(OrchestrationIntegration integration) {

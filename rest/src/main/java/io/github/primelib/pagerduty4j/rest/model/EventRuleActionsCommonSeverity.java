@@ -53,7 +53,7 @@ public class EventRuleActionsCommonSeverity {
      * Constructs a validated instance of {@link EventRuleActionsCommonSeverity}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EventRuleActionsCommonSeverity(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public EventRuleActionsCommonSeverity(ValueEnum value) {

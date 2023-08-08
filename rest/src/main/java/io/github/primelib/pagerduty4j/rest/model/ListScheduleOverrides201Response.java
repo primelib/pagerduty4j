@@ -51,7 +51,7 @@ public class ListScheduleOverrides201Response {
      * Constructs a validated instance of {@link ListScheduleOverrides201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListScheduleOverrides201Response(Consumer)} instead.
-     * @param overrides var.name
+     * @param overrides overrides
      */
     @ApiStatus.Internal
     public ListScheduleOverrides201Response(List<ScheduleOverride> overrides) {

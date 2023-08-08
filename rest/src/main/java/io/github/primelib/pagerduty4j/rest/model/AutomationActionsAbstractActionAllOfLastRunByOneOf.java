@@ -54,8 +54,8 @@ public class AutomationActionsAbstractActionAllOfLastRunByOneOf {
      * Constructs a validated instance of {@link AutomationActionsAbstractActionAllOfLastRunByOneOf}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsAbstractActionAllOfLastRunByOneOf(Consumer)} instead.
-     * @param id var.name
-     * @param type var.name
+     * @param id id
+     * @param type type
      */
     @ApiStatus.Internal
     public AutomationActionsAbstractActionAllOfLastRunByOneOf(String id, String type) {

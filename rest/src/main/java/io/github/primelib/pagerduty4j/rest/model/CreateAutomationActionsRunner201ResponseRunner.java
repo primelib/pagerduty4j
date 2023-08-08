@@ -140,21 +140,21 @@ public class CreateAutomationActionsRunner201ResponseRunner {
      * Constructs a validated instance of {@link CreateAutomationActionsRunner201ResponseRunner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionsRunner201ResponseRunner(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
-     * @param runnerType var.name
-     * @param name var.name
-     * @param description var.name
-     * @param lastSeen var.name
-     * @param status var.name
-     * @param creationTime var.name
+     * @param runnerType runnerType
+     * @param name name
+     * @param description description
+     * @param lastSeen lastSeen
+     * @param status status
+     * @param creationTime creationTime
      * @param runbookBaseUri The base URI of the Runbook server to connect to. May only contain alphanumeric characters, periods, underscores and dashes. Specified as the subdomain portion of an RBA host, as in &amp;lt;runbook_base_uri&amp;gt;.runbook.pagerduty.cloud
      * @param teams The list of teams associated with the Runner
-     * @param privileges var.name
-     * @param associatedActions var.name
+     * @param privileges privileges
+     * @param associatedActions associatedActions
      * @param metadata Additional metadata
      * @param secret Secret used for authentication of sidecar runner_types
      */

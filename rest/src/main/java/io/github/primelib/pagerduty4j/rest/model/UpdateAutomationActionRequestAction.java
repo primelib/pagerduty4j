@@ -73,12 +73,12 @@ public class UpdateAutomationActionRequestAction {
      * Constructs a validated instance of {@link UpdateAutomationActionRequestAction}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateAutomationActionRequestAction(Consumer)} instead.
-     * @param name var.name
-     * @param description var.name
-     * @param actionClassification var.name
-     * @param actionType var.name
-     * @param runner var.name
-     * @param actionDataReference var.name
+     * @param name name
+     * @param description description
+     * @param actionClassification actionClassification
+     * @param actionType actionType
+     * @param runner runner
+     * @param actionDataReference actionDataReference
      */
     @ApiStatus.Internal
     public UpdateAutomationActionRequestAction(String name, String description, AutomationActionsActionClassificationEnum actionClassification, ActionTypeEnum actionType, String runner, AutomationActionsProcessAutomationJobActionDataReference actionDataReference) {

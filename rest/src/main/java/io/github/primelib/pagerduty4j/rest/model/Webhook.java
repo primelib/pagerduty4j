@@ -77,9 +77,9 @@ public class Webhook {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Webhook(Consumer)} instead.
      * @param endpointUrl The url endpoint the webhook payload is sent to.
      * @param name The name of the webhook.
-     * @param webhookObject var.name
+     * @param webhookObject webhookObject
      * @param config The object that contains webhook configuration values depending on the webhook type specification.
-     * @param outboundIntegration var.name
+     * @param outboundIntegration outboundIntegration
      */
     @ApiStatus.Internal
     public Webhook(String endpointUrl, String name, WebhookObject webhookObject, Object config, OutboundIntegrationReference outboundIntegration) {

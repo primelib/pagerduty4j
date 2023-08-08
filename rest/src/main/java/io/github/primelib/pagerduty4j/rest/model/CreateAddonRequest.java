@@ -50,7 +50,7 @@ public class CreateAddonRequest {
      * Constructs a validated instance of {@link CreateAddonRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAddonRequest(Consumer)} instead.
-     * @param addon var.name
+     * @param addon addon
      */
     @ApiStatus.Internal
     public CreateAddonRequest(Addon addon) {

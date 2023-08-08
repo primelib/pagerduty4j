@@ -50,7 +50,7 @@ public class CreateUserStatusUpdateNotificationRuleRequest {
      * Constructs a validated instance of {@link CreateUserStatusUpdateNotificationRuleRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserStatusUpdateNotificationRuleRequest(Consumer)} instead.
-     * @param statusUpdateNotificationRule var.name
+     * @param statusUpdateNotificationRule statusUpdateNotificationRule
      */
     @ApiStatus.Internal
     public CreateUserStatusUpdateNotificationRuleRequest(StatusUpdateNotificationRule statusUpdateNotificationRule) {

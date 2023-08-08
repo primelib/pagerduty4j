@@ -50,7 +50,7 @@ public class OrchestrationRouter {
      * Constructs a validated instance of {@link OrchestrationRouter}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationRouter(Consumer)} instead.
-     * @param orchestrationPath var.name
+     * @param orchestrationPath orchestrationPath
      */
     @ApiStatus.Internal
     public OrchestrationRouter(OrchestrationRouterAllOfOrchestrationPath orchestrationPath) {

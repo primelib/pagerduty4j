@@ -51,7 +51,7 @@ public class GetAutomationActionsActionTeamAssociations200Response {
      * Constructs a validated instance of {@link GetAutomationActionsActionTeamAssociations200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAutomationActionsActionTeamAssociations200Response(Consumer)} instead.
-     * @param teams var.name
+     * @param teams teams
      */
     @ApiStatus.Internal
     public GetAutomationActionsActionTeamAssociations200Response(List<TeamReference> teams) {

@@ -76,7 +76,7 @@ public class ListIncidentWorkflowTriggers200Response {
      * @param limit The minimum of the {@code limit} parameter used in the request or the maximum request size of the API.
      * @param nextCursor An opaque string than will deliver the next set of results when provided as the {@code cursor} parameter in a subsequent request.  A {@code null} value for this field indicates that there are no additional results. 
      * @param more Indicates if there are additional records to return
-     * @param triggers var.name
+     * @param triggers triggers
      */
     @ApiStatus.Internal
     public ListIncidentWorkflowTriggers200Response(Integer limit, String nextCursor, Boolean more, List<IncidentWorkflowTrigger> triggers) {

@@ -68,7 +68,7 @@ public class AnalyticsModel {
      * Constructs a validated instance of {@link AnalyticsModel}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsModel(Consumer)} instead.
-     * @param filters var.name
+     * @param filters filters
      * @param timeZone The time zone to use for the results and grouping.
      * @param aggregateUnit The time unit to aggregate metrics by.  If no value is provided, the metrics will be aggregated for the entire period.
      */

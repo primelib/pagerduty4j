@@ -57,7 +57,7 @@ public class UpdateServiceEventRuleRequest {
      * Constructs a validated instance of {@link UpdateServiceEventRuleRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateServiceEventRuleRequest(Consumer)} instead.
-     * @param rule var.name
+     * @param rule rule
      * @param ruleId The id of the Event Rule to update on the Service.
      */
     @ApiStatus.Internal

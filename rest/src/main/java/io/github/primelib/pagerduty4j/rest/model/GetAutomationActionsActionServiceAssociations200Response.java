@@ -51,7 +51,7 @@ public class GetAutomationActionsActionServiceAssociations200Response {
      * Constructs a validated instance of {@link GetAutomationActionsActionServiceAssociations200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAutomationActionsActionServiceAssociations200Response(Consumer)} instead.
-     * @param services var.name
+     * @param services services
      */
     @ApiStatus.Internal
     public GetAutomationActionsActionServiceAssociations200Response(List<ServiceReference> services) {

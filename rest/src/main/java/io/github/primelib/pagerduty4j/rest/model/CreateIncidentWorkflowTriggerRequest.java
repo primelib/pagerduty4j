@@ -50,7 +50,7 @@ public class CreateIncidentWorkflowTriggerRequest {
      * Constructs a validated instance of {@link CreateIncidentWorkflowTriggerRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateIncidentWorkflowTriggerRequest(Consumer)} instead.
-     * @param trigger var.name
+     * @param trigger trigger
      */
     @ApiStatus.Internal
     public CreateIncidentWorkflowTriggerRequest(IncidentWorkflowTrigger trigger) {

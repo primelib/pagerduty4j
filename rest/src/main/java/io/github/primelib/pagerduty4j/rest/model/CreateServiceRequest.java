@@ -50,7 +50,7 @@ public class CreateServiceRequest {
      * Constructs a validated instance of {@link CreateServiceRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateServiceRequest(Consumer)} instead.
-     * @param service var.name
+     * @param service service
      */
     @ApiStatus.Internal
     public CreateServiceRequest(Service service) {

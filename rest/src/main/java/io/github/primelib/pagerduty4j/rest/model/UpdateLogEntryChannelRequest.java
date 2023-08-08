@@ -50,7 +50,7 @@ public class UpdateLogEntryChannelRequest {
      * Constructs a validated instance of {@link UpdateLogEntryChannelRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateLogEntryChannelRequest(Consumer)} instead.
-     * @param channel var.name
+     * @param channel channel
      */
     @ApiStatus.Internal
     public UpdateLogEntryChannelRequest(UpdateLogEntryChannelRequestChannel channel) {

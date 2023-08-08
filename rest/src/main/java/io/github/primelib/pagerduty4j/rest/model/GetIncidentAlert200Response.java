@@ -50,7 +50,7 @@ public class GetIncidentAlert200Response {
      * Constructs a validated instance of {@link GetIncidentAlert200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetIncidentAlert200Response(Consumer)} instead.
-     * @param alert var.name
+     * @param alert alert
      */
     @ApiStatus.Internal
     public GetIncidentAlert200Response(Alert alert) {

@@ -57,7 +57,7 @@ public class GetTeamNotificationSubscriptions200ResponseAllOfSubscriptionsInner 
      * Constructs a validated instance of {@link GetTeamNotificationSubscriptions200ResponseAllOfSubscriptionsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetTeamNotificationSubscriptions200ResponseAllOfSubscriptionsInner(Consumer)} instead.
-     * @param subscription var.name
+     * @param subscription subscription
      * @param subscribableName The name of the subscribable
      */
     @ApiStatus.Internal

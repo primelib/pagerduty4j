@@ -90,9 +90,9 @@ public class WebhookIncidentAction {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhookIncidentAction(Consumer)} instead.
      * @param id Uniquely identifies this outgoing webhook message; can be used for idempotency when processing the messages.
      * @param triggeredAt The date/time when this message was was sent.
-     * @param webhook var.name
+     * @param webhook webhook
      * @param type The type of action being reported by this message. * {@code incident.trigger} - Sent when an incident is newly created/triggered. * {@code incident.acknowledge} - Sent when an incident is acknowledged by a user. * {@code incident.unacknowledge} - Sent when an incident is unacknowledged due to its acknowledgement timing out. * {@code incident.resolve} - Sent when an incident has been resolved. * {@code incident.assign} - Sent when an incident has been assigned to another user. Often occurs in concert with an {@code acknowledge}. * {@code incident.escalate} - Sent when an incident has been escalated to another user in the same escalation chain. * {@code incident.delegate} - Sent when an incident has been reassigned to another escalation policy. * {@code incident.annotate} - Sent when a note is created on an incident. 
-     * @param incident var.name
+     * @param incident incident
      * @param logEntries Log Entries that correspond to the action this Webhook is reporting. Includes the channels.
      */
     @ApiStatus.Internal

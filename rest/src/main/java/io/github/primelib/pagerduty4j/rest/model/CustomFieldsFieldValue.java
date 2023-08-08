@@ -109,7 +109,7 @@ public class CustomFieldsFieldValue {
      * @param fieldType The type of data this field contains. In combination with the {@code data_type} field.
      * @param dataType The kind of data the custom field is allowed to contain.
      * @param description A description of the data this field contains.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsFieldValue(String id, String name, TypeEnum type, String displayName, FieldTypeEnum fieldType, DataTypeEnum dataType, String description, CustomFieldsFieldValueValue value) {

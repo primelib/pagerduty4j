@@ -83,7 +83,7 @@ public class ListSchedules200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param schedules var.name
+     * @param schedules schedules
      */
     @ApiStatus.Internal
     public ListSchedules200Response(Integer offset, Integer limit, Boolean more, Integer total, List<Schedule> schedules) {

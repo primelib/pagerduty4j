@@ -50,7 +50,7 @@ public class WebhookSubscriptionUpdate {
      * Constructs a validated instance of {@link WebhookSubscriptionUpdate}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhookSubscriptionUpdate(Consumer)} instead.
-     * @param webhookSubscription var.name
+     * @param webhookSubscription webhookSubscription
      */
     @ApiStatus.Internal
     public WebhookSubscriptionUpdate(WebhookSubscriptionUpdateWebhookSubscription webhookSubscription) {

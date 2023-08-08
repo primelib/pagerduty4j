@@ -50,7 +50,7 @@ public class GetOutlierIncident200Response {
      * Constructs a validated instance of {@link GetOutlierIncident200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetOutlierIncident200Response(Consumer)} instead.
-     * @param outlierIncident var.name
+     * @param outlierIncident outlierIncident
      */
     @ApiStatus.Internal
     public GetOutlierIncident200Response(GetOutlierIncident200ResponseOutlierIncident outlierIncident) {

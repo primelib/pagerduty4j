@@ -71,8 +71,8 @@ public class AuditRecordDetailsReferencesInner {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AuditRecordDetailsReferencesInner(Consumer)} instead.
      * @param name Name of the reference field
      * @param description Human readable description of the references field
-     * @param added var.name
-     * @param removed var.name
+     * @param added added
+     * @param removed removed
      */
     @ApiStatus.Internal
     public AuditRecordDetailsReferencesInner(String name, String description, List<Reference> added, List<Reference> removed) {

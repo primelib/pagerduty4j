@@ -59,7 +59,7 @@ public class ConvertServiceEventRulesToEventOrchestration400ResponseError {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ConvertServiceEventRulesToEventOrchestration400ResponseError(Consumer)} instead.
      * @param message Error message string
-     * @param errors var.name
+     * @param errors errors
      */
     @ApiStatus.Internal
     public ConvertServiceEventRulesToEventOrchestration400ResponseError(String message, List<ConvertServiceEventRulesToEventOrchestration400ResponseErrorErrorsInner> errors) {

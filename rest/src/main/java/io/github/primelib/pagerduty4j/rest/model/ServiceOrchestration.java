@@ -50,7 +50,7 @@ public class ServiceOrchestration {
      * Constructs a validated instance of {@link ServiceOrchestration}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestration(Consumer)} instead.
-     * @param orchestrationPath var.name
+     * @param orchestrationPath orchestrationPath
      */
     @ApiStatus.Internal
     public ServiceOrchestration(ServiceOrchestrationAllOfOrchestrationPath orchestrationPath) {

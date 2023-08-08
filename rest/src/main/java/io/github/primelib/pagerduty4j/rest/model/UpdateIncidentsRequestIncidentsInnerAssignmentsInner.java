@@ -50,7 +50,7 @@ public class UpdateIncidentsRequestIncidentsInnerAssignmentsInner {
      * Constructs a validated instance of {@link UpdateIncidentsRequestIncidentsInnerAssignmentsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateIncidentsRequestIncidentsInnerAssignmentsInner(Consumer)} instead.
-     * @param assignee var.name
+     * @param assignee assignee
      */
     @ApiStatus.Internal
     public UpdateIncidentsRequestIncidentsInnerAssignmentsInner(UserReference assignee) {

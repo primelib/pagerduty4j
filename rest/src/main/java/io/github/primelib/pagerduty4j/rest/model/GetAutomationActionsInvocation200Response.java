@@ -50,7 +50,7 @@ public class GetAutomationActionsInvocation200Response {
      * Constructs a validated instance of {@link GetAutomationActionsInvocation200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAutomationActionsInvocation200Response(Consumer)} instead.
-     * @param invocation var.name
+     * @param invocation invocation
      */
     @ApiStatus.Internal
     public GetAutomationActionsInvocation200Response(AutomationActionsInvocation invocation) {

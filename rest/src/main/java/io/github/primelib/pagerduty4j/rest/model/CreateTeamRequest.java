@@ -50,7 +50,7 @@ public class CreateTeamRequest {
      * Constructs a validated instance of {@link CreateTeamRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateTeamRequest(Consumer)} instead.
-     * @param team var.name
+     * @param team team
      */
     @ApiStatus.Internal
     public CreateTeamRequest(Team team) {

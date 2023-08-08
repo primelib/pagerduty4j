@@ -58,8 +58,8 @@ public class IncidentAction {
      * Constructs a validated instance of {@link IncidentAction}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentAction(Consumer)} instead.
-     * @param type var.name
-     * @param at var.name
+     * @param type type
+     * @param at at
      */
     @ApiStatus.Internal
     public IncidentAction(TypeEnum type, OffsetDateTime at) {

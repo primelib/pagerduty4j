@@ -81,12 +81,12 @@ public class IncidentsRespondersReference {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentsRespondersReference(Consumer)} instead.
      * @param state The status of the responder being added to the incident
-     * @param user var.name
-     * @param incident var.name
-     * @param updatedAt var.name
+     * @param user user
+     * @param incident incident
+     * @param updatedAt updatedAt
      * @param message The message sent with the responder request
-     * @param requester var.name
-     * @param requestedAt var.name
+     * @param requester requester
+     * @param requestedAt requestedAt
      */
     @ApiStatus.Internal
     public IncidentsRespondersReference(String state, UserReference user, IncidentReference incident, String updatedAt, String message, UserReference requester, String requestedAt) {

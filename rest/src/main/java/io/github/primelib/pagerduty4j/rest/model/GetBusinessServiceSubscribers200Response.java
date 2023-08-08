@@ -90,7 +90,7 @@ public class GetBusinessServiceSubscribers200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param subscribers var.name
+     * @param subscribers subscribers
      * @param accountId The ID of the account belonging to the subscriber entity
      */
     @ApiStatus.Internal

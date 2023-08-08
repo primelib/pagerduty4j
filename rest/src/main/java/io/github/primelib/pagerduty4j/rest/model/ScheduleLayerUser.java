@@ -50,7 +50,7 @@ public class ScheduleLayerUser {
      * Constructs a validated instance of {@link ScheduleLayerUser}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ScheduleLayerUser(Consumer)} instead.
-     * @param user var.name
+     * @param user user
      */
     @ApiStatus.Internal
     public ScheduleLayerUser(UserReference user) {

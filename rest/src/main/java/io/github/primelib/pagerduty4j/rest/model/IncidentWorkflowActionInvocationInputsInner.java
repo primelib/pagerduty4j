@@ -50,7 +50,7 @@ public class IncidentWorkflowActionInvocationInputsInner {
      * Constructs a validated instance of {@link IncidentWorkflowActionInvocationInputsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionInvocationInputsInner(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public IncidentWorkflowActionInvocationInputsInner(String value) {

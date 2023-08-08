@@ -50,7 +50,7 @@ public class OrchestrationUnroutedAllOfOrchestrationPathCatchAll {
      * Constructs a validated instance of {@link OrchestrationUnroutedAllOfOrchestrationPathCatchAll}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationUnroutedAllOfOrchestrationPathCatchAll(Consumer)} instead.
-     * @param actions var.name
+     * @param actions actions
      */
     @ApiStatus.Internal
     public OrchestrationUnroutedAllOfOrchestrationPathCatchAll(OrchestrationUnroutedAllOfOrchestrationPathCatchAllActions actions) {

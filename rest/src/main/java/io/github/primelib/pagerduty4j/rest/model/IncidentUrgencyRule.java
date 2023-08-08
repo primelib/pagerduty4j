@@ -73,8 +73,8 @@ public class IncidentUrgencyRule {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentUrgencyRule(Consumer)} instead.
      * @param type The type of incident urgency: whether it's constant, or it's dependent on the support hours.
      * @param urgency The incidents' urgency, if type is constant.
-     * @param duringSupportHours var.name
-     * @param outsideSupportHours var.name
+     * @param duringSupportHours duringSupportHours
+     * @param outsideSupportHours outsideSupportHours
      */
     @ApiStatus.Internal
     public IncidentUrgencyRule(TypeEnum type, UrgencyEnum urgency, IncidentUrgencyType duringSupportHours, IncidentUrgencyType outsideSupportHours) {

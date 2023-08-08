@@ -51,7 +51,7 @@ public class CustomFieldsEditableFieldDefaultValueOneOf2 {
      * Constructs a validated instance of {@link CustomFieldsEditableFieldDefaultValueOneOf2}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldDefaultValueOneOf2(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsEditableFieldDefaultValueOneOf2(BigDecimal value) {

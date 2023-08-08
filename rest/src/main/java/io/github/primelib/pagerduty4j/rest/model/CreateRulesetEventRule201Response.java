@@ -50,7 +50,7 @@ public class CreateRulesetEventRule201Response {
      * Constructs a validated instance of {@link CreateRulesetEventRule201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateRulesetEventRule201Response(Consumer)} instead.
-     * @param rule var.name
+     * @param rule rule
      */
     @ApiStatus.Internal
     public CreateRulesetEventRule201Response(EventRule rule) {

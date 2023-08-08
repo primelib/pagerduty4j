@@ -51,7 +51,7 @@ public class AuditMetadata {
      * Constructs a validated instance of {@link AuditMetadata}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AuditMetadata(Consumer)} instead.
-     * @param messages var.name
+     * @param messages messages
      */
     @ApiStatus.Internal
     public AuditMetadata(List<String> messages) {

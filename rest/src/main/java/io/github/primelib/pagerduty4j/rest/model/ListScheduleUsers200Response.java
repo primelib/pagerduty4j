@@ -51,7 +51,7 @@ public class ListScheduleUsers200Response {
      * Constructs a validated instance of {@link ListScheduleUsers200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListScheduleUsers200Response(Consumer)} instead.
-     * @param users var.name
+     * @param users users
      */
     @ApiStatus.Internal
     public ListScheduleUsers200Response(List<User> users) {

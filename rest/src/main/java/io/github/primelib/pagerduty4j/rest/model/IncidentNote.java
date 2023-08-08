@@ -73,9 +73,9 @@ public class IncidentNote {
      * Constructs a validated instance of {@link IncidentNote}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentNote(Consumer)} instead.
-     * @param id var.name
-     * @param user var.name
-     * @param channel var.name
+     * @param id id
+     * @param user user
+     * @param channel channel
      * @param content The note content
      * @param createdAt The time at which the note was submitted
      */

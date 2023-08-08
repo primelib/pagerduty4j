@@ -51,7 +51,7 @@ public class ListLicenses200Response {
      * Constructs a validated instance of {@link ListLicenses200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListLicenses200Response(Consumer)} instead.
-     * @param licenses var.name
+     * @param licenses licenses
      */
     @ApiStatus.Internal
     public ListLicenses200Response(List<LicenseWithCounts> licenses) {

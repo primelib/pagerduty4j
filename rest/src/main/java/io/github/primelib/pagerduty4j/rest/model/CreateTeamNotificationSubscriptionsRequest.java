@@ -51,7 +51,7 @@ public class CreateTeamNotificationSubscriptionsRequest {
      * Constructs a validated instance of {@link CreateTeamNotificationSubscriptionsRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateTeamNotificationSubscriptionsRequest(Consumer)} instead.
-     * @param subscribables var.name
+     * @param subscribables subscribables
      */
     @ApiStatus.Internal
     public CreateTeamNotificationSubscriptionsRequest(Set<NotificationSubscribable> subscribables) {

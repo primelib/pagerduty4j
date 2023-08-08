@@ -70,7 +70,7 @@ public class PhoneContactMethod extends ContactMethod {
      * Constructs a validated instance of {@link PhoneContactMethod}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PhoneContactMethod(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param countryCode The 1-to-3 digit country calling code.
      * @param enabled If true, this phone is capable of receiving SMS messages.
      * @param blacklisted If true, this phone has been blacklisted by PagerDuty and no messages will be sent to it.

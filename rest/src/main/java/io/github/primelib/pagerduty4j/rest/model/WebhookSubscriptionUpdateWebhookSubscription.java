@@ -74,7 +74,7 @@ public class WebhookSubscriptionUpdateWebhookSubscription {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhookSubscriptionUpdateWebhookSubscription(Consumer)} instead.
      * @param description A short description of the webhook subscription.
      * @param events The set of outbound event types the subscription will receive.
-     * @param filter var.name
+     * @param filter filter
      * @param active If true, a webhook will be sent. True is the default state. If false, a webhook will not be sent.
      */
     @ApiStatus.Internal

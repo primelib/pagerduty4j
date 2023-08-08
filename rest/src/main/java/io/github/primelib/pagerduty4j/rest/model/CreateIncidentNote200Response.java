@@ -50,7 +50,7 @@ public class CreateIncidentNote200Response {
      * Constructs a validated instance of {@link CreateIncidentNote200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateIncidentNote200Response(Consumer)} instead.
-     * @param note var.name
+     * @param note note
      */
     @ApiStatus.Internal
     public CreateIncidentNote200Response(IncidentNote note) {

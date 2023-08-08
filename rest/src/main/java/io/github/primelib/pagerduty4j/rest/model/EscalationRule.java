@@ -65,7 +65,7 @@ public class EscalationRule {
      * Constructs a validated instance of {@link EscalationRule}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EscalationRule(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param escalationDelayInMinutes The number of minutes before an unacknowledged incident escalates away from this rule.
      * @param targets The targets an incident should be assigned to upon reaching this rule.
      */

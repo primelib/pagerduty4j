@@ -54,8 +54,8 @@ public class CreateServiceDependencyRequestRelationshipsInner {
      * Constructs a validated instance of {@link CreateServiceDependencyRequestRelationshipsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateServiceDependencyRequestRelationshipsInner(Consumer)} instead.
-     * @param supportingService var.name
-     * @param dependentService var.name
+     * @param supportingService supportingService
+     * @param dependentService dependentService
      */
     @ApiStatus.Internal
     public CreateServiceDependencyRequestRelationshipsInner(CreateServiceDependencyRequestRelationshipsInnerSupportingService supportingService, CreateServiceDependencyRequestRelationshipsInnerDependentService dependentService) {

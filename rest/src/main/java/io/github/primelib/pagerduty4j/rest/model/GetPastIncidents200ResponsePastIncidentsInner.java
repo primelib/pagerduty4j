@@ -58,7 +58,7 @@ public class GetPastIncidents200ResponsePastIncidentsInner {
      * Constructs a validated instance of {@link GetPastIncidents200ResponsePastIncidentsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetPastIncidents200ResponsePastIncidentsInner(Consumer)} instead.
-     * @param incident var.name
+     * @param incident incident
      * @param score The computed similarity score associated with the incident and parent incident 
      */
     @ApiStatus.Internal

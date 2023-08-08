@@ -64,7 +64,7 @@ public class Team3 {
      * Constructs a validated instance of {@link Team3}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Team3(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type A string that determines the schema of the object.
      * @param self The API show URL at which the object is accessible.
      */

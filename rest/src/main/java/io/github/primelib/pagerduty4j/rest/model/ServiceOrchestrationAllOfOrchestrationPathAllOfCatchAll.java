@@ -50,7 +50,7 @@ public class ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll {
      * Constructs a validated instance of {@link ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll(Consumer)} instead.
-     * @param actions var.name
+     * @param actions actions
      */
     @ApiStatus.Internal
     public ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAll(ServiceOrchestrationAllOfOrchestrationPathAllOfCatchAllActions actions) {

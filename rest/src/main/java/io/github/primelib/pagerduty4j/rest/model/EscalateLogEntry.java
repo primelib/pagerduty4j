@@ -135,20 +135,20 @@ public class EscalateLogEntry {
      * Constructs a validated instance of {@link EscalateLogEntry}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EscalateLogEntry(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type var.name
+     * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param createdAt Time at which the log entry was created.
-     * @param channel var.name
-     * @param agent var.name
+     * @param channel channel
+     * @param agent agent
      * @param note Optional field containing a note, if one was included with the log entry.
      * @param contexts Contexts to be included with the trigger such as links to graphs or images.
-     * @param service var.name
-     * @param incident var.name
+     * @param service service
+     * @param incident incident
      * @param teams Will consist of references unless included
-     * @param eventDetails var.name
+     * @param eventDetails eventDetails
      * @param assignees An array of assigned Users for this log entry
      */
     @ApiStatus.Internal

@@ -82,11 +82,11 @@ public class IntegrationAllOfEmailFilters {
      * Constructs a validated instance of {@link IntegrationAllOfEmailFilters}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IntegrationAllOfEmailFilters(Consumer)} instead.
-     * @param subjectMode var.name
+     * @param subjectMode subjectMode
      * @param subjectRegex Specify if subject_mode is set to match or no-match
-     * @param bodyMode var.name
+     * @param bodyMode bodyMode
      * @param bodyRegex Specify if body_mode is set to match or no-match
-     * @param fromEmailMode var.name
+     * @param fromEmailMode fromEmailMode
      * @param fromEmailRegex Specify if from_email_mode is set to match or no-match
      */
     @ApiStatus.Internal

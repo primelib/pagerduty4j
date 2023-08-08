@@ -72,8 +72,8 @@ public class AuditRecordResponseSchema {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AuditRecordResponseSchema(Consumer)} instead.
      * @param limit The minimum of the {@code limit} parameter used in the request or the maximum request size of the API.
      * @param nextCursor An opaque string than will deliver the next set of results when provided as the {@code cursor} parameter in a subsequent request.  A {@code null} value for this field indicates that there are no additional results. 
-     * @param records var.name
-     * @param responseMetadata var.name
+     * @param records records
+     * @param responseMetadata responseMetadata
      */
     @ApiStatus.Internal
     public AuditRecordResponseSchema(Integer limit, String nextCursor, List<AuditRecord> records, AuditMetadata responseMetadata) {

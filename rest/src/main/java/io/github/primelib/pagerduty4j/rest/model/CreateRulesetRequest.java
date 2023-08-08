@@ -50,7 +50,7 @@ public class CreateRulesetRequest {
      * Constructs a validated instance of {@link CreateRulesetRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateRulesetRequest(Consumer)} instead.
-     * @param ruleset var.name
+     * @param ruleset ruleset
      */
     @ApiStatus.Internal
     public CreateRulesetRequest(CreateRulesetRequestRuleset ruleset) {

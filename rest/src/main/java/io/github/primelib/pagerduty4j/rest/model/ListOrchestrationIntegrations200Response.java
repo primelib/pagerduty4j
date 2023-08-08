@@ -58,7 +58,7 @@ public class ListOrchestrationIntegrations200Response {
      * Constructs a validated instance of {@link ListOrchestrationIntegrations200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListOrchestrationIntegrations200Response(Consumer)} instead.
-     * @param integrations var.name
+     * @param integrations integrations
      * @param total The total number of records matching the given query.
      */
     @ApiStatus.Internal

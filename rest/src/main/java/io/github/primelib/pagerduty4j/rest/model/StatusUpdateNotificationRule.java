@@ -50,7 +50,7 @@ public class StatusUpdateNotificationRule {
      * Constructs a validated instance of {@link StatusUpdateNotificationRule}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #StatusUpdateNotificationRule(Consumer)} instead.
-     * @param contactMethod var.name
+     * @param contactMethod contactMethod
      */
     @ApiStatus.Internal
     public StatusUpdateNotificationRule(ContactMethodReference contactMethod) {

@@ -51,7 +51,7 @@ public class GetLogEntry200Response {
      * Constructs a validated instance of {@link GetLogEntry200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetLogEntry200Response(Consumer)} instead.
-     * @param logEntry var.name
+     * @param logEntry logEntry
      */
     @ApiStatus.Internal
     public GetLogEntry200Response(ListIncidentLogEntries200ResponseAllOfLogEntriesInner logEntry) {

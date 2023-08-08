@@ -76,8 +76,8 @@ public class ResponderRequest {
      * Constructs a validated instance of {@link ResponderRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ResponderRequest(Consumer)} instead.
-     * @param incident var.name
-     * @param requester var.name
+     * @param incident incident
+     * @param requester requester
      * @param requestedAt The time the request was made
      * @param message The message sent with the responder request
      * @param responderRequestTargets The array of targets the responder request is being sent to

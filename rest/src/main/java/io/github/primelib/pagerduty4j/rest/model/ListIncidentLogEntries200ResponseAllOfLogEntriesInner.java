@@ -150,24 +150,24 @@ public class ListIncidentLogEntries200ResponseAllOfLogEntriesInner {
      * Constructs a validated instance of {@link ListIncidentLogEntries200ResponseAllOfLogEntriesInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListIncidentLogEntries200ResponseAllOfLogEntriesInner(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type var.name
+     * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param createdAt Time at which the log entry was created.
-     * @param channel var.name
-     * @param agent var.name
+     * @param channel channel
+     * @param agent agent
      * @param note Optional field containing a note, if one was included with the log entry.
      * @param contexts Contexts to be included with the trigger such as links to graphs or images.
-     * @param service var.name
-     * @param incident var.name
+     * @param service service
+     * @param incident incident
      * @param teams Will consist of references unless included
-     * @param eventDetails var.name
+     * @param eventDetails eventDetails
      * @param acknowledgementTimeout Duration for which the acknowledgement lasts, in seconds. Services can contain an {@code acknowledgement_timeout} property, which specifies the length of time acknowledgements should last for. Each time an incident is acknowledged, this timeout is copied into the acknowledgement log entry. This property is optional, as older log entries may not contain it. It may also be {@code null}, as acknowledgements can be performed on incidents whose services have no {@code acknowledgement_timeout} set.
      * @param assignees An array of assigned Users for this log entry
-     * @param user var.name
-     * @param changedActions var.name
+     * @param user user
+     * @param changedActions changedActions
      */
     @ApiStatus.Internal
     public ListIncidentLogEntries200ResponseAllOfLogEntriesInner(String id, String summary, TypeEnum type, String self, String htmlUrl, OffsetDateTime createdAt, Channel channel, AgentReference agent, String note, List<Context> contexts, ServiceReference service, IncidentReference incident, List<TeamReference> teams, LogEntryAllOfEventDetails eventDetails, Integer acknowledgementTimeout, List<UserReference> assignees, UserReference user, List<IncidentAction> changedActions) {

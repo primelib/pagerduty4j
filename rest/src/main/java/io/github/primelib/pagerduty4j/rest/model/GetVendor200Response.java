@@ -51,7 +51,7 @@ public class GetVendor200Response {
      * Constructs a validated instance of {@link GetVendor200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetVendor200Response(Consumer)} instead.
-     * @param vendor var.name
+     * @param vendor vendor
      */
     @ApiStatus.Internal
     public GetVendor200Response(List<Vendor> vendor) {

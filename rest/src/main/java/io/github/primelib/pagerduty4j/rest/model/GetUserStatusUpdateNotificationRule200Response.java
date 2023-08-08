@@ -50,7 +50,7 @@ public class GetUserStatusUpdateNotificationRule200Response {
      * Constructs a validated instance of {@link GetUserStatusUpdateNotificationRule200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetUserStatusUpdateNotificationRule200Response(Consumer)} instead.
-     * @param notificationRule var.name
+     * @param notificationRule notificationRule
      */
     @ApiStatus.Internal
     public GetUserStatusUpdateNotificationRule200Response(StatusUpdateNotificationRule notificationRule) {

@@ -94,7 +94,7 @@ public class GetAnalyticsIncidentResponsesById200Response {
      * @param order The order in which the results were sorted; asc for ascending, desc for descending.
      * @param orderBy The column that was used for ordering the results.
      * @param timeZone The time zone that the results are in.
-     * @param responses var.name
+     * @param responses responses
      */
     @ApiStatus.Internal
     public GetAnalyticsIncidentResponsesById200Response(String incidentId, Integer limit, OrderEnum order, OrderByEnum orderBy, String timeZone, List<AnalyticsRawIncidentResponses> responses) {

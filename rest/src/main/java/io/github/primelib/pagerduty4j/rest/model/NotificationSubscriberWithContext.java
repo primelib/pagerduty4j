@@ -78,7 +78,7 @@ public class NotificationSubscriberWithContext {
      * @param subscriberId The ID of the entity being subscribed
      * @param subscriberType The type of the entity being subscribed
      * @param hasIndirectSubscription If this subcriber has an indirect subscription to this incident via another object
-     * @param subscribedVia var.name
+     * @param subscribedVia subscribedVia
      */
     @ApiStatus.Internal
     public NotificationSubscriberWithContext(String subscriberId, SubscriberTypeEnum subscriberType, Boolean hasIndirectSubscription, List<NotificationSubscriberWithContextSubscribedViaInner> subscribedVia) {

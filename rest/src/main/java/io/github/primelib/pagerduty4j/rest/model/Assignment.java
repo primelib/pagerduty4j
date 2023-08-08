@@ -59,7 +59,7 @@ public class Assignment {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Assignment(Consumer)} instead.
      * @param at Time at which the assignment was created.
-     * @param assignee var.name
+     * @param assignee assignee
      */
     @ApiStatus.Internal
     public Assignment(OffsetDateTime at, UserReference assignee) {

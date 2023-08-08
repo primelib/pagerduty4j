@@ -50,7 +50,7 @@ public class UpdateChangeEventRequest {
      * Constructs a validated instance of {@link UpdateChangeEventRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateChangeEventRequest(Consumer)} instead.
-     * @param changeEvent var.name
+     * @param changeEvent changeEvent
      */
     @ApiStatus.Internal
     public UpdateChangeEventRequest(ChangeEvent changeEvent) {

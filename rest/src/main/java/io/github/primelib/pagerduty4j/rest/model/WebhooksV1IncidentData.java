@@ -129,21 +129,21 @@ public class WebhooksV1IncidentData {
      * Constructs a validated instance of {@link WebhooksV1IncidentData}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1IncidentData(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param incidentNumber The number of the incident. This is unique across the account.
      * @param createdOn The date/time the incident was first triggered.
      * @param status The current status of the incident.
-     * @param htmlUrl var.name
+     * @param htmlUrl htmlUrl
      * @param incidentKey The incident's de-duplication key.
-     * @param service var.name
-     * @param assignedToUser var.name
-     * @param assignedTo var.name
-     * @param triggerSummaryData var.name
-     * @param triggerDetailsHtmlUrl var.name
+     * @param service service
+     * @param assignedToUser assignedToUser
+     * @param assignedTo assignedTo
+     * @param triggerSummaryData triggerSummaryData
+     * @param triggerDetailsHtmlUrl triggerDetailsHtmlUrl
      * @param lastStatusChangeOn The time at which the status of the incident last changed.
-     * @param lastStatusChangeBy var.name
+     * @param lastStatusChangeBy lastStatusChangeBy
      * @param numberOfEscalations Number of times the incident has been escalated.
-     * @param urgency var.name
+     * @param urgency urgency
      */
     @ApiStatus.Internal
     public WebhooksV1IncidentData(String id, Integer incidentNumber, OffsetDateTime createdOn, StatusEnum status, String htmlUrl, String incidentKey, WebhooksV1Service service, WebhooksV1AssignedToUser assignedToUser, List<WebhooksV1AssignedTo> assignedTo, WebhooksV1IncidentDataTriggerSummaryData triggerSummaryData, String triggerDetailsHtmlUrl, OffsetDateTime lastStatusChangeOn, WebhooksV1AssignedToUser lastStatusChangeBy, Integer numberOfEscalations, UrgencyEnum urgency) {

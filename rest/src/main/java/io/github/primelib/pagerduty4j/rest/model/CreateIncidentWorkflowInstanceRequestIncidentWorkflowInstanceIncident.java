@@ -53,7 +53,7 @@ public class CreateIncidentWorkflowInstanceRequestIncidentWorkflowInstanceIncide
      * Constructs a validated instance of {@link CreateIncidentWorkflowInstanceRequestIncidentWorkflowInstanceIncident}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateIncidentWorkflowInstanceRequestIncidentWorkflowInstanceIncident(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      */
     @ApiStatus.Internal
     public CreateIncidentWorkflowInstanceRequestIncidentWorkflowInstanceIncident(TypeEnum type) {

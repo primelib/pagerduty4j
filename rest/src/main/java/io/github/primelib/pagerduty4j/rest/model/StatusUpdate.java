@@ -82,10 +82,10 @@ public class StatusUpdate {
      * Constructs a validated instance of {@link StatusUpdate}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #StatusUpdate(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param message The message of the status update.
      * @param createdAt The date/time when this status update was created.
-     * @param sender var.name
+     * @param sender sender
      * @param subject The subject of the custom html email status update. Present if included in request body.
      * @param htmlMessage The html content of the custom html email status update. Present if included in request body.
      */

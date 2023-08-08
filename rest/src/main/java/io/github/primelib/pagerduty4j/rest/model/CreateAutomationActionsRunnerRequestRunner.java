@@ -80,9 +80,9 @@ public class CreateAutomationActionsRunnerRequestRunner {
      * Constructs a validated instance of {@link CreateAutomationActionsRunnerRequestRunner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionsRunnerRequestRunner(Consumer)} instead.
-     * @param runnerType var.name
-     * @param name var.name
-     * @param description var.name
+     * @param runnerType runnerType
+     * @param name name
+     * @param description description
      * @param teams The list of teams associated with the Runner
      * @param runbookBaseUri The base URI of the Runbook server to connect to. May only contain alphanumeric characters, periods, underscores and dashes. Specified as the subdomain portion of an RBA host, as in &amp;lt;runbook_base_uri&amp;gt;.runbook.pagerduty.cloud
      * @param runbookApiKey The API key to connect to the Runbook server with. If omitted, the previously stored value will remain unchanged

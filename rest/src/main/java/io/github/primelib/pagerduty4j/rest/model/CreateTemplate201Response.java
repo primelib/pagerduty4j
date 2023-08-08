@@ -50,7 +50,7 @@ public class CreateTemplate201Response {
      * Constructs a validated instance of {@link CreateTemplate201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateTemplate201Response(Consumer)} instead.
-     * @param template var.name
+     * @param template template
      */
     @ApiStatus.Internal
     public CreateTemplate201Response(Template template) {

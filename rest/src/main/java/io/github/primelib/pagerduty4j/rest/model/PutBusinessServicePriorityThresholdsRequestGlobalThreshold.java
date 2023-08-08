@@ -55,8 +55,8 @@ public class PutBusinessServicePriorityThresholdsRequestGlobalThreshold {
      * Constructs a validated instance of {@link PutBusinessServicePriorityThresholdsRequestGlobalThreshold}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PutBusinessServicePriorityThresholdsRequestGlobalThreshold(Consumer)} instead.
-     * @param id var.name
-     * @param order var.name
+     * @param id id
+     * @param order order
      */
     @ApiStatus.Internal
     public PutBusinessServicePriorityThresholdsRequestGlobalThreshold(String id, BigDecimal order) {

@@ -58,7 +58,7 @@ public class CustomFieldsEditableFieldValueOneOf {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldValueOneOf(Consumer)} instead.
      * @param name The name of the field. May include ASCII characters, specifically lowercase letters, digits, and underescores. The {@code name} for a Field must be unique.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsEditableFieldValueOneOf(String name, CustomFieldsFieldValueValue value) {

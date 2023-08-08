@@ -50,7 +50,7 @@ public class GetChangeEvent200Response {
      * Constructs a validated instance of {@link GetChangeEvent200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetChangeEvent200Response(Consumer)} instead.
-     * @param changeEvent var.name
+     * @param changeEvent changeEvent
      */
     @ApiStatus.Internal
     public GetChangeEvent200Response(ChangeEvent changeEvent) {

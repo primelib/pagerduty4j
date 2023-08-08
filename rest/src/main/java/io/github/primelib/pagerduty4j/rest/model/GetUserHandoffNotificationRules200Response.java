@@ -51,7 +51,7 @@ public class GetUserHandoffNotificationRules200Response {
      * Constructs a validated instance of {@link GetUserHandoffNotificationRules200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetUserHandoffNotificationRules200Response(Consumer)} instead.
-     * @param oncallHandoffNotificationRules var.name
+     * @param oncallHandoffNotificationRules oncallHandoffNotificationRules
      */
     @ApiStatus.Internal
     public GetUserHandoffNotificationRules200Response(List<HandoffNotificationRule> oncallHandoffNotificationRules) {

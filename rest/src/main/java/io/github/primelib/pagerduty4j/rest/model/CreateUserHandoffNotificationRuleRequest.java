@@ -50,7 +50,7 @@ public class CreateUserHandoffNotificationRuleRequest {
      * Constructs a validated instance of {@link CreateUserHandoffNotificationRuleRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserHandoffNotificationRuleRequest(Consumer)} instead.
-     * @param oncallHandoffNotificationRule var.name
+     * @param oncallHandoffNotificationRule oncallHandoffNotificationRule
      */
     @ApiStatus.Internal
     public CreateUserHandoffNotificationRuleRequest(HandoffNotificationRule oncallHandoffNotificationRule) {

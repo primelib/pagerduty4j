@@ -50,7 +50,7 @@ public class WebhooksV1MessageData {
      * Constructs a validated instance of {@link WebhooksV1MessageData}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1MessageData(Consumer)} instead.
-     * @param incident var.name
+     * @param incident incident
      */
     @ApiStatus.Internal
     public WebhooksV1MessageData(WebhooksV1IncidentData incident) {

@@ -89,7 +89,7 @@ public class WebhookSubscriptionDeliveryMethod {
      * Constructs a validated instance of {@link WebhookSubscriptionDeliveryMethod}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhookSubscriptionDeliveryMethod(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param secret The secret used to sign webhook payloads. Only provided on the initial create response.
      * @param temporarilyDisabled Whether or not this webhook subscription is temporarily disabled. Becomes {@code true} if the delivery method URL is repeatedly rejected by the server.
      * @param type Indicates the type of the delivery method.

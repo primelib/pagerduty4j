@@ -73,12 +73,12 @@ public class AutomationActionsScriptActionPutBody {
      * Constructs a validated instance of {@link AutomationActionsScriptActionPutBody}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsScriptActionPutBody(Consumer)} instead.
-     * @param name var.name
-     * @param description var.name
-     * @param actionClassification var.name
-     * @param actionType var.name
-     * @param runner var.name
-     * @param actionDataReference var.name
+     * @param name name
+     * @param description description
+     * @param actionClassification actionClassification
+     * @param actionType actionType
+     * @param runner runner
+     * @param actionDataReference actionDataReference
      */
     @ApiStatus.Internal
     public AutomationActionsScriptActionPutBody(String name, String description, AutomationActionsActionClassificationEnum actionClassification, ActionTypeEnum actionType, String runner, AutomationActionsScriptActionDataReference actionDataReference) {

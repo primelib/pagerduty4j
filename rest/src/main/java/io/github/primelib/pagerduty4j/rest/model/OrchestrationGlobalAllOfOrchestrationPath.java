@@ -96,14 +96,14 @@ public class OrchestrationGlobalAllOfOrchestrationPath {
      * Constructs a validated instance of {@link OrchestrationGlobalAllOfOrchestrationPath}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath(Consumer)} instead.
-     * @param type var.name
-     * @param parent var.name
+     * @param type type
+     * @param parent parent
      * @param sets Must contain at least a "start" set, but can contain any number of additional sets that are routed to by other rules to form a directional graph of rules.
-     * @param catchAll var.name
+     * @param catchAll catchAll
      * @param createdAt The date/time the object was created.
-     * @param createdBy var.name
+     * @param createdBy createdBy
      * @param updatedAt The date/time the object was last updated.
-     * @param updatedBy var.name
+     * @param updatedBy updatedBy
      * @param version Version of these Orchestration Rules
      */
     @ApiStatus.Internal

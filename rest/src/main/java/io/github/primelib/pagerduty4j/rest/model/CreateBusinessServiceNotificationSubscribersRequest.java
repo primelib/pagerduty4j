@@ -51,7 +51,7 @@ public class CreateBusinessServiceNotificationSubscribersRequest {
      * Constructs a validated instance of {@link CreateBusinessServiceNotificationSubscribersRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateBusinessServiceNotificationSubscribersRequest(Consumer)} instead.
-     * @param subscribers var.name
+     * @param subscribers subscribers
      */
     @ApiStatus.Internal
     public CreateBusinessServiceNotificationSubscribersRequest(Set<NotificationSubscriber> subscribers) {

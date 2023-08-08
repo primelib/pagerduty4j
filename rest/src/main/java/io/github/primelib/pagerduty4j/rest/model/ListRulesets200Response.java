@@ -83,7 +83,7 @@ public class ListRulesets200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param rulesets var.name
+     * @param rulesets rulesets
      */
     @ApiStatus.Internal
     public ListRulesets200Response(Integer offset, Integer limit, Boolean more, Integer total, List<Ruleset> rulesets) {

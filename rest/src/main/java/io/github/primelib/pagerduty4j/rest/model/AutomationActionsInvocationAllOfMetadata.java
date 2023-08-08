@@ -54,8 +54,8 @@ public class AutomationActionsInvocationAllOfMetadata {
      * Constructs a validated instance of {@link AutomationActionsInvocationAllOfMetadata}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsInvocationAllOfMetadata(Consumer)} instead.
-     * @param agent var.name
-     * @param incident var.name
+     * @param agent agent
+     * @param incident incident
      */
     @ApiStatus.Internal
     public AutomationActionsInvocationAllOfMetadata(AutomationActionsInvocationAllOfMetadataAgent agent, IncidentReference incident) {

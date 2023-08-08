@@ -83,7 +83,7 @@ public class ListLicenseAllocations200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param licenseAllocations var.name
+     * @param licenseAllocations licenseAllocations
      */
     @ApiStatus.Internal
     public ListLicenseAllocations200Response(Integer offset, Integer limit, Boolean more, Integer total, List<ListLicenseAllocations200ResponseAllOfLicenseAllocationsInner> licenseAllocations) {

@@ -114,14 +114,14 @@ public class Template {
      * @param templateType The type of template ({@code status_update} is the only supported template at this time)
      * @param name The name of the template
      * @param description Description of the template
-     * @param templatedFields var.name
-     * @param id var.name
+     * @param templatedFields templatedFields
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
-     * @param type var.name
-     * @param createdBy var.name
-     * @param updatedBy var.name
+     * @param type type
+     * @param createdBy createdBy
+     * @param updatedBy updatedBy
      */
     @ApiStatus.Internal
     public Template(TemplateTypeEnum templateType, String name, String description, EditableTemplateTemplatedFields templatedFields, String id, String summary, String self, String htmlUrl, TypeEnum type, UserReference createdBy, TemplateAllOfUpdatedBy updatedBy) {

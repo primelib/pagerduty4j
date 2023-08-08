@@ -64,9 +64,9 @@ public class IncidentWorkflowInstance {
      * Constructs a validated instance of {@link IncidentWorkflowInstance}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowInstance(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
-     * @param incident var.name
+     * @param incident incident
      */
     @ApiStatus.Internal
     public IncidentWorkflowInstance(String id, TypeEnum type, Reference incident) {

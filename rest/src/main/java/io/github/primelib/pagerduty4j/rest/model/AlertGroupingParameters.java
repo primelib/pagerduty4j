@@ -57,8 +57,8 @@ public class AlertGroupingParameters {
      * Constructs a validated instance of {@link AlertGroupingParameters}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AlertGroupingParameters(Consumer)} instead.
-     * @param type var.name
-     * @param config var.name
+     * @param type type
+     * @param config config
      */
     @ApiStatus.Internal
     public AlertGroupingParameters(TypeEnum type, AlertGroupingParametersConfig config) {

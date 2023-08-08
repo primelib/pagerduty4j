@@ -50,7 +50,7 @@ public class CreateTagsRequest {
      * Constructs a validated instance of {@link CreateTagsRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateTagsRequest(Consumer)} instead.
-     * @param tag var.name
+     * @param tag tag
      */
     @ApiStatus.Internal
     public CreateTagsRequest(Tag tag) {

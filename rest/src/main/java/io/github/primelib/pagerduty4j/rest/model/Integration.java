@@ -144,15 +144,15 @@ public class Integration {
      * Constructs a validated instance of {@link Integration}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Integration(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type var.name
+     * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param name The name of this integration.
-     * @param service var.name
+     * @param service service
      * @param createdAt The date/time when this integration was created.
-     * @param vendor var.name
+     * @param vendor vendor
      * @param integrationEmail Specify for generic_email_inbound_integration. Must be set to an email address @your-subdomain.pagerduty.com
      * @param emailIncidentCreation Specify for generic_email_inbound_integration
      * @param emailFilterMode Specify for generic_email_inbound_integration. May override email_incident_creation

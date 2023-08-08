@@ -114,9 +114,9 @@ public class GetAnalyticsIncidents200Response {
      * @param more Indicates if there are more resources available than were returned.
      * @param order The order in which the results were sorted;  asc for ascending, desc for descending.
      * @param orderBy The column that was used for ordering the results.
-     * @param filters var.name
+     * @param filters filters
      * @param timeZone The time zone that the results are in.
-     * @param data var.name
+     * @param data data
      */
     @ApiStatus.Internal
     public GetAnalyticsIncidents200Response(String first, String last, Integer limit, Boolean more, OrderEnum order, OrderByEnum orderBy, GetAnalyticsIncidents200ResponseFilters filters, String timeZone, List<AnalyticsRawIncident> data) {

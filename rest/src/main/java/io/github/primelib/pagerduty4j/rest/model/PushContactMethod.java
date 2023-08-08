@@ -79,9 +79,9 @@ public class PushContactMethod extends ContactMethod {
      * Constructs a validated instance of {@link PushContactMethod}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PushContactMethod(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param deviceType The type of device.
-     * @param sounds var.name
+     * @param sounds sounds
      * @param createdAt Time at which the contact method was created.
      * @param blacklisted If true, this phone has been blacklisted by PagerDuty and no messages will be sent to it.
      */

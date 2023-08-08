@@ -74,7 +74,7 @@ public class CreateBusinessServiceRequestBusinessService {
      * @param name The name of the Business Service.
      * @param description The description of the Business Service.
      * @param pointOfContact The owner of the Business Service.
-     * @param team var.name
+     * @param team team
      */
     @ApiStatus.Internal
     public CreateBusinessServiceRequestBusinessService(String name, String description, String pointOfContact, Team1 team) {

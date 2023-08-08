@@ -50,7 +50,7 @@ public class OrchestrationGlobal {
      * Constructs a validated instance of {@link OrchestrationGlobal}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobal(Consumer)} instead.
-     * @param orchestrationPath var.name
+     * @param orchestrationPath orchestrationPath
      */
     @ApiStatus.Internal
     public OrchestrationGlobal(OrchestrationGlobalAllOfOrchestrationPath1 orchestrationPath) {

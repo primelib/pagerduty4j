@@ -61,9 +61,9 @@ public class AutomationActionsInvocationAllOfActionSnapshot {
      * Constructs a validated instance of {@link AutomationActionsInvocationAllOfActionSnapshot}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsInvocationAllOfActionSnapshot(Consumer)} instead.
-     * @param name var.name
-     * @param actionType var.name
-     * @param actionDataReference var.name
+     * @param name name
+     * @param actionType actionType
+     * @param actionDataReference actionDataReference
      */
     @ApiStatus.Internal
     public AutomationActionsInvocationAllOfActionSnapshot(String name, ActionTypeEnum actionType, AutomationActionsInvocationAllOfActionSnapshotAllOfActionDataReference actionDataReference) {

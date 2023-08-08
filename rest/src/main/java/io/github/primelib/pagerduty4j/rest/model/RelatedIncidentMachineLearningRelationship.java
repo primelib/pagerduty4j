@@ -61,7 +61,7 @@ public class RelatedIncidentMachineLearningRelationship {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RelatedIncidentMachineLearningRelationship(Consumer)} instead.
      * @param groupingClassification The classification for why this Related Incident was grouped into this group. Values can be one of: [similar_contents, prior_feedback], where: similar_contents - The Related Incident was due to similar contents of the Incidents. prior_feedback - The Related Incident was determined to be related, based on User feedback or Incident merge/unmerge actions. 
-     * @param userFeedback var.name
+     * @param userFeedback userFeedback
      */
     @ApiStatus.Internal
     public RelatedIncidentMachineLearningRelationship(GroupingClassificationEnum groupingClassification, RelatedIncidentMachineLearningRelationshipUserFeedback userFeedback) {

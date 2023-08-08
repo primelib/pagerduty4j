@@ -66,7 +66,7 @@ public class OrchestrationIntegration {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationIntegration(Consumer)} instead.
      * @param id ID of the Integration.
      * @param label Name of the Integration.
-     * @param parameters var.name
+     * @param parameters parameters
      */
     @ApiStatus.Internal
     public OrchestrationIntegration(String id, String label, OrchestrationIntegrationParameters parameters) {

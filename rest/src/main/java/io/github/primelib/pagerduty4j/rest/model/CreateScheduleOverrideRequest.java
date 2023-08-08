@@ -51,7 +51,7 @@ public class CreateScheduleOverrideRequest {
      * Constructs a validated instance of {@link CreateScheduleOverrideRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateScheduleOverrideRequest(Consumer)} instead.
-     * @param overrides var.name
+     * @param overrides overrides
      */
     @ApiStatus.Internal
     public CreateScheduleOverrideRequest(List<ScheduleOverride> overrides) {

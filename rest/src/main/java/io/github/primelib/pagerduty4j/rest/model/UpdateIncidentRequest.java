@@ -50,7 +50,7 @@ public class UpdateIncidentRequest {
      * Constructs a validated instance of {@link UpdateIncidentRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateIncidentRequest(Consumer)} instead.
-     * @param incident var.name
+     * @param incident incident
      */
     @ApiStatus.Internal
     public UpdateIncidentRequest(UpdateIncidentRequestIncident incident) {

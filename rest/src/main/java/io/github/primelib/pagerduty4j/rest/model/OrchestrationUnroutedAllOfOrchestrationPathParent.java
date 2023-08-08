@@ -61,7 +61,7 @@ public class OrchestrationUnroutedAllOfOrchestrationPathParent {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationUnroutedAllOfOrchestrationPathParent(Consumer)} instead.
      * @param id ID of the Global Event Orchestration this Unrouted Orchestration belongs to.
-     * @param type var.name
+     * @param type type
      */
     @ApiStatus.Internal
     public OrchestrationUnroutedAllOfOrchestrationPathParent(Object id, TypeEnum type) {

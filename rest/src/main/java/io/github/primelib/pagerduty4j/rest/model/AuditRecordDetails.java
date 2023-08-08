@@ -65,7 +65,7 @@ public class AuditRecordDetails {
      * Constructs a validated instance of {@link AuditRecordDetails}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AuditRecordDetails(Consumer)} instead.
-     * @param resource var.name
+     * @param resource resource
      * @param fields A set of fields that have been affected. The fields that have not been affected MAY be returned. 
      * @param references A set of references that have been affected.
      */

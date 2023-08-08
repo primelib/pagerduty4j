@@ -90,13 +90,13 @@ public class WebhookSubscription {
      * Constructs a validated instance of {@link WebhookSubscription}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhookSubscription(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type The type indicating the schema of the object.
      * @param active Determines whether this subscription will produce webhook events.
-     * @param deliveryMethod var.name
+     * @param deliveryMethod deliveryMethod
      * @param description A short description of the webhook subscription.
      * @param events The set of outbound event types the webhook will receive.
-     * @param filter var.name
+     * @param filter filter
      */
     @ApiStatus.Internal
     public WebhookSubscription(String id, TypeEnum type, Boolean active, WebhookSubscriptionDeliveryMethod deliveryMethod, String description, Set<String> events, WebhookSubscriptionFilter filter) {

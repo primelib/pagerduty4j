@@ -73,9 +73,9 @@ public class Channel {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Channel(Consumer)} instead.
      * @param type type
-     * @param user var.name
-     * @param team var.name
-     * @param notification var.name
+     * @param user user
+     * @param team team
+     * @param notification notification
      * @param channel channel
      */
     @ApiStatus.Internal

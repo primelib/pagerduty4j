@@ -84,7 +84,7 @@ public class SupportHours {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #SupportHours(Consumer)} instead.
      * @param type The type of support hours
      * @param timeZone The time zone for the support hours
-     * @param daysOfWeek var.name
+     * @param daysOfWeek daysOfWeek
      * @param startTime The support hours' starting time of day (date portion is ignored)
      * @param endTime The support hours' ending time of day (date portion is ignored)
      */

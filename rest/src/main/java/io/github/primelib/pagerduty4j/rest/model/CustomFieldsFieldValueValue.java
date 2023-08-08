@@ -51,7 +51,7 @@ public class CustomFieldsFieldValueValue {
      * Constructs a validated instance of {@link CustomFieldsFieldValueValue}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsFieldValueValue(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsFieldValueValue(URI value) {

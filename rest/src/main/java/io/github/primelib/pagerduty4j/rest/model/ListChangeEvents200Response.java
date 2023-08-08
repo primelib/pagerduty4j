@@ -51,7 +51,7 @@ public class ListChangeEvents200Response {
      * Constructs a validated instance of {@link ListChangeEvents200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListChangeEvents200Response(Consumer)} instead.
-     * @param changeEvents var.name
+     * @param changeEvents changeEvents
      */
     @ApiStatus.Internal
     public ListChangeEvents200Response(List<ChangeEvent> changeEvents) {

@@ -96,7 +96,7 @@ public class GetAnalyticsIncidentsRequest {
      * Constructs a validated instance of {@link GetAnalyticsIncidentsRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsIncidentsRequest(Consumer)} instead.
-     * @param filters var.name
+     * @param filters filters
      * @param startingAfter A cursor to indicate the reference point that the results should follow
      * @param endingBefore A cursor to indicate the reference point that the results should precede
      * @param order The order the results;  asc for ascending, desc for descending. Defaults to 'desc'.

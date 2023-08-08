@@ -50,7 +50,7 @@ public class UpdateCustomFieldsField200Response {
      * Constructs a validated instance of {@link UpdateCustomFieldsField200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateCustomFieldsField200Response(Consumer)} instead.
-     * @param field var.name
+     * @param field field
      */
     @ApiStatus.Internal
     public UpdateCustomFieldsField200Response(CustomFieldsField field) {

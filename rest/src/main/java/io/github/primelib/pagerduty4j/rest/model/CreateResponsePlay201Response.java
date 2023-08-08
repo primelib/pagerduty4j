@@ -50,7 +50,7 @@ public class CreateResponsePlay201Response {
      * Constructs a validated instance of {@link CreateResponsePlay201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateResponsePlay201Response(Consumer)} instead.
-     * @param responsePlay var.name
+     * @param responsePlay responsePlay
      */
     @ApiStatus.Internal
     public CreateResponsePlay201Response(ResponsePlay responsePlay) {

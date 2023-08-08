@@ -130,12 +130,12 @@ public class CustomFieldsField {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsField(Consumer)} instead.
      * @param displayName The human-readable name of the field. This must be unique across an account.
      * @param description A description of the data this field contains.
-     * @param defaultValue var.name
+     * @param defaultValue defaultValue
      * @param id The ID of the resource.
      * @param name The name of the field. May include ASCII characters, specifically lowercase letters, digits, and underescores. The {@code name} for a Field must be unique.
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param self The API show URL at which the object is accessible
-     * @param type var.name
+     * @param type type
      * @param createdAt The date/time the object was created at.
      * @param updatedAt The date/time the object was last updated.
      * @param dataType The kind of data the custom field is allowed to contain.

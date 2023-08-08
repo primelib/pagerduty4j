@@ -59,7 +59,7 @@ public class OrchestrationGlobalAllOfOrchestrationPathSets {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPathSets(Consumer)} instead.
      * @param id The ID of this set of rules. Rules in other sets can route events into this set using the "route_to" properties.
-     * @param rules var.name
+     * @param rules rules
      */
     @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPathSets(String id, List<OrchestrationGlobalAllOfOrchestrationPathRules> rules) {

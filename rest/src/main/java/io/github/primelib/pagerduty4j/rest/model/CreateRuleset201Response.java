@@ -50,7 +50,7 @@ public class CreateRuleset201Response {
      * Constructs a validated instance of {@link CreateRuleset201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateRuleset201Response(Consumer)} instead.
-     * @param ruleset var.name
+     * @param ruleset ruleset
      */
     @ApiStatus.Internal
     public CreateRuleset201Response(Ruleset ruleset) {

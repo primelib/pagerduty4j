@@ -80,9 +80,9 @@ public class Oncall {
      * Constructs a validated instance of {@link Oncall}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Oncall(Consumer)} instead.
-     * @param escalationPolicy var.name
-     * @param user var.name
-     * @param schedule var.name
+     * @param escalationPolicy escalationPolicy
+     * @param user user
+     * @param schedule schedule
      * @param escalationLevel The escalation level for the on-call.
      * @param start The start of the on-call. If {@code null}, the on-call is a permanent user on-call.
      * @param end The end of the on-call. If {@code null}, the user does not go off-call.

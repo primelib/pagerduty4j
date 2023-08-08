@@ -70,9 +70,9 @@ public class OrchestrationRouterAllOfOrchestrationPath {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationRouterAllOfOrchestrationPath(Consumer)} instead.
      * @param type Indicates that these are a "router" type set of rules.
-     * @param parent var.name
+     * @param parent parent
      * @param sets The Router contains a single set of rules (the "start" set). The Router evaluates Events against these Rules, one at a time, and routes each Event to a specific Service based on the first rule that matches.
-     * @param catchAll var.name
+     * @param catchAll catchAll
      */
     @ApiStatus.Internal
     public OrchestrationRouterAllOfOrchestrationPath(String type, OrchestrationRouterAllOfOrchestrationPathParent parent, List<OrchestrationRouterAllOfOrchestrationPathSetsInner> sets, OrchestrationRouterAllOfOrchestrationPathCatchAll catchAll) {

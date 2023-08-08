@@ -51,7 +51,7 @@ public class SetIncidentFieldValuesRequest {
      * Constructs a validated instance of {@link SetIncidentFieldValuesRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #SetIncidentFieldValuesRequest(Consumer)} instead.
-     * @param customFields var.name
+     * @param customFields customFields
      */
     @ApiStatus.Internal
     public SetIncidentFieldValuesRequest(List<CustomFieldsEditableFieldValue> customFields) {

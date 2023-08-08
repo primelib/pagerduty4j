@@ -58,7 +58,7 @@ public class GetRelatedIncidents200ResponseRelatedIncidentsInner {
      * Constructs a validated instance of {@link GetRelatedIncidents200ResponseRelatedIncidentsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetRelatedIncidents200ResponseRelatedIncidentsInner(Consumer)} instead.
-     * @param incident var.name
+     * @param incident incident
      * @param relationships A list of reasons for why the Incident is considered related.
      */
     @ApiStatus.Internal

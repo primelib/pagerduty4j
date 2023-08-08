@@ -82,14 +82,14 @@ public class EventRuleAllOfActions {
      * Constructs a validated instance of {@link EventRuleAllOfActions}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EventRuleAllOfActions(Consumer)} instead.
-     * @param annotate var.name
-     * @param eventAction var.name
+     * @param annotate annotate
+     * @param eventAction eventAction
      * @param extractions Dynamically extract values to set and modify new and existing PD-CEF fields.
-     * @param priority var.name
-     * @param severity var.name
-     * @param suppress var.name
-     * @param suspend var.name
-     * @param route var.name
+     * @param priority priority
+     * @param severity severity
+     * @param suppress suppress
+     * @param suspend suspend
+     * @param route route
      */
     @ApiStatus.Internal
     public EventRuleAllOfActions(EventRuleActionsCommonAnnotate annotate, EventRuleActionsCommonEventAction eventAction, List<EventRuleActionsCommonExtractionsInner> extractions, EventRuleActionsCommonPriority priority, EventRuleActionsCommonSeverity severity, EventRuleActionsCommonSuppress suppress, EventRuleActionsCommonSuspend suspend, EventRuleAllOfActionsAllOfRoute route) {

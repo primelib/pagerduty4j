@@ -67,7 +67,7 @@ public class GetBusinessServiceTopLevelImpactors200Response {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetBusinessServiceTopLevelImpactors200Response(Consumer)} instead.
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
-     * @param impactors var.name
+     * @param impactors impactors
      */
     @ApiStatus.Internal
     public GetBusinessServiceTopLevelImpactors200Response(Integer limit, Boolean more, List<Impactor> impactors) {

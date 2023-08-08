@@ -61,7 +61,7 @@ public class ResolveReason {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ResolveReason(Consumer)} instead.
      * @param type The reason the incident was resolved. The only reason currently supported is merge.
-     * @param incident var.name
+     * @param incident incident
      */
     @ApiStatus.Internal
     public ResolveReason(TypeEnum type, IncidentReference incident) {

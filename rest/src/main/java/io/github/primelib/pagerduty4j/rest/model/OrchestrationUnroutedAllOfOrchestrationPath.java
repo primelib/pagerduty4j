@@ -70,9 +70,9 @@ public class OrchestrationUnroutedAllOfOrchestrationPath {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationUnroutedAllOfOrchestrationPath(Consumer)} instead.
      * @param type Indicates that these are a "unrouted" type set of rules.
-     * @param parent var.name
+     * @param parent parent
      * @param sets An Unrouted Orchestration must contain at least a "start" set, but can contain any number of additional sets that are routed to by other rules to form a directional graph.
-     * @param catchAll var.name
+     * @param catchAll catchAll
      */
     @ApiStatus.Internal
     public OrchestrationUnroutedAllOfOrchestrationPath(String type, OrchestrationUnroutedAllOfOrchestrationPathParent parent, List<OrchestrationUnroutedAllOfOrchestrationPathSetsInner> sets, OrchestrationUnroutedAllOfOrchestrationPathCatchAll catchAll) {

@@ -50,7 +50,7 @@ public class CustomFieldsEditableFieldDefaultValueOneOf {
      * Constructs a validated instance of {@link CustomFieldsEditableFieldDefaultValueOneOf}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldDefaultValueOneOf(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsEditableFieldDefaultValueOneOf(Boolean value) {

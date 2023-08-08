@@ -50,7 +50,7 @@ public class CreateAutomationAction201Response {
      * Constructs a validated instance of {@link CreateAutomationAction201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationAction201Response(Consumer)} instead.
-     * @param action var.name
+     * @param action action
      */
     @ApiStatus.Internal
     public CreateAutomationAction201Response(CreateAutomationAction201ResponseAction action) {

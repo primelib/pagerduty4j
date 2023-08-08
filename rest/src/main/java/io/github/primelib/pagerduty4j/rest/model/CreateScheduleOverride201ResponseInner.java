@@ -68,7 +68,7 @@ public class CreateScheduleOverride201ResponseInner {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateScheduleOverride201ResponseInner(Consumer)} instead.
      * @param status HTTP Status Code reflecting the result of creating this specific override, e.g. 201 for success, 400 for invalid parameters.
      * @param errors If present, an array of strings representing human-readable explanations for errors found.
-     * @param override var.name
+     * @param override override
      */
     @ApiStatus.Internal
     public CreateScheduleOverride201ResponseInner(BigDecimal status, List<String> errors, ScheduleOverride override) {

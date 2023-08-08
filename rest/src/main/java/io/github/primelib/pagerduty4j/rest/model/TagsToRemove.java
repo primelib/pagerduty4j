@@ -60,7 +60,7 @@ public class TagsToRemove {
      * Constructs a validated instance of {@link TagsToRemove}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #TagsToRemove(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param id The id of the tag
      */
     @ApiStatus.Internal

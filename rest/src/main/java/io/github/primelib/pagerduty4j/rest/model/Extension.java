@@ -122,7 +122,7 @@ public class Extension {
      * Constructs a validated instance of {@link Extension}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Extension(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -130,7 +130,7 @@ public class Extension {
      * @param name The name of the extension.
      * @param endpointUrl The url of the extension.
      * @param extensionObjects The objects for which the extension applies
-     * @param extensionSchema var.name
+     * @param extensionSchema extensionSchema
      * @param temporarilyDisabled Whether or not this extension is temporarily disabled; for example, a webhook extension that is repeatedly rejected by the server.
      * @param config The object that contains extension configuration values depending on the extension schema specification.
      */

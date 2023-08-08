@@ -72,8 +72,8 @@ public class GetAllAutomationActions200Response {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAllAutomationActions200Response(Consumer)} instead.
      * @param limit The minimum of the {@code limit} parameter used in the request or the maximum request size of the API.
      * @param nextCursor An opaque string than will deliver the next set of results when provided as the {@code cursor} parameter in a subsequent request.  A {@code null} value for this field indicates that there are no additional results. 
-     * @param actions var.name
-     * @param privileges var.name
+     * @param actions actions
+     * @param privileges privileges
      */
     @ApiStatus.Internal
     public GetAllAutomationActions200Response(Integer limit, String nextCursor, List<GetAllAutomationActions200ResponseAllOfActionsInner> actions, AutomationActionsUserPermissions privileges) {

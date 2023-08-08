@@ -51,7 +51,7 @@ public class CustomFieldsEditableFieldDefaultValue {
      * Constructs a validated instance of {@link CustomFieldsEditableFieldDefaultValue}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableFieldDefaultValue(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      */
     @ApiStatus.Internal
     public CustomFieldsEditableFieldDefaultValue(URI value) {

@@ -53,7 +53,7 @@ public class PutIncidentManualBusinessServiceAssociation200Response {
      * Constructs a validated instance of {@link PutIncidentManualBusinessServiceAssociation200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PutIncidentManualBusinessServiceAssociation200Response(Consumer)} instead.
-     * @param relation var.name
+     * @param relation relation
      */
     @ApiStatus.Internal
     public PutIncidentManualBusinessServiceAssociation200Response(RelationEnum relation) {

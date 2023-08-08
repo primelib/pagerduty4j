@@ -60,7 +60,7 @@ public class Impactor {
      * Constructs a validated instance of {@link Impactor}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Impactor(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type The kind of object that is impacting
      */
     @ApiStatus.Internal

@@ -76,12 +76,12 @@ public class EmailParserValueExtractorsInner {
      * Constructs a validated instance of {@link EmailParserValueExtractorsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EmailParserValueExtractorsInner(Consumer)} instead.
-     * @param type var.name
-     * @param part var.name
+     * @param type type
+     * @param part part
      * @param valueName The field name to set in the Incident object. Exactly one must use the {@code value_name} of {@code incident_key}
-     * @param regex var.name
-     * @param startsAfter var.name
-     * @param endsWith var.name
+     * @param regex regex
+     * @param startsAfter startsAfter
+     * @param endsWith endsWith
      */
     @ApiStatus.Internal
     public EmailParserValueExtractorsInner(TypeEnum type, PartEnum part, String valueName, String regex, String startsAfter, String endsWith) {

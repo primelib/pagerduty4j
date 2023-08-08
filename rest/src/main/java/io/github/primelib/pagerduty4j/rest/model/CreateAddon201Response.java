@@ -50,7 +50,7 @@ public class CreateAddon201Response {
      * Constructs a validated instance of {@link CreateAddon201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAddon201Response(Consumer)} instead.
-     * @param addon var.name
+     * @param addon addon
      */
     @ApiStatus.Internal
     public CreateAddon201Response(AddonReference addon) {

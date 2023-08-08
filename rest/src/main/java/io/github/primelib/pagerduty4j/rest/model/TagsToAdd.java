@@ -67,7 +67,7 @@ public class TagsToAdd {
      * Constructs a validated instance of {@link TagsToAdd}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #TagsToAdd(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param label The label of the tag. Should be used when type is "tag".
      * @param id The id of the tag. Should be used when type is "tag_reference".
      */

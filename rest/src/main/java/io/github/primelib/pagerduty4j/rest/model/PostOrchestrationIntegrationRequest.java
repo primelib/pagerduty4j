@@ -50,7 +50,7 @@ public class PostOrchestrationIntegrationRequest {
      * Constructs a validated instance of {@link PostOrchestrationIntegrationRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PostOrchestrationIntegrationRequest(Consumer)} instead.
-     * @param integration var.name
+     * @param integration integration
      */
     @ApiStatus.Internal
     public PostOrchestrationIntegrationRequest(PostOrchestrationIntegrationRequestIntegration integration) {

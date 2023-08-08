@@ -133,18 +133,18 @@ public class ChangeEvent {
      * Constructs a validated instance of {@link ChangeEvent}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ChangeEvent(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A brief text summary of the event. Displayed in PagerDuty to provide information about the change. The maximum permitted length of this property is 1024 characters.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param timestamp The time at which the emitting tool detected or generated the event.
      * @param services An array containing Service objects that this change event is associated with.
-     * @param integration var.name
+     * @param integration integration
      * @param routingKey This is the 32 character Integration Key for an Integration on a Service. The same Integration Key can be used for both alert and change events.
      * @param source The unique name of the location where the Change Event occurred.
      * @param links List of links to include.
-     * @param images var.name
+     * @param images images
      * @param customDetails Additional details about the change event.
      */
     @ApiStatus.Internal

@@ -50,7 +50,7 @@ public class CreateAutomationActionInvocationRequestInvocationMetadata {
      * Constructs a validated instance of {@link CreateAutomationActionInvocationRequestInvocationMetadata}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionInvocationRequestInvocationMetadata(Consumer)} instead.
-     * @param incidentId var.name
+     * @param incidentId incidentId
      */
     @ApiStatus.Internal
     public CreateAutomationActionInvocationRequestInvocationMetadata(String incidentId) {

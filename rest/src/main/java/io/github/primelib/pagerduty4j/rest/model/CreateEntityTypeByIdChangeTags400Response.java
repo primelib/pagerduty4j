@@ -50,7 +50,7 @@ public class CreateEntityTypeByIdChangeTags400Response {
      * Constructs a validated instance of {@link CreateEntityTypeByIdChangeTags400Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateEntityTypeByIdChangeTags400Response(Consumer)} instead.
-     * @param error var.name
+     * @param error error
      */
     @ApiStatus.Internal
     public CreateEntityTypeByIdChangeTags400Response(CreateEntityTypeByIdChangeTags400ResponseError error) {

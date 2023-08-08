@@ -50,7 +50,7 @@ public class UpdateIncident200Response {
      * Constructs a validated instance of {@link UpdateIncident200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateIncident200Response(Consumer)} instead.
-     * @param incident var.name
+     * @param incident incident
      */
     @ApiStatus.Internal
     public UpdateIncident200Response(Incident incident) {

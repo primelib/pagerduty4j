@@ -50,7 +50,7 @@ public class UpdateAutomationActionRequest {
      * Constructs a validated instance of {@link UpdateAutomationActionRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateAutomationActionRequest(Consumer)} instead.
-     * @param action var.name
+     * @param action action
      */
     @ApiStatus.Internal
     public UpdateAutomationActionRequest(UpdateAutomationActionRequestAction action) {

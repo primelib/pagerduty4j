@@ -50,7 +50,7 @@ public class GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditiona
      * Constructs a validated instance of {@link GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditionalFields}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditionalFields(Consumer)} instead.
-     * @param totalImpactedCount var.name
+     * @param totalImpactedCount totalImpactedCount
      */
     @ApiStatus.Internal
     public GetBusinessServiceSupportingServiceImpacts200ResponseAllOfAdditionalFields(Integer totalImpactedCount) {

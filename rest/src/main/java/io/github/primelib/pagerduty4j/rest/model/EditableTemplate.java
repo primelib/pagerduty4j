@@ -77,7 +77,7 @@ public class EditableTemplate {
      * @param templateType The type of template ({@code status_update} is the only supported template at this time)
      * @param name The name of the template
      * @param description Description of the template
-     * @param templatedFields var.name
+     * @param templatedFields templatedFields
      */
     @ApiStatus.Internal
     public EditableTemplate(TemplateTypeEnum templateType, String name, String description, EditableTemplateTemplatedFields templatedFields) {

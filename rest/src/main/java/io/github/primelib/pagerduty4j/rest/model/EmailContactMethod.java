@@ -56,7 +56,7 @@ public class EmailContactMethod extends ContactMethod {
      * Constructs a validated instance of {@link EmailContactMethod}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EmailContactMethod(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param sendShortEmail Send an abbreviated email message instead of the standard email output. Useful for email-to-SMS gateways and email based pagers.
      */
     @ApiStatus.Internal

@@ -71,10 +71,10 @@ public class HandoffNotificationRule {
      * Constructs a validated instance of {@link HandoffNotificationRule}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #HandoffNotificationRule(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param notifyAdvanceInMinutes The delay before firing the rule, in minutes.
      * @param handoffType The type of handoff being created.
-     * @param contactMethod var.name
+     * @param contactMethod contactMethod
      */
     @ApiStatus.Internal
     public HandoffNotificationRule(String id, Integer notifyAdvanceInMinutes, HandoffTypeEnum handoffType, ContactMethodReference contactMethod) {

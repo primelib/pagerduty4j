@@ -137,7 +137,7 @@ public class Alert {
      * Constructs a validated instance of {@link Alert}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Alert(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -145,13 +145,13 @@ public class Alert {
      * @param createdAt The date/time the alert was first triggered.
      * @param status The current status of the alert.
      * @param alertKey The alert's de-duplication key.
-     * @param service var.name
-     * @param firstTriggerLogEntry var.name
-     * @param incident var.name
+     * @param service service
+     * @param firstTriggerLogEntry firstTriggerLogEntry
+     * @param incident incident
      * @param suppressed Whether or not an alert is suppressed. Suppressed alerts are not created with a parent incident.
      * @param severity The magnitude of the problem as reported by the monitoring tool.
-     * @param integration var.name
-     * @param body var.name
+     * @param integration integration
+     * @param body body
      */
     @ApiStatus.Internal
     public Alert(String id, String summary, TypeEnum type, String self, String htmlUrl, OffsetDateTime createdAt, StatusEnum status, String alertKey, ServiceReference service, LogEntryReference firstTriggerLogEntry, IncidentReference incident, Boolean suppressed, SeverityEnum severity, IntegrationReference integration, Body body) {

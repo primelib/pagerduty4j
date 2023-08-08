@@ -81,7 +81,7 @@ public class IncidentWorkflowTriggerAllOfWorkflow {
      * Constructs a validated instance of {@link IncidentWorkflowTriggerAllOfWorkflow}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowTriggerAllOfWorkflow(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
      * @param name A descriptive name for the Incident Workflow
      * @param self the API show URL at which the object is accessible

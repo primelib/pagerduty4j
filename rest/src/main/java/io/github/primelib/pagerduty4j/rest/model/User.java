@@ -170,7 +170,7 @@ public class User {
      * Constructs a validated instance of {@link User}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #User(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -187,7 +187,7 @@ public class User {
      * @param teams The list of teams to which the user belongs. Account must have the {@code teams} ability to set this.
      * @param contactMethods The list of contact methods for the user.
      * @param notificationRules The list of notification rules for the user.
-     * @param license var.name
+     * @param license license
      */
     @ApiStatus.Internal
     public User(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules, UserAllOfLicense license) {

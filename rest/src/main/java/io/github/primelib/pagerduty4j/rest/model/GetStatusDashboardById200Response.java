@@ -50,7 +50,7 @@ public class GetStatusDashboardById200Response {
      * Constructs a validated instance of {@link GetStatusDashboardById200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetStatusDashboardById200Response(Consumer)} instead.
-     * @param statusDashboard var.name
+     * @param statusDashboard statusDashboard
      */
     @ApiStatus.Internal
     public GetStatusDashboardById200Response(StatusDashboard statusDashboard) {

@@ -74,7 +74,7 @@ public class EventRuleActionsCommonSuppress {
      * Constructs a validated instance of {@link EventRuleActionsCommonSuppress}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EventRuleActionsCommonSuppress(Consumer)} instead.
-     * @param value var.name
+     * @param value value
      * @param thresholdValue The number of occurences needed during the window of time to trigger the theshold.
      * @param thresholdTimeUnit The time unit for the window of time.
      * @param thresholdTimeAmount The amount of time units for the window of time.

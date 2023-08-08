@@ -105,12 +105,12 @@ public class EventRule {
      * @param id ID of the Event Rule.
      * @param self the API show URL at which the object is accessible.
      * @param disabled Indicates whether the Event Rule is disabled and would therefore not be evaluated.
-     * @param conditions var.name
-     * @param timeFrame var.name
+     * @param conditions conditions
+     * @param timeFrame timeFrame
      * @param variables [Early Access] Populate variables from event payloads and use those variables in other event actions.
      * @param position Position/index of the Event Rule in the Ruleset.  Starting from position 0 (the first rule), rules are evaluated one-by-one until a matching rule is found.
      * @param catchAll Indicates whether the Event Rule is the last Event Rule of the Ruleset that serves as a catch-all. It has limited functionality compared to other rules and always matches.
-     * @param actions var.name
+     * @param actions actions
      */
     @ApiStatus.Internal
     public EventRule(String id, String self, Boolean disabled, ServiceEventRuleAllOfConditions conditions, ServiceEventRuleAllOfTimeFrame timeFrame, List<ServiceEventRuleAllOfVariables> variables, Integer position, Boolean catchAll, EventRuleAllOfActions actions) {

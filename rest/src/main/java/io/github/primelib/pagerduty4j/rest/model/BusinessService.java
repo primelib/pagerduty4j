@@ -103,7 +103,7 @@ public class BusinessService {
      * Constructs a validated instance of {@link BusinessService}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #BusinessService(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
      * @param self the API show URL at which the object is accessible
@@ -111,7 +111,7 @@ public class BusinessService {
      * @param name The name of the business service.
      * @param description The user-provided description of the business service.
      * @param pointOfContact The point of contact assigned to this service.
-     * @param team var.name
+     * @param team team
      */
     @ApiStatus.Internal
     public BusinessService(String id, String summary, String type, String self, String htmlUrl, String name, String description, String pointOfContact, Team3 team) {

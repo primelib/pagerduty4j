@@ -68,7 +68,7 @@ public class Action {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Action(Consumer)} instead.
      * @param id Uniquely identifies this outgoing webhook message; can be used for idempotency when processing the messages.
      * @param triggeredAt The date/time when this message was was sent.
-     * @param webhook var.name
+     * @param webhook webhook
      */
     @ApiStatus.Internal
     public Action(UUID id, OffsetDateTime triggeredAt, Webhook webhook) {

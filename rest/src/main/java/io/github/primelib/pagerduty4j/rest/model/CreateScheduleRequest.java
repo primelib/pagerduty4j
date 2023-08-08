@@ -50,7 +50,7 @@ public class CreateScheduleRequest {
      * Constructs a validated instance of {@link CreateScheduleRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateScheduleRequest(Consumer)} instead.
-     * @param schedule var.name
+     * @param schedule schedule
      */
     @ApiStatus.Internal
     public CreateScheduleRequest(Schedule schedule) {

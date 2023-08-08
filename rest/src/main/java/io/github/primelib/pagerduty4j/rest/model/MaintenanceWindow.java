@@ -123,7 +123,7 @@ public class MaintenanceWindow {
      * Constructs a validated instance of {@link MaintenanceWindow}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #MaintenanceWindow(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
@@ -132,9 +132,9 @@ public class MaintenanceWindow {
      * @param startTime This maintenance window's start time. This is when the services will stop creating incidents. If this date is in the past, it will be updated to be the current time.
      * @param endTime This maintenance window's end time. This is when the services will start creating incidents again. This date must be in the future and after the {@code start_time}.
      * @param description A description for this maintenance window.
-     * @param createdBy var.name
-     * @param services var.name
-     * @param teams var.name
+     * @param createdBy createdBy
+     * @param services services
+     * @param teams teams
      */
     @ApiStatus.Internal
     public MaintenanceWindow(String id, String summary, TypeEnum type, String self, String htmlUrl, Integer sequenceNumber, OffsetDateTime startTime, OffsetDateTime endTime, String description, UserReference createdBy, List<ServiceReference> services, List<TeamReference> teams) {

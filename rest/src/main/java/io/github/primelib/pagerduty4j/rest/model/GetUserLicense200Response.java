@@ -51,7 +51,7 @@ public class GetUserLicense200Response {
      * Constructs a validated instance of {@link GetUserLicense200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetUserLicense200Response(Consumer)} instead.
-     * @param license var.name
+     * @param license license
      */
     @ApiStatus.Internal
     public GetUserLicense200Response(ListLicenseAllocations200ResponseAllOfLicenseAllocationsInnerLicense license) {

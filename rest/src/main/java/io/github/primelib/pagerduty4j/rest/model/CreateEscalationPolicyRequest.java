@@ -50,7 +50,7 @@ public class CreateEscalationPolicyRequest {
      * Constructs a validated instance of {@link CreateEscalationPolicyRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateEscalationPolicyRequest(Consumer)} instead.
-     * @param escalationPolicy var.name
+     * @param escalationPolicy escalationPolicy
      */
     @ApiStatus.Internal
     public CreateEscalationPolicyRequest(EscalationPolicy escalationPolicy) {

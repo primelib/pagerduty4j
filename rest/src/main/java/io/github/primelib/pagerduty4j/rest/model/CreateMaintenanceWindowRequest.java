@@ -50,7 +50,7 @@ public class CreateMaintenanceWindowRequest {
      * Constructs a validated instance of {@link CreateMaintenanceWindowRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateMaintenanceWindowRequest(Consumer)} instead.
-     * @param maintenanceWindow var.name
+     * @param maintenanceWindow maintenanceWindow
      */
     @ApiStatus.Internal
     public CreateMaintenanceWindowRequest(MaintenanceWindow maintenanceWindow) {

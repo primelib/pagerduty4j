@@ -116,7 +116,7 @@ public class ScheduleLayer {
      * Constructs a validated instance of {@link ScheduleLayer}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ScheduleLayer(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param start The start time of this layer.
      * @param end The end time of this layer. If {@code null}, the layer does not end.
      * @param users The ordered list of users on this layer. The position of the user on the list determines their order in the layer.

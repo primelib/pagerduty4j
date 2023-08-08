@@ -74,7 +74,7 @@ public class ResponderRequestTargetReference {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ResponderRequestTargetReference(Consumer)} instead.
      * @param type The type of target (either a user or an escalation policy)
      * @param id The id of the user or escalation policy
-     * @param summary var.name
+     * @param summary summary
      * @param incidentResponders An array of responders associated with the specified incident
      */
     @ApiStatus.Internal

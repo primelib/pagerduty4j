@@ -61,7 +61,7 @@ public class OrchestrationGlobalAllOfOrchestrationPath1Parent {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath1Parent(Consumer)} instead.
      * @param id ID of the Global Event Orchestration these Global Rules belongs to.
-     * @param type var.name
+     * @param type type
      */
     @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPath1Parent(Object id, TypeEnum type) {

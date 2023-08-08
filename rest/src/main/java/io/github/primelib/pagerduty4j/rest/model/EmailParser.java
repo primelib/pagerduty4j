@@ -65,8 +65,8 @@ public class EmailParser {
      * Constructs a validated instance of {@link EmailParser}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #EmailParser(Consumer)} instead.
-     * @param action var.name
-     * @param matchPredicate var.name
+     * @param action action
+     * @param matchPredicate matchPredicate
      * @param valueExtractors Additional values that will be pulled in to the Incident object. Exactly one value extractor must have a {@code value_name} of {@code incident_key}.
      */
     @ApiStatus.Internal

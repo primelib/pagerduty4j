@@ -54,8 +54,8 @@ public class OrchestrationGlobalAllOfOrchestrationPath1CatchAllActionsAllOfAutom
      * Constructs a validated instance of {@link OrchestrationGlobalAllOfOrchestrationPath1CatchAllActionsAllOfAutomationActionsInnerHeadersInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationGlobalAllOfOrchestrationPath1CatchAllActionsAllOfAutomationActionsInnerHeadersInner(Consumer)} instead.
-     * @param key var.name
-     * @param value var.name
+     * @param key key
+     * @param value value
      */
     @ApiStatus.Internal
     public OrchestrationGlobalAllOfOrchestrationPath1CatchAllActionsAllOfAutomationActionsInnerHeadersInner(String key, String value) {

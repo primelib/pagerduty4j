@@ -120,12 +120,12 @@ public class ListEventOrchestrations200ResponseAllOfOrchestrationsInner {
      * @param self The API show URL at which the object is accessible
      * @param name Name of the Orchestration.
      * @param description A description of this Orchestration's purpose.
-     * @param team var.name
+     * @param team team
      * @param routes Number of different Service Orchestration being routed to
      * @param createdAt The date the Orchestration was created at.
-     * @param createdBy var.name
+     * @param createdBy createdBy
      * @param updatedAt The date the Orchestration was last updated.
-     * @param updatedBy var.name
+     * @param updatedBy updatedBy
      * @param version Version of the Orchestration.
      */
     @ApiStatus.Internal

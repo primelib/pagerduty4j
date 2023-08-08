@@ -58,7 +58,7 @@ public class UpdateOrchPathRouter200Response {
      * Constructs a validated instance of {@link UpdateOrchPathRouter200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateOrchPathRouter200Response(Consumer)} instead.
-     * @param orchestrationPath var.name
+     * @param orchestrationPath orchestrationPath
      * @param warnings List of applicable warnings messages for each rule using a feature not available on your account plan.
      */
     @ApiStatus.Internal

@@ -73,11 +73,11 @@ public class IncidentWorkflowActionInvocation {
      * Constructs a validated instance of {@link IncidentWorkflowActionInvocation}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionInvocation(Consumer)} instead.
-     * @param id var.name
-     * @param type var.name
+     * @param id id
+     * @param type type
      * @param actionId Reference to the Action that was invoked
-     * @param inputs var.name
-     * @param outputs var.name
+     * @param inputs inputs
+     * @param outputs outputs
      */
     @ApiStatus.Internal
     public IncidentWorkflowActionInvocation(String id, TypeEnum type, String actionId, List<IncidentWorkflowActionInvocationInputsInner> inputs, List<IncidentWorkflowActionInvocationOutputsInner> outputs) {

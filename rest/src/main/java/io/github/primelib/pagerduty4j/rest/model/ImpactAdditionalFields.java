@@ -50,7 +50,7 @@ public class ImpactAdditionalFields {
      * Constructs a validated instance of {@link ImpactAdditionalFields}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ImpactAdditionalFields(Consumer)} instead.
-     * @param highestImpactingPriority var.name
+     * @param highestImpactingPriority highestImpactingPriority
      */
     @ApiStatus.Internal
     public ImpactAdditionalFields(ImpactAdditionalFieldsHighestImpactingPriority highestImpactingPriority) {

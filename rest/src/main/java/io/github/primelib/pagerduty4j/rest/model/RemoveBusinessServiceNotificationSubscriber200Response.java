@@ -59,9 +59,9 @@ public class RemoveBusinessServiceNotificationSubscriber200Response {
      * Constructs a validated instance of {@link RemoveBusinessServiceNotificationSubscriber200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RemoveBusinessServiceNotificationSubscriber200Response(Consumer)} instead.
-     * @param deletedCount var.name
-     * @param unauthorizedCount var.name
-     * @param nonExistentCount var.name
+     * @param deletedCount deletedCount
+     * @param unauthorizedCount unauthorizedCount
+     * @param nonExistentCount nonExistentCount
      */
     @ApiStatus.Internal
     public RemoveBusinessServiceNotificationSubscriber200Response(BigDecimal deletedCount, BigDecimal unauthorizedCount, BigDecimal nonExistentCount) {

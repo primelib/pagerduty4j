@@ -61,7 +61,7 @@ public class ServiceOrchestrationAllOfOrchestrationPathAllOfParent {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestrationAllOfOrchestrationPathAllOfParent(Consumer)} instead.
      * @param id The ID of the Service this Orchestration belongs to.
-     * @param type var.name
+     * @param type type
      */
     @ApiStatus.Internal
     public ServiceOrchestrationAllOfOrchestrationPathAllOfParent(Object id, TypeEnum type) {

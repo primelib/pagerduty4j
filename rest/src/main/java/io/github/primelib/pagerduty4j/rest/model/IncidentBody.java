@@ -60,7 +60,7 @@ public class IncidentBody {
      * Constructs a validated instance of {@link IncidentBody}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentBody(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param details Additional incident details.
      */
     @ApiStatus.Internal

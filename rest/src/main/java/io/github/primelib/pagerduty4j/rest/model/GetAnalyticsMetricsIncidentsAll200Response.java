@@ -73,10 +73,10 @@ public class GetAnalyticsMetricsIncidentsAll200Response {
      * Constructs a validated instance of {@link GetAnalyticsMetricsIncidentsAll200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsMetricsIncidentsAll200Response(Consumer)} instead.
-     * @param filters var.name
+     * @param filters filters
      * @param timeZone The time zone to use for the results and grouping.
      * @param aggregateUnit The time unit to aggregate metrics by.  If no value is provided, the metrics will be aggregated for the entire period.
-     * @param data var.name
+     * @param data data
      */
     @ApiStatus.Internal
     public GetAnalyticsMetricsIncidentsAll200Response(AnalyticsModelFilters filters, String timeZone, AggregateUnitEnum aggregateUnit, List<AnalyticsIncidentMetrics> data) {

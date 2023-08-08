@@ -83,7 +83,7 @@ public class ListServices200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param services var.name
+     * @param services services
      */
     @ApiStatus.Internal
     public ListServices200Response(Integer offset, Integer limit, Boolean more, Integer total, List<Service> services) {

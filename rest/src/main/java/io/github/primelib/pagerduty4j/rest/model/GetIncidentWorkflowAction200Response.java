@@ -50,7 +50,7 @@ public class GetIncidentWorkflowAction200Response {
      * Constructs a validated instance of {@link GetIncidentWorkflowAction200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetIncidentWorkflowAction200Response(Consumer)} instead.
-     * @param action var.name
+     * @param action action
      */
     @ApiStatus.Internal
     public GetIncidentWorkflowAction200Response(IncidentWorkflowAction action) {

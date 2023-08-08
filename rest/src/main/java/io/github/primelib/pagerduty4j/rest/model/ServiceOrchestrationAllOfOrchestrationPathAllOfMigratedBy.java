@@ -64,7 +64,7 @@ public class ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedBy {
      * Constructs a validated instance of {@link ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedBy}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ServiceOrchestrationAllOfOrchestrationPathAllOfMigratedBy(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
      * @param self The API show URL at which the object is accessible
      */

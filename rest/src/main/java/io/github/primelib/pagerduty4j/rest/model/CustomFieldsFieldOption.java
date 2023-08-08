@@ -80,10 +80,10 @@ public class CustomFieldsFieldOption {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsFieldOption(Consumer)} instead.
      * @param id The ID of the resource.
-     * @param type var.name
+     * @param type type
      * @param createdAt The date/time the object was created at.
      * @param updatedAt The date/time the object was last updated.
-     * @param data var.name
+     * @param data data
      */
     @ApiStatus.Internal
     public CustomFieldsFieldOption(String id, TypeEnum type, OffsetDateTime createdAt, OffsetDateTime updatedAt, CustomFieldsEditableFieldOptionData data) {

@@ -62,7 +62,7 @@ public class UserRole {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UserRole(Consumer)} instead.
      * @param role The role of the user for a set of resources.
-     * @param resources var.name
+     * @param resources resources
      */
     @ApiStatus.Internal
     public UserRole(RoleEnum role, List<Reference> resources) {

@@ -83,7 +83,7 @@ public class ListTeamUsers200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param members var.name
+     * @param members members
      */
     @ApiStatus.Internal
     public ListTeamUsers200Response(Integer offset, Integer limit, Boolean more, Integer total, List<ListTeamUsers200ResponseAllOfMembersInner> members) {

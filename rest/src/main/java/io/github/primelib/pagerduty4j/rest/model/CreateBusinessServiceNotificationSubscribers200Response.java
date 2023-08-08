@@ -51,7 +51,7 @@ public class CreateBusinessServiceNotificationSubscribers200Response {
      * Constructs a validated instance of {@link CreateBusinessServiceNotificationSubscribers200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateBusinessServiceNotificationSubscribers200Response(Consumer)} instead.
-     * @param subscriptions var.name
+     * @param subscriptions subscriptions
      */
     @ApiStatus.Internal
     public CreateBusinessServiceNotificationSubscribers200Response(List<NotificationSubscriptionWithContext> subscriptions) {

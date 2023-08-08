@@ -50,7 +50,7 @@ public class CreateAutomationActionServiceAssocationRequest {
      * Constructs a validated instance of {@link CreateAutomationActionServiceAssocationRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionServiceAssocationRequest(Consumer)} instead.
-     * @param service var.name
+     * @param service service
      */
     @ApiStatus.Internal
     public CreateAutomationActionServiceAssocationRequest(ServiceReference service) {

@@ -50,7 +50,7 @@ public class ConvertServiceEventRulesToEventOrchestration400Response {
      * Constructs a validated instance of {@link ConvertServiceEventRulesToEventOrchestration400Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ConvertServiceEventRulesToEventOrchestration400Response(Consumer)} instead.
-     * @param error var.name
+     * @param error error
      */
     @ApiStatus.Internal
     public ConvertServiceEventRulesToEventOrchestration400Response(ConvertServiceEventRulesToEventOrchestration400ResponseError error) {

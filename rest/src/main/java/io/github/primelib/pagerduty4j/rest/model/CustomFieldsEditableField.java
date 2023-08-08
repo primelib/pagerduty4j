@@ -66,7 +66,7 @@ public class CustomFieldsEditableField {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CustomFieldsEditableField(Consumer)} instead.
      * @param displayName The human-readable name of the field. This must be unique across an account.
      * @param description A description of the data this field contains.
-     * @param defaultValue var.name
+     * @param defaultValue defaultValue
      */
     @ApiStatus.Internal
     public CustomFieldsEditableField(String displayName, String description, CustomFieldsEditableFieldDefaultValue defaultValue) {

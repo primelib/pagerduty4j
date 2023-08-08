@@ -102,16 +102,16 @@ public class CreateIncidentRequestIncident {
      * Constructs a validated instance of {@link CreateIncidentRequestIncident}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateIncidentRequestIncident(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param title A succinct description of the nature, symptoms, cause, or effect of the incident.
-     * @param service var.name
-     * @param priority var.name
+     * @param service service
+     * @param priority priority
      * @param urgency The urgency of the incident
-     * @param body var.name
+     * @param body body
      * @param incidentKey A string which identifies the incident. Sending subsequent requests referencing the same service and with the same incident_key will result in those requests being rejected if an open incident matches that incident_key.
      * @param assignments Assign the incident to these assignees. Cannot be specified if an escalation policy is given.
-     * @param escalationPolicy var.name
-     * @param conferenceBridge var.name
+     * @param escalationPolicy escalationPolicy
+     * @param conferenceBridge conferenceBridge
      */
     @ApiStatus.Internal
     public CreateIncidentRequestIncident(TypeEnum type, String title, ServiceReference service, PriorityReference priority, UrgencyEnum urgency, IncidentBody body, String incidentKey, List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments, EscalationPolicyReference escalationPolicy, ConferenceBridge conferenceBridge) {

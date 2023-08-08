@@ -51,7 +51,7 @@ public class ListIncidentNotes200Response {
      * Constructs a validated instance of {@link ListIncidentNotes200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListIncidentNotes200Response(Consumer)} instead.
-     * @param notes var.name
+     * @param notes notes
      */
     @ApiStatus.Internal
     public ListIncidentNotes200Response(List<IncidentNote> notes) {

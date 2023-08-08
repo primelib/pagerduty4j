@@ -83,7 +83,7 @@ public class ListWebhookSubscriptions200Response {
      * @param limit Echoes limit pagination property.
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
-     * @param webhookSubscriptions var.name
+     * @param webhookSubscriptions webhookSubscriptions
      */
     @ApiStatus.Internal
     public ListWebhookSubscriptions200Response(Integer offset, Integer limit, Boolean more, Integer total, List<WebhookSubscription> webhookSubscriptions) {

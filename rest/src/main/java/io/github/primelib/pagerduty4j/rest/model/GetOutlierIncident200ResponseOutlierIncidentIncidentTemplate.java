@@ -64,7 +64,7 @@ public class GetOutlierIncident200ResponseOutlierIncidentIncidentTemplate {
      * Constructs a validated instance of {@link GetOutlierIncident200ResponseOutlierIncidentIncidentTemplate}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetOutlierIncident200ResponseOutlierIncidentIncidentTemplate(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param clusterId The cluster the Incident Template pattern belongs to
      * @param minedText The Incident Template mined pattern text
      */

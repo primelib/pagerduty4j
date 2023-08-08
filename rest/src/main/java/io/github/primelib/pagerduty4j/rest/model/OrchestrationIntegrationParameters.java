@@ -58,7 +58,7 @@ public class OrchestrationIntegrationParameters {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #OrchestrationIntegrationParameters(Consumer)} instead.
      * @param routingKey Routing Key used to send Events to this Orchestration
-     * @param type var.name
+     * @param type type
      */
     @ApiStatus.Internal
     public OrchestrationIntegrationParameters(String routingKey, String type) {

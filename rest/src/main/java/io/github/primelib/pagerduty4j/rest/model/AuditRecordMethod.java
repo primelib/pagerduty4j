@@ -72,7 +72,7 @@ public class AuditRecordMethod {
      * Constructs a validated instance of {@link AuditRecordMethod}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AuditRecordMethod(Consumer)} instead.
-     * @param description var.name
+     * @param description description
      * @param truncatedToken Truncated token containing the last 4 chars of the token's actual value.
      * @param type Describes the method used to perform the action:  {@code browser} -- authenticated user session. Session value is not returned in the {@code truncated_token} field.  {@code oauth} -- access token obtained via the OAuth flow. Truncated token value is returned in the {@code truncated_token} field.  {@code api_token} -- Pagerduty API token. Truncated token value is returned in the {@code truncated_token} field.  {@code identity_provider} -- action performed by an Identity provider on behalf of a user. No value is returned in the {@code truncated_token} field.  {@code other} -- Method that does not fall in the predefined categories. Truncated token value MAY be returned in the {@code truncated_token} field. 
      */

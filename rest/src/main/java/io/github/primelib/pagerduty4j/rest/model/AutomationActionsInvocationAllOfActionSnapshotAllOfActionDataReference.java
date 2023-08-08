@@ -78,7 +78,7 @@ public class AutomationActionsInvocationAllOfActionSnapshotAllOfActionDataRefere
      * Constructs a validated instance of {@link AutomationActionsInvocationAllOfActionSnapshotAllOfActionDataReference}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsInvocationAllOfActionSnapshotAllOfActionDataReference(Consumer)} instead.
-     * @param processAutomationJobId var.name
+     * @param processAutomationJobId processAutomationJobId
      * @param processAutomationJobArguments Arguments to pass to the Process Automation job. The maxLength value is specified in bytes.
      * @param processAutomationNodeFilter Node filter for the Process Automation job. The maxLength value is specified in bytes. Filter syntax: https://docs.rundeck.com/docs/manual/11-node-filters.html#node-filter-syntax
      * @param script Body of the script to be executed on the Runner. To execute it, the Runner will write the content of the property into a temp file, make the file executable and execute it. It is assumed that the Runner has a properly configured environment to run the script as an executable file. This behaviour can be altered by providing the {@code invocation_command} property. The maxLength value is specified in bytes.

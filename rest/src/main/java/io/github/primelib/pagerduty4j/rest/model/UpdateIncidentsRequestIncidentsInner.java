@@ -116,11 +116,11 @@ public class UpdateIncidentsRequestIncidentsInner {
      * @param status The new status of the incident.
      * @param resolution The resolution for this incident if status is set to resolved.
      * @param title A succinct description of the nature, symptoms, cause, or effect of the incident.
-     * @param priority var.name
+     * @param priority priority
      * @param escalationLevel Escalate the incident to this level in the escalation policy.
      * @param assignments Assign the incident to these assignees.
-     * @param escalationPolicy var.name
-     * @param conferenceBridge var.name
+     * @param escalationPolicy escalationPolicy
+     * @param conferenceBridge conferenceBridge
      */
     @ApiStatus.Internal
     public UpdateIncidentsRequestIncidentsInner(String id, TypeEnum type, StatusEnum status, String resolution, String title, PriorityReference priority, Integer escalationLevel, List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments, EscalationPolicyReference escalationPolicy, ConferenceBridge conferenceBridge) {

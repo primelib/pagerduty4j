@@ -62,8 +62,8 @@ public class RenderedTemplate {
      * Constructs a validated instance of {@link RenderedTemplate}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RenderedTemplate(Consumer)} instead.
-     * @param templatedFields var.name
-     * @param warnings var.name
+     * @param templatedFields templatedFields
+     * @param warnings warnings
      * @param errors List of errors
      */
     @ApiStatus.Internal

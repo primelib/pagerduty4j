@@ -51,7 +51,7 @@ public class ListCustomFieldsFields200Response {
      * Constructs a validated instance of {@link ListCustomFieldsFields200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListCustomFieldsFields200Response(Consumer)} instead.
-     * @param fields var.name
+     * @param fields fields
      */
     @ApiStatus.Internal
     public ListCustomFieldsFields200Response(List<CustomFieldsFieldWithOptions> fields) {

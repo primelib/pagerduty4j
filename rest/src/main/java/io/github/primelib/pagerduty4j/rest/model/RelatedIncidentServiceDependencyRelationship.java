@@ -55,8 +55,8 @@ public class RelatedIncidentServiceDependencyRelationship {
      * Constructs a validated instance of {@link RelatedIncidentServiceDependencyRelationship}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RelatedIncidentServiceDependencyRelationship(Consumer)} instead.
-     * @param dependentServices var.name
-     * @param supportingServices var.name
+     * @param dependentServices dependentServices
+     * @param supportingServices supportingServices
      */
     @ApiStatus.Internal
     public RelatedIncidentServiceDependencyRelationship(List<RelatedIncidentServiceDependencyBase> dependentServices, List<RelatedIncidentServiceDependencyBase> supportingServices) {

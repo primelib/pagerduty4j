@@ -50,7 +50,7 @@ public class CreateBusinessServiceAccountSubscription200Response {
      * Constructs a validated instance of {@link CreateBusinessServiceAccountSubscription200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateBusinessServiceAccountSubscription200Response(Consumer)} instead.
-     * @param accountIsSubscribed var.name
+     * @param accountIsSubscribed accountIsSubscribed
      */
     @ApiStatus.Internal
     public CreateBusinessServiceAccountSubscription200Response(Boolean accountIsSubscribed) {

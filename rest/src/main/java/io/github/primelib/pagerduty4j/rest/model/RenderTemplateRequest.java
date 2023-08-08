@@ -65,7 +65,7 @@ public class RenderTemplateRequest {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RenderTemplateRequest(Consumer)} instead.
      * @param incidentId The incident id to render the template for
-     * @param statusUpdate var.name
+     * @param statusUpdate statusUpdate
      * @param external An optional object collection that can be referenced in the template.
      */
     @ApiStatus.Internal

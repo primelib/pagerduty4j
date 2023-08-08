@@ -162,14 +162,14 @@ public class ResponsePlay {
      * Constructs a validated instance of {@link ResponsePlay}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ResponsePlay(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param name The name of the response play.
      * @param description The description of the response play.
-     * @param team var.name
+     * @param team team
      * @param subscribers An array containing the users and/or teams to be added as subscribers to any incident on which this response play is run.
      * @param subscribersMessage The content of the notification that will be sent to all incident subscribers upon the running of this response play. Note that this includes any users who may have already been subscribed to the incident prior to the running of this response play. If empty, no notifications will be sent.
      * @param responders An array containing the users and/or escalation policies to be requested as responders to any incident on which this response play is run.

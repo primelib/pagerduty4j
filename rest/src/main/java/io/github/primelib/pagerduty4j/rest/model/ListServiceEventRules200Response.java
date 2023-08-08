@@ -120,9 +120,9 @@ public class ListServiceEventRules200Response {
      * @param more Indicates if there are additional records to return
      * @param total The total number of records matching the given query.
      * @param migratedAt The date/time the service's Event Rules were converted to a Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
-     * @param migratedBy var.name
+     * @param migratedBy migratedBy
      * @param migratedStatus The status indicating whether the service's Event Rules were successfully converted to a Service Orchestration. This property is only included if the {@code migrated_metadata} query parameter is provided.
-     * @param migratedTo var.name
+     * @param migratedTo migratedTo
      * @param migratedVia Indicates whether the conversion was performed via the PagerDuty API or PagerDuty website. This property is only included if the {@code migrated_metadata} query parameter is provided.
      * @param rules The paginated list of Event Rules of the Service.
      */

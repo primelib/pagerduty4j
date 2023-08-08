@@ -113,14 +113,14 @@ public class UpdateIncidentRequestIncident {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateIncidentRequestIncident(Consumer)} instead.
      * @param type The incident type.
      * @param status The new status of the incident.
-     * @param priority var.name
+     * @param priority priority
      * @param resolution The resolution for this incident if status is set to resolved.
      * @param title The new title of the incident.
      * @param escalationLevel Escalate the incident to this level in the escalation policy.
      * @param assignments Assign the incident to these assignees.
-     * @param escalationPolicy var.name
+     * @param escalationPolicy escalationPolicy
      * @param urgency The urgency of the incident.
-     * @param conferenceBridge var.name
+     * @param conferenceBridge conferenceBridge
      */
     @ApiStatus.Internal
     public UpdateIncidentRequestIncident(TypeEnum type, StatusEnum status, PriorityReference priority, String resolution, String title, Integer escalationLevel, List<UpdateIncidentsRequestIncidentsInnerAssignmentsInner> assignments, EscalationPolicyReference escalationPolicy, UrgencyEnum urgency, ConferenceBridge conferenceBridge) {

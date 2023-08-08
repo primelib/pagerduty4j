@@ -72,7 +72,7 @@ public class CreateChangeEventRequest {
      * Constructs a validated instance of {@link CreateChangeEventRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateChangeEventRequest(Consumer)} instead.
-     * @param payload var.name
+     * @param payload payload
      * @param routingKey The GUID of one of your Events API V2 integrations. This is the "Integration Key" listed on the Events API V2 integration's detail page.
      * @param links Links to be shown on the alert and/or corresponding incident.
      * @param images Images to be displayed on the alert and/or corresponding incident.

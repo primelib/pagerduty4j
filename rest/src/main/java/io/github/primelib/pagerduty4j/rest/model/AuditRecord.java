@@ -90,15 +90,15 @@ public class AuditRecord {
      * Constructs a validated instance of {@link AuditRecord}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AuditRecord(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param self Record URL.
      * @param executionTime The date/time the action executed, in ISO8601 format and millisecond precision.
-     * @param executionContext var.name
-     * @param actors var.name
-     * @param method var.name
-     * @param rootResource var.name
-     * @param action var.name
-     * @param details var.name
+     * @param executionContext executionContext
+     * @param actors actors
+     * @param method method
+     * @param rootResource rootResource
+     * @param action action
+     * @param details details
      */
     @ApiStatus.Internal
     public AuditRecord(String id, String self, OffsetDateTime executionTime, AuditRecordExecutionContext executionContext, List<Reference> actors, AuditRecordMethod method, Reference rootResource, String action, AuditRecordDetails details) {

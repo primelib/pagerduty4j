@@ -111,14 +111,14 @@ public class Ruleset {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Ruleset(Consumer)} instead.
      * @param id ID of the Ruleset.
      * @param self the API show URL at which the object is accessible
-     * @param type var.name
+     * @param type type
      * @param name Name of the Ruleset.
      * @param routingKeys Routing keys routed to this Ruleset.
      * @param createdAt The date the Ruleset was created at.
-     * @param creator var.name
+     * @param creator creator
      * @param updatedAt The date the Ruleset was last updated.
-     * @param updater var.name
-     * @param team var.name
+     * @param updater updater
+     * @param team team
      */
     @ApiStatus.Internal
     public Ruleset(String id, String self, TypeEnum type, String name, List<String> routingKeys, OffsetDateTime createdAt, RulesetCreator creator, OffsetDateTime updatedAt, RulesetUpdater updater, RulesetTeam team) {

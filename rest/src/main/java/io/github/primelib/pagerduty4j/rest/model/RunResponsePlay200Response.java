@@ -50,7 +50,7 @@ public class RunResponsePlay200Response {
      * Constructs a validated instance of {@link RunResponsePlay200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #RunResponsePlay200Response(Consumer)} instead.
-     * @param status var.name
+     * @param status status
      */
     @ApiStatus.Internal
     public RunResponsePlay200Response(String status) {

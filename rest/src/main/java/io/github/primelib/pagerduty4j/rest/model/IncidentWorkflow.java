@@ -112,15 +112,15 @@ public class IncidentWorkflow {
      * Constructs a validated instance of {@link IncidentWorkflow}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflow(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type var.name
+     * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param name A descriptive name for the Incident Workflow
      * @param description A description of what the Incident Workflow does
      * @param createdAt The timestamp this Incident Workflow was created
-     * @param team var.name
+     * @param team team
      * @param steps The ordered list of steps that execute sequentially as part of the workflow
      */
     @ApiStatus.Internal

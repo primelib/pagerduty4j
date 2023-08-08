@@ -66,9 +66,9 @@ public class AutomationActionsRunnerSidecarPostBody {
      * Constructs a validated instance of {@link AutomationActionsRunnerSidecarPostBody}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsRunnerSidecarPostBody(Consumer)} instead.
-     * @param runnerType var.name
-     * @param name var.name
-     * @param description var.name
+     * @param runnerType runnerType
+     * @param name name
+     * @param description description
      * @param teams The list of teams associated with the Runner
      */
     @ApiStatus.Internal

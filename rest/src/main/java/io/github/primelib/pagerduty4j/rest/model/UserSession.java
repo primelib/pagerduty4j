@@ -79,8 +79,8 @@ public class UserSession {
      * Constructs a validated instance of {@link UserSession}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UserSession(Consumer)} instead.
-     * @param id var.name
-     * @param userId var.name
+     * @param id id
+     * @param userId userId
      * @param createdAt The date/time the user session was first created.
      * @param type The type of the session
      * @param summary The summary of the session

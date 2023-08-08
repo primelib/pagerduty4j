@@ -75,7 +75,7 @@ public class MatchPredicate {
      * Constructs a validated instance of {@link MatchPredicate}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #MatchPredicate(Consumer)} instead.
-     * @param type var.name
+     * @param type type
      * @param matcher Required if the type is {@code contains}, {@code exactly} or {@code regex}.
      * @param part The email field that will attempt to use the matcher expression. Required if the type is {@code contains}, {@code exactly} or {@code regex}.
      * @param children Additional matchers to be run. Must be not empty if the type is {@code all}, {@code any}, or {@code not}.

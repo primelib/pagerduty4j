@@ -75,11 +75,11 @@ public class WebhooksV1AssignedToObject {
      * Constructs a validated instance of {@link WebhooksV1AssignedToObject}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #WebhooksV1AssignedToObject(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param name The user's name.
      * @param email The user's email address.
-     * @param htmlUrl var.name
-     * @param type var.name
+     * @param htmlUrl htmlUrl
+     * @param type type
      */
     @ApiStatus.Internal
     public WebhooksV1AssignedToObject(String id, String name, String email, String htmlUrl, TypeEnum type) {

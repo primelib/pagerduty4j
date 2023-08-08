@@ -103,7 +103,7 @@ public class CreateV2EventRequest {
      * Constructs a validated instance of {@link CreateV2EventRequest}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateV2EventRequest(Consumer)} instead.
-     * @param payload var.name
+     * @param payload payload
      * @param routingKey The GUID of one of your Events API V2 integrations. This is the "Integration Key" listed on the Events API V2 integration's detail page.
      * @param eventAction The type of event. Can be {@code trigger}, {@code acknowledge} or {@code resolve}.
      * @param dedupKey Identifies the alert to {@code trigger}, {@code acknowledge}, or {@code resolve}. Required unless the {@code event_type} is {@code trigger}.

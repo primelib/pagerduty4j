@@ -50,7 +50,7 @@ public class CreateAutomationActionsRunner201Response {
      * Constructs a validated instance of {@link CreateAutomationActionsRunner201Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateAutomationActionsRunner201Response(Consumer)} instead.
-     * @param runner var.name
+     * @param runner runner
      */
     @ApiStatus.Internal
     public CreateAutomationActionsRunner201Response(CreateAutomationActionsRunner201ResponseRunner runner) {

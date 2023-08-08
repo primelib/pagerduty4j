@@ -63,8 +63,8 @@ public class ListLicenseAllocations200ResponseAllOfLicenseAllocationsInner {
      * Constructs a validated instance of {@link ListLicenseAllocations200ResponseAllOfLicenseAllocationsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListLicenseAllocations200ResponseAllOfLicenseAllocationsInner(Consumer)} instead.
-     * @param user var.name
-     * @param license var.name
+     * @param user user
+     * @param license license
      * @param allocatedAt Indicates the date and time the License was allocated to the User
      */
     @ApiStatus.Internal

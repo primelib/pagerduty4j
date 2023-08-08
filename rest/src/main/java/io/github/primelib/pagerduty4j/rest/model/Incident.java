@@ -226,7 +226,7 @@ public class Incident {
      * Constructs a validated instance of {@link Incident}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #Incident(Consumer)} instead.
-     * @param id var.name
+     * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type A string that determines the schema of the object. This must be the standard name for the entity, suffixed by {@code _reference} if the object is a reference.
      * @param self the API show URL at which the object is accessible
@@ -237,23 +237,23 @@ public class Incident {
      * @param title A succinct description of the nature, symptoms, cause, or effect of the incident.
      * @param pendingActions The list of pending_actions on the incident. A pending_action object contains a type of action which can be escalate, unacknowledge, resolve or urgency_change. A pending_action object contains at, the time at which the action will take place. An urgency_change pending_action will contain to, the urgency that the incident will change to.
      * @param incidentKey The incident's de-duplication key.
-     * @param service var.name
+     * @param service service
      * @param assignments List of all assignments for this incident. This list will be empty if the {@code Incident.status} is {@code resolved}.
      * @param assignedVia How the current incident assignments were decided.  Note that {@code direct_assignment} incidents will not escalate up the attached {@code escalation_policy}
      * @param acknowledgements List of all acknowledgements for this incident. This list will be empty if the {@code Incident.status} is {@code resolved} or {@code triggered}.
      * @param lastStatusChangeAt The time the status of the incident last changed. If the incident is not currently acknowledged or resolved, this will be the incident's {@code updated_at}.
-     * @param lastStatusChangeBy var.name
-     * @param firstTriggerLogEntry var.name
-     * @param escalationPolicy var.name
+     * @param lastStatusChangeBy lastStatusChangeBy
+     * @param firstTriggerLogEntry firstTriggerLogEntry
+     * @param escalationPolicy escalationPolicy
      * @param teams The teams involved in the incident’s lifecycle.
-     * @param priority var.name
+     * @param priority priority
      * @param urgency The current urgency of the incident.
-     * @param resolveReason var.name
-     * @param alertCounts var.name
-     * @param conferenceBridge var.name
-     * @param body var.name
-     * @param incidentsResponders var.name
-     * @param responderRequests var.name
+     * @param resolveReason resolveReason
+     * @param alertCounts alertCounts
+     * @param conferenceBridge conferenceBridge
+     * @param body body
+     * @param incidentsResponders incidentsResponders
+     * @param responderRequests responderRequests
      * @param resolvedAt The time the incident became "resolved" or {@code null} if the incident is not resolved.
      * @param updatedAt The time the incident was last modified.
      */

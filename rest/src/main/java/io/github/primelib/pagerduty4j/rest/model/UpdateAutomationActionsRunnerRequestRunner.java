@@ -68,8 +68,8 @@ public class UpdateAutomationActionsRunnerRequestRunner {
      * Constructs a validated instance of {@link UpdateAutomationActionsRunnerRequestRunner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UpdateAutomationActionsRunnerRequestRunner(Consumer)} instead.
-     * @param name var.name
-     * @param description var.name
+     * @param name name
+     * @param description description
      * @param runbookBaseUri The base URI of the Runbook server to connect to. May only contain alphanumeric characters, periods, underscores and dashes. Specified as the subdomain portion of an RBA host, as in &amp;lt;runbook_base_uri&amp;gt;.runbook.pagerduty.cloud
      * @param runbookApiKey The API key to connect to the Runbook server with. If omitted, the previously stored value will remain unchanged
      */

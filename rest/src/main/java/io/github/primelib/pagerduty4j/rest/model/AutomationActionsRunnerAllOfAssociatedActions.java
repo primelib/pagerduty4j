@@ -58,7 +58,7 @@ public class AutomationActionsRunnerAllOfAssociatedActions {
      * Constructs a validated instance of {@link AutomationActionsRunnerAllOfAssociatedActions}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AutomationActionsRunnerAllOfAssociatedActions(Consumer)} instead.
-     * @param actions var.name
+     * @param actions actions
      * @param more Indicates whether more actions exist for the Runner.
      */
     @ApiStatus.Internal

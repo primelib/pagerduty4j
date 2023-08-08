@@ -50,7 +50,7 @@ public class GetPausedIncidentReportCounts200Response {
      * Constructs a validated instance of {@link GetPausedIncidentReportCounts200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetPausedIncidentReportCounts200Response(Consumer)} instead.
-     * @param pausedIncidentReportingCounts var.name
+     * @param pausedIncidentReportingCounts pausedIncidentReportingCounts
      */
     @ApiStatus.Internal
     public GetPausedIncidentReportCounts200Response(GetPausedIncidentReportCounts200ResponsePausedIncidentReportingCounts pausedIncidentReportingCounts) {

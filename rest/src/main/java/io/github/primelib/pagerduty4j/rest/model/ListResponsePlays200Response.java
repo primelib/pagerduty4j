@@ -51,7 +51,7 @@ public class ListResponsePlays200Response {
      * Constructs a validated instance of {@link ListResponsePlays200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #ListResponsePlays200Response(Consumer)} instead.
-     * @param responsePlays var.name
+     * @param responsePlays responsePlays
      */
     @ApiStatus.Internal
     public ListResponsePlays200Response(List<ResponsePlay> responsePlays) {
