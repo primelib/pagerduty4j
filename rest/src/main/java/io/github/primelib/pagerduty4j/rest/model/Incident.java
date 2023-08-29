@@ -39,30 +39,32 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "self",
     "html_url",
     "incident_number",
-    "created_at",
-    "status",
     "title",
-    "pending_actions",
+    "created_at",
+    "updated_at",
+    "status",
     "incident_key",
     "service",
     "assignments",
     "assigned_via",
-    "acknowledgements",
     "last_status_change_at",
-    "last_status_change_by",
+    "resolved_at",
     "first_trigger_log_entry",
+    "alert_counts",
+    "is_mergeable",
     "escalation_policy",
     "teams",
+    "pending_actions",
+    "acknowledgements",
+    "alert_grouping",
+    "last_status_change_by",
     "priority",
-    "urgency",
     "resolve_reason",
-    "alert_counts",
     "conference_bridge",
-    "body",
     "incidents_responders",
     "responder_requests",
-    "resolved_at",
-    "updated_at"
+    "urgency",
+    "body"
 })
 @JsonTypeName("Incident")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
@@ -102,10 +104,22 @@ public class Incident {
     protected Integer incidentNumber;
 
     /**
+     * A succinct description of the nature, symptoms, cause, or effect of the incident.
+     */
+    @JsonProperty("title")
+    protected String title;
+
+    /**
      * The time the incident was first triggered.
      */
     @JsonProperty("created_at")
     protected OffsetDateTime createdAt;
+
+    /**
+     * The time the incident was last modified.
+     */
+    @JsonProperty("updated_at")
+    protected OffsetDateTime updatedAt;
 
     /**
      * The current status of the incident.
@@ -114,28 +128,16 @@ public class Incident {
     protected StatusEnum status;
 
     /**
-     * A succinct description of the nature, symptoms, cause, or effect of the incident.
-     */
-    @JsonProperty("title")
-    protected String title;
-
-    /**
-     * The list of pending_actions on the incident. A pending_action object contains a type of action which can be escalate, unacknowledge, resolve or urgency_change. A pending_action object contains at, the time at which the action will take place. An urgency_change pending_action will contain to, the urgency that the incident will change to.
-     */
-    @JsonProperty("pending_actions")
-    protected List<IncidentAction> pendingActions;
-
-    /**
      * The incident's de-duplication key.
      */
     @JsonProperty("incident_key")
     protected String incidentKey;
 
     @JsonProperty("service")
-    protected ServiceReference service;
+    protected IncidentAllOfService service;
 
     /**
-     * List of all assignments for this incident. This list will be empty if the {@code Incident.status} is {@code resolved}.
+     * List of all assignments for this incident. This list will be empty if the {@code Incident.status} is {@code resolved}. Returns a user reference for each assignment. Full user definitions will be returned if the {@code include[]=assignees} query parameter is provided.
      */
     @JsonProperty("assignments")
     protected List<Assignment> assignments;
@@ -148,58 +150,10 @@ public class Incident {
     protected AssignedViaEnum assignedVia;
 
     /**
-     * List of all acknowledgements for this incident. This list will be empty if the {@code Incident.status} is {@code resolved} or {@code triggered}.
-     */
-    @JsonProperty("acknowledgements")
-    protected List<Acknowledgement> acknowledgements;
-
-    /**
      * The time the status of the incident last changed. If the incident is not currently acknowledged or resolved, this will be the incident's {@code updated_at}.
      */
     @JsonProperty("last_status_change_at")
     protected OffsetDateTime lastStatusChangeAt;
-
-    @JsonProperty("last_status_change_by")
-    protected AgentReference lastStatusChangeBy;
-
-    @JsonProperty("first_trigger_log_entry")
-    protected LogEntryReference firstTriggerLogEntry;
-
-    @JsonProperty("escalation_policy")
-    protected EscalationPolicyReference escalationPolicy;
-
-    /**
-     * The teams involved in the incident’s lifecycle.
-     */
-    @JsonProperty("teams")
-    protected List<TeamReference> teams;
-
-    @JsonProperty("priority")
-    protected PriorityReference priority;
-
-    /**
-     * The current urgency of the incident.
-     */
-    @JsonProperty("urgency")
-    protected UrgencyEnum urgency;
-
-    @JsonProperty("resolve_reason")
-    protected ResolveReason resolveReason;
-
-    @JsonProperty("alert_counts")
-    protected AlertCount alertCounts;
-
-    @JsonProperty("conference_bridge")
-    protected ConferenceBridge conferenceBridge;
-
-    @JsonProperty("body")
-    protected IncidentBody body;
-
-    @JsonProperty("incidents_responders")
-    protected List<IncidentsRespondersReference> incidentsResponders;
-
-    @JsonProperty("responder_requests")
-    protected List<ResponderRequest> responderRequests;
 
     /**
      * The time the incident became "resolved" or {@code null} if the incident is not resolved.
@@ -207,11 +161,74 @@ public class Incident {
     @JsonProperty("resolved_at")
     protected OffsetDateTime resolvedAt;
 
+    @JsonProperty("first_trigger_log_entry")
+    protected IncidentAllOfFirstTriggerLogEntry firstTriggerLogEntry;
+
+    @JsonProperty("alert_counts")
+    protected AlertCount alertCounts;
+
     /**
-     * The time the incident was last modified.
+     * Whether the incident is mergeable. Only incidents that have alerts, or that are manually created can be merged.
      */
-    @JsonProperty("updated_at")
-    protected OffsetDateTime updatedAt;
+    @JsonProperty("is_mergeable")
+    protected Boolean isMergeable;
+
+    @JsonProperty("escalation_policy")
+    protected IncidentAllOfEscalationPolicy escalationPolicy;
+
+    /**
+     * The teams involved in the incident’s lifecycle. If the {@code include[]=teams} query parameter is provided, the full team definitions will be returned.
+     */
+    @JsonProperty("teams")
+    protected List<IncidentAllOfTeamsInner> teams;
+
+    /**
+     * The list of pending_actions on the incident. A pending_action object contains a type of action which can be escalate, unacknowledge, resolve or urgency_change. A pending_action object contains at, the time at which the action will take place. An urgency_change pending_action will contain to, the urgency that the incident will change to.
+     */
+    @JsonProperty("pending_actions")
+    protected List<IncidentAction> pendingActions;
+
+    /**
+     * List of all acknowledgements for this incident. This list will be empty if the {@code Incident.status} is {@code resolved} or {@code triggered}. If the {@code include[]=acknowledgers} query parameter is provided, the full user or service definitions will be returned for each acknowledgement entry.
+     */
+    @JsonProperty("acknowledgements")
+    protected List<Acknowledgement> acknowledgements;
+
+    @JsonProperty("alert_grouping")
+    protected IncidentAllOfAlertGrouping alertGrouping;
+
+    @JsonProperty("last_status_change_by")
+    protected IncidentAllOfLastStatusChangeBy lastStatusChangeBy;
+
+    @JsonProperty("priority")
+    protected Priority priority;
+
+    @JsonProperty("resolve_reason")
+    protected ResolveReason resolveReason;
+
+    @JsonProperty("conference_bridge")
+    protected ConferenceBridge conferenceBridge;
+
+    /**
+     * The responders on the incident. Only returned if the account has access to the [responder requests](https://support.pagerduty.com/docs/add-responders) feature.
+     */
+    @JsonProperty("incidents_responders")
+    protected List<IncidentsRespondersReference> incidentsResponders;
+
+    /**
+     * Previous responder requests made on this incident. Only returned if the account has access to the [responder requests](https://support.pagerduty.com/docs/add-responders) feature.
+     */
+    @JsonProperty("responder_requests")
+    protected List<ResponderRequest> responderRequests;
+
+    /**
+     * The current urgency of the incident.
+     */
+    @JsonProperty("urgency")
+    protected UrgencyEnum urgency;
+
+    @JsonProperty("body")
+    protected IncidentBody body;
 
     /**
      * Constructs a validated instance of {@link Incident}.
@@ -232,63 +249,67 @@ public class Incident {
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param incidentNumber The number of the incident. This is unique across your account.
-     * @param createdAt The time the incident was first triggered.
-     * @param status The current status of the incident.
      * @param title A succinct description of the nature, symptoms, cause, or effect of the incident.
-     * @param pendingActions The list of pending_actions on the incident. A pending_action object contains a type of action which can be escalate, unacknowledge, resolve or urgency_change. A pending_action object contains at, the time at which the action will take place. An urgency_change pending_action will contain to, the urgency that the incident will change to.
+     * @param createdAt The time the incident was first triggered.
+     * @param updatedAt The time the incident was last modified.
+     * @param status The current status of the incident.
      * @param incidentKey The incident's de-duplication key.
      * @param service service
-     * @param assignments List of all assignments for this incident. This list will be empty if the {@code Incident.status} is {@code resolved}.
+     * @param assignments List of all assignments for this incident. This list will be empty if the {@code Incident.status} is {@code resolved}. Returns a user reference for each assignment. Full user definitions will be returned if the {@code include[]=assignees} query parameter is provided.
      * @param assignedVia How the current incident assignments were decided.  Note that {@code direct_assignment} incidents will not escalate up the attached {@code escalation_policy}
-     * @param acknowledgements List of all acknowledgements for this incident. This list will be empty if the {@code Incident.status} is {@code resolved} or {@code triggered}.
      * @param lastStatusChangeAt The time the status of the incident last changed. If the incident is not currently acknowledged or resolved, this will be the incident's {@code updated_at}.
-     * @param lastStatusChangeBy lastStatusChangeBy
-     * @param firstTriggerLogEntry firstTriggerLogEntry
-     * @param escalationPolicy escalationPolicy
-     * @param teams The teams involved in the incident’s lifecycle.
-     * @param priority priority
-     * @param urgency The current urgency of the incident.
-     * @param resolveReason resolveReason
-     * @param alertCounts alertCounts
-     * @param conferenceBridge conferenceBridge
-     * @param body body
-     * @param incidentsResponders incidentsResponders
-     * @param responderRequests responderRequests
      * @param resolvedAt The time the incident became "resolved" or {@code null} if the incident is not resolved.
-     * @param updatedAt The time the incident was last modified.
+     * @param firstTriggerLogEntry firstTriggerLogEntry
+     * @param alertCounts alertCounts
+     * @param isMergeable Whether the incident is mergeable. Only incidents that have alerts, or that are manually created can be merged.
+     * @param escalationPolicy escalationPolicy
+     * @param teams The teams involved in the incident’s lifecycle. If the {@code include[]=teams} query parameter is provided, the full team definitions will be returned.
+     * @param pendingActions The list of pending_actions on the incident. A pending_action object contains a type of action which can be escalate, unacknowledge, resolve or urgency_change. A pending_action object contains at, the time at which the action will take place. An urgency_change pending_action will contain to, the urgency that the incident will change to.
+     * @param acknowledgements List of all acknowledgements for this incident. This list will be empty if the {@code Incident.status} is {@code resolved} or {@code triggered}. If the {@code include[]=acknowledgers} query parameter is provided, the full user or service definitions will be returned for each acknowledgement entry.
+     * @param alertGrouping alertGrouping
+     * @param lastStatusChangeBy lastStatusChangeBy
+     * @param priority priority
+     * @param resolveReason resolveReason
+     * @param conferenceBridge conferenceBridge
+     * @param incidentsResponders The responders on the incident. Only returned if the account has access to the [responder requests](https://support.pagerduty.com/docs/add-responders) feature.
+     * @param responderRequests Previous responder requests made on this incident. Only returned if the account has access to the [responder requests](https://support.pagerduty.com/docs/add-responders) feature.
+     * @param urgency The current urgency of the incident.
+     * @param body body
      */
     @ApiStatus.Internal
-    public Incident(String id, String summary, String type, String self, String htmlUrl, Integer incidentNumber, OffsetDateTime createdAt, StatusEnum status, String title, List<IncidentAction> pendingActions, String incidentKey, ServiceReference service, List<Assignment> assignments, AssignedViaEnum assignedVia, List<Acknowledgement> acknowledgements, OffsetDateTime lastStatusChangeAt, AgentReference lastStatusChangeBy, LogEntryReference firstTriggerLogEntry, EscalationPolicyReference escalationPolicy, List<TeamReference> teams, PriorityReference priority, UrgencyEnum urgency, ResolveReason resolveReason, AlertCount alertCounts, ConferenceBridge conferenceBridge, IncidentBody body, List<IncidentsRespondersReference> incidentsResponders, List<ResponderRequest> responderRequests, OffsetDateTime resolvedAt, OffsetDateTime updatedAt) {
+    public Incident(String id, String summary, String type, String self, String htmlUrl, Integer incidentNumber, String title, OffsetDateTime createdAt, OffsetDateTime updatedAt, StatusEnum status, String incidentKey, IncidentAllOfService service, List<Assignment> assignments, AssignedViaEnum assignedVia, OffsetDateTime lastStatusChangeAt, OffsetDateTime resolvedAt, IncidentAllOfFirstTriggerLogEntry firstTriggerLogEntry, AlertCount alertCounts, Boolean isMergeable, IncidentAllOfEscalationPolicy escalationPolicy, List<IncidentAllOfTeamsInner> teams, List<IncidentAction> pendingActions, List<Acknowledgement> acknowledgements, IncidentAllOfAlertGrouping alertGrouping, IncidentAllOfLastStatusChangeBy lastStatusChangeBy, Priority priority, ResolveReason resolveReason, ConferenceBridge conferenceBridge, List<IncidentsRespondersReference> incidentsResponders, List<ResponderRequest> responderRequests, UrgencyEnum urgency, IncidentBody body) {
         this.id = id;
         this.summary = summary;
         this.type = type;
         this.self = self;
         this.htmlUrl = htmlUrl;
         this.incidentNumber = incidentNumber;
-        this.createdAt = createdAt;
-        this.status = status;
         this.title = title;
-        this.pendingActions = pendingActions;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.status = status;
         this.incidentKey = incidentKey;
         this.service = service;
         this.assignments = assignments;
         this.assignedVia = assignedVia;
-        this.acknowledgements = acknowledgements;
         this.lastStatusChangeAt = lastStatusChangeAt;
-        this.lastStatusChangeBy = lastStatusChangeBy;
+        this.resolvedAt = resolvedAt;
         this.firstTriggerLogEntry = firstTriggerLogEntry;
+        this.alertCounts = alertCounts;
+        this.isMergeable = isMergeable;
         this.escalationPolicy = escalationPolicy;
         this.teams = teams;
+        this.pendingActions = pendingActions;
+        this.acknowledgements = acknowledgements;
+        this.alertGrouping = alertGrouping;
+        this.lastStatusChangeBy = lastStatusChangeBy;
         this.priority = priority;
-        this.urgency = urgency;
         this.resolveReason = resolveReason;
-        this.alertCounts = alertCounts;
         this.conferenceBridge = conferenceBridge;
-        this.body = body;
         this.incidentsResponders = incidentsResponders;
         this.responderRequests = responderRequests;
-        this.resolvedAt = resolvedAt;
-        this.updatedAt = updatedAt;
+        this.urgency = urgency;
+        this.body = body;
     }
 
     /**

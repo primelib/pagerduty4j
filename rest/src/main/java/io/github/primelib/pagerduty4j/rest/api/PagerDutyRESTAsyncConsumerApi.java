@@ -116,6 +116,7 @@ import io.github.primelib.pagerduty4j.rest.model.ListNotifications200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListOnCalls200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListOrchestrationIntegrations200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListPriorities200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListResourceStandardsManyServices200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListResponsePlays200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListRulesetEventRules200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListRulesets200Response;
@@ -124,6 +125,7 @@ import io.github.primelib.pagerduty4j.rest.model.ListScheduleUsers200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListSchedules200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListServiceEventRules200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListServices200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListStandards200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListStatusDashboards200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeamUsers200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeams200Response;
@@ -144,6 +146,8 @@ import io.github.primelib.pagerduty4j.rest.model.RenderedTemplate;
 import io.github.primelib.pagerduty4j.rest.model.RunResponsePlay200Response;
 import io.github.primelib.pagerduty4j.rest.model.ServiceOrchestration;
 import java.util.Set;
+import io.github.primelib.pagerduty4j.rest.model.Standard;
+import io.github.primelib.pagerduty4j.rest.model.StandardApplied;
 import io.github.primelib.pagerduty4j.rest.model.UpdateCustomFieldsField200Response;
 import io.github.primelib.pagerduty4j.rest.model.UpdateIncident200Response;
 import io.github.primelib.pagerduty4j.rest.model.UpdateOrchPathGlobal200Response;
@@ -356,6 +360,8 @@ import io.github.primelib.pagerduty4j.rest.spec.ListNotificationsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListOnCallsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListOrchestrationIntegrationsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListPrioritiesOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.ListResourceStandardsOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.ListResourceStandardsManyServicesOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListResponsePlaysOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListRulesetEventRulesOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListRulesetsOperationSpec;
@@ -367,6 +373,7 @@ import io.github.primelib.pagerduty4j.rest.spec.ListServiceAuditRecordsOperation
 import io.github.primelib.pagerduty4j.rest.spec.ListServiceChangeEventsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListServiceEventRulesOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListServicesOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.ListStandardsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListTagsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListTeamUsersOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListTeamsOperationSpec;
@@ -422,6 +429,7 @@ import io.github.primelib.pagerduty4j.rest.spec.UpdateScheduleOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.UpdateServiceOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.UpdateServiceEventRuleOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.UpdateServiceIntegrationOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.UpdateStandardOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.UpdateTeamOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.UpdateTeamEscalationPolicyOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.UpdateTeamUserOperationSpec;
@@ -4004,6 +4012,38 @@ public class PagerDutyRESTAsyncConsumerApi {
     }
 
     /**
+     * List a resource's standards scores
+     * <p>
+     * List standards applied to a specific resource
+     * Scoped OAuth requires: {@code standards.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: Id of the resource to apply the standards.</li>
+     *   <li>resourceType: </li>
+     * </ul>
+     */
+    public CompletableFuture<StandardApplied> listResourceStandards(Consumer<ListResourceStandardsOperationSpec> spec) {
+        ListResourceStandardsOperationSpec r = new ListResourceStandardsOperationSpec(spec);
+        return api.listResourceStandards(r.id(), r.resourceType());
+    }
+
+    /**
+     * List resources' standards scores
+     * <p>
+     * List standards applied to a set of resources
+     * Scoped OAuth requires: {@code standards.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>ids: Ids of resources to apply the standards. Maximum of 100 items</li>
+     *   <li>resourceType: </li>
+     * </ul>
+     */
+    public CompletableFuture<ListResourceStandardsManyServices200Response> listResourceStandardsManyServices(Consumer<ListResourceStandardsManyServicesOperationSpec> spec) {
+        ListResourceStandardsManyServicesOperationSpec r = new ListResourceStandardsManyServicesOperationSpec(spec);
+        return api.listResourceStandardsManyServices(r.ids(), r.resourceType());
+    }
+
+    /**
      * List Response Plays
      * <p>
      * List all of the existing Response Plays.
@@ -4231,6 +4271,22 @@ public class PagerDutyRESTAsyncConsumerApi {
     public CompletableFuture<ListServices200Response> listServices(Consumer<ListServicesOperationSpec> spec) {
         ListServicesOperationSpec r = new ListServicesOperationSpec(spec);
         return api.listServices(r.query(), r.limit(), r.offset(), r.total(), r.teamIds(), r.timeZone(), r.sortBy(), r.include());
+    }
+
+    /**
+     * List Standards
+     * <p>
+     * Get all standards of an account.
+     * Scoped OAuth requires: {@code standards.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>active: </li>
+     *   <li>resourceType: </li>
+     * </ul>
+     */
+    public CompletableFuture<ListStandards200Response> listStandards(Consumer<ListStandardsOperationSpec> spec) {
+        ListStandardsOperationSpec r = new ListStandardsOperationSpec(spec);
+        return api.listStandards(r.active(), r.resourceType());
     }
 
     /**
@@ -5239,6 +5295,22 @@ public class PagerDutyRESTAsyncConsumerApi {
     public CompletableFuture<CreateServiceIntegrationRequest> updateServiceIntegration(Consumer<UpdateServiceIntegrationOperationSpec> spec) {
         UpdateServiceIntegrationOperationSpec r = new UpdateServiceIntegrationOperationSpec(spec);
         return api.updateServiceIntegration(r.id(), r.integrationId(), r.createServiceIntegrationRequest());
+    }
+
+    /**
+     * Update a standard
+     * <p>
+     * Updates a standard
+     * Scoped OAuth requires: {@code standards.write} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: Id of the standard</li>
+     *   <li>updateStandardRequest: </li>
+     * </ul>
+     */
+    public CompletableFuture<Standard> updateStandard(Consumer<UpdateStandardOperationSpec> spec) {
+        UpdateStandardOperationSpec r = new UpdateStandardOperationSpec(spec);
+        return api.updateStandard(r.id(), r.updateStandardRequest());
     }
 
     /**

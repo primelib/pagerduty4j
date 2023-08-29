@@ -97,7 +97,8 @@ public class ResponsePlayAllOfSubscribersInner {
     public enum TypeEnum {
         USER_REFERENCE("user_reference"),
         ESCALATION_POLICY_REFERENCE("escalation_policy_reference"),
-        TEAM_REFERENCE("team_reference");
+        TEAM_REFERENCE("team_reference"),
+        TEAM("team");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;

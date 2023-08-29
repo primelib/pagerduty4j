@@ -43,7 +43,7 @@ public class Acknowledgement {
     protected OffsetDateTime at;
 
     @JsonProperty("acknowledger")
-    protected AcknowledgerReference acknowledger;
+    protected AcknowledgementAcknowledger acknowledger;
 
     /**
      * Constructs a validated instance of {@link Acknowledgement}.
@@ -62,7 +62,7 @@ public class Acknowledgement {
      * @param acknowledger acknowledger
      */
     @ApiStatus.Internal
-    public Acknowledgement(OffsetDateTime at, AcknowledgerReference acknowledger) {
+    public Acknowledgement(OffsetDateTime at, AcknowledgementAcknowledger acknowledger) {
         this.at = at;
         this.acknowledger = acknowledger;
     }
