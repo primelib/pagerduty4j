@@ -37,19 +37,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AlertCount {
 
     /**
-     * The count of triggered alerts
+     * The count of triggered alerts grouped into this incident
      */
     @JsonProperty("triggered")
     protected Integer triggered;
 
     /**
-     * The count of resolved alerts
+     * The count of resolved alerts grouped into this incident
      */
     @JsonProperty("resolved")
     protected Integer resolved;
 
     /**
-     * The total count of alerts
+     * The total count of alerts grouped into this incident
      */
     @JsonProperty("all")
     protected Integer all;
@@ -67,9 +67,9 @@ public class AlertCount {
      * Constructs a validated instance of {@link AlertCount}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AlertCount(Consumer)} instead.
-     * @param triggered The count of triggered alerts
-     * @param resolved The count of resolved alerts
-     * @param all The total count of alerts
+     * @param triggered The count of triggered alerts grouped into this incident
+     * @param resolved The count of resolved alerts grouped into this incident
+     * @param all The total count of alerts grouped into this incident
      */
     @ApiStatus.Internal
     public AlertCount(Integer triggered, Integer resolved, Integer all) {

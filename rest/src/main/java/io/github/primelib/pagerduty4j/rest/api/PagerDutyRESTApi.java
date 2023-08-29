@@ -146,6 +146,7 @@ import io.github.primelib.pagerduty4j.rest.model.ListNotifications200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListOnCalls200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListOrchestrationIntegrations200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListPriorities200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListResourceStandardsManyServices200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListResponsePlays200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListRulesetEventRules200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListRulesets200Response;
@@ -154,6 +155,7 @@ import io.github.primelib.pagerduty4j.rest.model.ListScheduleUsers200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListSchedules200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListServiceEventRules200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListServices200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListStandards200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListStatusDashboards200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeamUsers200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeams200Response;
@@ -183,6 +185,8 @@ import io.github.primelib.pagerduty4j.rest.model.RunResponsePlay200Response;
 import io.github.primelib.pagerduty4j.rest.model.ServiceOrchestration;
 import java.util.Set;
 import io.github.primelib.pagerduty4j.rest.model.SetIncidentFieldValuesRequest;
+import io.github.primelib.pagerduty4j.rest.model.Standard;
+import io.github.primelib.pagerduty4j.rest.model.StandardApplied;
 import io.github.primelib.pagerduty4j.rest.model.UpdateAutomationActionRequest;
 import io.github.primelib.pagerduty4j.rest.model.UpdateAutomationActionsRunnerRequest;
 import io.github.primelib.pagerduty4j.rest.model.UpdateBusinessServiceRequest;
@@ -202,6 +206,7 @@ import io.github.primelib.pagerduty4j.rest.model.UpdateOrchPathUnrouted200Respon
 import io.github.primelib.pagerduty4j.rest.model.UpdateRulesetEventRuleRequest;
 import io.github.primelib.pagerduty4j.rest.model.UpdateRulesetRequest;
 import io.github.primelib.pagerduty4j.rest.model.UpdateServiceEventRuleRequest;
+import io.github.primelib.pagerduty4j.rest.model.UpdateStandardRequest;
 import io.github.primelib.pagerduty4j.rest.model.UpdateTeamUserRequest;
 import io.github.primelib.pagerduty4j.rest.model.UpdateUserHandoffNotification200Response;
 import io.github.primelib.pagerduty4j.rest.model.UpdateUserNotificationRule200Response;
@@ -3797,6 +3802,36 @@ public interface PagerDutyRESTApi {
     ListPriorities200Response listPriorities(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total);
 
     /**
+     * List a resource's standards scores
+     * <p>
+     * List standards applied to a specific resource
+     * Scoped OAuth requires: {@code standards.read} 
+     *
+     * @param id                   Id of the resource to apply the standards. (required)
+     * @param resourceType          (required)
+     */
+    @RequestLine("GET /standards/scores/{resourceType}/{id}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2"
+    })
+    StandardApplied listResourceStandards(@Param("id") @NotNull String id, @Param("resourceType") @NotNull String resourceType);
+
+    /**
+     * List resources' standards scores
+     * <p>
+     * List standards applied to a set of resources
+     * Scoped OAuth requires: {@code standards.read} 
+     *
+     * @param ids                  Ids of resources to apply the standards. Maximum of 100 items (required)
+     * @param resourceType          (required)
+     */
+    @RequestLine("GET /standards/scores/{resourceType}?ids={ids}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2"
+    })
+    ListResourceStandardsManyServices200Response listResourceStandardsManyServices(@Param("ids") @NotNull List<String> ids, @Param("resourceType") @NotNull String resourceType);
+
+    /**
      * List Response Plays
      * <p>
      * List all of the existing Response Plays.
@@ -4026,6 +4061,21 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json"
     })
     ListServices200Response listServices(@Param("query") @Nullable String query, @Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("teamIds") @Nullable Set<String> teamIds, @Param("timeZone") @Nullable String timeZone, @Param("sortBy") @Nullable String sortBy, @Param("include") @Nullable String include);
+
+    /**
+     * List Standards
+     * <p>
+     * Get all standards of an account.
+     * Scoped OAuth requires: {@code standards.read} 
+     *
+     * @param active                (optional)
+     * @param resourceType          (optional)
+     */
+    @RequestLine("GET /standards?active={active}&resource_type={resourceType}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2"
+    })
+    ListStandards200Response listStandards(@Param("active") @Nullable Boolean active, @Param("resourceType") @Nullable String resourceType);
 
     /**
      * List Status Dashboards
@@ -5044,6 +5094,22 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json"
     })
     CreateServiceIntegrationRequest updateServiceIntegration(@Param("id") @NotNull String id, @Param("integrationId") @NotNull String integrationId, @Nullable CreateServiceIntegrationRequest createServiceIntegrationRequest);
+
+    /**
+     * Update a standard
+     * <p>
+     * Updates a standard
+     * Scoped OAuth requires: {@code standards.write} 
+     *
+     * @param id                   Id of the standard (required)
+     * @param updateStandardRequest  (optional)
+     */
+    @RequestLine("PUT /standards/{id}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    Standard updateStandard(@Param("id") @NotNull String id, @Nullable UpdateStandardRequest updateStandardRequest);
 
     /**
      * Update a team

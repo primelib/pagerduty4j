@@ -43,7 +43,7 @@ public class Assignment {
     protected OffsetDateTime at;
 
     @JsonProperty("assignee")
-    protected UserReference assignee;
+    protected AssignmentAssignee assignee;
 
     /**
      * Constructs a validated instance of {@link Assignment}.
@@ -62,7 +62,7 @@ public class Assignment {
      * @param assignee assignee
      */
     @ApiStatus.Internal
-    public Assignment(OffsetDateTime at, UserReference assignee) {
+    public Assignment(OffsetDateTime at, AssignmentAssignee assignee) {
         this.at = at;
         this.assignee = assignee;
     }

@@ -95,7 +95,8 @@ public class TeamReference {
 
     @AllArgsConstructor
     public enum TypeEnum {
-        TEAM_REFERENCE("team_reference");
+        TEAM_REFERENCE("team_reference"),
+        TEAM("team");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
