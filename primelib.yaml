@@ -1,0 +1,49 @@
+modules:
+  - name: pagerduty-events-v2
+    dir: events-v2
+    spec_url: https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/events-v2/openapiv3.json
+    spec_file: openapi.json
+    spec_script: |
+      jq '.info.title="PagerDuty Events V2"' "$1" | sponge "$1" # overwrite name
+  - name: pagerduty-rest
+    dir: rest
+    spec_url: https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/REST/openapiv3.json
+    spec_file: openapi.json
+    spec_script: |
+      jq '.info.title="PagerDuty REST"' "$1" | sponge "$1" # overwrite name
+      jq 'walk(if type == "object" and .discriminator and .discriminator.mapping then del(.discriminator.mapping) else . end)' "$1" | sponge "$1" # remove any discriminator.mapping as the files are missing
+      jq '.components.parameters.header_Accept."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to Accept header
+      jq '.components.parameters."header_Content-Type"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to Content-Type header
+      jq '.components.parameters."early_access_analytics"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
+      jq '.components.parameters."early_access_bis"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
+      jq '.components.parameters."early_access_status-update-notification-rules"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
+      jq '.components.parameters."early_access_status_dashboards"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
+      # delete endpoints with broken specification and bad schemas
+      jq 'del(.paths."/extensions")' "$1" | sponge "$1"
+      # bad references
+      jq 'walk(if type == "object" then with_entries(select(.key != "")) else . end)' "$1" | sponge "$1" # remove properties with empty keys
+      jq '.components.schemas.OrchestrationRouter.allOf[1].properties.orchestration_path.properties.type.type="string"' "$1" | sponge "$1" # missing type
+      jq '.components.schemas.OrchestrationUnrouted.allOf[1].properties.orchestration_path.properties.type.type="string"' "$1" | sponge "$1" # missing type
+      jq '.components.schemas.OrchestrationGlobal.allOf[1].properties.orchestration_path.properties.type.type="string"' "$1" | sponge "$1" # missing type
+      jq '.components.schemas.ServiceOrchestration.allOf[1].properties.orchestration_path.allOf[1].properties.type.type="string"' "$1" | sponge "$1" # missing type
+      jq '.components.schemas += {"ContactMethodType": {"type": "object", "properties": {"type": {"type": "string", "description": "The type of contact method being created.", "enum": ["email_contact_method", "phone_contact_method", "push_notification_contact_method", "sms_contact_method"]}}}}' "$1" | sponge "$1"
+      jq '.components.schemas.ContactMethod.allOf[1].properties.type={"$ref": "#/components/schemas/ContactMethodType"}' "$1" | sponge "$1"
+      jq '.components.schemas.EmailContactMethod.allOf[1].properties.type={"$ref": "#/components/schemas/ContactMethodType"}' "$1" | sponge "$1"
+      jq '.components.schemas.PhoneContactMethod.allOf[1].properties.type={"$ref": "#/components/schemas/ContactMethodType"}' "$1" | sponge "$1"
+      jq '.components.schemas.PushContactMethod.allOf[1].properties.type={"$ref": "#/components/schemas/ContactMethodType"}' "$1" | sponge "$1"
+      # bad names
+      jq '(.components.schemas.ScheduleOverride = .components.schemas.Override) | del(.components.schemas.Override)' "$1" | sponge "$1"
+      jq 'walk(if type == "string" and . == "#/components/schemas/Override" then "#/components/schemas/ScheduleOverride" else . end)' "$1" | sponge "$1"
+      # replace refs
+      references=$(jq -r '.. | objects | select(has("$ref")) | .["$ref"]' "$1" | sort -u)
+      for ref in $references; do
+        jsonRef=$(echo "$ref" | sed 's/^#//' | tr '/' '.')
+        jsonRef=$(echo "$jsonRef" | sed -E 's/(anyOf|allOf|oneOf)\.([0-9]+)/\1[\2]/g')
+        jsonRef="${jsonRef/application~1json/"\"application/json\""}"
+
+        if [[ $(grep -o '/' <<< "$ref" | wc -l) -ge 4 && $(grep -o '/' <<< "$ref" | wc -l) -lt 8 ]]; then
+            jq --argjson replacement "$(jq "$jsonRef" "$1")" \
+                    'walk(if type == "object" and has("$ref") and .["$ref"] == "'"$ref"'" then . = $replacement else . end)' \
+                    "$1" | sponge "$1"
+        fi
+      done
