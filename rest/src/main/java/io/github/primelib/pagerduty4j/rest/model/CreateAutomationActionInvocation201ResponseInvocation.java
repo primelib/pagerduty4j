@@ -83,7 +83,7 @@ public class CreateAutomationActionInvocation201ResponseInvocation {
     protected String runnerId;
 
     /**
-     * A list of state transitions with timestamps. Only the 'created' transition is guaranteed to exist at any time.
+     * A list of state transitions with timestamps, sorted in ascending order by timestamp. Only the 'created' transition is guaranteed to exist at any time.
      */
     @JsonProperty("timing")
     protected List<AutomationActionsInvocationAllOfTiming> timing;
@@ -126,7 +126,7 @@ public class CreateAutomationActionInvocation201ResponseInvocation {
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param actionSnapshot actionSnapshot
      * @param runnerId runnerId
-     * @param timing A list of state transitions with timestamps. Only the 'created' transition is guaranteed to exist at any time.
+     * @param timing A list of state transitions with timestamps, sorted in ascending order by timestamp. Only the 'created' transition is guaranteed to exist at any time.
      * @param duration The duration of the invocation's execution time.
      * @param state prepared -- the invocation exists and can be referenced, but is NOT available to a Runner &amp;lt;br&amp;gt; created -- the invocation exists and is waiting for a Runner &amp;lt;br&amp;gt; sent -- invocation sent to a Runner &amp;lt;br&amp;gt; queued -- invocation queued by a Runner &amp;lt;br&amp;gt; running -- invocation is being ran by a Runner &amp;lt;br&amp;gt; aborted -- invocation was aborted on a Runner &amp;lt;br&amp;gt; completed -- invocation completed on a Runner &amp;lt;br&amp;gt; error -- invocation encountered an error on a Runner
      * @param actionId actionId

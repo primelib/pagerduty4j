@@ -1,5 +1,6 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
+import java.util.List;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
@@ -43,7 +44,7 @@ public class AnalyticsModel {
     protected AnalyticsModelFilters filters;
 
     /**
-     * The time zone to use for the results and grouping.
+     * The time zone to use for the results and grouping. Must be in tzdata format. See list of accepted values [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
      */
     @JsonProperty("time_zone")
     protected String timeZone;
@@ -69,7 +70,7 @@ public class AnalyticsModel {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsModel(Consumer)} instead.
      * @param filters filters
-     * @param timeZone The time zone to use for the results and grouping.
+     * @param timeZone The time zone to use for the results and grouping. Must be in tzdata format. See list of accepted values [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
      * @param aggregateUnit The time unit to aggregate metrics by.  If no value is provided, the metrics will be aggregated for the entire period.
      */
     @ApiStatus.Internal
