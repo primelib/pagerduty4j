@@ -5,6 +5,22 @@ modules:
     spec_file: openapi.json
     spec_script: |
       jq '.info.title="PagerDuty Events V2"' "$1" | sponge "$1" # overwrite name
+    config:
+      generatorName: prime-client-java-feign
+      invokerPackage: io.github.primelib.pagerduty4j.eventsv2
+      apiPackage: io.github.primelib.pagerduty4j.eventsv2.api
+      modelPackage: io.github.primelib.pagerduty4j.eventsv2.model
+      enablePostProcessFile: true
+      globalProperty:
+        supportingFiles: false
+      additionalProperties:
+        projectName: pagerduty4j-events-v2
+        projectDescription: A Java Wrapper for the PagerDuty Events V2 API
+        projectArtifactGroupId: io.github.primelib
+        projectArtifactId: pagerduty4j-events-v2
+        projectMaintainerId: PhilippHeuer
+        projectMaintainerName: Philipp Heuer
+        projectMaintainerEMail: git@philippheuer.me
   - name: pagerduty-rest
     dir: rest
     spec_url: https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/REST/openapiv3.json
@@ -47,3 +63,19 @@ modules:
                     "$1" | sponge "$1"
         fi
       done
+    config:
+      generatorName: prime-client-java-feign
+      invokerPackage: io.github.primelib.pagerduty4j.rest
+      apiPackage: io.github.primelib.pagerduty4j.rest.api
+      modelPackage: io.github.primelib.pagerduty4j.rest.model
+      enablePostProcessFile: true
+      globalProperty:
+        supportingFiles: false
+      additionalProperties:
+        projectName: pagerduty4j-rest
+        projectDescription: A Java Wrapper for the PagerDuty REST API
+        projectArtifactGroupId: io.github.primelib
+        projectArtifactId: pagerduty4j-rest
+        projectMaintainerId: PhilippHeuer
+        projectMaintainerName: Philipp Heuer
+        projectMaintainerEMail: git@philippheuer.me
