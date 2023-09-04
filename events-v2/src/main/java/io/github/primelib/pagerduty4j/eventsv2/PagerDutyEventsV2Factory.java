@@ -6,6 +6,7 @@ import lombok.Builder;
 
 import io.github.primelib.pagerduty4j.eventsv2.api.PagerDutyEventsV2Api;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -84,6 +85,7 @@ public class PagerDutyEventsV2Factory {
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .propertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE)
             .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+            .serializationInclusion(JsonInclude.Include.NON_NULL)
             .addModule(new JavaTimeModule());
         config.extensions().forEach(extension -> extension.customizeObjectMapper(objectMapperBuilder));
         ObjectMapper objectMapper = objectMapperBuilder.build();
@@ -98,6 +100,7 @@ public class PagerDutyEventsV2Factory {
                 .addCapability(new MicrometerCapability(config.meterRegistry()))
                 .addCapability(new PrimeCapability(config.backendName(), config.extensions()))
                 .requestInterceptor(new AuthInterceptor(config.auth()))
+                .decodeVoid()
                 .target(config.api(), config.baseUrl());
     }
 }
