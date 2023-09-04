@@ -21,6 +21,7 @@ modules:
         projectMaintainerId: PhilippHeuer
         projectMaintainerName: Philipp Heuer
         projectMaintainerEMail: git@philippheuer.me
+        jsonIncludeNonNull: true
   - name: pagerduty-rest
     dir: rest
     spec_url: https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/REST/openapiv3.json
@@ -79,3 +80,4 @@ modules:
         projectMaintainerId: PhilippHeuer
         projectMaintainerName: Philipp Heuer
         projectMaintainerEMail: git@philippheuer.me
+        jsonIncludeNonNull: true
