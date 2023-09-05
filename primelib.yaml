@@ -35,6 +35,9 @@ modules:
       jq '.components.parameters."early_access_bis"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
       jq '.components.parameters."early_access_status-update-notification-rules"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
       jq '.components.parameters."early_access_status_dashboards"."x-param-static"="true"' "$1" | sponge "$1" # add x-param-static to early access headers
+      jq '.components.schemas.Integration.allOf[1].properties.integration_key.type="string"' "$1" | sponge "$1"
+      jq '.components.schemas.Integration.allOf[1].properties.integration_key.readOnly="true"' "$1" | sponge "$1"
+      jq '.components.schemas.Integration.allOf[1].properties.integration_key.description="Acts as the API key specifically for a single integration."' "$1" | sponge "$1"
       # delete endpoints with broken specification and bad schemas
       jq 'del(.paths."/extensions")' "$1" | sponge "$1"
       # bad references
