@@ -47,7 +47,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "email_filter_mode",
     "email_parsers",
     "email_parsing_fallback",
-    "email_filters"
+    "email_filters",
+    "integration_key"
 })
 @JsonTypeName("Integration")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
@@ -132,6 +133,12 @@ public class Integration {
     protected Set<IntegrationAllOfEmailFilters> emailFilters;
 
     /**
+     * Acts as the API key specifically for a single integration.
+     */
+    @JsonProperty("integration_key")
+    protected String integrationKey;
+
+    /**
      * Constructs a validated instance of {@link Integration}.
      *
      * @param spec the specification to process
@@ -159,9 +166,10 @@ public class Integration {
      * @param emailParsers Specify for generic_email_inbound_integration.
      * @param emailParsingFallback Specify for generic_email_inbound_integration.
      * @param emailFilters Specify for generic_email_inbound_integration.
+     * @param integrationKey Acts as the API key specifically for a single integration.
      */
     @ApiStatus.Internal
-    public Integration(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, ServiceReference service, OffsetDateTime createdAt, VendorReference vendor, String integrationEmail, EmailIncidentCreationEnum emailIncidentCreation, EmailFilterModeEnum emailFilterMode, Set<EmailParser> emailParsers, EmailParsingFallbackEnum emailParsingFallback, Set<IntegrationAllOfEmailFilters> emailFilters) {
+    public Integration(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, ServiceReference service, OffsetDateTime createdAt, VendorReference vendor, String integrationEmail, EmailIncidentCreationEnum emailIncidentCreation, EmailFilterModeEnum emailFilterMode, Set<EmailParser> emailParsers, EmailParsingFallbackEnum emailParsingFallback, Set<IntegrationAllOfEmailFilters> emailFilters, String integrationKey) {
         this.id = id;
         this.summary = summary;
         this.type = type;
@@ -177,6 +185,7 @@ public class Integration {
         this.emailParsers = emailParsers;
         this.emailParsingFallback = emailParsingFallback;
         this.emailFilters = emailFilters;
+        this.integrationKey = integrationKey;
     }
 
     @AllArgsConstructor

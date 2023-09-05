@@ -9560,6 +9560,11 @@
                   "type",
                   "name"
                 ]
+              },
+              "integration_key": {
+                "type": "string",
+                "readOnly": "true",
+                "description": "Acts as the API key specifically for a single integration."
               }
             }
           }
