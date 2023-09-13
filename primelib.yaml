@@ -1,8 +1,10 @@
+release: true
 modules:
   - name: pagerduty-events-v2
     dir: events-v2
     spec_url: https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/events-v2/openapiv3.json
     spec_file: openapi.json
+    spec_format: openapi
     spec_script: |
       jq '.info.title="PagerDuty Events V2"' "$1" | sponge "$1" # overwrite name
     config:
@@ -26,6 +28,7 @@ modules:
     dir: rest
     spec_url: https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/REST/openapiv3.json
     spec_file: openapi.json
+    spec_format: openapi
     spec_script: |
       jq '.info.title="PagerDuty REST"' "$1" | sponge "$1" # overwrite name
       jq 'walk(if type == "object" and .discriminator and .discriminator.mapping then del(.discriminator.mapping) else . end)' "$1" | sponge "$1" # remove any discriminator.mapping as the files are missing
