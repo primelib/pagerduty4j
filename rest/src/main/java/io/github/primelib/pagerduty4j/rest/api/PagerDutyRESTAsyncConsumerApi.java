@@ -830,7 +830,7 @@ public class PagerDutyRESTAsyncConsumerApi {
     /**
      * Start an Incident Workflow Instance
      * <p>
-     * Start an Instance of an Incident Workflow
+     * Start an Instance of an Incident Workflow. Sometimes referred to as "triggering a workflow on an incident."
      * An Incident Workflow is a sequence of configurable Steps and associated Triggers that can execute automated Actions for a given Incident.
      * Scoped OAuth requires: {@code incident_workflows:instances.write} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
