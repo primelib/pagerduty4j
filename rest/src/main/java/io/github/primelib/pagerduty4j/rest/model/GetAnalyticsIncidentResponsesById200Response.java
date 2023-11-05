@@ -44,7 +44,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class GetAnalyticsIncidentResponsesById200Response {
 
     /**
-     * The Incident ID passed in to the request.
+     * The Incident ID passed into the request.
      */
     @JsonProperty("incident_id")
     protected String incidentId;
@@ -89,7 +89,7 @@ public class GetAnalyticsIncidentResponsesById200Response {
      * Constructs a validated instance of {@link GetAnalyticsIncidentResponsesById200Response}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsIncidentResponsesById200Response(Consumer)} instead.
-     * @param incidentId The Incident ID passed in to the request.
+     * @param incidentId The Incident ID passed into the request.
      * @param limit Number of results to include in the batch.
      * @param order The order in which the results were sorted; asc for ascending, desc for descending.
      * @param orderBy The column that was used for ordering the results.

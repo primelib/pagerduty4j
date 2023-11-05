@@ -70,6 +70,12 @@ public class ListSchedulesOperationSpec {
     private String include;
 
     /**
+     * Time zone in which results will be rendered. This will default to the current user's time zone and then the account's time zone.
+     */
+    @Nullable 
+    private String timeZone;
+
+    /**
      * Constructs a validated instance of {@link ListSchedulesOperationSpec}.
      *
      * @param spec the specification to process
@@ -90,14 +96,16 @@ public class ListSchedulesOperationSpec {
      * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information. 
      * @param query                Filters the result, showing only the records whose name matches the query.
      * @param include              Array of additional details to include.
+     * @param timeZone             Time zone in which results will be rendered. This will default to the current user's time zone and then the account's time zone.
      */
     @ApiStatus.Internal
-    public ListSchedulesOperationSpec(Integer limit, Integer offset, Boolean total, String query, String include) {
+    public ListSchedulesOperationSpec(Integer limit, Integer offset, Boolean total, String query, String include, String timeZone) {
         this.limit = limit;
         this.offset = offset;
         this.total = total;
         this.query = query;
         this.include = include;
+        this.timeZone = timeZone;
 
         if (VALIDATION_ENABLED)
             validate();

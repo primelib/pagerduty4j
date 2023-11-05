@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * GetAnalyticsIncidentResponsesByIdRequest
+ * GetAnalyticsResponderIncidentsRequest
  *
  */
 @Getter
@@ -31,20 +31,32 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
-    "limit",
+    "filters",
+    "starting_after",
+    "ending_before",
     "order",
     "order_by",
+    "limit",
     "time_zone"
 })
-@JsonTypeName("getAnalyticsIncidentResponsesById_request")
+@JsonTypeName("getAnalyticsResponderIncidents_request")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class GetAnalyticsIncidentResponsesByIdRequest {
+public class GetAnalyticsResponderIncidentsRequest {
+
+    @JsonProperty("filters")
+    protected GetAnalyticsIncidentsRequestFilters filters;
 
     /**
-     * Number of results to include in each batch. Limits between 1 to 1000 are accepted.
+     * A cursor to indicate the reference point that the results should follow
      */
-    @JsonProperty("limit")
-    protected Integer limit;
+    @JsonProperty("starting_after")
+    protected String startingAfter;
+
+    /**
+     * A cursor to indicate the reference point that the results should precede
+     */
+    @JsonProperty("ending_before")
+    protected String endingBefore;
 
     /**
      * The order in which to display the results; asc for ascending, desc for descending. Defaults to {@code desc}.
@@ -53,10 +65,16 @@ public class GetAnalyticsIncidentResponsesByIdRequest {
     protected OrderEnum order;
 
     /**
-     * The column to use for ordering the results.
+     * The column to use for ordering the results. Defaults to {@code incident_created_at}.
      */
     @JsonProperty("order_by")
     protected OrderByEnum orderBy;
+
+    /**
+     * Number of results to include in each batch. Limits between 1 to 1000 are accepted.
+     */
+    @JsonProperty("limit")
+    protected Integer limit;
 
     /**
      * The time zone to use for the results.
@@ -65,28 +83,34 @@ public class GetAnalyticsIncidentResponsesByIdRequest {
     protected String timeZone;
 
     /**
-     * Constructs a validated instance of {@link GetAnalyticsIncidentResponsesByIdRequest}.
+     * Constructs a validated instance of {@link GetAnalyticsResponderIncidentsRequest}.
      *
      * @param spec the specification to process
      */
-    public GetAnalyticsIncidentResponsesByIdRequest(Consumer<GetAnalyticsIncidentResponsesByIdRequest> spec) {
+    public GetAnalyticsResponderIncidentsRequest(Consumer<GetAnalyticsResponderIncidentsRequest> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link GetAnalyticsIncidentResponsesByIdRequest}.
+     * Constructs a validated instance of {@link GetAnalyticsResponderIncidentsRequest}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsIncidentResponsesByIdRequest(Consumer)} instead.
-     * @param limit Number of results to include in each batch. Limits between 1 to 1000 are accepted.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsResponderIncidentsRequest(Consumer)} instead.
+     * @param filters filters
+     * @param startingAfter A cursor to indicate the reference point that the results should follow
+     * @param endingBefore A cursor to indicate the reference point that the results should precede
      * @param order The order in which to display the results; asc for ascending, desc for descending. Defaults to {@code desc}.
-     * @param orderBy The column to use for ordering the results.
+     * @param orderBy The column to use for ordering the results. Defaults to {@code incident_created_at}.
+     * @param limit Number of results to include in each batch. Limits between 1 to 1000 are accepted.
      * @param timeZone The time zone to use for the results.
      */
     @ApiStatus.Internal
-    public GetAnalyticsIncidentResponsesByIdRequest(Integer limit, OrderEnum order, OrderByEnum orderBy, String timeZone) {
-        this.limit = limit;
+    public GetAnalyticsResponderIncidentsRequest(GetAnalyticsIncidentsRequestFilters filters, String startingAfter, String endingBefore, OrderEnum order, OrderByEnum orderBy, Integer limit, String timeZone) {
+        this.filters = filters;
+        this.startingAfter = startingAfter;
+        this.endingBefore = endingBefore;
         this.order = order;
         this.orderBy = orderBy;
+        this.limit = limit;
         this.timeZone = timeZone;
     }
 
@@ -120,11 +144,11 @@ public class GetAnalyticsIncidentResponsesByIdRequest {
     }
 
     /**
-     * The column to use for ordering the results.
+     * The column to use for ordering the results. Defaults to {@code incident_created_at}.
      */
     @AllArgsConstructor
     public enum OrderByEnum {
-        REQUESTED_AT("requested_at");
+        INCIDENT_CREATED_AT("incident_created_at");
 
         private static final OrderByEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;

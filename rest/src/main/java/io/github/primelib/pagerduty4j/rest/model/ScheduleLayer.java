@@ -68,7 +68,7 @@ public class ScheduleLayer {
     protected List<ScheduleLayerUser> users;
 
     /**
-     * An array of restrictions for the layer. A restriction is a limit on which period of the day or week the schedule layer can accept assignments.
+     * An array of restrictions for the layer. A restriction is a limit on which period of the day or week the schedule layer can accept assignments. Restrictions respect the {@code time_zone} parameter of the request.
      */
     @JsonProperty("restrictions")
     protected List<Restriction> restrictions;
@@ -120,7 +120,7 @@ public class ScheduleLayer {
      * @param start The start time of this layer.
      * @param end The end time of this layer. If {@code null}, the layer does not end.
      * @param users The ordered list of users on this layer. The position of the user on the list determines their order in the layer.
-     * @param restrictions An array of restrictions for the layer. A restriction is a limit on which period of the day or week the schedule layer can accept assignments.
+     * @param restrictions An array of restrictions for the layer. A restriction is a limit on which period of the day or week the schedule layer can accept assignments. Restrictions respect the {@code time_zone} parameter of the request.
      * @param rotationVirtualStart The effective start time of the layer. This can be before the start time of the schedule.
      * @param rotationTurnLengthSeconds The duration of each on-call shift in seconds.
      * @param name The name of the schedule layer.

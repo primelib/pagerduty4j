@@ -1,6 +1,5 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
-import java.util.List;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
@@ -14,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * AnalyticsModel
+ * GetAnalyticsMetricsIncidentsEscalationPolicy200Response
  *
  */
 @Getter
@@ -36,11 +36,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "time_zone",
     "order",
     "order_by",
-    "aggregate_unit"
+    "aggregate_unit",
+    "data"
 })
-@JsonTypeName("AnalyticsModel")
+@JsonTypeName("getAnalyticsMetricsIncidentsEscalationPolicy_200_response")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class AnalyticsModel {
+public class GetAnalyticsMetricsIncidentsEscalationPolicy200Response {
 
     @JsonProperty("filters")
     protected AnalyticsModelFilters filters;
@@ -70,32 +71,37 @@ public class AnalyticsModel {
     @JsonProperty("aggregate_unit")
     protected AggregateUnitEnum aggregateUnit;
 
+    @JsonProperty("data")
+    protected List<AnalyticsIncidentMetricsEscalationPolicy> data;
+
     /**
-     * Constructs a validated instance of {@link AnalyticsModel}.
+     * Constructs a validated instance of {@link GetAnalyticsMetricsIncidentsEscalationPolicy200Response}.
      *
      * @param spec the specification to process
      */
-    public AnalyticsModel(Consumer<AnalyticsModel> spec) {
+    public GetAnalyticsMetricsIncidentsEscalationPolicy200Response(Consumer<GetAnalyticsMetricsIncidentsEscalationPolicy200Response> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link AnalyticsModel}.
+     * Constructs a validated instance of {@link GetAnalyticsMetricsIncidentsEscalationPolicy200Response}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsModel(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsMetricsIncidentsEscalationPolicy200Response(Consumer)} instead.
      * @param filters filters
      * @param timeZone The time zone to use for the results and grouping. Must be in tzdata format. See list of accepted values [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
      * @param order The order in which the results were sorted; asc for ascending, desc for descending.
      * @param orderBy The column that was used for ordering the results.
      * @param aggregateUnit The time unit to aggregate metrics by.  If no value is provided, the metrics will be aggregated for the entire period.
+     * @param data data
      */
     @ApiStatus.Internal
-    public AnalyticsModel(AnalyticsModelFilters filters, String timeZone, OrderEnum order, String orderBy, AggregateUnitEnum aggregateUnit) {
+    public GetAnalyticsMetricsIncidentsEscalationPolicy200Response(AnalyticsModelFilters filters, String timeZone, OrderEnum order, String orderBy, AggregateUnitEnum aggregateUnit, List<AnalyticsIncidentMetricsEscalationPolicy> data) {
         this.filters = filters;
         this.timeZone = timeZone;
         this.order = order;
         this.orderBy = orderBy;
         this.aggregateUnit = aggregateUnit;
+        this.data = data;
     }
 
     /**

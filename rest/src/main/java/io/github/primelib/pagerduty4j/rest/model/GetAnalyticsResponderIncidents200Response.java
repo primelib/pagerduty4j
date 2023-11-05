@@ -1,6 +1,5 @@
 package io.github.primelib.pagerduty4j.rest.model;
 
-import java.util.List;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.ApiStatus;
 import javax.annotation.processing.Generated;
@@ -14,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * AnalyticsModel
+ * GetAnalyticsResponderIncidents200Response
  *
  */
 @Getter
@@ -32,24 +32,43 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
-    "filters",
-    "time_zone",
+    "first",
+    "last",
+    "responder_id",
+    "limit",
     "order",
     "order_by",
-    "aggregate_unit"
+    "time_zone",
+    "filters",
+    "data"
 })
-@JsonTypeName("AnalyticsModel")
+@JsonTypeName("getAnalyticsResponderIncidents_200_response")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class AnalyticsModel {
-
-    @JsonProperty("filters")
-    protected AnalyticsModelFilters filters;
+public class GetAnalyticsResponderIncidents200Response {
 
     /**
-     * The time zone to use for the results and grouping. Must be in tzdata format. See list of accepted values [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+     * Cursor to identify the first object in the response.
      */
-    @JsonProperty("time_zone")
-    protected String timeZone;
+    @JsonProperty("first")
+    protected String first;
+
+    /**
+     * Cursor to identify the last object in the response.
+     */
+    @JsonProperty("last")
+    protected String last;
+
+    /**
+     * The Responder ID passed into the request.
+     */
+    @JsonProperty("responder_id")
+    protected String responderId;
+
+    /**
+     * Number of results to include in the batch.
+     */
+    @JsonProperty("limit")
+    protected Integer limit;
 
     /**
      * The order in which the results were sorted; asc for ascending, desc for descending.
@@ -61,41 +80,54 @@ public class AnalyticsModel {
      * The column that was used for ordering the results.
      */
     @JsonProperty("order_by")
-    protected String orderBy;
+    protected OrderByEnum orderBy;
 
     /**
-     * The time unit to aggregate metrics by.
-     * If no value is provided, the metrics will be aggregated for the entire period.
+     * The time zone that the results are in.
      */
-    @JsonProperty("aggregate_unit")
-    protected AggregateUnitEnum aggregateUnit;
+    @JsonProperty("time_zone")
+    protected String timeZone;
+
+    @JsonProperty("filters")
+    protected GetAnalyticsIncidents200ResponseFilters filters;
+
+    @JsonProperty("data")
+    protected List<AnalyticsRawResponderIncidents> data;
 
     /**
-     * Constructs a validated instance of {@link AnalyticsModel}.
+     * Constructs a validated instance of {@link GetAnalyticsResponderIncidents200Response}.
      *
      * @param spec the specification to process
      */
-    public AnalyticsModel(Consumer<AnalyticsModel> spec) {
+    public GetAnalyticsResponderIncidents200Response(Consumer<GetAnalyticsResponderIncidents200Response> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link AnalyticsModel}.
+     * Constructs a validated instance of {@link GetAnalyticsResponderIncidents200Response}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsModel(Consumer)} instead.
-     * @param filters filters
-     * @param timeZone The time zone to use for the results and grouping. Must be in tzdata format. See list of accepted values [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetAnalyticsResponderIncidents200Response(Consumer)} instead.
+     * @param first Cursor to identify the first object in the response.
+     * @param last Cursor to identify the last object in the response.
+     * @param responderId The Responder ID passed into the request.
+     * @param limit Number of results to include in the batch.
      * @param order The order in which the results were sorted; asc for ascending, desc for descending.
      * @param orderBy The column that was used for ordering the results.
-     * @param aggregateUnit The time unit to aggregate metrics by.  If no value is provided, the metrics will be aggregated for the entire period.
+     * @param timeZone The time zone that the results are in.
+     * @param filters filters
+     * @param data data
      */
     @ApiStatus.Internal
-    public AnalyticsModel(AnalyticsModelFilters filters, String timeZone, OrderEnum order, String orderBy, AggregateUnitEnum aggregateUnit) {
-        this.filters = filters;
-        this.timeZone = timeZone;
+    public GetAnalyticsResponderIncidents200Response(String first, String last, String responderId, Integer limit, OrderEnum order, OrderByEnum orderBy, String timeZone, GetAnalyticsIncidents200ResponseFilters filters, List<AnalyticsRawResponderIncidents> data) {
+        this.first = first;
+        this.last = last;
+        this.responderId = responderId;
+        this.limit = limit;
         this.order = order;
         this.orderBy = orderBy;
-        this.aggregateUnit = aggregateUnit;
+        this.timeZone = timeZone;
+        this.filters = filters;
+        this.data = data;
     }
 
     /**
@@ -128,22 +160,19 @@ public class AnalyticsModel {
     }
 
     /**
-     * The time unit to aggregate metrics by.
-     * If no value is provided, the metrics will be aggregated for the entire period.
+     * The column that was used for ordering the results.
      */
     @AllArgsConstructor
-    public enum AggregateUnitEnum {
-        DAY("day"),
-        WEEK("week"),
-        MONTH("month");
+    public enum OrderByEnum {
+        INCIDENT_CREATED_AT("incident_created_at");
 
-        private static final AggregateUnitEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
+        private static final OrderByEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
 
         @JsonCreator
-        public static AggregateUnitEnum of(String input) {
+        public static OrderByEnum of(String input) {
             if (input != null) {
-                for (AggregateUnitEnum v : VALUES) {
+                for (OrderByEnum v : VALUES) {
                     if (input.equalsIgnoreCase(v.value)) 
                         return v;
                 }
