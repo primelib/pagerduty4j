@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * AnalyticsIncidentMetrics
+ * AnalyticsIncidentMetricsEscalationPolicy
  *
  */
 @Getter
@@ -29,6 +29,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
+    "distinct_responder_count",
+    "escalation_policy_id",
+    "escalation_policy_name",
     "mean_assignment_count",
     "mean_engaged_seconds",
     "mean_engaged_user_count",
@@ -37,8 +40,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "mean_seconds_to_mobilize",
     "mean_seconds_to_resolve",
     "range_start",
-    "service_id",
-    "service_name",
     "team_id",
     "team_name",
     "total_business_hour_interruptions",
@@ -57,9 +58,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "total_snoozed_seconds",
     "up_time_pct"
 })
-@JsonTypeName("AnalyticsIncidentMetrics")
+@JsonTypeName("AnalyticsIncidentMetricsEscalationPolicy")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class AnalyticsIncidentMetrics {
+public class AnalyticsIncidentMetricsEscalationPolicy {
+
+    /**
+     * Distinct count of responders who engaged in incidents on the escalation policy
+     */
+    @JsonProperty("distinct_responder_count")
+    protected Integer distinctResponderCount;
+
+    /**
+     * ID of the escalation policy the incident was occurred on. Not included when aggregating by all.
+     */
+    @JsonProperty("escalation_policy_id")
+    protected String escalationPolicyId;
+
+    /**
+     * Name of the escalation policy the incident was occurred on. Not included when aggregating by all.
+     */
+    @JsonProperty("escalation_policy_name")
+    protected String escalationPolicyName;
 
     /**
      * Mean count of instances where responders were assigned an incident (including through reassignment or escalation) or accepted a responder request.
@@ -104,31 +123,19 @@ public class AnalyticsIncidentMetrics {
     protected Integer meanSecondsToResolve;
 
     /**
-     * Start of the date range for which the metrics were calculated. Only included when an aggregate unit is specified in the request.
+     * Start of the date range that the metrics were calculated for. Only included when an aggregate unit is specified in the request.
      */
     @JsonProperty("range_start")
     protected String rangeStart;
 
     /**
-     * ID of the service. Only included when aggregating by service. Not included when aggregating by all.
-     */
-    @JsonProperty("service_id")
-    protected String serviceId;
-
-    /**
-     * Name of the service. Only included when aggregating by service. Not included when aggregating by all.
-     */
-    @JsonProperty("service_name")
-    protected String serviceName;
-
-    /**
-     * ID of the team to which the incident was assigned. Not included when aggregating by all.
+     * ID of the team the incident was assigned to. Not included when aggregating by all.
      */
     @JsonProperty("team_id")
     protected String teamId;
 
     /**
-     * Name of the team to which the incident was assigned. Not included when aggregating by all.
+     * Name of the team the incident was assigned to. Not included when aggregating by all.
      */
     @JsonProperty("team_name")
     protected String teamName;
@@ -208,7 +215,7 @@ public class AnalyticsIncidentMetrics {
     protected Integer totalOffHourInterruptions;
 
     /**
-     * Total number of unique interruptions during sleep hours. Sleep hours: 10pm-8am every day, based on the user’s time zone.
+     * Total number of unique interruptions during sleep hours; 10pm-8am every day, based on the user’s time zone.
      */
     @JsonProperty("total_sleep_hour_interruptions")
     protected Integer totalSleepHourInterruptions;
@@ -220,24 +227,27 @@ public class AnalyticsIncidentMetrics {
     protected Integer totalSnoozedSeconds;
 
     /**
-     * The percentage of time in the defined date range that the service was not interrupted by a [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents). Only included when aggregating by team, escalation policy, service, or all services.
+     * The percentage of time in the defined date range that the service was not interrupted by a [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents). Not included when aggregating by all.
      */
     @JsonProperty("up_time_pct")
     protected BigDecimal upTimePct;
 
     /**
-     * Constructs a validated instance of {@link AnalyticsIncidentMetrics}.
+     * Constructs a validated instance of {@link AnalyticsIncidentMetricsEscalationPolicy}.
      *
      * @param spec the specification to process
      */
-    public AnalyticsIncidentMetrics(Consumer<AnalyticsIncidentMetrics> spec) {
+    public AnalyticsIncidentMetricsEscalationPolicy(Consumer<AnalyticsIncidentMetricsEscalationPolicy> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link AnalyticsIncidentMetrics}.
+     * Constructs a validated instance of {@link AnalyticsIncidentMetricsEscalationPolicy}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsIncidentMetrics(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AnalyticsIncidentMetricsEscalationPolicy(Consumer)} instead.
+     * @param distinctResponderCount Distinct count of responders who engaged in incidents on the escalation policy
+     * @param escalationPolicyId ID of the escalation policy the incident was occurred on. Not included when aggregating by all.
+     * @param escalationPolicyName Name of the escalation policy the incident was occurred on. Not included when aggregating by all.
      * @param meanAssignmentCount Mean count of instances where responders were assigned an incident (including through reassignment or escalation) or accepted a responder request.
      * @param meanEngagedSeconds Mean engaged time across all responders for incidents that match the given filters. Engaged time is measured from the time a user engages with an incident (by acknowledging or accepting a responder request) until the incident is resolved. This may include periods in which the incidents were snoozed.
      * @param meanEngagedUserCount Mean number of users who engaged with an incident. *Engaged* is defined as acknowledging an incident or accepting a responder request in it.
@@ -245,11 +255,9 @@ public class AnalyticsIncidentMetrics {
      * @param meanSecondsToFirstAck Mean time between the start of an incident, and the first responder to acknowledge.
      * @param meanSecondsToMobilize Mean time between the start of an incident, and the last additional responder to acknowledge. For incidents with one or no engaged users, this value is null.
      * @param meanSecondsToResolve Mean time from when an incident was triggered until it was resolved.
-     * @param rangeStart Start of the date range for which the metrics were calculated. Only included when an aggregate unit is specified in the request.
-     * @param serviceId ID of the service. Only included when aggregating by service. Not included when aggregating by all.
-     * @param serviceName Name of the service. Only included when aggregating by service. Not included when aggregating by all.
-     * @param teamId ID of the team to which the incident was assigned. Not included when aggregating by all.
-     * @param teamName Name of the team to which the incident was assigned. Not included when aggregating by all.
+     * @param rangeStart Start of the date range that the metrics were calculated for. Only included when an aggregate unit is specified in the request.
+     * @param teamId ID of the team the incident was assigned to. Not included when aggregating by all.
+     * @param teamName Name of the team the incident was assigned to. Not included when aggregating by all.
      * @param totalBusinessHourInterruptions Total number of unique interruptions during business hours; 8am-6pm Mon-Fri, based on the user’s time zone.
      * @param totalEngagedSeconds Total engaged time across all responders for incidents. Engaged time is measured from the time a user engages with an incident (by acknowledging or accepting a responder request) until the incident is resolved. This may include periods in which the incidents were snoozed.
      * @param totalEscalationCount Total count of instances where an incident is escalated between responders assigned to an escalation policy.
@@ -262,12 +270,15 @@ public class AnalyticsIncidentMetrics {
      * @param totalInterruptions Total number of unique interruptions.
      * @param totalNotifications The total count of incident notifications sent via email, SMS, phone call and push.
      * @param totalOffHourInterruptions Total number of unique interruptions during off hours; 6pm-10pm Mon-Fri and all day Sat-Sun, based on the user’s time zone.
-     * @param totalSleepHourInterruptions Total number of unique interruptions during sleep hours. Sleep hours: 10pm-8am every day, based on the user’s time zone.
+     * @param totalSleepHourInterruptions Total number of unique interruptions during sleep hours; 10pm-8am every day, based on the user’s time zone.
      * @param totalSnoozedSeconds Total number of seconds incidents were snoozed.
-     * @param upTimePct The percentage of time in the defined date range that the service was not interrupted by a [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents). Only included when aggregating by team, escalation policy, service, or all services.
+     * @param upTimePct The percentage of time in the defined date range that the service was not interrupted by a [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents). Not included when aggregating by all.
      */
     @ApiStatus.Internal
-    public AnalyticsIncidentMetrics(Integer meanAssignmentCount, Integer meanEngagedSeconds, Integer meanEngagedUserCount, Integer meanSecondsToEngage, Integer meanSecondsToFirstAck, Integer meanSecondsToMobilize, Integer meanSecondsToResolve, String rangeStart, String serviceId, String serviceName, String teamId, String teamName, Integer totalBusinessHourInterruptions, Integer totalEngagedSeconds, Integer totalEscalationCount, Integer totalIncidentCount, Integer totalIncidentsAcknowledged, Object totalIncidentsAutoResolved, Integer totalIncidentsManualEscalated, Integer totalIncidentsReassigned, Integer totalIncidentsTimeoutEscalated, Integer totalInterruptions, Integer totalNotifications, Integer totalOffHourInterruptions, Integer totalSleepHourInterruptions, Integer totalSnoozedSeconds, BigDecimal upTimePct) {
+    public AnalyticsIncidentMetricsEscalationPolicy(Integer distinctResponderCount, String escalationPolicyId, String escalationPolicyName, Integer meanAssignmentCount, Integer meanEngagedSeconds, Integer meanEngagedUserCount, Integer meanSecondsToEngage, Integer meanSecondsToFirstAck, Integer meanSecondsToMobilize, Integer meanSecondsToResolve, String rangeStart, String teamId, String teamName, Integer totalBusinessHourInterruptions, Integer totalEngagedSeconds, Integer totalEscalationCount, Integer totalIncidentCount, Integer totalIncidentsAcknowledged, Object totalIncidentsAutoResolved, Integer totalIncidentsManualEscalated, Integer totalIncidentsReassigned, Integer totalIncidentsTimeoutEscalated, Integer totalInterruptions, Integer totalNotifications, Integer totalOffHourInterruptions, Integer totalSleepHourInterruptions, Integer totalSnoozedSeconds, BigDecimal upTimePct) {
+        this.distinctResponderCount = distinctResponderCount;
+        this.escalationPolicyId = escalationPolicyId;
+        this.escalationPolicyName = escalationPolicyName;
         this.meanAssignmentCount = meanAssignmentCount;
         this.meanEngagedSeconds = meanEngagedSeconds;
         this.meanEngagedUserCount = meanEngagedUserCount;
@@ -276,8 +287,6 @@ public class AnalyticsIncidentMetrics {
         this.meanSecondsToMobilize = meanSecondsToMobilize;
         this.meanSecondsToResolve = meanSecondsToResolve;
         this.rangeStart = rangeStart;
-        this.serviceId = serviceId;
-        this.serviceName = serviceName;
         this.teamId = teamId;
         this.teamName = teamName;
         this.totalBusinessHourInterruptions = totalBusinessHourInterruptions;

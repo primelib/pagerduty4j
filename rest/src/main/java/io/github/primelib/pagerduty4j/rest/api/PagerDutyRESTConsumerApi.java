@@ -48,6 +48,9 @@ import io.github.primelib.pagerduty4j.rest.model.GetAllAutomationActions200Respo
 import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsIncidentResponsesById200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsIncidents200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsMetricsIncidentsAll200Response;
+import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsMetricsIncidentsEscalationPolicy200Response;
+import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsMetricsRespondersAll200Response;
+import io.github.primelib.pagerduty4j.rest.model.GetAnalyticsResponderIncidents200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetAutomationActionsActionServiceAssociation200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetAutomationActionsActionServiceAssociations200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetAutomationActionsActionTeamAssociation200Response;
@@ -253,8 +256,15 @@ import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsIncidentResponsesByI
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsIncidentsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsIncidentsByIdOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsAllOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsEscalationPolicyOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsEscalationPolicyAllOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsServiceOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsServiceAllOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsTeamOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsIncidentsTeamAllOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsRespondersAllOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsMetricsRespondersTeamOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsResponderIncidentsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAutomationActionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAutomationActionsActionServiceAssociationOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAutomationActionsActionServiceAssociationsOperationSpec;
@@ -2000,7 +2010,8 @@ public class PagerDutyRESTConsumerApi {
      * Get raw responses from a single incident
      * <p>
      * Provides enriched responder data for a single incident.
-     * Example metrics include Time to Respond, Responder Type, and Response Status. See metric definitions below. &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incident responses appear in the Analytics API. Scoped OAuth requires: {@code analytics.read} 
+     * Example metrics include Time to Respond, Responder Type, and Response Status. See metric definitions below.
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incident responses appear in the Analytics API. Scoped OAuth requires: {@code analytics.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
      *   <li>id: The ID of the resource.</li>
@@ -2016,8 +2027,8 @@ public class PagerDutyRESTConsumerApi {
      * Get raw data - multiple incidents
      * <p>
      * Provides enriched incident data and metrics for multiple incidents.
-     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics).
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#incidents-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: {@code analytics.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
@@ -2033,8 +2044,8 @@ public class PagerDutyRESTConsumerApi {
      * Get raw data - single incident
      * <p>
      * Provides enriched incident data and metrics for a single incident.
-     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics).
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#incidents-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: {@code analytics.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
@@ -2051,7 +2062,7 @@ public class PagerDutyRESTConsumerApi {
      * <p>
      * Provides aggregated enriched metrics for incidents.
      * The provided metrics are aggregated by day, week, month using the aggregate_unit parameter, or for the entire period if no aggregate_unit is provided.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: {@code analytics.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
@@ -2064,12 +2075,46 @@ public class PagerDutyRESTConsumerApi {
     }
 
     /**
+     * Get aggregated escalation policy data
+     * <p>
+     * Provides aggregated metrics for incidents aggregated into units of time by escalation policy.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#escalation-policy-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>analyticsModel: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsMetricsIncidentsEscalationPolicy200Response getAnalyticsMetricsIncidentsEscalationPolicy(Consumer<GetAnalyticsMetricsIncidentsEscalationPolicyOperationSpec> spec) {
+        GetAnalyticsMetricsIncidentsEscalationPolicyOperationSpec r = new GetAnalyticsMetricsIncidentsEscalationPolicyOperationSpec(spec);
+        return api.getAnalyticsMetricsIncidentsEscalationPolicy(r.analyticsModel());
+    }
+
+    /**
+     * Get aggregated metrics for all escalation policies
+     * <p>
+     * Provides aggregated metrics across all escalation policies.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#escalation-policy-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>analyticsModel: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsMetricsIncidentsEscalationPolicy200Response getAnalyticsMetricsIncidentsEscalationPolicyAll(Consumer<GetAnalyticsMetricsIncidentsEscalationPolicyAllOperationSpec> spec) {
+        GetAnalyticsMetricsIncidentsEscalationPolicyAllOperationSpec r = new GetAnalyticsMetricsIncidentsEscalationPolicyAllOperationSpec(spec);
+        return api.getAnalyticsMetricsIncidentsEscalationPolicyAll(r.analyticsModel());
+    }
+
+    /**
      * Get aggregated service data
      * <p>
      * Provides aggregated metrics for incidents aggregated into units of time by service.
-     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics). Data can be aggregated by day, week or month in addition to by service, or provided just as a collection of aggregates for each service in the dataset for the entire period.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#services-list). Data can be aggregated by day, week or month in addition to by service, or provided just as a collection of aggregates for each service in the dataset for the entire period.
      * If a unit is provided, each row in the returned dataset will include a 'range_start' timestamp.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: {@code analytics.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
@@ -2082,12 +2127,29 @@ public class PagerDutyRESTConsumerApi {
     }
 
     /**
+     * Get aggregated metrics for all services
+     * <p>
+     * Provides aggregated metrics across all services.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#services-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>analyticsModel: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsServiceAll(Consumer<GetAnalyticsMetricsIncidentsServiceAllOperationSpec> spec) {
+        GetAnalyticsMetricsIncidentsServiceAllOperationSpec r = new GetAnalyticsMetricsIncidentsServiceAllOperationSpec(spec);
+        return api.getAnalyticsMetricsIncidentsServiceAll(r.analyticsModel());
+    }
+
+    /**
      * Get aggregated team data
      * <p>
      * Provides aggregated metrics for incidents aggregated into units of time by team.
-     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Some metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/pagerduty-analytics). Data can be aggregated by day, week or month in addition to by team, or provided just as a collection of aggregates for each team in the dataset for the entire period.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#teams-list). Data can be aggregated by day, week or month in addition to by team, or provided just as a collection of aggregates for each team in the dataset for the entire period.
      * If a unit is provided, each row in the returned dataset will include a 'range_start' timestamp.
-     * &amp;lt;!-- theme: warning --&amp;gt; &amp;gt; ### Early Access &amp;gt; This endpoint is in Early Access and may change at any time. You must pass in the X-EARLY-ACCESS header to access it. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
      * Scoped OAuth requires: {@code analytics.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
@@ -2097,6 +2159,75 @@ public class PagerDutyRESTConsumerApi {
     public GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsTeam(Consumer<GetAnalyticsMetricsIncidentsTeamOperationSpec> spec) {
         GetAnalyticsMetricsIncidentsTeamOperationSpec r = new GetAnalyticsMetricsIncidentsTeamOperationSpec(spec);
         return api.getAnalyticsMetricsIncidentsTeam(r.analyticsModel());
+    }
+
+    /**
+     * Get aggregated metrics for all teams
+     * <p>
+     * Provides aggregated metrics across all teams.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#teams-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; A {@code team_ids} or {@code service_ids} filter is required for [user-level API keys](https://support.pagerduty.com/docs/using-the-api#section-generating-a-personal-rest-api-key) or keys generated through an OAuth flow. Account-level API keys do not have this requirement. &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>analyticsModel: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsMetricsIncidentsAll200Response getAnalyticsMetricsIncidentsTeamAll(Consumer<GetAnalyticsMetricsIncidentsTeamAllOperationSpec> spec) {
+        GetAnalyticsMetricsIncidentsTeamAllOperationSpec r = new GetAnalyticsMetricsIncidentsTeamAllOperationSpec(spec);
+        return api.getAnalyticsMetricsIncidentsTeamAll(r.analyticsModel());
+    }
+
+    /**
+     * Get aggregated metrics for all responders
+     * <p>
+     * Provides aggregated incident metrics for all selected responders.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#responders-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>analyticsResponderFilter: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsMetricsRespondersAll200Response getAnalyticsMetricsRespondersAll(Consumer<GetAnalyticsMetricsRespondersAllOperationSpec> spec) {
+        GetAnalyticsMetricsRespondersAllOperationSpec r = new GetAnalyticsMetricsRespondersAllOperationSpec(spec);
+        return api.getAnalyticsMetricsRespondersAll(r.analyticsResponderFilter());
+    }
+
+    /**
+     * Get responder data aggregated by team
+     * <p>
+     * Provides incident metrics aggregated by responder.
+     * Example metrics include Seconds to Resolve, Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#responders-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>analyticsResponderFilter: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsMetricsRespondersAll200Response getAnalyticsMetricsRespondersTeam(Consumer<GetAnalyticsMetricsRespondersTeamOperationSpec> spec) {
+        GetAnalyticsMetricsRespondersTeamOperationSpec r = new GetAnalyticsMetricsRespondersTeamOperationSpec(spec);
+        return api.getAnalyticsMetricsRespondersTeam(r.analyticsResponderFilter());
+    }
+
+    /**
+     * Get raw incidents for a single responder_id
+     * <p>
+     * Provides enriched incident data and metrics for a specific responder.
+     * Example metrics include Mean Seconds to Resolve, Mean Seconds to Engage, Snoozed Seconds, and Sleep Hour Interruptions. Metric definitions can be found in our [Knowledge Base](https://support.pagerduty.com/docs/insights#incidents-list).
+     * &amp;lt;!-- theme: info --&amp;gt; &amp;gt; **Note:** Analytics data is updated once per day. It takes up to 24 hours before new incidents appear in the Analytics API.
+     * Scoped OAuth requires: {@code analytics.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>responderId: The ID of the responder.</li>
+     *   <li>getAnalyticsResponderIncidentsRequest: Parameters and filters to apply to the dataset.</li>
+     * </ul>
+     */
+    public GetAnalyticsResponderIncidents200Response getAnalyticsResponderIncidents(Consumer<GetAnalyticsResponderIncidentsOperationSpec> spec) {
+        GetAnalyticsResponderIncidentsOperationSpec r = new GetAnalyticsResponderIncidentsOperationSpec(spec);
+        return api.getAnalyticsResponderIncidents(r.responderId(), r.getAnalyticsResponderIncidentsRequest());
     }
 
     /**
@@ -2918,11 +3049,11 @@ public class PagerDutyRESTConsumerApi {
     /**
      * Get a schedule
      * <p>
-     * Show detailed information about a schedule, including entries for each layer and sub-schedule. Scoped OAuth requires: {@code schedules.read} 
+     * Show detailed information about a schedule, including entries for each layer. Scoped OAuth requires: {@code schedules.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
      *   <li>id: The ID of the resource.</li>
-     *   <li>timeZone: Time zone in which results will be rendered. This will default to the account time zone.</li>
+     *   <li>timeZone: Time zone in which results will be rendered. This will default to the schedule's time zone.</li>
      *   <li>since: The start of the date range over which you want to show schedule entries. Defaults to 2 weeks before until if an until is given.</li>
      *   <li>until: The end of the date range over which you want to show schedule entries. Defaults to 2 weeks after since if a since is given.</li>
      * </ul>
@@ -4148,7 +4279,7 @@ public class PagerDutyRESTConsumerApi {
      * <p>
      * List the on-call schedules.
      * A Schedule determines the time periods that users are On-Call.
-     * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
+     *  For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#schedules)
      * Scoped OAuth requires: {@code schedules.read} 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
@@ -4157,11 +4288,12 @@ public class PagerDutyRESTConsumerApi {
      *   <li>total: By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information. </li>
      *   <li>query: Filters the result, showing only the records whose name matches the query.</li>
      *   <li>include: Array of additional details to include.</li>
+     *   <li>timeZone: Time zone in which results will be rendered. This will default to the current user's time zone and then the account's time zone.</li>
      * </ul>
      */
     public ListSchedules200Response listSchedules(Consumer<ListSchedulesOperationSpec> spec) {
         ListSchedulesOperationSpec r = new ListSchedulesOperationSpec(spec);
-        return api.listSchedules(r.limit(), r.offset(), r.total(), r.query(), r.include());
+        return api.listSchedules(r.limit(), r.offset(), r.total(), r.query(), r.include(), r.timeZone());
     }
 
     /**

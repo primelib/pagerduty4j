@@ -47,7 +47,7 @@ public class GetScheduleOperationSpec {
     private String id;
 
     /**
-     * Time zone in which results will be rendered. This will default to the account time zone.
+     * Time zone in which results will be rendered. This will default to the schedule's time zone.
      */
     @Nullable 
     private String timeZone;
@@ -81,7 +81,7 @@ public class GetScheduleOperationSpec {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the operation is updated.
      * @param id                   The ID of the resource.
-     * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone.
+     * @param timeZone             Time zone in which results will be rendered. This will default to the schedule's time zone.
      * @param since                The start of the date range over which you want to show schedule entries. Defaults to 2 weeks before until if an until is given.
      * @param until                The end of the date range over which you want to show schedule entries. Defaults to 2 weeks after since if a since is given.
      */

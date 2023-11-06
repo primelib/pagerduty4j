@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "responded_at",
     "time_to_respond_seconds"
 })
-@JsonTypeName("Analytics_Raw_Incident_Responses")
+@JsonTypeName("AnalyticsRawIncidentResponses")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
 public class AnalyticsRawIncidentResponses {
 
