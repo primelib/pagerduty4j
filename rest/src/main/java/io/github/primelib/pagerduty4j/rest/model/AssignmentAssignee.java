@@ -211,9 +211,6 @@ public class AssignmentAssignee {
     @AllArgsConstructor
     public enum TypeEnum {
         USER_REFERENCE("user_reference"),
-        ESCALATION_POLICY_REFERENCE("escalation_policy_reference"),
-        TEAM_REFERENCE("team_reference"),
-        TEAM("team"),
         USER("user");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()

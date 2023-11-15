@@ -71,7 +71,7 @@ public class AlertGroupingParametersConfig {
      * The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match
      */
     @JsonProperty("fields")
-    protected List fields;
+    protected List<String> fields;
 
     /**
      * Constructs a validated instance of {@link AlertGroupingParametersConfig}.
@@ -93,7 +93,7 @@ public class AlertGroupingParametersConfig {
      * @param fields The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match
      */
     @ApiStatus.Internal
-    public AlertGroupingParametersConfig(Integer timeWindow, Integer recommendedTimeWindow, Integer timeout, AggregateEnum aggregate, List fields) {
+    public AlertGroupingParametersConfig(Integer timeWindow, Integer recommendedTimeWindow, Integer timeout, AggregateEnum aggregate, List<String> fields) {
         this.timeWindow = timeWindow;
         this.recommendedTimeWindow = recommendedTimeWindow;
         this.timeout = timeout;
