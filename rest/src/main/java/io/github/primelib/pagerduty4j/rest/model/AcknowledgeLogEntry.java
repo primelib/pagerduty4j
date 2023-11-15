@@ -172,21 +172,7 @@ public class AcknowledgeLogEntry {
 
     @AllArgsConstructor
     public enum TypeEnum {
-        ACKNOWLEDGEMENT_LOG_ENTRY("acknowledgement_log_entry"),
-        ANNOTATE_LOG_ENTRY("annotate_log_entry"),
-        ASSIGN_LOG_ENTRY("assign_log_entry"),
-        DELEGATE_LOG_ENTRY("delegate_log_entry"),
-        ESCALATE_LOG_ENTRY("escalate_log_entry"),
-        EXHAUST_ESCALATION_PATH_LOG_ENTRY("exhaust_escalation_path_log_entry"),
-        NOTIFY_LOG_ENTRY("notify_log_entry"),
-        REACH_ACK_LIMIT_LOG_ENTRY("reach_ack_limit_log_entry"),
-        REACH_TRIGGER_LIMIT_LOG_ENTRY("reach_trigger_limit_log_entry"),
-        REPEAT_ESCALATION_PATH_LOG_ENTRY("repeat_escalation_path_log_entry"),
-        RESOLVE_LOG_ENTRY("resolve_log_entry"),
-        SNOOZE_LOG_ENTRY("snooze_log_entry"),
-        TRIGGER_LOG_ENTRY("trigger_log_entry"),
-        UNACKNOWLEDGE_LOG_ENTRY("unacknowledge_log_entry"),
-        URGENCY_CHANGE_LOG_ENTRY("urgency_change_log_entry");
+        ACKNOWLEDGEMENT_LOG_ENTRY("acknowledgement_log_entry");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;

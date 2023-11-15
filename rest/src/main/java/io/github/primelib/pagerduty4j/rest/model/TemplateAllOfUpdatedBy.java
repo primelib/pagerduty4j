@@ -95,8 +95,7 @@ public class TemplateAllOfUpdatedBy {
 
     @AllArgsConstructor
     public enum TypeEnum {
-        USER_REFERENCE("user_reference"),
-        ESCALATION_POLICY_REFERENCE("escalation_policy_reference");
+        USER_REFERENCE("user_reference");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
