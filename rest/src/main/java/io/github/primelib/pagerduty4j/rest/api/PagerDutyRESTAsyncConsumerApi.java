@@ -3057,11 +3057,12 @@ public class PagerDutyRESTAsyncConsumerApi {
      *   <li>timeZone: Time zone in which results will be rendered. This will default to the schedule's time zone.</li>
      *   <li>since: The start of the date range over which you want to show schedule entries. Defaults to 2 weeks before until if an until is given.</li>
      *   <li>until: The end of the date range over which you want to show schedule entries. Defaults to 2 weeks after since if a since is given.</li>
+     *   <li>overflow: Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:   - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}. </li>
      * </ul>
      */
     public CompletableFuture<CreateScheduleRequest> getSchedule(Consumer<GetScheduleOperationSpec> spec) {
         GetScheduleOperationSpec r = new GetScheduleOperationSpec(spec);
-        return api.getSchedule(r.id(), r.timeZone(), r.since(), r.until());
+        return api.getSchedule(r.id(), r.timeZone(), r.since(), r.until(), r.overflow());
     }
 
     /**

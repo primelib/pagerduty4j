@@ -2837,13 +2837,14 @@ public interface PagerDutyRESTAsyncApi {
      * @param timeZone             Time zone in which results will be rendered. This will default to the schedule's time zone. (optional)
      * @param since                The start of the date range over which you want to show schedule entries. Defaults to 2 weeks before until if an until is given. (optional)
      * @param until                The end of the date range over which you want to show schedule entries. Defaults to 2 weeks after since if a since is given. (optional)
+     * @param overflow             Any on-call schedule entries that pass the date range bounds will be truncated at the bounds, unless the parameter {@code overflow=true} is passed. This parameter defaults to false. For instance, if your schedule is a rotation that changes daily at midnight UTC, and your date range is from {@code 2011-06-01T10:00:00Z} to {@code 2011-06-01T14:00:00Z}:   - If you don't pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T10:00:00Z} and end of {@code 2011-06-01T14:00:00Z}. - If you do pass the {@code overflow=true} parameter, you will get one schedule entry returned with a start of {@code 2011-06-01T00:00:00Z} and end of {@code 2011-06-02T00:00:00Z}.  (optional, defaults to false)
      */
-    @RequestLine("GET /schedules/{id}?time_zone={timeZone}&since={since}&until={until}")
+    @RequestLine("GET /schedules/{id}?time_zone={timeZone}&since={since}&until={until}&overflow={overflow}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CompletableFuture<CreateScheduleRequest> getSchedule(@Param("id") @NotNull String id, @Param("timeZone") @Nullable String timeZone, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until);
+    CompletableFuture<CreateScheduleRequest> getSchedule(@Param("id") @NotNull String id, @Param("timeZone") @Nullable String timeZone, @Param("since") @Nullable OffsetDateTime since, @Param("until") @Nullable OffsetDateTime until, @Param("overflow") @Nullable Boolean overflow);
 
     /**
      * Get a service
