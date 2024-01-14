@@ -99,7 +99,7 @@ public class ResponsePlay {
      * An array containing the users and/or teams to be added as subscribers to any incident on which this response play is run.
      */
     @JsonProperty("subscribers")
-    protected List<ResponsePlayAllOfSubscribersInner> subscribers;
+    protected List<ResponsePlayAllOfSubscribers> subscribers;
 
     /**
      * The content of the notification that will be sent to all incident subscribers upon the running of this response play. Note that this includes any users who may have already been subscribed to the incident prior to the running of this response play. If empty, no notifications will be sent.
@@ -111,7 +111,7 @@ public class ResponsePlay {
      * An array containing the users and/or escalation policies to be requested as responders to any incident on which this response play is run.
      */
     @JsonProperty("responders")
-    protected List<ResponsePlayAllOfRespondersInner> responders;
+    protected List<ResponsePlayAllOfResponders> responders;
 
     /**
      * The message body of the notification that will be sent to this response play's set of responders. If empty, a default response request notification will be sent.
@@ -180,7 +180,7 @@ public class ResponsePlay {
      * @param conferenceType This field has three possible values and indicates how the response play was created.   - {@code none} : The response play had no conference_number or conference_url set at time of creation.   - {@code manual} : The response play had one or both of conference_number and conference_url set at time of creation.   - {@code zoom} : Customers with the Zoom-Integration Entitelment can use this value to dynamicly configure conference number and url for zoom
      */
     @ApiStatus.Internal
-    public ResponsePlay(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, ResponsePlayAllOfTeam team, List<ResponsePlayAllOfSubscribersInner> subscribers, String subscribersMessage, List<ResponsePlayAllOfRespondersInner> responders, String respondersMessage, RunnabilityEnum runnability, String conferenceNumber, String conferenceUrl, ConferenceTypeEnum conferenceType) {
+    public ResponsePlay(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, ResponsePlayAllOfTeam team, List<ResponsePlayAllOfSubscribers> subscribers, String subscribersMessage, List<ResponsePlayAllOfResponders> responders, String respondersMessage, RunnabilityEnum runnability, String conferenceNumber, String conferenceUrl, ConferenceTypeEnum conferenceType) {
         this.id = id;
         this.summary = summary;
         this.type = type;

@@ -25,6 +25,10 @@
       "description": "Developers can write their own functionality to insert into PagerDuty's UI.\n"
     },
     {
+      "name": "Alert Grouping Settings",
+      "description": "Alert Grouping Settings allow you to configure how alerts in services are grouped together into incidents.\n"
+    },
+    {
       "name": "Analytics",
       "description": "Provides enriched incident data.\n"
     },
@@ -1721,6 +1725,26 @@
           "example": "sent"
         }
       },
+      "automation_actions_not_invocation_state": {
+        "name": "not_invocation_state",
+        "description": "Invocation state inverse filter (matches invocations NOT in the specified state)",
+        "in": "query",
+        "schema": {
+          "type": "string",
+          "description": "prepared -- the invocation exists and can be referenced, but is NOT available to a Runner <br> created -- the invocation exists and is waiting for a Runner <br> sent -- invocation sent to a Runner <br> queued -- invocation queued by a Runner <br> running -- invocation is being ran by a Runner <br> aborted -- invocation was aborted on a Runner <br> completed -- invocation completed on a Runner <br> error -- invocation encountered an error on a Runner",
+          "enum": [
+            "prepared",
+            "created",
+            "sent",
+            "queued",
+            "running",
+            "aborted",
+            "completed",
+            "error"
+          ],
+          "example": "sent"
+        }
+      },
       "automation_actions_incident_id": {
         "name": "incident_id",
         "description": "Incident ID",
@@ -3313,6 +3337,24 @@
           "enum": [
             "technical_service"
           ]
+        }
+      },
+      "offset_after": {
+        "name": "after",
+        "in": "query",
+        "required": false,
+        "description": "Cursor to retrieve next page; only present if next page exists.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "offset_before": {
+        "name": "before",
+        "in": "query",
+        "required": false,
+        "description": "Cursor to retrieve previous page; only present if not on first page.",
+        "schema": {
+          "type": "string"
         }
       }
     },
@@ -7961,6 +8003,24 @@
           }
         ]
       },
+      "LicenseReference": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Reference"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "license_reference"
+                ]
+              }
+            }
+          }
+        ]
+      },
       "SupportHours": {
         "type": "object",
         "properties": {
@@ -8877,25 +8937,6 @@
                 "items": {
                   "$ref": "#/components/schemas/NotificationRuleReference"
                 }
-              },
-              "license": {
-                "description": "The License assigned to the User",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Reference"
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "license_reference"
-                        ]
-                      }
-                    }
-                  }
-                ]
               }
             },
             "required": [
@@ -9489,6 +9530,11 @@
                       "id": "PEYSGVF",
                       "type": "user_reference"
                     }
+                  ],
+                  "escalation_rule_assignment_strategy": [
+                    {
+                      "type": "round_robin"
+                    }
                   ]
                 }
               ],
@@ -9530,6 +9576,14 @@
             "items": {
               "$ref": "#/components/schemas/EscalationTargetReference"
             }
+          },
+          "escalation_rule_assignment_strategy": {
+            "type": "string",
+            "description": "The strategy used to assign the escalation rule to an incident.",
+            "enum": [
+              "round_robin",
+              "assign_to_everyone"
+            ]
           }
         },
         "required": [
@@ -11552,6 +11606,7 @@
                             },
                             "inputs": {
                               "type": "array",
+                              "description": "The standard inputs used to configure the Action to execute",
                               "items": {
                                 "type": "object",
                                 "properties": {
@@ -11567,6 +11622,162 @@
                                   "value": {
                                     "type": "string",
                                     "description": "The configured value of the Input"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "value"
+                                ]
+                              }
+                            },
+                            "inline_steps_inputs": {
+                              "type": "array",
+                              "description": "Specialized inputs used to configure a workflow-within-a-workflow",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "description": "The name of the Input"
+                                  },
+                                  "value": {
+                                    "type": "object",
+                                    "description": "The configured value of the Inline Steps Input",
+                                    "properties": {
+                                      "steps": {
+                                        "type": "array",
+                                        "items": {
+                                          "allOf": [
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "string",
+                                                  "readOnly": true
+                                                },
+                                                "summary": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "readOnly": true,
+                                                  "description": "A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to `name`, though it is not intended to be an identifier."
+                                                },
+                                                "type": {
+                                                  "type": "string",
+                                                  "readOnly": true,
+                                                  "description": "A string that determines the schema of the object. This must be the standard name for the entity, suffixed by `_reference` if the object is a reference."
+                                                },
+                                                "self": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "readOnly": true,
+                                                  "format": "url",
+                                                  "description": "the API show URL at which the object is accessible"
+                                                },
+                                                "html_url": {
+                                                  "type": "string",
+                                                  "nullable": true,
+                                                  "readOnly": true,
+                                                  "format": "url",
+                                                  "description": "a URL at which the entity is uniquely displayed in the Web app"
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "step"
+                                                  ]
+                                                },
+                                                "name": {
+                                                  "type": "string",
+                                                  "description": "A descriptive name for the Step"
+                                                },
+                                                "action_configuration": {
+                                                  "description": "Configuration of automated action executed by this Step",
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "action_id": {
+                                                      "type": "string",
+                                                      "description": "The identifier of the Action to execute"
+                                                    },
+                                                    "description": {
+                                                      "type": "string",
+                                                      "description": "Description of the Action",
+                                                      "readOnly": true
+                                                    },
+                                                    "inputs": {
+                                                      "type": "array",
+                                                      "description": "The standard inputs used to configure the Action to execute",
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "name": {
+                                                            "type": "string",
+                                                            "description": "The name of the Input"
+                                                          },
+                                                          "parameter_type": {
+                                                            "type": "string",
+                                                            "description": "The data type of this Input",
+                                                            "readOnly": true
+                                                          },
+                                                          "value": {
+                                                            "type": "string",
+                                                            "description": "The configured value of the Input"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "name",
+                                                          "value"
+                                                        ]
+                                                      }
+                                                    },
+                                                    "outputs": {
+                                                      "type": "array",
+                                                      "readOnly": true,
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "name": {
+                                                            "type": "string",
+                                                            "description": "The name of the Output",
+                                                            "readOnly": true
+                                                          },
+                                                          "reference_name": {
+                                                            "type": "string",
+                                                            "description": "The reference name of the Output",
+                                                            "readOnly": true
+                                                          },
+                                                          "parameter_type": {
+                                                            "type": "string",
+                                                            "description": "The data type produced by this Output",
+                                                            "readOnly": true
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "name",
+                                                          "value"
+                                                        ]
+                                                      }
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "action_id",
+                                                    "inputs"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "name",
+                                                "action_configuration"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
                                   }
                                 },
                                 "required": [
@@ -13442,6 +13653,59 @@
           }
         }
       },
+      "AlertGroupingSetting": {
+        "type": "object",
+        "description": "Defines how alerts will be automatically grouped into incidents based on the configurations defined. Note that the Alert Grouping Setting features are available only on certain plans.\n",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true,
+            "description": "An optional short-form string that provides succinct information about an AlertGroupingSetting object suitable for primary labeling of the entity. It is not intended to be an identifier."
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "An optional description in string that provides more information about an AlertGroupingSetting object."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "content_based"
+            ]
+          },
+          "config": {
+            "type": "object",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ContentBasedAlertGroupingConfiguration"
+              }
+            ]
+          },
+          "services": {
+            "type": "array",
+            "description": "The array of one or many Services with just ServiceID/name that the AlertGroupingSetting applies to.",
+            "items": {
+              "$ref": "#/components/schemas/ServiceReference"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "description": "The ISO8601 date/time an AlertGroupingSetting got created at."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "description": "The ISO8601 date/time an AlertGroupingSetting last got updated at."
+          }
+        }
+      },
       "AlertGroupingParameters": {
         "type": "object",
         "description": "Defines how alerts on this service will be automatically grouped into incidents. Note that the alert grouping features are available only on certain plans. To turn grouping off set the type to null.\n",
@@ -13471,7 +13735,7 @@
                   "recommended_time_window": {
                     "readOnly": true,
                     "type": "integer",
-                    "description": "In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service's average Alert inter-arrival time. We encourage customer's to use this value, please set `time_window` to 0 to use the `recommended_time_window`."
+                    "description": "In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service`s average Alert inter-arrival time. We encourage customer`s to use this value, please set `time_window` to 0 to use the `recommended_time_window`."
                   }
                 }
               },
@@ -13498,7 +13762,18 @@
           },
           "fields": {
             "type": "array",
-            "description": "The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match"
+            "description": "An array of strings which represent the fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match."
+          },
+          "time_window": {
+            "type": "integer",
+            "minimum": 300,
+            "maximum": 86400,
+            "description": "The maximum amount of time allowed between Alerts. Any Alerts arriving greater than `time_window` seconds apart will not be grouped together. This is a rolling time window up to 24 hours and is counted from the most recently grouped alert. The window is extended every time a new alert is added to the group, up to 24 hours (24 hours only applies to single-service settings). To use the \"recommended_time_window,\" set the value to 0, otherwise the value must be between 300 <= time_window <= 3600 or 86400(i.e. 24 hours)."
+          },
+          "recommended_time_window": {
+            "readOnly": true,
+            "type": "integer",
+            "description": "In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service`s average Alert inter-arrival time. We encourage customer`s to use this value, please set `time_window` to 0 to use the `recommended_time_window`."
           }
         }
       },
@@ -17295,6 +17570,489 @@
         }
       }
     },
+    "/alert_grouping_settings": {
+      "description": "List",
+      "get": {
+        "x-pd-requires-scope": "services.read",
+        "tags": [
+          "Alert Grouping Settings"
+        ],
+        "operationId": "listAlertGroupingSettings",
+        "description": "List all of your alert grouping settings including both single service settings and global content based settings.\n\nThe settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.\n\nScoped OAuth requires: `services.read`\n",
+        "summary": "List alert grouping settings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/header_Content-Type"
+          },
+          {
+            "$ref": "#/components/parameters/offset_after"
+          },
+          {
+            "$ref": "#/components/parameters/offset_before"
+          },
+          {
+            "$ref": "#/components/parameters/offset_total"
+          },
+          {
+            "$ref": "#/components/parameters/offset_limit"
+          },
+          {
+            "$ref": "#/components/parameters/services"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of alert grouping settings.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "alert_grouping_settings": {
+                          "type": "array",
+                          "description": "The list of alert grouping settings your account has.",
+                          "items": {
+                            "$ref": "#/components/schemas/AlertGroupingSetting"
+                          }
+                        }
+                      },
+                      "required": [
+                        "alert_grouping_settings"
+                      ]
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "alert_grouping_settings": [
+                        {
+                          "id": "PJWA06X",
+                          "name": "Example of Alert Grouping Setting",
+                          "description": "This is an example of list of Alert Grouping Settings",
+                          "type": "content_based",
+                          "config": {
+                            "time_window": 86400,
+                            "aggregate": "all",
+                            "fields": [
+                              "summary",
+                              "component",
+                              "custom_details.host",
+                              "custom_details.field1.field2"
+                            ]
+                          },
+                          "services": [
+                            {
+                              "id": "P0KJZ0A",
+                              "name": "Payment Service"
+                            },
+                            {
+                              "id": "PA15YRT",
+                              "name": "Checkout Service"
+                            }
+                          ],
+                          "created_at": "2022-12-13T19:55:01.171Z",
+                          "updated_at": "2023-08-24T18:29:35.630Z"
+                        }
+                      ],
+                      "after": "g3QAAAACZAACaWRhB2QAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhA2QABGhvdXJhFGQAC21pY3Jvc2Vjb25kaAJiAAL81WEGZAAGbWludXRlYR5kAAVtb250aGEIZAAGc2Vjb25kYR5kAAR5ZWFyYgAAB",
+                      "before": "g3QAAAACZAACaWRhCGQAC2luc2VydGVkX2F0dAAAAAlkAApfX3N0cnVjdF9fZAAURWxpeGlyLk5haXZlRGF0ZVRpbWVkAAhjYWxlbmRhcmQAE0VsaXhpci5DYWxlbmRhci5JU09kAANkYXlhA2QABGhvdXJhFGQAC21pY3Jvc2Vjb25kaAJiAANYzWEGZAAGbWludXRlYR5kAAVtb250aGEIZAAGc2Vjb25kYR5kAAR5ZWFyYgAAB",
+                      "limit": 25,
+                      "total": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "x-pd-requires-scope": "services.write",
+        "tags": [
+          "Alert Grouping Settings"
+        ],
+        "operationId": "postAlertGroupingSettings",
+        "description": "Create a new Alert Grouping Setting.\n\nThe settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.\n\nThis endpoint will be used to create an instance of AlertGroupingSettings for either one service or many services that are in the alert group setting.\n\nScoped OAuth requires: `services.write`\n",
+        "summary": "Create an Alert Grouping Setting",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/header_Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "alert_grouping_setting": {
+                    "$ref": "#/components/schemas/AlertGroupingSetting"
+                  }
+                },
+                "required": [
+                  "alert_grouping_setting"
+                ]
+              },
+              "examples": {
+                "request": {
+                  "summary": "Request Example",
+                  "value": {
+                    "alert_grouping_setting": {
+                      "id": "PZC4OM1",
+                      "name": "Example of Alert Grouping Setting",
+                      "description": "This Alert Grouping Setting is an example",
+                      "type": "content_based",
+                      "config": {
+                        "time_window": 900,
+                        "aggregate": "all",
+                        "fields": [
+                          "summary",
+                          "component",
+                          "custom_details.host",
+                          "custom_details.field1.field2"
+                        ]
+                      },
+                      "services": [
+                        {
+                          "id": "P0KJZ0A"
+                        },
+                        {
+                          "id": "PA15YRT"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The new Alert Grouping Setting.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "alert_grouping_setting": {
+                      "$ref": "#/components/schemas/AlertGroupingSetting"
+                    }
+                  },
+                  "required": [
+                    "alert_grouping_setting"
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "alert_grouping_setting": {
+                        "id": "PZC4OM1",
+                        "name": "Example of Alert Grouping Setting",
+                        "description": "This Alert Grouping Setting is an example",
+                        "type": "content_based",
+                        "config": {
+                          "time_window": 900,
+                          "aggregate": "all",
+                          "fields": [
+                            "summary",
+                            "component",
+                            "custom_details.host",
+                            "custom_details.field1.field2"
+                          ]
+                        },
+                        "services": [
+                          {
+                            "id": "P0KJZ0A",
+                            "name": "Payment Service"
+                          },
+                          {
+                            "id": "PA15YRT",
+                            "name": "Checkout Service"
+                          }
+                        ],
+                        "created_at": "2022-12-13T19:55:01.171Z",
+                        "updated_at": "2023-08-24T18:29:35.630Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/alert_grouping_settings/{id}": {
+      "description": "Retrieve, modify, or delete Alert Grouping Settings",
+      "get": {
+        "x-pd-requires-scope": "services.read",
+        "tags": [
+          "Alert Grouping Settings"
+        ],
+        "operationId": "getAlertGroupingSetting",
+        "description": "Get an existing Alert Grouping Setting.\n\nThe settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.\n\nScoped OAuth requires: `services.read`\n",
+        "summary": "Get an Alert Grouping Setting",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/header_Content-Type"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The Alert Grouping Setting.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "alert_grouping_setting": {
+                      "$ref": "#/components/schemas/AlertGroupingSetting"
+                    }
+                  },
+                  "required": [
+                    "alert_grouping_setting"
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "alert_grouping_setting": {
+                        "id": "PZC4OM1",
+                        "name": "Example of Alert Grouping Setting",
+                        "description": "This Alert Grouping Setting is an example",
+                        "type": "content_based",
+                        "config": {
+                          "time_window": 900,
+                          "aggregate": "all",
+                          "fields": [
+                            "summary",
+                            "component",
+                            "custom_details.host",
+                            "custom_details.field1.field2"
+                          ]
+                        },
+                        "services": [
+                          {
+                            "id": "P0KJZ0A",
+                            "name": "Payment Service"
+                          },
+                          {
+                            "id": "PA15YRT",
+                            "name": "Checkout Service"
+                          }
+                        ],
+                        "created_at": "2022-12-13T19:55:01.171Z",
+                        "updated_at": "2023-08-24T18:29:35.630Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "x-pd-requires-scope": "services.write",
+        "tags": [
+          "Alert Grouping Settings"
+        ],
+        "operationId": "deleteAlertGroupingSetting",
+        "description": "Delete an existing Alert Grouping Setting.\n\nThe settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.\n\nScoped OAuth requires: `services.write`\n",
+        "summary": "Delete an Alert Grouping Setting",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/header_Content-Type"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The Alert Grouping Setting was deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "put": {
+        "x-pd-requires-scope": "services.write",
+        "tags": [
+          "Alert Grouping Settings"
+        ],
+        "operationId": "putAlertGroupingSetting",
+        "description": "Update an Alert Grouping Setting.\n\nThe settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.\n\nif `services` are not provided in the request, then the existing services will not be removed from the setting.\n\nScoped OAuth requires: `services.write`\n",
+        "summary": "Update an Alert Grouping Setting",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/header_Content-Type"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "alert_grouping_setting": {
+                    "$ref": "#/components/schemas/AlertGroupingSetting"
+                  }
+                },
+                "required": [
+                  "alert_grouping_setting"
+                ]
+              },
+              "examples": {
+                "request": {
+                  "summary": "Request Example",
+                  "value": {
+                    "alert_grouping_setting": {
+                      "id": "PZC4OM1",
+                      "name": "Example of Alert Grouping Setting",
+                      "description": "This Alert Grouping Setting is an example",
+                      "type": "content_based",
+                      "config": {
+                        "time_window": 900,
+                        "aggregate": "all",
+                        "fields": [
+                          "summary",
+                          "component",
+                          "custom_details.host",
+                          "custom_details.field1.field2"
+                        ]
+                      },
+                      "services": [
+                        {
+                          "id": "P0KJZ0A"
+                        },
+                        {
+                          "id": "PA15YRT"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated Alert Grouping Setting.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "alert_grouping_setting": {
+                      "$ref": "#/components/schemas/AlertGroupingSetting"
+                    }
+                  },
+                  "required": [
+                    "alert_grouping_setting"
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "alert_grouping_setting": {
+                        "id": "PZC4OM1",
+                        "name": "Example of Alert Grouping Setting",
+                        "description": "This Alert Grouping Setting is an example",
+                        "type": "content_based",
+                        "config": {
+                          "time_window": 900,
+                          "aggregate": "all",
+                          "fields": [
+                            "summary",
+                            "component",
+                            "custom_details.host",
+                            "custom_details.field1.field2"
+                          ]
+                        },
+                        "services": [
+                          {
+                            "id": "P0KJZ0A",
+                            "name": "Payment Service"
+                          },
+                          {
+                            "id": "PA15YRT",
+                            "name": "Checkout Service"
+                          }
+                        ],
+                        "created_at": "2022-12-13T19:55:01.171Z",
+                        "updated_at": "2023-08-24T18:29:35.630Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/analytics/metrics/incidents/all": {
       "post": {
         "x-pd-requires-scope": "analytics.read",
@@ -20980,6 +21738,9 @@
             "$ref": "#/components/parameters/automation_actions_invocation_state"
           },
           {
+            "$ref": "#/components/parameters/automation_actions_not_invocation_state"
+          },
+          {
             "$ref": "#/components/parameters/automation_actions_incident_id"
           }
         ],
@@ -24027,7 +24788,10 @@
                               "id": "PEYSGVF",
                               "type": "user_reference"
                             }
-                          ]
+                          ],
+                          "escalation_rule_assignment_strategy": {
+                            "type": "round_robin"
+                          }
                         }
                       ],
                       "services": [
@@ -24344,7 +25108,10 @@
                               "id": "PEYSGVF",
                               "type": "user_reference"
                             }
-                          ]
+                          ],
+                          "escalation_rule_assignment_strategy": {
+                            "type": "round_robin"
+                          }
                         }
                       ],
                       "services": [
@@ -29516,11 +30283,12 @@
       },
       "put": {
         "x-pd-requires-scope": "incidents.write",
+        "x-pd-operation-limit": true,
         "tags": [
           "Incidents"
         ],
         "operationId": "updateIncidents",
-        "description": "Acknowledge, resolve, escalate or reassign one or more incidents.\n\nAn incident represents a problem or an issue that needs to be addressed and resolved.\n\nA maximum of 250 incidents may be updated at a time. If more than this number of incidents are given, the API will respond with status 413 (Request Entity Too Large).\n\nNote: the manage incidents API endpoint is rate limited to 500 requests per minute.\n\nFor more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)\n\nScoped OAuth requires: `incidents.write`\n",
+        "description": "Acknowledge, resolve, escalate or reassign one or more incidents.\n\nAn incident represents a problem or an issue that needs to be addressed and resolved.\n\nA maximum of 250 incidents may be updated at a time. If more than this number of incidents are given, the API will respond with status 413 (Request Entity Too Large).\n\nFor more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)\n\nScoped OAuth requires: `incidents.write`\n\nThis API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information.\n",
         "summary": "Manage incidents",
         "parameters": [
           {
@@ -29809,11 +30577,12 @@
       },
       "post": {
         "x-pd-requires-scope": "incidents.write",
+        "x-pd-operation-limit": true,
         "tags": [
           "Incidents"
         ],
         "operationId": "createIncident",
-        "description": "Create an incident synchronously without a corresponding event from a monitoring service.\n\nAn incident represents a problem or an issue that needs to be addressed and resolved.\n\nFor more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)\n\nScoped OAuth requires: `incidents.write`\n",
+        "description": "Create an incident synchronously without a corresponding event from a monitoring service.\n\nAn incident represents a problem or an issue that needs to be addressed and resolved.\n\nFor more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)\n\nScoped OAuth requires: `incidents.write`\n\nThis API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information.\n",
         "summary": "Create an Incident",
         "parameters": [
           {
@@ -35652,8 +36421,9 @@
           "On-Calls"
         ],
         "x-pd-requires-scope": "oncalls.read",
+        "x-pd-operation-limit": true,
         "operationId": "listOnCalls",
-        "description": "List the on-call entries during a given time range.\n\nAn on-call represents a contiguous unit of time for which a User will be on call for a given Escalation Policy and Escalation Rules.\n\nFor more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#on-calls)\n\nScoped OAuth requires: `oncalls.read`\n",
+        "description": "List the on-call entries during a given time range.\n\nAn on-call represents a contiguous unit of time for which a User will be on call for a given Escalation Policy and Escalation Rules.\n\nFor more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#on-calls)\n\nScoped OAuth requires: `oncalls.read`\n\nThis API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information.\n",
         "summary": "List all of the on-calls",
         "parameters": [
           {
@@ -45105,6 +45875,165 @@
         }
       }
     },
+    "/templates/fields": {
+      "get": {
+        "x-pd-requires-scope": "templates.read",
+        "tags": [
+          "Templates"
+        ],
+        "operationId": "getTemplateFields",
+        "description": "Get a list of fields that can be used on the account templates.\n\nScoped OAuth requires: `templates.read`\n",
+        "summary": "List template fields",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/header_Content-Type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of template fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fields": {
+                      "type": "array",
+                      "items": {
+                        "title": "Field",
+                        "type": "object",
+                        "properties": {
+                          "data_type": {
+                            "type": "string",
+                            "description": "The kind of data the template field is allowed to contain.",
+                            "enum": [
+                              "boolean",
+                              "integer",
+                              "float",
+                              "string",
+                              "datetime",
+                              "url"
+                            ]
+                          },
+                          "default_value": {
+                            "type": "string",
+                            "description": "The default value of the template field.",
+                            "nullable": true
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "A short description of the template field.",
+                            "nullable": true
+                          },
+                          "domain_name": {
+                            "type": "object",
+                            "properties": {
+                              "order": {
+                                "type": "integer"
+                              },
+                              "summary": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "example": {
+                            "type": "string",
+                            "description": "An example value for the template field.",
+                            "nullable": true
+                          },
+                          "keyword": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "summary": {
+                            "type": "string",
+                            "description": "A short summary of the template field."
+                          },
+                          "type": {
+                            "type": "string",
+                            "description": "The type of template field.",
+                            "enum": [
+                              "standard_field",
+                              "custom_field"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "fields"
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "fields": [
+                        {
+                          "data_type": "datetime",
+                          "default_value": null,
+                          "description": "The time the incident was created.",
+                          "domain": {
+                            "order": 1,
+                            "summary": "Incident"
+                          },
+                          "example": "2023-11-22T07:12:50Z",
+                          "keyword": null,
+                          "summary": "incident.created_at",
+                          "type": "standard_field"
+                        },
+                        {
+                          "data_type": "string",
+                          "default_value": null,
+                          "description": "The name of the escalation policy attached to the service that the incident is on",
+                          "domain": {
+                            "order": 1,
+                            "summary": "Incident"
+                          },
+                          "example": "Another Escalation Policy",
+                          "keyword": "name",
+                          "summary": "incident.escalation_policy.summary",
+                          "type": "standard_field"
+                        },
+                        {
+                          "data_type": "string",
+                          "default_value": "default value",
+                          "description": "An account defined custom field",
+                          "domain": {
+                            "order": 1,
+                            "summary": "Incident"
+                          },
+                          "example": null,
+                          "keyword": null,
+                          "summary": "incident.custom_field",
+                          "type": "custom_field"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
     "/users": {
       "description": "List and create users.",
       "get": {
@@ -45307,7 +46236,25 @@
                 "type": "object",
                 "properties": {
                   "user": {
-                    "$ref": "#/components/schemas/User"
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/User"
+                      },
+                      {
+                        "properties": {
+                          "license": {
+                            "allOf": [
+                              {
+                                "description": "The License assigned to the User"
+                              },
+                              {
+                                "$ref": "#/components/schemas/LicenseReference"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [
@@ -45598,7 +46545,25 @@
                 "type": "object",
                 "properties": {
                   "user": {
-                    "$ref": "#/components/schemas/User"
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/User"
+                      },
+                      {
+                        "properties": {
+                          "license": {
+                            "allOf": [
+                              {
+                                "description": "The License assigned to the User"
+                              },
+                              {
+                                "$ref": "#/components/schemas/LicenseReference"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
                   }
                 },
                 "required": [

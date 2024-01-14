@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * AssignmentAssignee
+ * CreateUserRequestUser
  *
  */
 @Getter
@@ -48,11 +48,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "job_title",
     "teams",
     "contact_methods",
-    "notification_rules"
+    "notification_rules",
+    "license"
 })
-@JsonTypeName("Assignment_assignee")
+@JsonTypeName("createUser_request_user")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class AssignmentAssignee {
+public class CreateUserRequestUser {
 
     @JsonProperty("id")
     protected String id;
@@ -63,6 +64,9 @@ public class AssignmentAssignee {
     @JsonProperty("summary")
     protected String summary;
 
+    /**
+     * The type of object being created.
+     */
     @JsonProperty("type")
     protected TypeEnum type;
 
@@ -150,22 +154,25 @@ public class AssignmentAssignee {
     @JsonProperty("notification_rules")
     protected List<NotificationRuleReference> notificationRules;
 
+    @JsonProperty("license")
+    protected CreateUserRequestUserAllOfLicense license;
+
     /**
-     * Constructs a validated instance of {@link AssignmentAssignee}.
+     * Constructs a validated instance of {@link CreateUserRequestUser}.
      *
      * @param spec the specification to process
      */
-    public AssignmentAssignee(Consumer<AssignmentAssignee> spec) {
+    public CreateUserRequestUser(Consumer<CreateUserRequestUser> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link AssignmentAssignee}.
+     * Constructs a validated instance of {@link CreateUserRequestUser}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AssignmentAssignee(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequestUser(Consumer)} instead.
      * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
-     * @param type type
+     * @param type The type of object being created.
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
      * @param name The name of the user.
@@ -180,9 +187,10 @@ public class AssignmentAssignee {
      * @param teams The list of teams to which the user belongs. Account must have the {@code teams} ability to set this.
      * @param contactMethods The list of contact methods for the user.
      * @param notificationRules The list of notification rules for the user.
+     * @param license license
      */
     @ApiStatus.Internal
-    public AssignmentAssignee(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules) {
+    public CreateUserRequestUser(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules, CreateUserRequestUserAllOfLicense license) {
         this.id = id;
         this.summary = summary;
         this.type = type;
@@ -200,11 +208,14 @@ public class AssignmentAssignee {
         this.teams = teams;
         this.contactMethods = contactMethods;
         this.notificationRules = notificationRules;
+        this.license = license;
     }
 
+    /**
+     * The type of object being created.
+     */
     @AllArgsConstructor
     public enum TypeEnum {
-        USER_REFERENCE("user_reference"),
         USER("user");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()

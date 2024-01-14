@@ -1,10 +1,8 @@
 package io.github.primelib.pagerduty4j.rest.spec;
 
-import java.util.List;
 import java.util.Objects;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import javax.annotation.processing.Generated;
 
 import java.util.Set;
@@ -19,11 +17,11 @@ import lombok.experimental.Accessors;
 import java.util.function.Consumer;
 
 /**
- * ListAutomationActionInvocationsSpec
+ * DeleteAlertGroupingSettingSpec
  * <p>
- * Specification for the ListAutomationActionInvocations operation.
+ * Specification for the DeleteAlertGroupingSetting operation.
  * <p>
- * List Invocations
+ * Delete an Alert Grouping Setting
  */
 @Getter
 @Setter
@@ -33,7 +31,7 @@ import java.util.function.Consumer;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class ListAutomationActionInvocationsOperationSpec {
+public class DeleteAlertGroupingSettingOperationSpec {
     /**
      * allows to disable validation of the spec, use with care!
      */
@@ -41,48 +39,32 @@ public class ListAutomationActionInvocationsOperationSpec {
     public static Boolean VALIDATION_ENABLED = true;
 
     /**
-     * Incident ID
+     * The ID of the resource.
      */
     @NotNull 
-    private String incidentId;
+    private String id;
 
     /**
-     * Invocation state
-     */
-    @Nullable 
-    private String invocationState;
-
-    /**
-     * Invocation state inverse filter (matches invocations NOT in the specified state)
-     */
-    @Nullable 
-    private String notInvocationState;
-
-    /**
-     * Constructs a validated instance of {@link ListAutomationActionInvocationsOperationSpec}.
+     * Constructs a validated instance of {@link DeleteAlertGroupingSettingOperationSpec}.
      *
      * @param spec the specification to process
      */
     @ApiStatus.Internal
-    public ListAutomationActionInvocationsOperationSpec(Consumer<ListAutomationActionInvocationsOperationSpec> spec) {
+    public DeleteAlertGroupingSettingOperationSpec(Consumer<DeleteAlertGroupingSettingOperationSpec> spec) {
         spec.accept(this);
         if (VALIDATION_ENABLED)
             validate();
     }
 
     /**
-     * Constructs a validated instance of {@link ListAutomationActionInvocationsOperationSpec}.
+     * Constructs a validated instance of {@link DeleteAlertGroupingSettingOperationSpec}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the operation is updated.
-     * @param incidentId           Incident ID
-     * @param invocationState      Invocation state
-     * @param notInvocationState   Invocation state inverse filter (matches invocations NOT in the specified state)
+     * @param id                   The ID of the resource.
      */
     @ApiStatus.Internal
-    public ListAutomationActionInvocationsOperationSpec(String incidentId, String invocationState, String notInvocationState) {
-        this.incidentId = incidentId;
-        this.invocationState = invocationState;
-        this.notInvocationState = notInvocationState;
+    public DeleteAlertGroupingSettingOperationSpec(String id) {
+        this.id = id;
 
         if (VALIDATION_ENABLED)
             validate();
@@ -94,6 +76,6 @@ public class ListAutomationActionInvocationsOperationSpec {
      * @throws NullPointerException
      */
     public void validate() {
-        Objects.requireNonNull(incidentId, "incidentId is a required parameter!");
+        Objects.requireNonNull(id, "id is a required parameter!");
     }
 }

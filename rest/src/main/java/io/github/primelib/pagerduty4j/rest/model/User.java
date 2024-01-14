@@ -48,8 +48,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "job_title",
     "teams",
     "contact_methods",
-    "notification_rules",
-    "license"
+    "notification_rules"
 })
 @JsonTypeName("User")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
@@ -154,9 +153,6 @@ public class User {
     @JsonProperty("notification_rules")
     protected List<NotificationRuleReference> notificationRules;
 
-    @JsonProperty("license")
-    protected UserAllOfLicense license;
-
     /**
      * Constructs a validated instance of {@link User}.
      *
@@ -187,10 +183,9 @@ public class User {
      * @param teams The list of teams to which the user belongs. Account must have the {@code teams} ability to set this.
      * @param contactMethods The list of contact methods for the user.
      * @param notificationRules The list of notification rules for the user.
-     * @param license license
      */
     @ApiStatus.Internal
-    public User(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules, UserAllOfLicense license) {
+    public User(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules) {
         this.id = id;
         this.summary = summary;
         this.type = type;
@@ -208,7 +203,6 @@ public class User {
         this.teams = teams;
         this.contactMethods = contactMethods;
         this.notificationRules = notificationRules;
-        this.license = license;
     }
 
     /**
