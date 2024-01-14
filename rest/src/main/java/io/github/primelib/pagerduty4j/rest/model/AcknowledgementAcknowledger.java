@@ -50,7 +50,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "teams",
     "contact_methods",
     "notification_rules",
-    "license",
     "auto_resolve_timeout",
     "acknowledgement_timeout",
     "created_at",
@@ -169,9 +168,6 @@ public class AcknowledgementAcknowledger {
     @JsonProperty("notification_rules")
     protected List<NotificationRuleReference> notificationRules;
 
-    @JsonProperty("license")
-    protected UserAllOfLicense license;
-
     /**
      * Time in seconds that an incident is automatically resolved if left open for that long. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
      */
@@ -287,7 +283,6 @@ public class AcknowledgementAcknowledger {
      * @param teams The set of teams associated with this service.
      * @param contactMethods The list of contact methods for the user.
      * @param notificationRules The list of notification rules for the user.
-     * @param license license
      * @param autoResolveTimeout Time in seconds that an incident is automatically resolved if left open for that long. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
      * @param acknowledgementTimeout Time in seconds that an incident changes to the Triggered State after being Acknowledged. Value is {@code null} if the feature is disabled. Value must not be negative. Setting this field to {@code 0}, {@code null} (or unset in POST request) will disable the feature.
      * @param createdAt The date/time when this service was created
@@ -307,7 +302,7 @@ public class AcknowledgementAcknowledger {
      * @param autoPauseNotificationsParameters autoPauseNotificationsParameters
      */
     @ApiStatus.Internal
-    public AcknowledgementAcknowledger(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules, UserAllOfLicense license, Integer autoResolveTimeout, Integer acknowledgementTimeout, OffsetDateTime createdAt, StatusEnum status, OffsetDateTime lastIncidentTimestamp, EscalationPolicyReference escalationPolicy, ServiceAllOfResponsePlay responsePlay, List<IntegrationReference> integrations, IncidentUrgencyRule incidentUrgencyRule, SupportHours supportHours, List<ScheduledAction> scheduledActions, List<AddonReference> addons, AlertCreationEnum alertCreation, AlertGroupingParameters alertGroupingParameters, AlertGroupingEnum alertGrouping, Integer alertGroupingTimeout, AutoPauseNotificationsParameters autoPauseNotificationsParameters) {
+    public AcknowledgementAcknowledger(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String email, String timeZone, String color, RoleEnum role, String avatarUrl, String description, Boolean invitationSent, String jobTitle, List<TeamReference> teams, List<ContactMethodReference> contactMethods, List<NotificationRuleReference> notificationRules, Integer autoResolveTimeout, Integer acknowledgementTimeout, OffsetDateTime createdAt, StatusEnum status, OffsetDateTime lastIncidentTimestamp, EscalationPolicyReference escalationPolicy, ServiceAllOfResponsePlay responsePlay, List<IntegrationReference> integrations, IncidentUrgencyRule incidentUrgencyRule, SupportHours supportHours, List<ScheduledAction> scheduledActions, List<AddonReference> addons, AlertCreationEnum alertCreation, AlertGroupingParameters alertGroupingParameters, AlertGroupingEnum alertGrouping, Integer alertGroupingTimeout, AutoPauseNotificationsParameters autoPauseNotificationsParameters) {
         this.id = id;
         this.summary = summary;
         this.type = type;
@@ -325,7 +320,6 @@ public class AcknowledgementAcknowledger {
         this.teams = teams;
         this.contactMethods = contactMethods;
         this.notificationRules = notificationRules;
-        this.license = license;
         this.autoResolveTimeout = autoResolveTimeout;
         this.acknowledgementTimeout = acknowledgementTimeout;
         this.createdAt = createdAt;

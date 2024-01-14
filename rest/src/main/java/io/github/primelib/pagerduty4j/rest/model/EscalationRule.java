@@ -10,12 +10,15 @@ import lombok.Setter;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * EscalationRule
@@ -31,7 +34,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonPropertyOrder({
     "id",
     "escalation_delay_in_minutes",
-    "targets"
+    "targets",
+    "escalation_rule_assignment_strategy"
 })
 @JsonTypeName("EscalationRule")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
@@ -53,6 +57,12 @@ public class EscalationRule {
     protected List<EscalationTargetReference> targets;
 
     /**
+     * The strategy used to assign the escalation rule to an incident.
+     */
+    @JsonProperty("escalation_rule_assignment_strategy")
+    protected EscalationRuleAssignmentStrategyEnum escalationRuleAssignmentStrategy;
+
+    /**
      * Constructs a validated instance of {@link EscalationRule}.
      *
      * @param spec the specification to process
@@ -68,12 +78,43 @@ public class EscalationRule {
      * @param id id
      * @param escalationDelayInMinutes The number of minutes before an unacknowledged incident escalates away from this rule.
      * @param targets The targets an incident should be assigned to upon reaching this rule.
+     * @param escalationRuleAssignmentStrategy The strategy used to assign the escalation rule to an incident.
      */
     @ApiStatus.Internal
-    public EscalationRule(String id, Integer escalationDelayInMinutes, List<EscalationTargetReference> targets) {
+    public EscalationRule(String id, Integer escalationDelayInMinutes, List<EscalationTargetReference> targets, EscalationRuleAssignmentStrategyEnum escalationRuleAssignmentStrategy) {
         this.id = id;
         this.escalationDelayInMinutes = escalationDelayInMinutes;
         this.targets = targets;
+        this.escalationRuleAssignmentStrategy = escalationRuleAssignmentStrategy;
+    }
+
+    /**
+     * The strategy used to assign the escalation rule to an incident.
+     */
+    @AllArgsConstructor
+    public enum EscalationRuleAssignmentStrategyEnum {
+        ROUND_ROBIN("round_robin"),
+        ASSIGN_TO_EVERYONE("assign_to_everyone");
+
+        private static final EscalationRuleAssignmentStrategyEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
+        private final String value;
+
+        @JsonCreator
+        public static EscalationRuleAssignmentStrategyEnum of(String input) {
+            if (input != null) {
+                for (EscalationRuleAssignmentStrategyEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
     }
 
 }

@@ -43,13 +43,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class AlertGroupingParametersConfig {
 
     /**
-     * The maximum amount of time allowed between Alerts. Any Alerts arriving greater than {@code time_window} seconds apart will not be grouped together. This is a rolling time window and is counted from the most recently grouped alert. The window is extended every time a new alert is added to the group, up to 24 hours. To use the "recommended_time_window," set the value to 0, otherwise the value must be between 300 and 3600.
+     * The maximum amount of time allowed between Alerts. Any Alerts arriving greater than {@code time_window} seconds apart will not be grouped together. This is a rolling time window up to 24 hours and is counted from the most recently grouped alert. The window is extended every time a new alert is added to the group, up to 24 hours (24 hours only applies to single-service settings). To use the "recommended_time_window," set the value to 0, otherwise the value must be between 300 &amp;lt;= time_window &amp;lt;= 3600 or 86400(i.e. 24 hours).
      */
     @JsonProperty("time_window")
     protected Integer timeWindow;
 
     /**
-     * In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service's average Alert inter-arrival time. We encourage customer's to use this value, please set {@code time_window} to 0 to use the {@code recommended_time_window}.
+     * In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service{@code s average Alert inter-arrival time. We encourage customer}s to use this value, please set {@code time_window} to 0 to use the {@code recommended_time_window}.
      */
     @JsonProperty("recommended_time_window")
     protected Integer recommendedTimeWindow;
@@ -68,7 +68,7 @@ public class AlertGroupingParametersConfig {
     protected AggregateEnum aggregate;
 
     /**
-     * The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match
+     * An array of strings which represent the fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match.
      */
     @JsonProperty("fields")
     protected List<String> fields;
@@ -86,11 +86,11 @@ public class AlertGroupingParametersConfig {
      * Constructs a validated instance of {@link AlertGroupingParametersConfig}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #AlertGroupingParametersConfig(Consumer)} instead.
-     * @param timeWindow The maximum amount of time allowed between Alerts. Any Alerts arriving greater than {@code time_window} seconds apart will not be grouped together. This is a rolling time window and is counted from the most recently grouped alert. The window is extended every time a new alert is added to the group, up to 24 hours. To use the "recommended_time_window," set the value to 0, otherwise the value must be between 300 and 3600.
-     * @param recommendedTimeWindow In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service's average Alert inter-arrival time. We encourage customer's to use this value, please set {@code time_window} to 0 to use the {@code recommended_time_window}.
+     * @param timeWindow The maximum amount of time allowed between Alerts. Any Alerts arriving greater than {@code time_window} seconds apart will not be grouped together. This is a rolling time window up to 24 hours and is counted from the most recently grouped alert. The window is extended every time a new alert is added to the group, up to 24 hours (24 hours only applies to single-service settings). To use the "recommended_time_window," set the value to 0, otherwise the value must be between 300 &amp;lt;= time_window &amp;lt;= 3600 or 86400(i.e. 24 hours).
+     * @param recommendedTimeWindow In order to ensure your Service has the optimal grouping window, we use data science to calculate your Service{@code s average Alert inter-arrival time. We encourage customer}s to use this value, please set {@code time_window} to 0 to use the {@code recommended_time_window}.
      * @param timeout The duration in minutes within which to automatically group incoming Alerts.  To continue grouping Alerts until the Incident is resolved, set this value to 0.
      * @param aggregate Whether Alerts should be grouped if {@code all} or {@code any} specified fields match. If {@code all} is selected, an exact match on every specified field name must occur for Alerts to be grouped. If {@code any} is selected, Alerts will be grouped when there is an exact match on at least one of the specified fields.
-     * @param fields The fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match
+     * @param fields An array of strings which represent the fields with which to group against. Depending on the aggregate, Alerts will group if some or all the fields match.
      */
     @ApiStatus.Internal
     public AlertGroupingParametersConfig(Integer timeWindow, Integer recommendedTimeWindow, Integer timeout, AggregateEnum aggregate, List<String> fields) {

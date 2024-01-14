@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * CreateUserRequest
+ * CreateUser201Response
  *
  */
 @Getter
@@ -30,30 +30,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonPropertyOrder({
     "user"
 })
-@JsonTypeName("createUser_request")
+@JsonTypeName("createUser_201_response")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class CreateUserRequest {
+public class CreateUser201Response {
 
     @JsonProperty("user")
-    protected CreateUserRequestUser user;
+    protected User user;
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link CreateUser201Response}.
      *
      * @param spec the specification to process
      */
-    public CreateUserRequest(Consumer<CreateUserRequest> spec) {
+    public CreateUser201Response(Consumer<CreateUser201Response> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link CreateUser201Response}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequest(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUser201Response(Consumer)} instead.
      * @param user user
      */
     @ApiStatus.Internal
-    public CreateUserRequest(CreateUserRequestUser user) {
+    public CreateUser201Response(User user) {
         this.user = user;
     }
 

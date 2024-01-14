@@ -38,10 +38,10 @@ import io.github.primelib.pagerduty4j.rest.model.CreateServiceRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTagsRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTeamRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTemplate201Response;
+import io.github.primelib.pagerduty4j.rest.model.CreateUser201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserContactMethod201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserHandoffNotificationRuleRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserNotificationRuleRequest;
-import io.github.primelib.pagerduty4j.rest.model.CreateUserRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserStatusUpdateNotificationRule201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateWebhookSubscriptionRequest;
 import io.github.primelib.pagerduty4j.rest.model.GetAllAutomationActions200Response;
@@ -84,6 +84,7 @@ import io.github.primelib.pagerduty4j.rest.model.GetRelatedIncidents200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetStatusDashboardById200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetTagsByEntityType200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetTeamNotificationSubscriptions200Response;
+import io.github.primelib.pagerduty4j.rest.model.GetTemplateFields200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetTemplates200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetUserContactMethods200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetUserHandoffNotificationRules200Response;
@@ -96,6 +97,7 @@ import io.github.primelib.pagerduty4j.rest.model.GetUserStatusUpdateNotification
 import io.github.primelib.pagerduty4j.rest.model.GetVendor200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListAbilities200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListAddon200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListAlertGroupingSettings200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListAutomationActionInvocations200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListBusinessServices200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListChangeEvents200Response;
@@ -139,6 +141,7 @@ import io.github.primelib.pagerduty4j.rest.model.MergeIncidents200Response;
 import io.github.primelib.pagerduty4j.rest.model.OrchestrationGlobal;
 import io.github.primelib.pagerduty4j.rest.model.OrchestrationRouter;
 import io.github.primelib.pagerduty4j.rest.model.OrchestrationUnrouted;
+import io.github.primelib.pagerduty4j.rest.model.PostAlertGroupingSettingsRequest;
 import io.github.primelib.pagerduty4j.rest.model.PostIncidentWorkflowRequest;
 import io.github.primelib.pagerduty4j.rest.model.PostOrchestration201Response;
 import io.github.primelib.pagerduty4j.rest.model.PostOrchestrationIntegration201Response;
@@ -211,6 +214,7 @@ import io.github.primelib.pagerduty4j.rest.spec.CreateUserNotificationSubscripti
 import io.github.primelib.pagerduty4j.rest.spec.CreateUserStatusUpdateNotificationRuleOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateWebhookSubscriptionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteAddonOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.DeleteAlertGroupingSettingOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteAutomationActionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteAutomationActionServiceAssociationOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteAutomationActionTeamAssociationOperationSpec;
@@ -252,6 +256,7 @@ import io.github.primelib.pagerduty4j.rest.spec.EnableExtensionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.EnableWebhookSubscriptionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAbilityOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAddonOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetAlertGroupingSettingOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAllAutomationActionsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsIncidentResponsesByIdOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetAnalyticsIncidentsOperationSpec;
@@ -345,6 +350,7 @@ import io.github.primelib.pagerduty4j.rest.spec.GetUserStatusUpdateNotificationR
 import io.github.primelib.pagerduty4j.rest.spec.GetVendorOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetWebhookSubscriptionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListAddonOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.ListAlertGroupingSettingsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListAuditRecordsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListAutomationActionInvocationsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListBusinessServicesOperationSpec;
@@ -394,9 +400,11 @@ import io.github.primelib.pagerduty4j.rest.spec.ListVendorsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListWebhookSubscriptionsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.MergeIncidentsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.MigrateOrchestrationIntegrationOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.PostAlertGroupingSettingsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.PostIncidentWorkflowOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.PostOrchestrationOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.PostOrchestrationIntegrationOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.PutAlertGroupingSettingOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.PutBusinessServicePriorityThresholdsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.PutIncidentManualBusinessServiceAssociationOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.PutIncidentWorkflowOperationSpec;
@@ -732,7 +740,8 @@ public class PagerDutyRESTAsyncConsumerApi {
      * Create an incident synchronously without a corresponding event from a monitoring service.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: {@code incidents.write} 
+     * Scoped OAuth requires: {@code incidents.write}
+     * This API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information. 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
      *   <li>from: The email address of a valid user associated with the account making the request.</li>
@@ -1150,7 +1159,7 @@ public class PagerDutyRESTAsyncConsumerApi {
      *   <li>createUserRequest: The user to be created.</li>
      * </ul>
      */
-    public CompletableFuture<CreateUserRequest> createUser(Consumer<CreateUserOperationSpec> spec) {
+    public CompletableFuture<CreateUser201Response> createUser(Consumer<CreateUserOperationSpec> spec) {
         CreateUserOperationSpec r = new CreateUserOperationSpec(spec);
         return api.createUser(r.from(), r.createUserRequest());
     }
@@ -1272,6 +1281,22 @@ public class PagerDutyRESTAsyncConsumerApi {
     public CompletableFuture<Void> deleteAddon(Consumer<DeleteAddonOperationSpec> spec) {
         DeleteAddonOperationSpec r = new DeleteAddonOperationSpec(spec);
         return api.deleteAddon(r.id());
+    }
+
+    /**
+     * Delete an Alert Grouping Setting
+     * <p>
+     * Delete an existing Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * Scoped OAuth requires: {@code services.write} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     * </ul>
+     */
+    public CompletableFuture<Void> deleteAlertGroupingSetting(Consumer<DeleteAlertGroupingSettingOperationSpec> spec) {
+        DeleteAlertGroupingSettingOperationSpec r = new DeleteAlertGroupingSettingOperationSpec(spec);
+        return api.deleteAlertGroupingSetting(r.id());
     }
 
     /**
@@ -1985,6 +2010,22 @@ public class PagerDutyRESTAsyncConsumerApi {
     }
 
     /**
+     * Get an Alert Grouping Setting
+     * <p>
+     * Get an existing Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * Scoped OAuth requires: {@code services.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     * </ul>
+     */
+    public CompletableFuture<PostAlertGroupingSettingsRequest> getAlertGroupingSetting(Consumer<GetAlertGroupingSettingOperationSpec> spec) {
+        GetAlertGroupingSettingOperationSpec r = new GetAlertGroupingSettingOperationSpec(spec);
+        return api.getAlertGroupingSetting(r.id());
+    }
+
+    /**
      * List Automation Actions
      * <p>
      * Lists Automation Actions matching provided query params.
@@ -2517,7 +2558,7 @@ public class PagerDutyRESTAsyncConsumerApi {
      *   <li>include: Array of additional Models to include in response.</li>
      * </ul>
      */
-    public CompletableFuture<CreateUserRequest> getCurrentUser(Consumer<GetCurrentUserOperationSpec> spec) {
+    public CompletableFuture<CreateUser201Response> getCurrentUser(Consumer<GetCurrentUserOperationSpec> spec) {
         GetCurrentUserOperationSpec r = new GetCurrentUserOperationSpec(spec);
         return api.getCurrentUser(r.include());
     }
@@ -3292,6 +3333,16 @@ public class PagerDutyRESTAsyncConsumerApi {
     }
 
     /**
+     * List template fields
+     * <p>
+     * Get a list of fields that can be used on the account templates.
+     * Scoped OAuth requires: {@code templates.read} 
+     */
+    public CompletableFuture<GetTemplateFields200Response> getTemplateFields() {
+        return api.getTemplateFields();
+    }
+
+    /**
      * List templates
      * <p>
      * Get a list of all the template on an account
@@ -3324,7 +3375,7 @@ public class PagerDutyRESTAsyncConsumerApi {
      *   <li>include: Array of additional Models to include in response.</li>
      * </ul>
      */
-    public CompletableFuture<CreateUserRequest> getUser(Consumer<GetUserOperationSpec> spec) {
+    public CompletableFuture<CreateUser201Response> getUser(Consumer<GetUserOperationSpec> spec) {
         GetUserOperationSpec r = new GetUserOperationSpec(spec);
         return api.getUser(r.id(), r.include());
     }
@@ -3608,6 +3659,26 @@ public class PagerDutyRESTAsyncConsumerApi {
     }
 
     /**
+     * List alert grouping settings
+     * <p>
+     * List all of your alert grouping settings including both single service settings and global content based settings.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * Scoped OAuth requires: {@code services.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>after: Cursor to retrieve next page; only present if next page exists.</li>
+     *   <li>before: Cursor to retrieve previous page; only present if not on first page.</li>
+     *   <li>total: By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information. </li>
+     *   <li>limit: The number of results per page.</li>
+     *   <li>serviceIds: An array of service IDs. Only results related to these services will be returned.</li>
+     * </ul>
+     */
+    public CompletableFuture<ListAlertGroupingSettings200Response> listAlertGroupingSettings(Consumer<ListAlertGroupingSettingsOperationSpec> spec) {
+        ListAlertGroupingSettingsOperationSpec r = new ListAlertGroupingSettingsOperationSpec(spec);
+        return api.listAlertGroupingSettings(r.after(), r.before(), r.total(), r.limit(), r.serviceIds());
+    }
+
+    /**
      * List audit records
      * <p>
      * List audit trail records matching provided query params or default criteria.
@@ -3644,11 +3715,12 @@ public class PagerDutyRESTAsyncConsumerApi {
      * <ul>
      *   <li>incidentId: Incident ID</li>
      *   <li>invocationState: Invocation state</li>
+     *   <li>notInvocationState: Invocation state inverse filter (matches invocations NOT in the specified state)</li>
      * </ul>
      */
     public CompletableFuture<ListAutomationActionInvocations200Response> listAutomationActionInvocations(Consumer<ListAutomationActionInvocationsOperationSpec> spec) {
         ListAutomationActionInvocationsOperationSpec r = new ListAutomationActionInvocationsOperationSpec(spec);
-        return api.listAutomationActionInvocations(r.incidentId(), r.invocationState());
+        return api.listAutomationActionInvocations(r.incidentId(), r.invocationState(), r.notInvocationState());
     }
 
     /**
@@ -4085,7 +4157,8 @@ public class PagerDutyRESTAsyncConsumerApi {
      * List the on-call entries during a given time range.
      * An on-call represents a contiguous unit of time for which a User will be on call for a given Escalation Policy and Escalation Rules.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#on-calls)
-     * Scoped OAuth requires: {@code oncalls.read} 
+     * Scoped OAuth requires: {@code oncalls.read}
+     * This API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information. 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
      *   <li>timeZone: Time zone in which results will be rendered. This will default to the account time zone.</li>
@@ -4634,6 +4707,23 @@ public class PagerDutyRESTAsyncConsumerApi {
     }
 
     /**
+     * Create an Alert Grouping Setting
+     * <p>
+     * Create a new Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * This endpoint will be used to create an instance of AlertGroupingSettings for either one service or many services that are in the alert group setting.
+     * Scoped OAuth requires: {@code services.write} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>postAlertGroupingSettingsRequest: </li>
+     * </ul>
+     */
+    public CompletableFuture<PostAlertGroupingSettingsRequest> postAlertGroupingSettings(Consumer<PostAlertGroupingSettingsOperationSpec> spec) {
+        PostAlertGroupingSettingsOperationSpec r = new PostAlertGroupingSettingsOperationSpec(spec);
+        return api.postAlertGroupingSettings(r.postAlertGroupingSettingsRequest());
+    }
+
+    /**
      * Create an Incident Workflow
      * <p>
      * Create a new Incident Workflow
@@ -4682,6 +4772,24 @@ public class PagerDutyRESTAsyncConsumerApi {
     public CompletableFuture<PostOrchestrationIntegration201Response> postOrchestrationIntegration(Consumer<PostOrchestrationIntegrationOperationSpec> spec) {
         PostOrchestrationIntegrationOperationSpec r = new PostOrchestrationIntegrationOperationSpec(spec);
         return api.postOrchestrationIntegration(r.id(), r.postOrchestrationIntegrationRequest());
+    }
+
+    /**
+     * Update an Alert Grouping Setting
+     * <p>
+     * Update an Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * if {@code services} are not provided in the request, then the existing services will not be removed from the setting.
+     * Scoped OAuth requires: {@code services.write} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     *   <li>postAlertGroupingSettingsRequest: </li>
+     * </ul>
+     */
+    public CompletableFuture<PostAlertGroupingSettingsRequest> putAlertGroupingSetting(Consumer<PutAlertGroupingSettingOperationSpec> spec) {
+        PutAlertGroupingSettingOperationSpec r = new PutAlertGroupingSettingOperationSpec(spec);
+        return api.putAlertGroupingSetting(r.id(), r.postAlertGroupingSettingsRequest());
     }
 
     /**
@@ -5115,9 +5223,9 @@ public class PagerDutyRESTAsyncConsumerApi {
      * Acknowledge, resolve, escalate or reassign one or more incidents.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * A maximum of 250 incidents may be updated at a time. If more than this number of incidents are given, the API will respond with status 413 (Request Entity Too Large).
-     * Note: the manage incidents API endpoint is rate limited to 500 requests per minute.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: {@code incidents.write} 
+     * Scoped OAuth requires: {@code incidents.write}
+     * This API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information. 
      * @param spec a consumer that creates the payload for this operation. Supports the following properties:
      * <ul>
      *   <li>from: The email address of a valid user associated with the account making the request.</li>
@@ -5529,7 +5637,7 @@ public class PagerDutyRESTAsyncConsumerApi {
      *   <li>createUserRequest: The user to be updated.</li>
      * </ul>
      */
-    public CompletableFuture<CreateUserRequest> updateUser(Consumer<UpdateUserOperationSpec> spec) {
+    public CompletableFuture<CreateUser201Response> updateUser(Consumer<UpdateUserOperationSpec> spec) {
         UpdateUserOperationSpec r = new UpdateUserOperationSpec(spec);
         return api.updateUser(r.id(), r.createUserRequest());
     }

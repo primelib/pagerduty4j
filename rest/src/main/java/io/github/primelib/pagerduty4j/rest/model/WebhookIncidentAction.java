@@ -73,7 +73,7 @@ public class WebhookIncidentAction {
      * Log Entries that correspond to the action this Webhook is reporting. Includes the channels.
      */
     @JsonProperty("log_entries")
-    protected List<ListIncidentLogEntries200ResponseAllOfLogEntriesInner> logEntries;
+    protected List<WebhookIncidentActionAllOfLogEntries> logEntries;
 
     /**
      * Constructs a validated instance of {@link WebhookIncidentAction}.
@@ -96,7 +96,7 @@ public class WebhookIncidentAction {
      * @param logEntries Log Entries that correspond to the action this Webhook is reporting. Includes the channels.
      */
     @ApiStatus.Internal
-    public WebhookIncidentAction(UUID id, OffsetDateTime triggeredAt, Webhook webhook, TypeEnum type, Incident incident, List<ListIncidentLogEntries200ResponseAllOfLogEntriesInner> logEntries) {
+    public WebhookIncidentAction(UUID id, OffsetDateTime triggeredAt, Webhook webhook, TypeEnum type, Incident incident, List<WebhookIncidentActionAllOfLogEntries> logEntries) {
         this.id = id;
         this.triggeredAt = triggeredAt;
         this.webhook = webhook;

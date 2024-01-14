@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * CreateUserRequest
+ * IncidentAllOfBody
  *
  */
 @Getter
@@ -28,33 +28,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
-    "user"
+    "details"
 })
-@JsonTypeName("createUser_request")
+@JsonTypeName("Incident_allOf_body")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class CreateUserRequest {
-
-    @JsonProperty("user")
-    protected CreateUserRequestUser user;
+public class IncidentAllOfBody {
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Additional incident details.
+     */
+    @JsonProperty("details")
+    protected Object details;
+
+    /**
+     * Constructs a validated instance of {@link IncidentAllOfBody}.
      *
      * @param spec the specification to process
      */
-    public CreateUserRequest(Consumer<CreateUserRequest> spec) {
+    public IncidentAllOfBody(Consumer<IncidentAllOfBody> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link IncidentAllOfBody}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequest(Consumer)} instead.
-     * @param user user
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentAllOfBody(Consumer)} instead.
+     * @param details Additional incident details.
      */
     @ApiStatus.Internal
-    public CreateUserRequest(CreateUserRequestUser user) {
-        this.user = user;
+    public IncidentAllOfBody(Object details) {
+        this.details = details;
     }
 
 }

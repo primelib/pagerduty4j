@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * CreateUserRequest
+ * PostAlertGroupingSettingsRequest
  *
  */
 @Getter
@@ -28,33 +28,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
-    "user"
+    "alert_grouping_setting"
 })
-@JsonTypeName("createUser_request")
+@JsonTypeName("postAlertGroupingSettings_request")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class CreateUserRequest {
+public class PostAlertGroupingSettingsRequest {
 
-    @JsonProperty("user")
-    protected CreateUserRequestUser user;
+    @JsonProperty("alert_grouping_setting")
+    protected AlertGroupingSetting alertGroupingSetting;
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link PostAlertGroupingSettingsRequest}.
      *
      * @param spec the specification to process
      */
-    public CreateUserRequest(Consumer<CreateUserRequest> spec) {
+    public PostAlertGroupingSettingsRequest(Consumer<PostAlertGroupingSettingsRequest> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link PostAlertGroupingSettingsRequest}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequest(Consumer)} instead.
-     * @param user user
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #PostAlertGroupingSettingsRequest(Consumer)} instead.
+     * @param alertGroupingSetting alertGroupingSetting
      */
     @ApiStatus.Internal
-    public CreateUserRequest(CreateUserRequestUser user) {
-        this.user = user;
+    public PostAlertGroupingSettingsRequest(AlertGroupingSetting alertGroupingSetting) {
+        this.alertGroupingSetting = alertGroupingSetting;
     }
 
 }

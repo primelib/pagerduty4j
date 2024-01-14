@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * CreateUserRequest
+ * FieldDomainName
  *
  */
 @Getter
@@ -28,33 +28,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
-    "user"
+    "order",
+    "summary"
 })
-@JsonTypeName("createUser_request")
+@JsonTypeName("Field_domain_name")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class CreateUserRequest {
+public class FieldDomainName {
 
-    @JsonProperty("user")
-    protected CreateUserRequestUser user;
+    @JsonProperty("order")
+    protected Integer order;
+
+    @JsonProperty("summary")
+    protected String summary;
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link FieldDomainName}.
      *
      * @param spec the specification to process
      */
-    public CreateUserRequest(Consumer<CreateUserRequest> spec) {
+    public FieldDomainName(Consumer<FieldDomainName> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link FieldDomainName}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequest(Consumer)} instead.
-     * @param user user
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #FieldDomainName(Consumer)} instead.
+     * @param order order
+     * @param summary summary
      */
     @ApiStatus.Internal
-    public CreateUserRequest(CreateUserRequestUser user) {
-        this.user = user;
+    public FieldDomainName(Integer order, String summary) {
+        this.order = order;
+        this.summary = summary;
     }
 
 }

@@ -180,7 +180,7 @@ public class Incident {
      * The teams involved in the incident’s lifecycle. If the {@code include[]=teams} query parameter is provided, the full team definitions will be returned.
      */
     @JsonProperty("teams")
-    protected List<IncidentAllOfTeamsInner> teams;
+    protected List<IncidentAllOfTeams> teams;
 
     /**
      * The list of pending_actions on the incident. A pending_action object contains a type of action which can be escalate, unacknowledge, resolve or urgency_change. A pending_action object contains at, the time at which the action will take place. An urgency_change pending_action will contain to, the urgency that the incident will change to.
@@ -207,7 +207,7 @@ public class Incident {
     protected ResolveReason resolveReason;
 
     @JsonProperty("conference_bridge")
-    protected ConferenceBridge conferenceBridge;
+    protected IncidentAllOfConferenceBridge conferenceBridge;
 
     /**
      * The responders on the incident. Only returned if the account has access to the [responder requests](https://support.pagerduty.com/docs/add-responders) feature.
@@ -228,7 +228,7 @@ public class Incident {
     protected UrgencyEnum urgency;
 
     @JsonProperty("body")
-    protected IncidentBody body;
+    protected IncidentAllOfBody body;
 
     /**
      * Constructs a validated instance of {@link Incident}.
@@ -277,7 +277,7 @@ public class Incident {
      * @param body body
      */
     @ApiStatus.Internal
-    public Incident(String id, String summary, String type, String self, String htmlUrl, Integer incidentNumber, String title, OffsetDateTime createdAt, OffsetDateTime updatedAt, StatusEnum status, String incidentKey, IncidentAllOfService service, List<Assignment> assignments, AssignedViaEnum assignedVia, OffsetDateTime lastStatusChangeAt, OffsetDateTime resolvedAt, IncidentAllOfFirstTriggerLogEntry firstTriggerLogEntry, AlertCount alertCounts, Boolean isMergeable, IncidentAllOfEscalationPolicy escalationPolicy, List<IncidentAllOfTeamsInner> teams, List<IncidentAction> pendingActions, List<Acknowledgement> acknowledgements, IncidentAllOfAlertGrouping alertGrouping, IncidentAllOfLastStatusChangeBy lastStatusChangeBy, Priority priority, ResolveReason resolveReason, ConferenceBridge conferenceBridge, List<IncidentsRespondersReference> incidentsResponders, List<ResponderRequest> responderRequests, UrgencyEnum urgency, IncidentBody body) {
+    public Incident(String id, String summary, String type, String self, String htmlUrl, Integer incidentNumber, String title, OffsetDateTime createdAt, OffsetDateTime updatedAt, StatusEnum status, String incidentKey, IncidentAllOfService service, List<Assignment> assignments, AssignedViaEnum assignedVia, OffsetDateTime lastStatusChangeAt, OffsetDateTime resolvedAt, IncidentAllOfFirstTriggerLogEntry firstTriggerLogEntry, AlertCount alertCounts, Boolean isMergeable, IncidentAllOfEscalationPolicy escalationPolicy, List<IncidentAllOfTeams> teams, List<IncidentAction> pendingActions, List<Acknowledgement> acknowledgements, IncidentAllOfAlertGrouping alertGrouping, IncidentAllOfLastStatusChangeBy lastStatusChangeBy, Priority priority, ResolveReason resolveReason, IncidentAllOfConferenceBridge conferenceBridge, List<IncidentsRespondersReference> incidentsResponders, List<ResponderRequest> responderRequests, UrgencyEnum urgency, IncidentAllOfBody body) {
         this.id = id;
         this.summary = summary;
         this.type = type;

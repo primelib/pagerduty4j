@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.time.OffsetDateTime;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * IncidentWorkflow
+ * IncidentAllOfTeams
  *
  */
 @Getter
@@ -40,13 +38,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "html_url",
     "name",
     "description",
-    "created_at",
-    "team",
-    "steps"
+    "default_role"
 })
-@JsonTypeName("IncidentWorkflow")
+@JsonTypeName("Incident_allOf_teams")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class IncidentWorkflow {
+public class IncidentAllOfTeams {
 
     @JsonProperty("id")
     protected String id;
@@ -73,58 +69,47 @@ public class IncidentWorkflow {
     protected String htmlUrl;
 
     /**
-     * A descriptive name for the Incident Workflow
+     * The name of the team.
      */
     @JsonProperty("name")
     protected String name;
 
     /**
-     * A description of what the Incident Workflow does
+     * The description of the team.
      */
     @JsonProperty("description")
     protected String description;
 
     /**
-     * The timestamp this Incident Workflow was created
+     * The team is private if the value is "none", or public if it is "manager" (the default permissions for a non-member of the team are either "none", or their base role up until "manager").
      */
-    @JsonProperty("created_at")
-    protected OffsetDateTime createdAt;
-
-    @JsonProperty("team")
-    protected IncidentWorkflowAllOfTeam team;
+    @JsonProperty("default_role")
+    protected DefaultRoleEnum defaultRole;
 
     /**
-     * The ordered list of steps that execute sequentially as part of the workflow
-     */
-    @JsonProperty("steps")
-    protected List<IncidentWorkflowAllOfSteps> steps;
-
-    /**
-     * Constructs a validated instance of {@link IncidentWorkflow}.
+     * Constructs a validated instance of {@link IncidentAllOfTeams}.
      *
      * @param spec the specification to process
      */
-    public IncidentWorkflow(Consumer<IncidentWorkflow> spec) {
+    public IncidentAllOfTeams(Consumer<IncidentAllOfTeams> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflow}.
+     * Constructs a validated instance of {@link IncidentAllOfTeams}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflow(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentAllOfTeams(Consumer)} instead.
      * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
-     * @param name A descriptive name for the Incident Workflow
-     * @param description A description of what the Incident Workflow does
-     * @param createdAt The timestamp this Incident Workflow was created
-     * @param team team
-     * @param steps The ordered list of steps that execute sequentially as part of the workflow
+     * @param name The name of the team.
+     * @param description The description of the team.
+     * @param defaultRole The team is private if the value is "none", or public if it is "manager" (the default permissions for a non-member of the team are either "none", or their base role up until "manager").
      */
     @ApiStatus.Internal
-    public IncidentWorkflow(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, OffsetDateTime createdAt, IncidentWorkflowAllOfTeam team, List<IncidentWorkflowAllOfSteps> steps) {
+    public IncidentAllOfTeams(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, DefaultRoleEnum defaultRole) {
         this.id = id;
         this.summary = summary;
         this.type = type;
@@ -132,14 +117,13 @@ public class IncidentWorkflow {
         this.htmlUrl = htmlUrl;
         this.name = name;
         this.description = description;
-        this.createdAt = createdAt;
-        this.team = team;
-        this.steps = steps;
+        this.defaultRole = defaultRole;
     }
 
     @AllArgsConstructor
     public enum TypeEnum {
-        INCIDENT_WORKFLOW("incident_workflow");
+        TEAM_REFERENCE("team_reference"),
+        TEAM("team");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;
@@ -148,6 +132,35 @@ public class IncidentWorkflow {
         public static TypeEnum of(String input) {
             if (input != null) {
                 for (TypeEnum v : VALUES) {
+                    if (input.equalsIgnoreCase(v.value)) 
+                        return v;
+                }
+            }
+
+            return null;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+    }
+
+    /**
+     * The team is private if the value is "none", or public if it is "manager" (the default permissions for a non-member of the team are either "none", or their base role up until "manager").
+     */
+    @AllArgsConstructor
+    public enum DefaultRoleEnum {
+        MANAGER("manager"),
+        NONE("none");
+
+        private static final DefaultRoleEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
+        private final String value;
+
+        @JsonCreator
+        public static DefaultRoleEnum of(String input) {
+            if (input != null) {
+                for (DefaultRoleEnum v : VALUES) {
                     if (input.equalsIgnoreCase(v.value)) 
                         return v;
                 }

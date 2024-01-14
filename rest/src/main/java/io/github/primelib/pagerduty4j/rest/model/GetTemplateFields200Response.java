@@ -12,12 +12,13 @@ import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * CreateUserRequest
+ * GetTemplateFields200Response
  *
  */
 @Getter
@@ -28,33 +29,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 @Builder
 @JsonPropertyOrder({
-    "user"
+    "fields"
 })
-@JsonTypeName("createUser_request")
+@JsonTypeName("getTemplateFields_200_response")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class CreateUserRequest {
+public class GetTemplateFields200Response {
 
-    @JsonProperty("user")
-    protected CreateUserRequestUser user;
+    @JsonProperty("fields")
+    protected List<Field> fields;
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link GetTemplateFields200Response}.
      *
      * @param spec the specification to process
      */
-    public CreateUserRequest(Consumer<CreateUserRequest> spec) {
+    public GetTemplateFields200Response(Consumer<GetTemplateFields200Response> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link CreateUserRequest}.
+     * Constructs a validated instance of {@link GetTemplateFields200Response}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #CreateUserRequest(Consumer)} instead.
-     * @param user user
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #GetTemplateFields200Response(Consumer)} instead.
+     * @param fields fields
      */
     @ApiStatus.Internal
-    public CreateUserRequest(CreateUserRequestUser user) {
-        this.user = user;
+    public GetTemplateFields200Response(List<Field> fields) {
+        this.fields = fields;
     }
 
 }

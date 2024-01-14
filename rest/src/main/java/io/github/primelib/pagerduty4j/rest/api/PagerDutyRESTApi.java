@@ -64,6 +64,7 @@ import io.github.primelib.pagerduty4j.rest.model.CreateTeamNotificationSubscript
 import io.github.primelib.pagerduty4j.rest.model.CreateTeamRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTemplate201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateTemplateRequest;
+import io.github.primelib.pagerduty4j.rest.model.CreateUser201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserContactMethod201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserContactMethodRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateUserHandoffNotificationRuleRequest;
@@ -116,6 +117,7 @@ import io.github.primelib.pagerduty4j.rest.model.GetRelatedIncidents200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetStatusDashboardById200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetTagsByEntityType200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetTeamNotificationSubscriptions200Response;
+import io.github.primelib.pagerduty4j.rest.model.GetTemplateFields200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetTemplates200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetUserContactMethods200Response;
 import io.github.primelib.pagerduty4j.rest.model.GetUserHandoffNotificationRules200Response;
@@ -128,6 +130,7 @@ import io.github.primelib.pagerduty4j.rest.model.GetUserStatusUpdateNotification
 import io.github.primelib.pagerduty4j.rest.model.GetVendor200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListAbilities200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListAddon200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListAlertGroupingSettings200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListAutomationActionInvocations200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListBusinessServices200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListChangeEvents200Response;
@@ -174,6 +177,7 @@ import java.time.OffsetDateTime;
 import io.github.primelib.pagerduty4j.rest.model.OrchestrationGlobal;
 import io.github.primelib.pagerduty4j.rest.model.OrchestrationRouter;
 import io.github.primelib.pagerduty4j.rest.model.OrchestrationUnrouted;
+import io.github.primelib.pagerduty4j.rest.model.PostAlertGroupingSettingsRequest;
 import io.github.primelib.pagerduty4j.rest.model.PostIncidentWorkflowRequest;
 import io.github.primelib.pagerduty4j.rest.model.PostOrchestration201Response;
 import io.github.primelib.pagerduty4j.rest.model.PostOrchestrationIntegration201Response;
@@ -501,7 +505,8 @@ public interface PagerDutyRESTApi {
      * Create an incident synchronously without a corresponding event from a monitoring service.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: {@code incidents.write} 
+     * Scoped OAuth requires: {@code incidents.write}
+     * This API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information. 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param createIncidentRequest  (optional)
@@ -930,7 +935,7 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json", 
         "From: {from}"
     })
-    CreateUserRequest createUser(@Param("from") @NotNull String from, @Nullable CreateUserRequest createUserRequest);
+    CreateUser201Response createUser(@Param("from") @NotNull String from, @Nullable CreateUserRequest createUserRequest);
 
     /**
      * Create a user contact method
@@ -1051,6 +1056,22 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json"
     })
     void deleteAddon(@Param("id") @NotNull String id);
+
+    /**
+     * Delete an Alert Grouping Setting
+     * <p>
+     * Delete an existing Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * Scoped OAuth requires: {@code services.write} 
+     *
+     * @param id                   The ID of the resource. (required)
+     */
+    @RequestLine("DELETE /alert_grouping_settings/{id}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    void deleteAlertGroupingSetting(@Param("id") @NotNull String id);
 
     /**
      * Delete an Automation Action
@@ -1764,6 +1785,22 @@ public interface PagerDutyRESTApi {
     CreateAddonRequest getAddon(@Param("id") @NotNull String id);
 
     /**
+     * Get an Alert Grouping Setting
+     * <p>
+     * Get an existing Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * Scoped OAuth requires: {@code services.read} 
+     *
+     * @param id                   The ID of the resource. (required)
+     */
+    @RequestLine("GET /alert_grouping_settings/{id}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    PostAlertGroupingSettingsRequest getAlertGroupingSetting(@Param("id") @NotNull String id);
+
+    /**
      * List Automation Actions
      * <p>
      * Lists Automation Actions matching provided query params.
@@ -2302,7 +2339,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserRequest getCurrentUser(@Param("include") @Nullable String include);
+    CreateUser201Response getCurrentUser(@Param("include") @Nullable String include);
 
     /**
      * Get a Field
@@ -3066,6 +3103,20 @@ public interface PagerDutyRESTApi {
     CreateTemplate201Response getTemplate(@Param("id") @NotNull String id);
 
     /**
+     * List template fields
+     * <p>
+     * Get a list of fields that can be used on the account templates.
+     * Scoped OAuth requires: {@code templates.read} 
+     *
+     */
+    @RequestLine("GET /templates/fields")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    GetTemplateFields200Response getTemplateFields();
+
+    /**
      * List templates
      * <p>
      * Get a list of all the template on an account
@@ -3100,7 +3151,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserRequest getUser(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
+    CreateUser201Response getUser(@Param("id") @NotNull String id, @Param("include") @Nullable String include);
 
     /**
      * Get a user's contact method
@@ -3385,6 +3436,26 @@ public interface PagerDutyRESTApi {
     ListAddon200Response listAddon(@Param("limit") @Nullable Integer limit, @Param("offset") @Nullable Integer offset, @Param("total") @Nullable Boolean total, @Param("include") @Nullable String include, @Param("serviceIds") @Nullable Set<String> serviceIds, @Param("filter") @Nullable String filter);
 
     /**
+     * List alert grouping settings
+     * <p>
+     * List all of your alert grouping settings including both single service settings and global content based settings.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * Scoped OAuth requires: {@code services.read} 
+     *
+     * @param after                Cursor to retrieve next page; only present if next page exists. (optional)
+     * @param before               Cursor to retrieve previous page; only present if not on first page. (optional)
+     * @param total                By default the {@code total} field in pagination responses is set to {@code null} to provide the fastest possible response times. Set {@code total} to {@code true} for this field to be populated.  See our [Pagination Docs](https://developer.pagerduty.com/docs/rest-api-v2/pagination/) for more information.  (optional, defaults to false)
+     * @param limit                The number of results per page. (optional)
+     * @param serviceIds           An array of service IDs. Only results related to these services will be returned. (optional)
+     */
+    @RequestLine("GET /alert_grouping_settings?after={after}&before={before}&total={total}&limit={limit}&service_ids[]={serviceIds}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    ListAlertGroupingSettings200Response listAlertGroupingSettings(@Param("after") @Nullable String after, @Param("before") @Nullable String before, @Param("total") @Nullable Boolean total, @Param("limit") @Nullable Integer limit, @Param("serviceIds") @Nullable List<String> serviceIds);
+
+    /**
      * List audit records
      * <p>
      * List audit trail records matching provided query params or default criteria.
@@ -3420,13 +3491,14 @@ public interface PagerDutyRESTApi {
      *
      * @param incidentId           Incident ID (required)
      * @param invocationState      Invocation state (optional)
+     * @param notInvocationState   Invocation state inverse filter (matches invocations NOT in the specified state) (optional)
      */
-    @RequestLine("GET /automation_actions/invocations?invocation_state={invocationState}&incident_id={incidentId}")
+    @RequestLine("GET /automation_actions/invocations?invocation_state={invocationState}&not_invocation_state={notInvocationState}&incident_id={incidentId}")
     @Headers({
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    ListAutomationActionInvocations200Response listAutomationActionInvocations(@Param("incidentId") @NotNull String incidentId, @Param("invocationState") @Nullable String invocationState);
+    ListAutomationActionInvocations200Response listAutomationActionInvocations(@Param("incidentId") @NotNull String incidentId, @Param("invocationState") @Nullable String invocationState, @Param("notInvocationState") @Nullable String notInvocationState);
 
     /**
      * List Business Services
@@ -3864,7 +3936,8 @@ public interface PagerDutyRESTApi {
      * List the on-call entries during a given time range.
      * An on-call represents a contiguous unit of time for which a User will be on call for a given Escalation Policy and Escalation Rules.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#on-calls)
-     * Scoped OAuth requires: {@code oncalls.read} 
+     * Scoped OAuth requires: {@code oncalls.read}
+     * This API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information. 
      *
      * @param timeZone             Time zone in which results will be rendered. This will default to the account time zone. (optional)
      * @param limit                The number of results per page. (optional)
@@ -4414,6 +4487,23 @@ public interface PagerDutyRESTApi {
     ListOrchestrationIntegrations200Response migrateOrchestrationIntegration(@Param("id") @NotNull String id, @Nullable MigrateOrchestrationIntegrationRequest migrateOrchestrationIntegrationRequest);
 
     /**
+     * Create an Alert Grouping Setting
+     * <p>
+     * Create a new Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * This endpoint will be used to create an instance of AlertGroupingSettings for either one service or many services that are in the alert group setting.
+     * Scoped OAuth requires: {@code services.write} 
+     *
+     * @param postAlertGroupingSettingsRequest  (optional)
+     */
+    @RequestLine("POST /alert_grouping_settings")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    PostAlertGroupingSettingsRequest postAlertGroupingSettings(@Nullable PostAlertGroupingSettingsRequest postAlertGroupingSettingsRequest);
+
+    /**
      * Create an Incident Workflow
      * <p>
      * Create a new Incident Workflow
@@ -4463,6 +4553,24 @@ public interface PagerDutyRESTApi {
         "Content-Type: application/json"
     })
     PostOrchestrationIntegration201Response postOrchestrationIntegration(@Param("id") @NotNull String id, @Nullable PostOrchestrationIntegrationRequest postOrchestrationIntegrationRequest);
+
+    /**
+     * Update an Alert Grouping Setting
+     * <p>
+     * Update an Alert Grouping Setting.
+     * The settings part of Alert Grouper service allows us to create Alert Grouping Settings and configs that are required to be used during grouping of the alerts.
+     * if {@code services} are not provided in the request, then the existing services will not be removed from the setting.
+     * Scoped OAuth requires: {@code services.write} 
+     *
+     * @param id                   The ID of the resource. (required)
+     * @param postAlertGroupingSettingsRequest  (optional)
+     */
+    @RequestLine("PUT /alert_grouping_settings/{id}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "Content-Type: application/json"
+    })
+    PostAlertGroupingSettingsRequest putAlertGroupingSetting(@Param("id") @NotNull String id, @Nullable PostAlertGroupingSettingsRequest postAlertGroupingSettingsRequest);
 
     /**
      * Set the Account-level priority threshold for Business Service impact.
@@ -4899,9 +5007,9 @@ public interface PagerDutyRESTApi {
      * Acknowledge, resolve, escalate or reassign one or more incidents.
      * An incident represents a problem or an issue that needs to be addressed and resolved.
      * A maximum of 250 incidents may be updated at a time. If more than this number of incidents are given, the API will respond with status 413 (Request Entity Too Large).
-     * Note: the manage incidents API endpoint is rate limited to 500 requests per minute.
      * For more information see the [API Concepts Document](../../api-reference/ZG9jOjI3NDc5Nzc-api-concepts#incidents)
-     * Scoped OAuth requires: {@code incidents.write} 
+     * Scoped OAuth requires: {@code incidents.write}
+     * This API operation has operation specific rate limits. See the [Rate Limits](https://developer.pagerduty.com/docs/72d3b724589e3-rest-api-rate-limits) page for more information. 
      *
      * @param from                 The email address of a valid user associated with the account making the request. (required)
      * @param limit                The number of results per page. (optional)
@@ -5319,7 +5427,7 @@ public interface PagerDutyRESTApi {
         "Accept: application/vnd.pagerduty+json;version=2", 
         "Content-Type: application/json"
     })
-    CreateUserRequest updateUser(@Param("id") @NotNull String id, @Nullable CreateUserRequest createUserRequest);
+    CreateUser201Response updateUser(@Param("id") @NotNull String id, @Nullable CreateUserRequest createUserRequest);
 
     /**
      * Update a user's contact method
