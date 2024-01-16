@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner
+ * IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner
  *
  */
 @Getter
@@ -32,9 +32,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "reference_name",
     "parameter_type"
 })
-@JsonTypeName("IncidentWorkflow_allOf_steps_allOf_action_configuration_inline_steps_inputs_inner_value_steps_inner_allOf_action_configuration_outputs_inner")
+@JsonTypeName("IncidentWorkflowActionConfiguration_inline_steps_inputs_inner_value_steps_inner_allOf_action_configuration_outputs_inner")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner {
+public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner {
 
     /**
      * The name of the Output
@@ -55,24 +55,24 @@ public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputs
     protected String parameterType;
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner}.
      *
      * @param spec the specification to process
      */
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(Consumer<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> spec) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(Consumer<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(Consumer)} instead.
      * @param name The name of the Output
      * @param referenceName The reference name of the Output
      * @param parameterType The data type produced by this Output
      */
     @ApiStatus.Internal
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(String name, String referenceName, String parameterType) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(String name, String referenceName, String parameterType) {
         this.name = name;
         this.referenceName = referenceName;
         this.parameterType = parameterType;

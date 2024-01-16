@@ -57,6 +57,7 @@ modules:
       # bad names
       jq '(.components.schemas.ScheduleOverride = .components.schemas.Override) | del(.components.schemas.Override)' "$1" | sponge "$1"
       jq 'walk(if type == "string" and . == "#/components/schemas/Override" then "#/components/schemas/ScheduleOverride" else . end)' "$1" | sponge "$1"
+      jq '.components.schemas.IncidentWorkflow.allOf[1].properties.steps.items.allOf[1].properties.action_configuration.title = "IncidentWorkflowActionConfiguration"' "$1" | sponge "$1"
       # replace refs
       references=$(jq -r '.. | objects | select(has("$ref")) | .["$ref"]' "$1" | sort -u)
       for ref in $references; do

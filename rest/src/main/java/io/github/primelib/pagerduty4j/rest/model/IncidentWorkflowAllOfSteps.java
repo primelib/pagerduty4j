@@ -81,7 +81,7 @@ public class IncidentWorkflowAllOfSteps {
     protected String description;
 
     @JsonProperty("action_configuration")
-    protected IncidentWorkflowAllOfStepsAllOfActionConfiguration actionConfiguration;
+    protected IncidentWorkflowActionConfiguration actionConfiguration;
 
     /**
      * Constructs a validated instance of {@link IncidentWorkflowAllOfSteps}.
@@ -106,7 +106,7 @@ public class IncidentWorkflowAllOfSteps {
      * @param actionConfiguration actionConfiguration
      */
     @ApiStatus.Internal
-    public IncidentWorkflowAllOfSteps(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, IncidentWorkflowAllOfStepsAllOfActionConfiguration actionConfiguration) {
+    public IncidentWorkflowAllOfSteps(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, String description, IncidentWorkflowActionConfiguration actionConfiguration) {
         this.id = id;
         this.summary = summary;
         this.type = type;

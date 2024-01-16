@@ -11818,7 +11818,8 @@
                           "required": [
                             "action_id",
                             "inputs"
-                          ]
+                          ],
+                          "title": "IncidentWorkflowActionConfiguration"
                         }
                       },
                       "required": [

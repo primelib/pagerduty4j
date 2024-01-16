@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner
+ * IncidentWorkflowActionConfigurationInlineStepsInputsInner
  *
  */
 @Getter
@@ -31,9 +31,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "name",
     "value"
 })
-@JsonTypeName("IncidentWorkflow_allOf_steps_allOf_action_configuration_inline_steps_inputs_inner")
+@JsonTypeName("IncidentWorkflowActionConfiguration_inline_steps_inputs_inner")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner {
+public class IncidentWorkflowActionConfigurationInlineStepsInputsInner {
 
     /**
      * The name of the Input
@@ -42,26 +42,26 @@ public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputs
     protected String name;
 
     @JsonProperty("value")
-    protected IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValue value;
+    protected IncidentWorkflowActionConfigurationInlineStepsInputsInnerValue value;
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInner}.
      *
      * @param spec the specification to process
      */
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner(Consumer<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner> spec) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInner(Consumer<IncidentWorkflowActionConfigurationInlineStepsInputsInner> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInner}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInner(Consumer)} instead.
      * @param name The name of the Input
      * @param value value
      */
     @ApiStatus.Internal
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner(String name, IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValue value) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInner(String name, IncidentWorkflowActionConfigurationInlineStepsInputsInnerValue value) {
         this.name = name;
         this.value = value;
     }

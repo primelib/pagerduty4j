@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * UserAllOfLicense
+ * IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner
  *
  */
 @Getter
@@ -35,11 +35,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
     "summary",
     "type",
     "self",
-    "html_url"
+    "html_url",
+    "name",
+    "action_configuration"
 })
-@JsonTypeName("User_allOf_license")
+@JsonTypeName("IncidentWorkflowActionConfiguration_inline_steps_inputs_inner_value_steps_inner")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class UserAllOfLicense {
+public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner {
 
     @JsonProperty("id")
     protected String id;
@@ -66,36 +68,49 @@ public class UserAllOfLicense {
     protected String htmlUrl;
 
     /**
-     * Constructs a validated instance of {@link UserAllOfLicense}.
+     * A descriptive name for the Step
+     */
+    @JsonProperty("name")
+    protected String name;
+
+    @JsonProperty("action_configuration")
+    protected IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration actionConfiguration;
+
+    /**
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner}.
      *
      * @param spec the specification to process
      */
-    public UserAllOfLicense(Consumer<UserAllOfLicense> spec) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner(Consumer<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link UserAllOfLicense}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #UserAllOfLicense(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner(Consumer)} instead.
      * @param id id
      * @param summary A short-form, server-generated string that provides succinct, important information about an object suitable for primary labeling of an entity in a client. In many cases, this will be identical to {@code name}, though it is not intended to be an identifier.
      * @param type type
      * @param self the API show URL at which the object is accessible
      * @param htmlUrl a URL at which the entity is uniquely displayed in the Web app
+     * @param name A descriptive name for the Step
+     * @param actionConfiguration actionConfiguration
      */
     @ApiStatus.Internal
-    public UserAllOfLicense(String id, String summary, TypeEnum type, String self, String htmlUrl) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInner(String id, String summary, TypeEnum type, String self, String htmlUrl, String name, IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration actionConfiguration) {
         this.id = id;
         this.summary = summary;
         this.type = type;
         this.self = self;
         this.htmlUrl = htmlUrl;
+        this.name = name;
+        this.actionConfiguration = actionConfiguration;
     }
 
     @AllArgsConstructor
     public enum TypeEnum {
-        LICENSE_REFERENCE("license_reference");
+        STEP("step");
 
         private static final TypeEnum[] VALUES = values(); // prevent allocating a new array for every call to values()
         private final String value;

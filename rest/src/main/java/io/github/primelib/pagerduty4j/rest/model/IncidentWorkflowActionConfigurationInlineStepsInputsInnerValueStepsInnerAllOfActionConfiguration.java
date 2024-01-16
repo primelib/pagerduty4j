@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration
+ * IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration
  *
  */
 @Getter
@@ -34,9 +34,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "inputs",
     "outputs"
 })
-@JsonTypeName("IncidentWorkflow_allOf_steps_allOf_action_configuration_inline_steps_inputs_inner_value_steps_inner_allOf_action_configuration")
+@JsonTypeName("IncidentWorkflowActionConfiguration_inline_steps_inputs_inner_value_steps_inner_allOf_action_configuration")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration {
+public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration {
 
     /**
      * The identifier of the Action to execute
@@ -54,31 +54,31 @@ public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputs
      * The standard inputs used to configure the Action to execute
      */
     @JsonProperty("inputs")
-    protected List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner> inputs;
+    protected List<IncidentWorkflowActionConfigurationInputsInner> inputs;
 
     @JsonProperty("outputs")
-    protected List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs;
+    protected List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs;
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration}.
      *
      * @param spec the specification to process
      */
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(Consumer<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration> spec) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(Consumer<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(Consumer)} instead.
      * @param actionId The identifier of the Action to execute
      * @param description Description of the Action
      * @param inputs The standard inputs used to configure the Action to execute
      * @param outputs outputs
      */
     @ApiStatus.Internal
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(String actionId, String description, List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner> inputs, List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs) {
+    public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(String actionId, String description, List<IncidentWorkflowActionConfigurationInputsInner> inputs, List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs) {
         this.actionId = actionId;
         this.description = description;
         this.inputs = inputs;

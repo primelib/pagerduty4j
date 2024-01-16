@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * IncidentWorkflowAllOfStepsAllOfActionConfiguration
+ * IncidentWorkflowActionConfiguration
  *
  */
 @Getter
@@ -35,9 +35,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "inline_steps_inputs",
     "outputs"
 })
-@JsonTypeName("IncidentWorkflow_allOf_steps_allOf_action_configuration")
+@JsonTypeName("IncidentWorkflowActionConfiguration")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class IncidentWorkflowAllOfStepsAllOfActionConfiguration {
+public class IncidentWorkflowActionConfiguration {
 
     /**
      * The identifier of the Action to execute
@@ -55,30 +55,30 @@ public class IncidentWorkflowAllOfStepsAllOfActionConfiguration {
      * The standard inputs used to configure the Action to execute
      */
     @JsonProperty("inputs")
-    protected List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner> inputs;
+    protected List<IncidentWorkflowActionConfigurationInputsInner> inputs;
 
     /**
      * Specialized inputs used to configure a workflow-within-a-workflow
      */
     @JsonProperty("inline_steps_inputs")
-    protected List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner> inlineStepsInputs;
+    protected List<IncidentWorkflowActionConfigurationInlineStepsInputsInner> inlineStepsInputs;
 
     @JsonProperty("outputs")
-    protected List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs;
+    protected List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs;
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfiguration}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfiguration}.
      *
      * @param spec the specification to process
      */
-    public IncidentWorkflowAllOfStepsAllOfActionConfiguration(Consumer<IncidentWorkflowAllOfStepsAllOfActionConfiguration> spec) {
+    public IncidentWorkflowActionConfiguration(Consumer<IncidentWorkflowActionConfiguration> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfiguration}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfiguration}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowAllOfStepsAllOfActionConfiguration(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfiguration(Consumer)} instead.
      * @param actionId The identifier of the Action to execute
      * @param description Description of the Action
      * @param inputs The standard inputs used to configure the Action to execute
@@ -86,7 +86,7 @@ public class IncidentWorkflowAllOfStepsAllOfActionConfiguration {
      * @param outputs outputs
      */
     @ApiStatus.Internal
-    public IncidentWorkflowAllOfStepsAllOfActionConfiguration(String actionId, String description, List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner> inputs, List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInner> inlineStepsInputs, List<IncidentWorkflowAllOfStepsAllOfActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs) {
+    public IncidentWorkflowActionConfiguration(String actionId, String description, List<IncidentWorkflowActionConfigurationInputsInner> inputs, List<IncidentWorkflowActionConfigurationInlineStepsInputsInner> inlineStepsInputs, List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs) {
         this.actionId = actionId;
         this.description = description;
         this.inputs = inputs;

@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner
+ * IncidentWorkflowActionConfigurationInputsInner
  *
  */
 @Getter
@@ -32,9 +32,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     "parameter_type",
     "value"
 })
-@JsonTypeName("IncidentWorkflow_allOf_steps_allOf_action_configuration_inputs_inner")
+@JsonTypeName("IncidentWorkflowActionConfiguration_inputs_inner")
 @Generated(value = "io.github.primelib.primecodegen.javafeign.JavaFeignGenerator")
-public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner {
+public class IncidentWorkflowActionConfigurationInputsInner {
 
     /**
      * The name of the Input
@@ -55,24 +55,24 @@ public class IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner {
     protected String value;
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInputsInner}.
      *
      * @param spec the specification to process
      */
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner(Consumer<IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner> spec) {
+    public IncidentWorkflowActionConfigurationInputsInner(Consumer<IncidentWorkflowActionConfigurationInputsInner> spec) {
         spec.accept(this);
     }
 
     /**
-     * Constructs a validated instance of {@link IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner}.
+     * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInputsInner}.
      * <p>
-     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner(Consumer)} instead.
+     * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInputsInner(Consumer)} instead.
      * @param name The name of the Input
      * @param parameterType The data type of this Input
      * @param value The configured value of the Input
      */
     @ApiStatus.Internal
-    public IncidentWorkflowAllOfStepsAllOfActionConfigurationInputsInner(String name, String parameterType, String value) {
+    public IncidentWorkflowActionConfigurationInputsInner(String name, String parameterType, String value) {
         this.name = name;
         this.parameterType = parameterType;
         this.value = value;
