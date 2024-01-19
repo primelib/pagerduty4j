@@ -59,6 +59,8 @@ import io.github.primelib.pagerduty4j.rest.model.CreateServiceEventRule201Respon
 import io.github.primelib.pagerduty4j.rest.model.CreateServiceEventRuleRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateServiceIntegrationRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateServiceRequest;
+import io.github.primelib.pagerduty4j.rest.model.CreateStatusPageSubscription201Response;
+import io.github.primelib.pagerduty4j.rest.model.CreateStatusPageSubscriptionRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTagsRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTeamNotificationSubscriptionsRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTeamRequest;
@@ -165,6 +167,7 @@ import io.github.primelib.pagerduty4j.rest.model.ListServiceEventRules200Respons
 import io.github.primelib.pagerduty4j.rest.model.ListServices200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListStandards200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListStatusDashboards200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListStatusPageSubscriptions200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeamUsers200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeams200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListUsers200Response;
@@ -855,6 +858,24 @@ public interface PagerDutyRESTAsyncApi {
     CompletableFuture<CreateServiceIntegrationRequest> createServiceIntegration(@Param("id") @NotNull String id, @Nullable CreateServiceIntegrationRequest createServiceIntegrationRequest);
 
     /**
+     * Create a status page subscription
+     * <p>
+     * Create a subscription for a Status Page by status page id.
+     * Scoped OAuth requires: {@code status_pages.write} 
+     *
+     * @param id                   The ID of the resource. (required)
+     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change! (required)
+     * @param createStatusPageSubscriptionRequest  (optional)
+     */
+    @RequestLine("POST /status_pages/{id}/subscriptions")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "X-EARLY-ACCESS: {X_EARLY_ACCESS}", 
+        "Content-Type: application/json"
+    })
+    CompletableFuture<CreateStatusPageSubscription201Response> createStatusPageSubscription(@Param("id") @NotNull String id, @Param("X_EARLY_ACCESS") @NotNull String X_EARLY_ACCESS, @Nullable CreateStatusPageSubscriptionRequest createStatusPageSubscriptionRequest);
+
+    /**
      * Create a tag
      * <p>
      * Create a Tag.
@@ -1487,6 +1508,23 @@ public interface PagerDutyRESTAsyncApi {
         "Content-Type: application/json"
     })
     CompletableFuture<CreateIncidentWorkflowTriggerRequest> deleteServiceFromIncidentWorkflowTrigger(@Param("triggerId") @NotNull String triggerId, @Param("serviceId") @NotNull String serviceId);
+
+    /**
+     * Delete a status page subscription
+     * <p>
+     * Delete a subscription for a Status Page by status page id and subscription id.
+     * Scoped OAuth requires: {@code status_pages.write} 
+     *
+     * @param id                   The ID of the resource. (required)
+     * @param subscriptionId       The ID of the status page subscription (required)
+     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change! (required)
+     */
+    @RequestLine("DELETE /status_pages/{id}/subscriptions/{subscriptionId}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+    })
+    CompletableFuture<Void> deleteStatusPageSubscription(@Param("id") @NotNull String id, @Param("subscriptionId") @NotNull String subscriptionId, @Param("X_EARLY_ACCESS") @NotNull String X_EARLY_ACCESS);
 
     /**
      * Delete a tag
@@ -3003,6 +3041,23 @@ public interface PagerDutyRESTAsyncApi {
     CompletableFuture<GetBusinessServiceSupportingServiceImpacts200Response> getStatusDashboardServiceImpactsByUrlSlug(@Param("urlSlug") @NotNull String urlSlug, @Param("additionalFields") @Nullable String additionalFields);
 
     /**
+     * Get a status page subscription
+     * <p>
+     * Get a subscription for a Status Page by status page id and subscription id.
+     * Scoped OAuth requires: {@code status_pages.read} 
+     *
+     * @param id                   The ID of the resource. (required)
+     * @param subscriptionId       The ID of the status page subscription (required)
+     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change! (required)
+     */
+    @RequestLine("GET /status_pages/{id}/subscriptions/{subscriptionId}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+    })
+    CompletableFuture<CreateStatusPageSubscription201Response> getStatusPageSubscription(@Param("id") @NotNull String id, @Param("subscriptionId") @NotNull String subscriptionId, @Param("X_EARLY_ACCESS") @NotNull String X_EARLY_ACCESS);
+
+    /**
      * Get a tag
      * <p>
      * Get details about an existing Tag.
@@ -4284,6 +4339,24 @@ public interface PagerDutyRESTAsyncApi {
         "Accept: application/vnd.pagerduty+json;version=2"
     })
     CompletableFuture<ListStatusDashboards200Response> listStatusDashboards();
+
+    /**
+     * List Status Page subscriptions
+     * <p>
+     * List subscriptions for a Status Page by status page id.
+     * Scoped OAuth requires: {@code status_pages.read} 
+     *
+     * @param id                   The ID of the resource. (required)
+     * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change! (required)
+     * @param status               Filter by subscription status. (optional)
+     * @param channel              Filter by subscription channel. (optional)
+     */
+    @RequestLine("GET /status_pages/{id}/subscriptions?status={status}&channel={channel}")
+    @Headers({
+        "Accept: application/vnd.pagerduty+json;version=2", 
+        "X-EARLY-ACCESS: {X_EARLY_ACCESS}"
+    })
+    CompletableFuture<ListStatusPageSubscriptions200Response> listStatusPageSubscriptions(@Param("id") @NotNull String id, @Param("X_EARLY_ACCESS") @NotNull String X_EARLY_ACCESS, @Param("status") @Nullable String status, @Param("channel") @Nullable String channel);
 
     /**
      * List tags
