@@ -35,6 +35,7 @@ import io.github.primelib.pagerduty4j.rest.model.CreateServiceDependency200Respo
 import io.github.primelib.pagerduty4j.rest.model.CreateServiceEventRule201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateServiceIntegrationRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateServiceRequest;
+import io.github.primelib.pagerduty4j.rest.model.CreateStatusPageSubscription201Response;
 import io.github.primelib.pagerduty4j.rest.model.CreateTagsRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTeamRequest;
 import io.github.primelib.pagerduty4j.rest.model.CreateTemplate201Response;
@@ -132,6 +133,7 @@ import io.github.primelib.pagerduty4j.rest.model.ListServiceEventRules200Respons
 import io.github.primelib.pagerduty4j.rest.model.ListServices200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListStandards200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListStatusDashboards200Response;
+import io.github.primelib.pagerduty4j.rest.model.ListStatusPageSubscriptions200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeamUsers200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListTeams200Response;
 import io.github.primelib.pagerduty4j.rest.model.ListUsers200Response;
@@ -201,6 +203,7 @@ import io.github.primelib.pagerduty4j.rest.spec.CreateServiceOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateServiceDependencyOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateServiceEventRuleOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateServiceIntegrationOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.CreateStatusPageSubscriptionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateTagsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateTeamOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.CreateTeamNotificationSubscriptionsOperationSpec;
@@ -238,6 +241,7 @@ import io.github.primelib.pagerduty4j.rest.spec.DeleteServiceOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteServiceDependencyOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteServiceEventRuleOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteServiceFromIncidentWorkflowTriggerOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.DeleteStatusPageSubscriptionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteTagOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteTeamOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.DeleteTeamEscalationPolicyOperationSpec;
@@ -326,6 +330,7 @@ import io.github.primelib.pagerduty4j.rest.spec.GetStatusDashboardByIdOperationS
 import io.github.primelib.pagerduty4j.rest.spec.GetStatusDashboardByUrlSlugOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetStatusDashboardServiceImpactsByIdOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetStatusDashboardServiceImpactsByUrlSlugOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.GetStatusPageSubscriptionOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetTagOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetTagsByEntityTypeOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.GetTeamOperationSpec;
@@ -389,6 +394,7 @@ import io.github.primelib.pagerduty4j.rest.spec.ListServiceChangeEventsOperation
 import io.github.primelib.pagerduty4j.rest.spec.ListServiceEventRulesOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListServicesOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListStandardsOperationSpec;
+import io.github.primelib.pagerduty4j.rest.spec.ListStatusPageSubscriptionsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListTagsOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListTeamUsersOperationSpec;
 import io.github.primelib.pagerduty4j.rest.spec.ListTeamsOperationSpec;
@@ -1081,6 +1087,23 @@ public class PagerDutyRESTConsumerApi {
     }
 
     /**
+     * Create a status page subscription
+     * <p>
+     * Create a subscription for a Status Page by status page id.
+     * Scoped OAuth requires: {@code status_pages.write} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     *   <li>X_EARLY_ACCESS: This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change!</li>
+     *   <li>createStatusPageSubscriptionRequest: </li>
+     * </ul>
+     */
+    public CreateStatusPageSubscription201Response createStatusPageSubscription(Consumer<CreateStatusPageSubscriptionOperationSpec> spec) {
+        CreateStatusPageSubscriptionOperationSpec r = new CreateStatusPageSubscriptionOperationSpec(spec);
+        return api.createStatusPageSubscription(r.id(), r.X_EARLY_ACCESS(), r.createStatusPageSubscriptionRequest());
+    }
+
+    /**
      * Create a tag
      * <p>
      * Create a Tag.
@@ -1707,6 +1730,23 @@ public class PagerDutyRESTConsumerApi {
     public CreateIncidentWorkflowTriggerRequest deleteServiceFromIncidentWorkflowTrigger(Consumer<DeleteServiceFromIncidentWorkflowTriggerOperationSpec> spec) {
         DeleteServiceFromIncidentWorkflowTriggerOperationSpec r = new DeleteServiceFromIncidentWorkflowTriggerOperationSpec(spec);
         return api.deleteServiceFromIncidentWorkflowTrigger(r.triggerId(), r.serviceId());
+    }
+
+    /**
+     * Delete a status page subscription
+     * <p>
+     * Delete a subscription for a Status Page by status page id and subscription id.
+     * Scoped OAuth requires: {@code status_pages.write} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     *   <li>subscriptionId: The ID of the status page subscription</li>
+     *   <li>X_EARLY_ACCESS: This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change!</li>
+     * </ul>
+     */
+    public void deleteStatusPageSubscription(Consumer<DeleteStatusPageSubscriptionOperationSpec> spec) {
+        DeleteStatusPageSubscriptionOperationSpec r = new DeleteStatusPageSubscriptionOperationSpec(spec);
+        api.deleteStatusPageSubscription(r.id(), r.subscriptionId(), r.X_EARLY_ACCESS());
     }
 
     /**
@@ -3229,6 +3269,23 @@ public class PagerDutyRESTConsumerApi {
     }
 
     /**
+     * Get a status page subscription
+     * <p>
+     * Get a subscription for a Status Page by status page id and subscription id.
+     * Scoped OAuth requires: {@code status_pages.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     *   <li>subscriptionId: The ID of the status page subscription</li>
+     *   <li>X_EARLY_ACCESS: This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change!</li>
+     * </ul>
+     */
+    public CreateStatusPageSubscription201Response getStatusPageSubscription(Consumer<GetStatusPageSubscriptionOperationSpec> spec) {
+        GetStatusPageSubscriptionOperationSpec r = new GetStatusPageSubscriptionOperationSpec(spec);
+        return api.getStatusPageSubscription(r.id(), r.subscriptionId(), r.X_EARLY_ACCESS());
+    }
+
+    /**
      * Get a tag
      * <p>
      * Get details about an existing Tag.
@@ -4501,6 +4558,24 @@ public class PagerDutyRESTConsumerApi {
      */
     public ListStatusDashboards200Response listStatusDashboards() {
         return api.listStatusDashboards();
+    }
+
+    /**
+     * List Status Page subscriptions
+     * <p>
+     * List subscriptions for a Status Page by status page id.
+     * Scoped OAuth requires: {@code status_pages.read} 
+     * @param spec a consumer that creates the payload for this operation. Supports the following properties:
+     * <ul>
+     *   <li>id: The ID of the resource.</li>
+     *   <li>X_EARLY_ACCESS: This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change!</li>
+     *   <li>status: Filter by subscription status.</li>
+     *   <li>channel: Filter by subscription channel.</li>
+     * </ul>
+     */
+    public ListStatusPageSubscriptions200Response listStatusPageSubscriptions(Consumer<ListStatusPageSubscriptionsOperationSpec> spec) {
+        ListStatusPageSubscriptionsOperationSpec r = new ListStatusPageSubscriptionsOperationSpec(spec);
+        return api.listStatusPageSubscriptions(r.id(), r.X_EARLY_ACCESS(), r.status(), r.channel());
     }
 
     /**
