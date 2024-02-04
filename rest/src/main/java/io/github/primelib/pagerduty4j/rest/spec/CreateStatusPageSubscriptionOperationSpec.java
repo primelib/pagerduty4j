@@ -23,7 +23,7 @@ import java.util.function.Consumer;
  * <p>
  * Specification for the CreateStatusPageSubscription operation.
  * <p>
- * Create a status page subscription
+ * Create a Status Page Subscription
  */
 @Getter
 @Setter

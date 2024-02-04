@@ -21,7 +21,7 @@ import java.util.function.Consumer;
  * <p>
  * Specification for the DeleteStatusPageSubscription operation.
  * <p>
- * Delete a status page subscription
+ * Delete a Status Page Subscription
  */
 @Getter
 @Setter
@@ -45,7 +45,7 @@ public class DeleteStatusPageSubscriptionOperationSpec {
     private String id;
 
     /**
-     * The ID of the status page subscription
+     * The ID of the Status Page subscription.
      */
     @NotNull 
     private String subscriptionId;
@@ -73,7 +73,7 @@ public class DeleteStatusPageSubscriptionOperationSpec {
      * <p>
      * NOTE: This constructor is not considered stable and may change if the operation is updated.
      * @param id                   The ID of the resource.
-     * @param subscriptionId       The ID of the status page subscription
+     * @param subscriptionId       The ID of the Status Page subscription.
      * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change!
      */
     @ApiStatus.Internal

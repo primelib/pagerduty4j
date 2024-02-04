@@ -75,7 +75,7 @@ public class StatusPageSubscription {
     protected StatusEnum status;
 
     @JsonProperty("status_page")
-    protected StatusPageSubscriptionStatusPage statusPage;
+    protected StatusPageImpactStatusPage statusPage;
 
     @JsonProperty("subscribable_object")
     protected SubscribableObject1 subscribableObject;
@@ -109,7 +109,7 @@ public class StatusPageSubscription {
      * @param type A string that determines the schema of the object.
      */
     @ApiStatus.Internal
-    public StatusPageSubscription(ChannelEnum channel, String contact, String id, String self, StatusEnum status, StatusPageSubscriptionStatusPage statusPage, SubscribableObject1 subscribableObject, String type) {
+    public StatusPageSubscription(ChannelEnum channel, String contact, String id, String self, StatusEnum status, StatusPageImpactStatusPage statusPage, SubscribableObject1 subscribableObject, String type) {
         this.channel = channel;
         this.contact = contact;
         this.id = id;

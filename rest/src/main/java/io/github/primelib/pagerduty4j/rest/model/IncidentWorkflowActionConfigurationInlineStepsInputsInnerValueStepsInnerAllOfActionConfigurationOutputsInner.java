@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner {
 
     /**
-     * The name of the Output
+     * The name for this Output. Output names are unique per action and should be used to find a specific Output.
      */
     @JsonProperty("name")
     protected String name;
@@ -67,7 +67,7 @@ public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueSteps
      * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner(Consumer)} instead.
-     * @param name The name of the Output
+     * @param name The name for this Output. Output names are unique per action and should be used to find a specific Output.
      * @param referenceName The reference name of the Output
      * @param parameterType The data type produced by this Output
      */

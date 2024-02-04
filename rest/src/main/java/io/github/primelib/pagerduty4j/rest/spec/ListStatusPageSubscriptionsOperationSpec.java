@@ -23,7 +23,7 @@ import java.util.function.Consumer;
  * <p>
  * Specification for the ListStatusPageSubscriptions operation.
  * <p>
- * List Status Page subscriptions
+ * List Status Page Subscriptions
  */
 @Getter
 @Setter
@@ -53,13 +53,13 @@ public class ListStatusPageSubscriptionsOperationSpec {
     private String X_EARLY_ACCESS;
 
     /**
-     * Filter by subscription status.
+     * Filter by Subscription status.
      */
     @Nullable 
     private String status;
 
     /**
-     * Filter by subscription channel.
+     * Filter by Subscription channel.
      */
     @Nullable 
     private String channel;
@@ -82,8 +82,8 @@ public class ListStatusPageSubscriptionsOperationSpec {
      * NOTE: This constructor is not considered stable and may change if the operation is updated.
      * @param id                   The ID of the resource.
      * @param X_EARLY_ACCESS       This header indicates that this API endpoint is __UNDER CONSTRUCTION__ and may change at any time. You __MUST__ pass in this header with the value {@code status-pages-early-access}. Do not use this endpoint in production, as it may change!
-     * @param status               Filter by subscription status.
-     * @param channel              Filter by subscription channel.
+     * @param status               Filter by Subscription status.
+     * @param channel              Filter by Subscription channel.
      */
     @ApiStatus.Internal
     public ListStatusPageSubscriptionsOperationSpec(String id, String X_EARLY_ACCESS, String status, String channel) {

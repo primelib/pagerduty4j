@@ -51,11 +51,14 @@ public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueSteps
     protected String description;
 
     /**
-     * The standard inputs used to configure the Action to execute
+     * An unordered list of standard inputs used to configure the Action to execute
      */
     @JsonProperty("inputs")
     protected List<IncidentWorkflowActionConfigurationInputsInner> inputs;
 
+    /**
+     * An unordered list of outputs this action produces
+     */
     @JsonProperty("outputs")
     protected List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs;
 
@@ -74,8 +77,8 @@ public class IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueSteps
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(Consumer)} instead.
      * @param actionId The identifier of the Action to execute
      * @param description Description of the Action
-     * @param inputs The standard inputs used to configure the Action to execute
-     * @param outputs outputs
+     * @param inputs An unordered list of standard inputs used to configure the Action to execute
+     * @param outputs An unordered list of outputs this action produces
      */
     @ApiStatus.Internal
     public IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfiguration(String actionId, String description, List<IncidentWorkflowActionConfigurationInputsInner> inputs, List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs) {
