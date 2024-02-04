@@ -3371,9 +3371,200 @@
           "type": "string"
         }
       },
+      "status_page_id": {
+        "name": "status_page_id",
+        "description": "The ID of the Status Page.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_type": {
+        "name": "status_page_type",
+        "description": "The type of the Status Page.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "public",
+            "private"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
+      "status_page_impact_id": {
+        "name": "impact_id",
+        "description": "The ID of the Status Page Impact.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_impact_post_type": {
+        "name": "post_type",
+        "description": "Filter by Post type.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "incident",
+            "maintenance"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
+      "status_page_post_update_id": {
+        "name": "post_update_id",
+        "description": "The ID of the Status Page Post Update.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_post_update_reviewed_status": {
+        "name": "reviewed_status",
+        "description": "Filter by the reviewed status of the Post Update to retrieve.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "approved",
+            "not_reviewed"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
+      "status_page_post_id": {
+        "name": "post_id",
+        "description": "The ID of the Status Page Post.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_post_type": {
+        "name": "post_type",
+        "description": "Filter by Post type.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "incident",
+            "maintenance"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
+      "status_page_post_reviewed_status": {
+        "name": "reviewed_status",
+        "description": "Filter by the reviewed status of the Post to retrieve.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "approved",
+            "not_reviewed"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
+      "status_page_post_status": {
+        "name": "status[]",
+        "description": "Filter by an array of Status identifiers.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "status_page_post_include": {
+        "name": "include[]",
+        "description": "Array of additional Models to include in response.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "items": {
+            "enum": [
+              "status_page_post_update"
+            ],
+            "nullable": false,
+            "type": "string"
+          },
+          "nullable": false,
+          "type": "array"
+        }
+      },
+      "status_page_service_id": {
+        "name": "service_id",
+        "description": "The ID of the Status Page service.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_severity_id": {
+        "name": "severity_id",
+        "description": "The ID of the Status Page severity.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_severity_post_type": {
+        "name": "post_type",
+        "description": "Filter by Post type.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "incident",
+            "maintenance"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
+      "status_page_status_id": {
+        "name": "status_id",
+        "description": "The ID of the Status Page status.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "status_page_status_post_type": {
+        "name": "post_type",
+        "description": "Filter by Post type.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "enum": [
+            "incident",
+            "maintenance"
+          ],
+          "nullable": false,
+          "type": "string"
+        }
+      },
       "status_page_subscription_id": {
         "name": "subscription_id",
-        "description": "The ID of the status page subscription",
+        "description": "The ID of the Status Page subscription.",
         "in": "path",
         "required": true,
         "schema": {
@@ -3382,7 +3573,7 @@
       },
       "status_page_subscription_status": {
         "name": "status",
-        "description": "Filter by subscription status.",
+        "description": "Filter by Subscription status.",
         "in": "query",
         "required": false,
         "schema": {
@@ -3396,7 +3587,7 @@
       },
       "status_page_subscription_channel": {
         "name": "channel",
-        "description": "Filter by subscription channel.",
+        "description": "Filter by Subscription channel.",
         "in": "query",
         "required": false,
         "schema": {
@@ -4367,7 +4558,7 @@
           },
           "mean_engaged_seconds": {
             "type": "integer",
-            "description": "Mean engaged time across all responders for incidents that match the given filters.\nEngaged time is measured from the time a user engages with an incident (by\nacknowledging or accepting a responder request) until the incident is resolved.\nThis may include periods in which the incidents were snoozed."
+            "description": "Mean engaged time across all responders.\nEngaged time is measured from the time a user engages with an incident (by\nacknowledging or accepting a responder request) until the incident is resolved.\nThis may include periods in which the incidents were snoozed."
           },
           "mean_engaged_user_count": {
             "type": "integer",
@@ -4388,6 +4579,10 @@
           "mean_seconds_to_resolve": {
             "type": "integer",
             "description": "Mean time from when an incident was triggered until it was resolved."
+          },
+          "mean_user_defined_engaged_seconds": {
+            "type": "integer",
+            "description": "Mean engaged time across all responders. Engaged time is measured from the time \na user engages with an incident (by acknowledging or accepting a responder request) \nuntil the incident is resolved. This may include periods in which the incidents were snoozed.\nThis metric uses the incident response effort values that \n[users have defined](https://support.pagerduty.com/docs/edit-incidents#edit-incident-duration),\nif they exist."
           },
           "range_start": {
             "type": "string",
@@ -4415,7 +4610,7 @@
           },
           "total_engaged_seconds": {
             "type": "integer",
-            "description": "Total engaged time across all responders for incidents. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed."
+            "description": "Total engaged time across all responders. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed."
           },
           "total_escalation_count": {
             "type": "integer",
@@ -4464,6 +4659,10 @@
             "type": "integer",
             "description": "Total number of seconds incidents were snoozed."
           },
+          "total_user_defined_engaged_seconds": {
+            "type": "integer",
+            "description": "Total engaged time across all responders. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed.\nThis metric uses the edited incident response effort values that \n[users have defined](https://support.pagerduty.com/docs/edit-incidents#edit-incident-duration),\nif they exist."
+          },
           "up_time_pct": {
             "type": "number",
             "description": "The percentage of time in the defined date range that the service was not interrupted\nby a [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents).\nOnly included when aggregating by team, escalation policy, service, or all services."
@@ -4492,7 +4691,7 @@
           },
           "mean_engaged_seconds": {
             "type": "integer",
-            "description": "Mean engaged time across all responders for incidents that match the given filters.\nEngaged time is measured from the time a user engages with an incident (by\nacknowledging or accepting a responder request) until the incident is resolved.\nThis may include periods in which the incidents were snoozed."
+            "description": "Mean engaged time across all responders.\nEngaged time is measured from the time a user engages with an incident (by\nacknowledging or accepting a responder request) until the incident is resolved.\nThis may include periods in which the incidents were snoozed."
           },
           "mean_engaged_user_count": {
             "type": "integer",
@@ -4514,6 +4713,10 @@
             "type": "integer",
             "description": "Mean time from when an incident was triggered until it was resolved."
           },
+          "mean_user_defined_engaged_seconds": {
+            "type": "integer",
+            "description": "Mean engaged time across all responders. Engaged time is measured from the time \na user engages with an incident (by acknowledging or accepting a responder request) \nuntil the incident is resolved. This may include periods in which the incidents were snoozed.\nThis metric uses the incident response effort values that \n[users have defined](https://support.pagerduty.com/docs/edit-incidents#edit-incident-duration),\nif they exist."
+          },
           "range_start": {
             "type": "string",
             "description": "Start of the date range that the metrics were calculated for. Only included when an aggregate unit is specified in the request."
@@ -4532,7 +4735,7 @@
           },
           "total_engaged_seconds": {
             "type": "integer",
-            "description": "Total engaged time across all responders for incidents. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed."
+            "description": "Total engaged time across all responders. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed."
           },
           "total_escalation_count": {
             "type": "integer",
@@ -4580,6 +4783,10 @@
           "total_snoozed_seconds": {
             "type": "integer",
             "description": "Total number of seconds incidents were snoozed."
+          },
+          "total_user_defined_engaged_seconds": {
+            "type": "integer",
+            "description": "Total engaged time across all responders. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed.\nThis metric uses the edited incident response effort values that \n[users have defined](https://support.pagerduty.com/docs/edit-incidents#edit-incident-duration),\nif they exist."
           },
           "up_time_pct": {
             "type": "number",
@@ -11658,13 +11865,13 @@
                             },
                             "inputs": {
                               "type": "array",
-                              "description": "The standard inputs used to configure the Action to execute",
+                              "description": "An unordered list of standard inputs used to configure the Action to execute",
                               "items": {
                                 "type": "object",
                                 "properties": {
                                   "name": {
                                     "type": "string",
-                                    "description": "The name of the Input"
+                                    "description": "The name for this Input. Input names are unique per action and should be used to find a specific Input."
                                   },
                                   "parameter_type": {
                                     "type": "string",
@@ -11684,13 +11891,13 @@
                             },
                             "inline_steps_inputs": {
                               "type": "array",
-                              "description": "Specialized inputs used to configure a workflow-within-a-workflow",
+                              "description": "An unordered list of specialized inputs used to configure a workflow-within-a-workflow",
                               "items": {
                                 "type": "object",
                                 "properties": {
                                   "name": {
                                     "type": "string",
-                                    "description": "The name of the Input"
+                                    "description": "The name for this Input. Input names are unique per action and should be used to find a specific Input."
                                   },
                                   "value": {
                                     "type": "object",
@@ -11762,13 +11969,13 @@
                                                     },
                                                     "inputs": {
                                                       "type": "array",
-                                                      "description": "The standard inputs used to configure the Action to execute",
+                                                      "description": "An unordered list of standard inputs used to configure the Action to execute",
                                                       "items": {
                                                         "type": "object",
                                                         "properties": {
                                                           "name": {
                                                             "type": "string",
-                                                            "description": "The name of the Input"
+                                                            "description": "The name for this Input. Input names are unique per action and should be used to find a specific Input."
                                                           },
                                                           "parameter_type": {
                                                             "type": "string",
@@ -11788,13 +11995,14 @@
                                                     },
                                                     "outputs": {
                                                       "type": "array",
+                                                      "description": "An unordered list of outputs this action produces",
                                                       "readOnly": true,
                                                       "items": {
                                                         "type": "object",
                                                         "properties": {
                                                           "name": {
                                                             "type": "string",
-                                                            "description": "The name of the Output",
+                                                            "description": "The name for this Output. Output names are unique per action and should be used to find a specific Output.",
                                                             "readOnly": true
                                                           },
                                                           "reference_name": {
@@ -11840,13 +12048,14 @@
                             },
                             "outputs": {
                               "type": "array",
+                              "description": "An unordered list of outputs this action produces",
                               "readOnly": true,
                               "items": {
                                 "type": "object",
                                 "properties": {
                                   "name": {
                                     "type": "string",
-                                    "description": "The name of the Output",
+                                    "description": "The name for this Output. Output names are unique per action and should be used to find a specific Output.",
                                     "readOnly": true
                                   },
                                   "reference_name": {
@@ -16105,7 +16314,8 @@
                 "type": "string",
                 "enum": [
                   "field"
-                ]
+                ],
+                "readOnly": true
               },
               "created_at": {
                 "type": "string",
@@ -16732,6 +16942,841 @@
           }
         }
       },
+      "StatusPage": {
+        "type": "object",
+        "title": "StatusPage",
+        "description": "A Status Page with all the configuration needed to present the system status in a public or private manner.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An unique identifier within Status Page scope that defines a Status Page entry.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of a Status Page to be presented as a brand title (for example, the rendered Status Page HTML header).",
+            "nullable": false,
+            "minLength": 1,
+            "maxLength": 125
+          },
+          "published_at": {
+            "type": "string",
+            "description": "The date time moment when a Status Page was published to be publicly available.",
+            "nullable": true,
+            "readOnly": true,
+            "format": "date-time"
+          },
+          "status_page_type": {
+            "type": "string",
+            "description": "The type of Status Pages to retrieve - public is accessible to everyone on the internet or private requiring some sort of authentication/authorization layer.",
+            "nullable": false,
+            "enum": [
+              "public",
+              "private"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL from which the Status Page can be accessed on the internet (either customer's domain or default *.trust.pagerduty.com).",
+            "nullable": false,
+            "format": "url"
+          },
+          "type": {
+            "type": "string",
+            "description": "A string that determines the schema of the object. This must be the standard name for the entity, suffixed by _reference if the object is a reference."
+          }
+        }
+      },
+      "StatusPageImpact": {
+        "type": "object",
+        "title": "StatusPageImpact",
+        "description": "A StatusPageImpact resource represents a level of impact for a given Status Page Post.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An unique identifier within Status Page scope that defines a Impact entry.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The API resource URL of the Impact.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description is a human-readable text that describes the Impact level.",
+            "nullable": false
+          },
+          "post_type": {
+            "type": "string",
+            "description": "The type of post to retrieve Impacts for.",
+            "nullable": false,
+            "enum": [
+              "incident",
+              "maintenance"
+            ]
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Impact."
+          }
+        }
+      },
+      "StatusPagePost": {
+        "type": "object",
+        "title": "StatusPagePost",
+        "description": "A Post represents a communication resource presented in the Status Page about certain aspects of one or more services associated.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An unique identifier within Status Page scope that defines a single Post resource.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The API resource URL of the Post.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post.",
+            "nullable": false,
+            "readOnly": true,
+            "default": "status_page_post"
+          },
+          "post_type": {
+            "type": "string",
+            "description": "The type of post to retrieve Impacts for.",
+            "nullable": false,
+            "enum": [
+              "incident",
+              "maintenance"
+            ]
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "linked_resource": {
+            "description": "Linked resource",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Linked resource unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "postmortem": {
+            "description": "Postmortem",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Postmortem unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title given to a Post.",
+            "nullable": false
+          },
+          "starts_at": {
+            "type": "string",
+            "description": "The date and time the Post intent becomes effective - only for maintenance post type.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "ends_at": {
+            "type": "string",
+            "description": "The date and time the Post intent is concluded - only for maintenance post type.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "updates": {
+            "type": "array",
+            "description": "List of status_page_post_update references associated to a Post.",
+            "items": {
+              "type": "object",
+              "description": "Post Update associated to a given Post as a referenced or included resource",
+              "nullable": false,
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/StatusPagePostUpdate"
+                }
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 50
+          }
+        }
+      },
+      "StatusPagePostPostRequest": {
+        "type": "object",
+        "title": "StatusPagePostRequest",
+        "description": "Request schema for creating/updating a given Status Page Post resource.",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post.",
+            "nullable": false,
+            "enum": [
+              "status_page_post"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The title given to a Post.",
+            "nullable": false,
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "post_type": {
+            "type": "string",
+            "description": "The type of post to retrieve Impacts for.",
+            "nullable": false,
+            "enum": [
+              "incident",
+              "maintenance"
+            ]
+          },
+          "starts_at": {
+            "type": "string",
+            "description": "The date and time the Post intent becomes effective - only for maintenance post type.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "ends_at": {
+            "type": "string",
+            "description": "The date and time the Post intent is concluded - only for maintenance post type.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "updates": {
+            "type": "array",
+            "description": "Post Updates to be associated with a Post",
+            "items": {
+              "$ref": "#/components/schemas/StatusPagePostUpdateRequest"
+            },
+            "nullable": false,
+            "minItems": 1,
+            "maxItems": 50
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "type",
+          "title",
+          "post_type",
+          "starts_at",
+          "ends_at",
+          "updates",
+          "status_page"
+        ]
+      },
+      "StatusPagePostPutRequest": {
+        "type": "object",
+        "title": "StatusPagePostPutRequest",
+        "description": "Request schema for creating a given Status Page Post resource.",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post.",
+            "nullable": false,
+            "enum": [
+              "status_page_post"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The title given to a Post.",
+            "nullable": false,
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "post_type": {
+            "type": "string",
+            "description": "The type of post to retrieve Impacts for.",
+            "nullable": false,
+            "enum": [
+              "incident",
+              "maintenance"
+            ]
+          },
+          "starts_at": {
+            "type": "string",
+            "description": "The date and time the Post intent becomes effective - only for maintenance post type.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "ends_at": {
+            "type": "string",
+            "description": "The date and time the Post intent is concluded - only for maintenance post type.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "updates": {
+            "type": "array",
+            "description": "Post Updates to be associated with a Post",
+            "items": {
+              "$ref": "#/components/schemas/StatusPagePostUpdateRequest"
+            },
+            "nullable": false,
+            "minItems": 1,
+            "maxItems": 50
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "type",
+          "title",
+          "post_type",
+          "starts_at",
+          "ends_at",
+          "status_pag"
+        ]
+      },
+      "StatusPagePostUpdate": {
+        "type": "object",
+        "title": "StatusPagePostUpdate",
+        "description": "An update for a Post.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the Post Update.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The path to which the Post Update resource is accessible.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "post": {
+            "description": "Status Page Post",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page post unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "message": {
+            "type": "string",
+            "description": "The message of the Post Update.",
+            "nullable": false
+          },
+          "reviewed_status": {
+            "type": "string",
+            "description": "The status of the Post Updates to retrieve.",
+            "nullable": false,
+            "enum": [
+              "approved",
+              "not_reviewed"
+            ]
+          },
+          "status": {
+            "description": "Status Page Status",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page Status unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "severity": {
+            "description": "Status Page Severity",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page Severity unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "impacted_services": {
+            "type": "array",
+            "description": "Impacted services represent the status page services affected by a post update, and its impact.",
+            "items": {
+              "$ref": "#/components/schemas/StatusPageImpact"
+            },
+            "minItems": 0
+          },
+          "update_frequency_ms": {
+            "type": "integer",
+            "description": "The frequency of the next Post Update in milliseconds.",
+            "nullable": true
+          },
+          "notify_subscribers": {
+            "type": "boolean",
+            "description": "Determines if the subscribers should be notified of the Post Update.",
+            "nullable": false
+          },
+          "reported_at": {
+            "type": "string",
+            "description": "The date and time the Post Update was reported.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post Update."
+          }
+        }
+      },
+      "StatusPagePostUpdateRequest": {
+        "type": "object",
+        "title": "StatusPagePostUpdateRequest",
+        "description": "Attributes for Post Update creation/update",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "The path to which the Post Update resource is accessible.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "post": {
+            "description": "Status Page Post",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page post unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "message": {
+            "type": "string",
+            "description": "The message of the Post Update.",
+            "nullable": false
+          },
+          "status": {
+            "description": "Status Page Status",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page Status unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "severity": {
+            "description": "Status Page Severity",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page Severity unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "impacted_services": {
+            "type": "array",
+            "description": "Impacted services represent the status page services affected by a post update, and its impact.",
+            "items": {
+              "$ref": "#/components/schemas/StatusPageImpact"
+            },
+            "minItems": 0
+          },
+          "update_frequency_ms": {
+            "type": "integer",
+            "description": "The frequency of the next Post Update in milliseconds.",
+            "nullable": true
+          },
+          "notify_subscribers": {
+            "type": "boolean",
+            "description": "Determines if the subscribers should be notified of the Post Update.",
+            "nullable": false
+          },
+          "reported_at": {
+            "type": "string",
+            "description": "The date and time the Post Update was reported.",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post Update."
+          }
+        },
+        "required": [
+          "type",
+          "message",
+          "status",
+          "severity",
+          "update_frequency_ms",
+          "notify_subscribers",
+          "impacted_services",
+          "post"
+        ]
+      },
+      "StatusPagePostmortem": {
+        "type": "object",
+        "title": "StatusPagePostmortem",
+        "description": "A Postmortem represents a communication resource presented in the Status Page about follow-up made to a certain Post.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An unique identifier within Status Page scope that defines a single Postmortem resource.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The API resource URL of the Postmortem.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "post": {
+            "description": "Status Page Post",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "The id of the status page post.",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "message": {
+            "type": "string",
+            "description": "The message of the Postmortem (supports Rich-Text).",
+            "nullable": false,
+            "maxLength": 10000
+          },
+          "notify_subscribers": {
+            "type": "boolean",
+            "description": "Whether or not subscribers of the Status Page should be notified about the Postmortem.",
+            "nullable": false
+          },
+          "reported_at": {
+            "type": "string",
+            "description": "The date and time the Postmortem was reported.",
+            "nullable": false,
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post Postmortem."
+          }
+        }
+      },
+      "StatusPagePostmortemRequest": {
+        "type": "object",
+        "title": "PostmortemRequest",
+        "description": "Request to create/update a given Postmortem resource.",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Post Postmortem.",
+            "nullable": false,
+            "readOnly": true,
+            "enum": [
+              "status_page_post_postmortem"
+            ],
+            "default": "status_page_post_postmortem"
+          },
+          "post": {
+            "description": "Status Page Post",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page post unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "message": {
+            "type": "string",
+            "description": "The message of the Postmortem (supports Rich-Text).",
+            "nullable": false,
+            "maxLength": 10000
+          },
+          "notify_subscribers": {
+            "type": "boolean",
+            "description": "Whether or not subscribers of the Status Page should be notified about the Postmortem.",
+            "nullable": false
+          }
+        },
+        "required": [
+          "type",
+          "message",
+          "post",
+          "notify_subscribers"
+        ]
+      },
+      "StatusPageService": {
+        "type": "object",
+        "title": "StatusPageService",
+        "description": "A Service represents a PagerDuty service that is linked to a Status Page.",
+        "properties": {
+          "id": {
+            "description": "An unique identifier within Status Page scope that defines a Service entry.",
+            "type": "string",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The API resource URL of the Service.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the Service.",
+            "nullable": false
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "business_service": {
+            "description": "Business Service",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Business Service unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "description": "A string that determines the schema of the object."
+          }
+        }
+      },
+      "StatusPageSeverity": {
+        "type": "object",
+        "title": "StatusPageSeverity",
+        "description": "A Severity represents a level of impact for a given Status Page post.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An unique identifier within Status Page scope that defines a Severity entry.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The API resource URL of the Severity.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description is a human-readable text that describes the Severity level.",
+            "nullable": false
+          },
+          "post_type": {
+            "type": "string",
+            "description": "The type of post to retrieve Impacts for.",
+            "nullable": false,
+            "enum": [
+              "incident",
+              "maintenance"
+            ]
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Severity."
+          }
+        }
+      },
       "StatusPageSubscription": {
         "type": "object",
         "title": "StatusPageSubscription",
@@ -16811,6 +17856,61 @@
           "type": {
             "description": "A string that determines the schema of the object.",
             "type": "string"
+          }
+        }
+      },
+      "StatusPageStatus": {
+        "type": "object",
+        "title": "StatusPageStatus",
+        "description": "A Status represents a level of undergoing work and/or assessment for a given Status Page post.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An unique identifier within Status Page scope that defines a Status entry.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "self": {
+            "type": "string",
+            "description": "The API resource URL of the Status.",
+            "nullable": false,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "description": "The description is a human-readable text that describes the Status level.",
+            "nullable": false
+          },
+          "post_type": {
+            "type": "string",
+            "description": "The type of post to retrieve Impacts for.",
+            "nullable": false,
+            "enum": [
+              "incident",
+              "maintenance"
+            ]
+          },
+          "status_page": {
+            "description": "Status Page",
+            "nullable": false,
+            "properties": {
+              "id": {
+                "description": "Status page unique identifier",
+                "type": "string"
+              },
+              "type": {
+                "description": "A string that determines the schema of the object.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the object returned by the API - in this case, a Status Page Status."
           }
         }
       },
@@ -18206,7 +19306,157 @@
                         "data": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/AnalyticsIncidentMetrics"
+                            "title": "Analytics Incident Metrics",
+                            "type": "object",
+                            "properties": {
+                              "mean_assignment_count": {
+                                "type": "integer",
+                                "description": "Mean count of instances where responders were assigned an incident (including through reassignment or escalation) or accepted a responder request."
+                              },
+                              "mean_engaged_seconds": {
+                                "type": "integer",
+                                "description": "Mean engaged time across all responders.\nEngaged time is measured from the time a user engages with an incident (by\nacknowledging or accepting a responder request) until the incident is resolved.\nThis may include periods in which the incidents were snoozed."
+                              },
+                              "mean_engaged_user_count": {
+                                "type": "integer",
+                                "description": "Mean number of users who engaged with an incident. *Engaged* is defined as\nacknowledging an incident or accepting a responder request in it."
+                              },
+                              "mean_seconds_to_engage": {
+                                "type": "integer",
+                                "description": "A measure of *people response time*. This metric measures the time from\nthe first user engagement (acknowledge or responder accept) to the last.\nThis metric is only used for incidents with **multiple responders**;\nfor incidents with one or no engaged users, this value is null."
+                              },
+                              "mean_seconds_to_first_ack": {
+                                "type": "integer",
+                                "description": "Mean time between the start of an incident, and the first responder to acknowledge."
+                              },
+                              "mean_seconds_to_mobilize": {
+                                "type": "integer",
+                                "description": "Mean time between the start of an incident, and the last additional responder\nto acknowledge. For incidents with one or no engaged users, this value is null."
+                              },
+                              "mean_seconds_to_resolve": {
+                                "type": "integer",
+                                "description": "Mean time from when an incident was triggered until it was resolved."
+                              },
+                              "mean_user_defined_engaged_seconds": {
+                                "type": "integer",
+                                "description": "Mean engaged time across all responders. Engaged time is measured from the time \na user engages with an incident (by acknowledging or accepting a responder request) \nuntil the incident is resolved. This may include periods in which the incidents were snoozed.\nThis metric uses the incident response effort values that \n[users have defined](https://support.pagerduty.com/docs/edit-incidents#edit-incident-duration),\nif they exist."
+                              },
+                              "p50_seconds_to_first_ack": {
+                                "type": "integer",
+                                "description": "Median time between the start of an incident, and the first responder to acknowledge."
+                              },
+                              "p50_seconds_to_resolve": {
+                                "type": "integer",
+                                "description": "Median time from when an incident was triggered until it was resolved."
+                              },
+                              "p75_seconds_to_first_ack": {
+                                "type": "integer",
+                                "description": "75th percentile for the time between the start of an incident, and the first responder to acknowledge."
+                              },
+                              "p75_seconds_to_resolve": {
+                                "type": "integer",
+                                "description": "75th percentile for the time when an incident was triggered until it was resolved."
+                              },
+                              "p90_seconds_to_first_ack": {
+                                "type": "integer",
+                                "description": "90th percentile for the time between the start of an incident, and the first responder to acknowledge."
+                              },
+                              "p90_seconds_to_resolve": {
+                                "type": "integer",
+                                "description": "90th percentile for the time when an incident was triggered until it was resolved."
+                              },
+                              "p95_seconds_to_first_ack": {
+                                "type": "integer",
+                                "description": "95th percentile for the time between the start of an incident, and the first responder to acknowledge."
+                              },
+                              "p95_seconds_to_resolve": {
+                                "type": "integer",
+                                "description": "95th percentile for the time when an incident was triggered until it was resolved."
+                              },
+                              "range_start": {
+                                "type": "string",
+                                "description": "Start of the date range for which the metrics were calculated. Only included when an aggregate unit is specified in the request."
+                              },
+                              "service_id": {
+                                "type": "string",
+                                "description": "ID of the service. Only included when aggregating by service. Not included when aggregating by all."
+                              },
+                              "service_name": {
+                                "type": "string",
+                                "description": "Name of the service. Only included when aggregating by service. Not included when aggregating by all."
+                              },
+                              "team_id": {
+                                "type": "string",
+                                "description": "ID of the team to which the incident was assigned. Not included when aggregating by all."
+                              },
+                              "team_name": {
+                                "type": "string",
+                                "description": "Name of the team to which the incident was assigned. Not included when aggregating by all."
+                              },
+                              "total_business_hour_interruptions": {
+                                "type": "integer",
+                                "description": "Total number of unique interruptions during business hours; 8am-6pm Mon-Fri, based on the user’s time zone."
+                              },
+                              "total_engaged_seconds": {
+                                "type": "integer",
+                                "description": "Total engaged time across all responders. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed."
+                              },
+                              "total_escalation_count": {
+                                "type": "integer",
+                                "description": "Total count of instances where an incident is escalated between responders\nassigned to an escalation policy."
+                              },
+                              "total_incident_count": {
+                                "type": "integer",
+                                "description": "The total number of incidents that were created."
+                              },
+                              "total_incidents_acknowledged": {
+                                "type": "integer",
+                                "description": "The total count of assigned incidents acknowledged. \nOnly explicit incident acknowledgment counts; reassign, resolve, and escalation actions do not imply acknowledgement."
+                              },
+                              "total_incidents_auto_resolved": {
+                                "description": "The total count of incidents that were resolved automatically. \nThis count includes incidents resolved via an integration and those that were [auto-resolved in PagerDuty](https://support.pagerduty.com/docs/configurable-service-settings#auto-resolution)."
+                              },
+                              "total_incidents_manual_escalated": {
+                                "type": "integer",
+                                "description": "The total count of incidents that were manually escalated."
+                              },
+                              "total_incidents_reassigned": {
+                                "type": "integer",
+                                "description": "The total count of incidents that were reassigned."
+                              },
+                              "total_incidents_timeout_escalated": {
+                                "type": "integer",
+                                "description": "The total count of incidents that were escalated due to timeouts."
+                              },
+                              "total_interruptions": {
+                                "type": "integer",
+                                "description": "Total number of unique interruptions."
+                              },
+                              "total_notifications": {
+                                "type": "integer",
+                                "description": "The total count of incident notifications sent via email, SMS, phone call and push."
+                              },
+                              "total_off_hour_interruptions": {
+                                "type": "integer",
+                                "description": "Total number of unique interruptions during off hours; 6pm-10pm Mon-Fri and all day Sat-Sun, based on the user’s time zone."
+                              },
+                              "total_sleep_hour_interruptions": {
+                                "type": "integer",
+                                "description": "Total number of unique interruptions during sleep hours.\nSleep hours: 10pm-8am every day, based on the user’s time zone."
+                              },
+                              "total_snoozed_seconds": {
+                                "type": "integer",
+                                "description": "Total number of seconds incidents were snoozed."
+                              },
+                              "total_user_defined_engaged_seconds": {
+                                "type": "integer",
+                                "description": "Total engaged time across all responders. Engaged time is measured from\nthe time a user engages with an incident (by acknowledging or accepting a responder request)\nuntil the incident is resolved. This may include periods in which the incidents were snoozed.\nThis metric uses the edited incident response effort values that \n[users have defined](https://support.pagerduty.com/docs/edit-incidents#edit-incident-duration),\nif they exist."
+                              },
+                              "up_time_pct": {
+                                "type": "number",
+                                "description": "The percentage of time in the defined date range that the service was not interrupted\nby a [major incident](https://support.pagerduty.com/docs/operational-reviews#major-incidents).\nOnly included when aggregating by team, escalation policy, service, or all services."
+                              }
+                            }
                           }
                         }
                       }
@@ -18229,6 +19479,7 @@
                           "mean_seconds_to_first_ack": 63,
                           "mean_seconds_to_mobilize": 41,
                           "mean_seconds_to_resolve": 380,
+                          "mean_user_defined_engaged_seconds": 366,
                           "range_start": "2023-01-01T00:00:00",
                           "total_business_hour_interruptions": 81,
                           "total_engaged_seconds": 3591,
@@ -18243,7 +19494,8 @@
                           "total_notifications": 2,
                           "total_off_hour_interruptions": 20,
                           "total_sleep_hour_interruptions": 21,
-                          "total_snoozed_seconds": 78
+                          "total_snoozed_seconds": 78,
+                          "total_user_defined_engaged_seconds": 3591
                         }
                       ],
                       "filters": {
@@ -18364,6 +19616,7 @@
                           "mean_seconds_to_first_ack": 380,
                           "mean_seconds_to_mobilize": 81,
                           "mean_seconds_to_resolve": 3591,
+                          "mean_user_defined_engaged_seconds": 81,
                           "team_id": "PDTEAM1",
                           "team_name": "Team 1",
                           "total_business_hour_interruptions": 5,
@@ -18380,6 +19633,7 @@
                           "total_off_hour_interruptions": 3,
                           "total_sleep_hour_interruptions": 1,
                           "total_snoozed_seconds": 341,
+                          "total_user_defined_engaged_seconds": 124,
                           "up_time_pct": 9.124123
                         },
                         {
@@ -18393,6 +19647,7 @@
                           "mean_seconds_to_first_ack": 380,
                           "mean_seconds_to_mobilize": 81,
                           "mean_seconds_to_resolve": 3591,
+                          "mean_user_defined_engaged_seconds": 81,
                           "team_id": "PDTEAM1",
                           "team_name": "Team 1",
                           "total_business_hour_interruptions": 5,
@@ -18409,6 +19664,7 @@
                           "total_off_hour_interruptions": 3,
                           "total_sleep_hour_interruptions": 1,
                           "total_snoozed_seconds": 341,
+                          "total_user_defined_engaged_seconds": 124,
                           "up_time_pct": 9.124123
                         }
                       ],
@@ -18519,6 +19775,7 @@
                           "mean_seconds_to_first_ack": 380,
                           "mean_seconds_to_mobilize": 81,
                           "mean_seconds_to_resolve": 3591,
+                          "mean_user_defined_engaged_seconds": 81,
                           "total_business_hour_interruptions": 5,
                           "total_engaged_seconds": 124,
                           "total_escalation_count": 20,
@@ -18533,6 +19790,7 @@
                           "total_off_hour_interruptions": 3,
                           "total_sleep_hour_interruptions": 1,
                           "total_snoozed_seconds": 341,
+                          "total_user_defined_engaged_seconds": 124,
                           "up_time_pct": 9.124123
                         }
                       ],
@@ -18639,6 +19897,7 @@
                           "mean_seconds_to_first_ack": 63,
                           "mean_seconds_to_mobilize": 41,
                           "mean_seconds_to_resolve": 380,
+                          "mean_user_defined_engaged_seconds": 366,
                           "range_start": "2023-06-11T00:00:00",
                           "service_id": "PPSCXAN",
                           "service_name": "Critical Prod Service 1",
@@ -18658,6 +19917,7 @@
                           "total_off_hour_interruptions": 20,
                           "total_sleep_hour_interruptions": 21,
                           "total_snoozed_seconds": 78,
+                          "total_user_defined_engaged_seconds": 3591,
                           "up_time_pct": 99.92677595628416
                         },
                         {
@@ -18668,6 +19928,7 @@
                           "mean_seconds_to_first_ack": 32,
                           "mean_seconds_to_mobilize": 32,
                           "mean_seconds_to_resolve": 87,
+                          "mean_user_defined_engaged_seconds": 432,
                           "range_start": "2023-06-10T00:00:00",
                           "service_id": "PPSCXAN",
                           "service_name": "Critical Prod Service 1",
@@ -18687,6 +19948,7 @@
                           "total_off_hour_interruptions": 42,
                           "total_sleep_hour_interruptions": 3,
                           "total_snoozed_seconds": 123,
+                          "total_user_defined_engaged_seconds": 3645,
                           "up_time_pct": 99.234416
                         }
                       ],
@@ -18799,6 +20061,7 @@
                           "mean_seconds_to_first_ack": 63,
                           "mean_seconds_to_mobilize": 41,
                           "mean_seconds_to_resolve": 380,
+                          "mean_user_defined_engaged_seconds": 366,
                           "total_business_hour_interruptions": 81,
                           "total_engaged_seconds": 3591,
                           "total_escalation_count": 5,
@@ -18813,6 +20076,7 @@
                           "total_off_hour_interruptions": 20,
                           "total_sleep_hour_interruptions": 21,
                           "total_snoozed_seconds": 78,
+                          "total_user_defined_engaged_seconds": 3591,
                           "up_time_pct": 99.92677595628416
                         }
                       ],
@@ -18919,6 +20183,7 @@
                           "mean_seconds_to_first_ack": 63,
                           "mean_seconds_to_mobilize": 41,
                           "mean_seconds_to_resolve": 380,
+                          "mean_user_defined_engaged_seconds": 366,
                           "range_start": "2023-06-11T00:00:00",
                           "team_id": "P3XUQ75",
                           "team_name": "Engineering",
@@ -18936,6 +20201,7 @@
                           "total_off_hour_interruptions": 20,
                           "total_sleep_hour_interruptions": 21,
                           "total_snoozed_seconds": 78,
+                          "total_user_defined_engaged_seconds": 3591,
                           "up_time_pct": 99.92677595628416
                         },
                         {
@@ -18946,6 +20212,7 @@
                           "mean_seconds_to_first_ack": 32,
                           "mean_seconds_to_mobilize": 32,
                           "mean_seconds_to_resolve": 87,
+                          "mean_user_defined_engaged_seconds": 432,
                           "range_start": "2023-06-10T00:00:00",
                           "team_id": "P3XUQ75",
                           "team_name": "Engineering",
@@ -18963,6 +20230,7 @@
                           "total_off_hour_interruptions": 42,
                           "total_sleep_hour_interruptions": 3,
                           "total_snoozed_seconds": 123,
+                          "total_user_defined_engaged_seconds": 3645,
                           "up_time_pct": 99.234416
                         }
                       ],
@@ -19071,6 +20339,7 @@
                           "mean_seconds_to_first_ack": 63,
                           "mean_seconds_to_mobilize": 41,
                           "mean_seconds_to_resolve": 380,
+                          "mean_user_defined_engaged_seconds": 366,
                           "total_business_hour_interruptions": 81,
                           "total_engaged_seconds": 3591,
                           "total_escalation_count": 5,
@@ -19084,7 +20353,8 @@
                           "total_notifications": 342,
                           "total_off_hour_interruptions": 20,
                           "total_sleep_hour_interruptions": 21,
-                          "total_snoozed_seconds": 78
+                          "total_snoozed_seconds": 78,
+                          "total_user_defined_engaged_seconds": 3591
                         }
                       ],
                       "filters": {
@@ -43920,6 +45190,2219 @@
         ]
       }
     },
+    "/status_pages": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPages",
+        "description": "List Status Pages.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Pages",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status_pages": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPage"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0,
+                      "status_pages": [
+                        {
+                          "id": "PT4KHLK",
+                          "name": "My brand Status Page",
+                          "published_at": "2017-09-13T10:11:12.000Z",
+                          "status_page_type": "private",
+                          "type": "status_page",
+                          "url": "https://status.mybrand.example"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/impacts": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPageImpacts",
+        "description": "List Impacts for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Impacts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_impact_post_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "impacts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPageImpact"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "impacts": [
+                        {
+                          "description": "operational",
+                          "id": "PIJ90N7",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/impacts/PIJ90N7",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_impact"
+                        },
+                        {
+                          "description": "partial outage",
+                          "id": "PF9KMXH",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/impacts/PF9KMXH",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_impact"
+                        },
+                        {
+                          "description": "outage",
+                          "id": "PBAZLIU",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/impacts/PBAZLIU",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_impact"
+                        }
+                      ],
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/impacts/{impact_id}": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getStatusPageImpact",
+        "description": "Get an Impact for a Status Page by Status Page ID and Impact ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Impact",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_impact_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "impact": {
+                      "$ref": "#/components/schemas/StatusPageImpact"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "impact": {
+                        "description": "operational",
+                        "id": "PIJ90N7",
+                        "post_type": "incident",
+                        "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/impacts/PIJ90N7",
+                        "status_page": {
+                          "id": "PQ8W0D0",
+                          "type": "status_page"
+                        },
+                        "type": "status_page_impact"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/services": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPageServices",
+        "description": "List Services for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Services",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "services": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPageService"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0,
+                      "services": [
+                        {
+                          "business_service": {
+                            "id": "P32NFFO",
+                            "self": "https://api.pagerduty.com/business_services/P32NFFO",
+                            "type": "business_service"
+                          },
+                          "id": "PEYSGVF",
+                          "name": "Events API (US)",
+                          "status_page": {
+                            "id": "PIJ90N7",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_service"
+                        }
+                      ],
+                      "total": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/services/{service_id}": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getStatusPageService",
+        "description": "Get a Service for a Status Page by Status Page ID and Service ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Service",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_service_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "$ref": "#/components/schemas/StatusPageService"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "service": {
+                        "business_service": {
+                          "id": "P32NFFO",
+                          "self": "https://api.pagerduty.com/business_services/P32NFFO",
+                          "type": "business_service"
+                        },
+                        "id": "PEYSGVF",
+                        "name": "Events API (US)",
+                        "status_page": {
+                          "id": "PIJ90N7",
+                          "type": "status_page"
+                        },
+                        "type": "status_page_service"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/severities": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPageSeverities",
+        "description": "List Severities for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Severities",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_severity_post_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "severities": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPageSeverity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0,
+                      "severities": [
+                        {
+                          "description": "all good",
+                          "id": "PIJ90N7",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/severities/PIJ90N7",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_severity"
+                        },
+                        {
+                          "description": "minor",
+                          "id": "PF9KMXH",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/severities/PF9KMXH",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_severity"
+                        },
+                        {
+                          "description": "major",
+                          "id": "PBAZLIU",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/severities/PBAZLIU",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_severity"
+                        }
+                      ],
+                      "total": 3
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/severities/{severity_id}": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getStatusPageSeverity",
+        "description": "Get a Severity for a Status Page by Status Page ID and Severity ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Severity",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_severity_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "severity": {
+                      "$ref": "#/components/schemas/StatusPageSeverity"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "severity": {
+                        "description": "all good",
+                        "id": "PIJ90N7",
+                        "post_type": "incident",
+                        "status_page": {
+                          "id": "PQ8W0D0",
+                          "type": "status_page"
+                        },
+                        "type": "status_page_severity"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/statuses": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPageStatuses",
+        "description": "List Statuses for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Statuses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_status_post_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "statuses": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPageStatus"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0,
+                      "statuses": [
+                        {
+                          "description": "investigating",
+                          "id": "PIJ90N7",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/statuses/PIJ90N7",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_status"
+                        },
+                        {
+                          "description": "detected",
+                          "id": "PF9KMXH",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/statuses/PF9KMXH",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_status"
+                        },
+                        {
+                          "description": "resolved",
+                          "id": "PF9KMXH",
+                          "post_type": "incident",
+                          "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/statuses/PF9KMXH",
+                          "status_page": {
+                            "id": "PQ8W0D0",
+                            "type": "status_page"
+                          },
+                          "type": "status_page_status"
+                        }
+                      ],
+                      "total": 3
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/statuses/{status_id}": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getStatusPageStatus",
+        "description": "Get a Status for a Status Page by Status Page ID and Status ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Status",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_status_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "$ref": "#/components/schemas/StatusPageStatus"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "status": {
+                        "description": "investigating",
+                        "id": "PIJ90N7",
+                        "post_type": "incident",
+                        "self": "https://api.pagerduty.com/status_pages/PQ8W0D0/statuses/PIJ90N7",
+                        "status_page": {
+                          "id": "PQ8W0D0",
+                          "type": "status_page"
+                        },
+                        "type": "status_page_status"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/posts": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPagePosts",
+        "description": "List Posts for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Posts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_type"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_reviewed_status"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "posts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPagePost"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0,
+                      "posts": [
+                        {
+                          "ends_at": "2023-12-12T11:00:00.000Z",
+                          "id": "PIJ90N7",
+                          "post_type": "maintenance",
+                          "postmortem": {
+                            "id": "PWZ0PTR",
+                            "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7/postmortem",
+                            "type": "status_page_postmortem"
+                          },
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7",
+                          "starts_at": "2023-12-12T11:00:00.000Z",
+                          "status_page": {
+                            "id": "PR5LMML",
+                            "type": "status_page"
+                          },
+                          "title": "maintenance window for database upgrade",
+                          "type": "status_page_post",
+                          "updates": [
+                            {
+                              "id": "P7HUBBZ",
+                              "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7/post_updates/P7HUBBZ",
+                              "type": "status_page_post_update"
+                            }
+                          ]
+                        }
+                      ],
+                      "total": 3
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "post": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "createStatusPagePost",
+        "description": "Create a Post for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Create a Status Page Post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "post": {
+                    "$ref": "#/components/schemas/StatusPagePostPostRequest"
+                  }
+                },
+                "required": [
+                  "post"
+                ]
+              },
+              "example": {
+                "post": {
+                  "ends_at": "2023-12-12T11:00:00.000Z",
+                  "post_type": "maintenance",
+                  "starts_at": "2023-12-12T11:00:00.000Z",
+                  "status_page": {
+                    "id": "PR5LMML",
+                    "type": "status_page"
+                  },
+                  "title": "maintenance window for database upgrade",
+                  "type": "status_page_post",
+                  "updates": [
+                    {
+                      "impacted_services": [
+                        {
+                          "impact": {
+                            "id": "PY5OM08",
+                            "type": "status_page_impact"
+                          },
+                          "service": {
+                            "id": "PYHMEI3",
+                            "type": "status_page_service"
+                          }
+                        }
+                      ],
+                      "message": "<p>Message</p>",
+                      "notify_subscribers": false,
+                      "severity": {
+                        "id": "PY5OM08",
+                        "type": "status_page_severity"
+                      },
+                      "status": {
+                        "id": "P0400H4",
+                        "type": "status_page_status"
+                      },
+                      "type": "status_page_post_update"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "post": {
+                      "$ref": "#/components/schemas/StatusPagePost"
+                    }
+                  }
+                },
+                "example": {
+                  "post": {
+                    "ends_at": "2023-12-12T11:00:00.000Z",
+                    "id": "PIJ90N7",
+                    "post_type": "maintenance",
+                    "postmortem": {
+                      "id": "PWZ0PTR",
+                      "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7/postmortem",
+                      "type": "status_page_postmortem"
+                    },
+                    "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7",
+                    "starts_at": "2023-12-12T11:00:00.000Z",
+                    "status_page": {
+                      "id": "PR5LMML",
+                      "type": "status_page"
+                    },
+                    "title": "maintenance window for database upgrade",
+                    "type": "status_page_post",
+                    "updates": [
+                      {
+                        "id": "P7HUBBZ",
+                        "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7/post_updates/P7HUBBZ",
+                        "type": "status_page_post_update"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/posts/{post_id}": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getStatusPagePost",
+        "description": "Get a Post for a Status Page by Status Page ID and Post ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_include"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "post": {
+                      "$ref": "#/components/schemas/StatusPagePost"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "post": {
+                        "ends_at": "2023-12-12T11:00:00.000Z",
+                        "id": "PIJ90N7",
+                        "post_type": "maintenance",
+                        "postmortem": {
+                          "id": "PWZ0PTR",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7/postmortem",
+                          "type": "status_page_postmortem"
+                        },
+                        "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7",
+                        "starts_at": "2023-12-12T11:00:00.000Z",
+                        "status_page": {
+                          "id": "PR5LMML",
+                          "type": "status_page"
+                        },
+                        "title": "maintenance window for database upgrade",
+                        "type": "status_page_post",
+                        "updates": [
+                          {
+                            "id": "P7HUBBZ",
+                            "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/PIJ90N7/post_updates/P7HUBBZ",
+                            "type": "status_page_post_update"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "put": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "updateStatusPagePost",
+        "description": "Update a Post for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Update a Status Page Post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "post": {
+                    "$ref": "#/components/schemas/StatusPagePostPutRequest"
+                  }
+                },
+                "required": [
+                  "post"
+                ]
+              },
+              "example": {
+                "post": {
+                  "ends_at": "2023-12-12T11:00:00.000Z",
+                  "post_type": "maintenance",
+                  "starts_at": "2023-12-12T11:00:00.000Z",
+                  "status_page": {
+                    "id": "PR5LMML",
+                    "type": "status_page"
+                  },
+                  "title": "maintenance window for database upgrade",
+                  "type": "status_page_post",
+                  "updates": [
+                    {
+                      "impacted_services": [
+                        {
+                          "impact": {
+                            "id": "PY5OM08",
+                            "type": "status_page_impact"
+                          },
+                          "service": {
+                            "id": "PYHMEI3",
+                            "type": "status_page_service"
+                          }
+                        }
+                      ],
+                      "message": "<p>Message</p>",
+                      "notify_subscribers": false,
+                      "severity": {
+                        "id": "PY5OM08",
+                        "type": "status_page_severity"
+                      },
+                      "status": {
+                        "id": "P0400H4",
+                        "type": "status_page_status"
+                      },
+                      "type": "status_page_post_update"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "post": {
+                      "$ref": "#/components/schemas/StatusPagePost"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "post": {
+                        "ends_at": "2023-12-12T11:00:00.000Z",
+                        "post_type": "maintenance",
+                        "starts_at": "2023-12-12T11:00:00.000Z",
+                        "status_page": {
+                          "id": "PR5LMML",
+                          "type": "status_page"
+                        },
+                        "title": "maintenance window for database upgrade",
+                        "type": "status_page_post",
+                        "updates": [
+                          {
+                            "impacted_services": [
+                              {
+                                "impact": {
+                                  "id": "PY5OM08",
+                                  "type": "status_page_impact"
+                                },
+                                "service": {
+                                  "id": "PYHMEI3",
+                                  "type": "status_page_service"
+                                }
+                              }
+                            ],
+                            "message": "<p>Message</p>",
+                            "notify_subscribers": false,
+                            "severity": {
+                              "id": "PY5OM08",
+                              "type": "status_page_severity"
+                            },
+                            "status": {
+                              "id": "P0400H4",
+                              "type": "status_page_status"
+                            },
+                            "type": "status_page_post_update"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "delete": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "deleteStatusPagePost",
+        "description": "Delete a Post for a Status Page by Status Page ID and Post ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Delete a Status Page Post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/posts/{post_id}/post_updates": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "listStatusPagePostUpdates",
+        "description": "List Post Updates for a Status Page by Status Page ID and Post ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Post Updates",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_update_reviewed_status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "post_updates": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/StatusPagePostUpdate"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "limit": 25,
+                      "more": false,
+                      "offset": 0,
+                      "post_updates": [
+                        {
+                          "id": "PXSOCH0",
+                          "impacted_services": [
+                            {
+                              "impact": {
+                                "id": "PY5OM08",
+                                "self": "https://api.pagerduty.com/status_pages/PR5LMML/impacts/PY5OM08",
+                                "type": "status_page_impact"
+                              },
+                              "service": {
+                                "id": "PYHMEI3",
+                                "self": "https://api.pagerduty.com/status_pages/PR5LMML/services/PYHMEI3",
+                                "type": "status_page_service"
+                              }
+                            }
+                          ],
+                          "message": "<p>We will be undergoing schedule maitenance at this date and time</p>",
+                          "notify_subscribers": false,
+                          "post": {
+                            "id": "P6F2CJ3",
+                            "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                            "type": "status_page_post"
+                          },
+                          "reported_at": "2023-12-12T10:08:19.000Z",
+                          "reviewed_status": "approved",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/post_updates/PXSOCH0",
+                          "severity": {
+                            "id": "PY5OM08",
+                            "self": "https://api.pagerduty.com/status_pages/PR5LMML/severities/PY5OM08",
+                            "type": "status_page_severity"
+                          },
+                          "status": {
+                            "id": "P0400H4",
+                            "self": "https://api.pagerduty.com/status_pages/PR5LMML/statuses/P0400H4",
+                            "type": "status_page_status"
+                          },
+                          "type": "status_page_post_update"
+                        }
+                      ],
+                      "total": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "post": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "createStatusPagePostUpdate",
+        "description": "Create a Post Update for a Post by Post ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Create a Status Page Post Update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "post_update": {
+                    "$ref": "#/components/schemas/StatusPagePostUpdateRequest"
+                  }
+                },
+                "required": [
+                  "post_update"
+                ]
+              },
+              "example": {
+                "post_update": {
+                  "impacted_services": [
+                    {
+                      "impact": {
+                        "id": "PY5OM08",
+                        "type": "status_page_impact"
+                      },
+                      "service": {
+                        "id": "PYHMEI3",
+                        "type": "status_page_service"
+                      }
+                    }
+                  ],
+                  "message": "<p>Message</p>",
+                  "notify_subscribers": false,
+                  "post": {
+                    "id": "P6F2CJ3",
+                    "type": "status_page_post"
+                  },
+                  "severity": {
+                    "id": "PY5OM08",
+                    "type": "status_page_severity"
+                  },
+                  "status": {
+                    "id": "P0400H4",
+                    "type": "status_page_status"
+                  },
+                  "type": "status_page_post_update"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "post_update": {
+                      "$ref": "#/components/schemas/StatusPagePostUpdate"
+                    }
+                  }
+                },
+                "example": {
+                  "post_update": {
+                    "id": "PXSOCH0",
+                    "impacted_services": [
+                      {
+                        "impact": {
+                          "id": "PY5OM08",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/impacts/PY5OM08",
+                          "type": "status_page_impact"
+                        },
+                        "service": {
+                          "id": "PYHMEI3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/services/PYHMEI3",
+                          "type": "status_page_service"
+                        }
+                      }
+                    ],
+                    "message": "<p>We will be undergoing schedule maitenance at this date and time</p>",
+                    "notify_subscribers": false,
+                    "post": {
+                      "id": "P6F2CJ3",
+                      "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                      "type": "status_page_post"
+                    },
+                    "reported_at": "2023-12-12T10:08:19.000Z",
+                    "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/post_updates/PXSOCH0",
+                    "severity": {
+                      "id": "P6F2CJ4",
+                      "self": "https://api.pagerduty.com/status_pages/PR5LMML/severities/P6F2CJ4",
+                      "type": "status_page_severity"
+                    },
+                    "status": {
+                      "id": "P6F2CJ3",
+                      "self": "https://api.pagerduty.com/status_pages/PR5LMML/statuses/P6F2CJ3",
+                      "type": "status_page_status"
+                    },
+                    "type": "status_page_post_update",
+                    "update_frequency_ms": 300000
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/posts/{post_id}/post_updates/{post_update_id}": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getPostUpdate",
+        "description": "Get a Post Update for a Post by Post ID and Post Update ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Post Update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_update_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "post_update": {
+                      "$ref": "#/components/schemas/StatusPagePostUpdate"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "post_update": {
+                        "id": "PXSOCH0",
+                        "impacted_services": [
+                          {
+                            "impact": {
+                              "id": "PY5OM08",
+                              "self": "https://api.pagerduty.com/status_pages/PR5LMML/impacts/PY5OM08",
+                              "type": "status_page_impact"
+                            },
+                            "service": {
+                              "id": "PYHMEI3",
+                              "self": "https://api.pagerduty.com/status_pages/PR5LMML/services/PYHMEI3",
+                              "type": "status_page_service"
+                            }
+                          }
+                        ],
+                        "message": "<p>We will be undergoing schedule maitenance at this date and time</p>",
+                        "notify_subscribers": false,
+                        "post": {
+                          "id": "P6F2CJ3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                          "type": "status_page_post"
+                        },
+                        "reported_at": "2023-12-12T10:08:19.000Z",
+                        "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/post_updates/PXSOCH0",
+                        "severity": {
+                          "id": "P6F2CJ4",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/severities/P6F2CJ4",
+                          "type": "status_page_severity"
+                        },
+                        "status": {
+                          "id": "P6F2CJ3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/statuses/P6F2CJ3",
+                          "type": "status_page_status"
+                        },
+                        "type": "status_page_post_update",
+                        "update_frequency_ms": 300000
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "put": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "updateStatusPagePostUpdate",
+        "description": "Update a Post Update for a Post by Post ID and Post Update ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Update a Status Page Post Update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_update_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "post_update": {
+                    "$ref": "#/components/schemas/StatusPagePostUpdateRequest"
+                  }
+                },
+                "required": [
+                  "post_update"
+                ]
+              },
+              "example": {
+                "post_update": {
+                  "impacted_services": [
+                    {
+                      "impact": {
+                        "id": "PY5OM08",
+                        "type": "status_page_impact"
+                      },
+                      "service": {
+                        "id": "PYHMEI3",
+                        "type": "status_page_service"
+                      }
+                    }
+                  ],
+                  "message": "<p>Message</p>",
+                  "notify_subscribers": false,
+                  "post": {
+                    "id": "P6F2CJ3",
+                    "type": "status_page_post"
+                  },
+                  "severity": {
+                    "id": "PY5OM08",
+                    "type": "status_page_severity"
+                  },
+                  "status": {
+                    "id": "P0400H4",
+                    "type": "status_page_status"
+                  },
+                  "type": "status_page_post_update"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "post_update": {
+                      "$ref": "#/components/schemas/StatusPagePostUpdate"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "post_update": {
+                        "id": "PXSOCH0",
+                        "impacted_services": [
+                          {
+                            "impact": {
+                              "id": "PY5OM08",
+                              "self": "https://api.pagerduty.com/status_pages/PR5LMML/impacts/PY5OM08",
+                              "type": "status_page_impact"
+                            },
+                            "service": {
+                              "id": "PYHMEI3",
+                              "self": "https://api.pagerduty.com/status_pages/PR5LMML/services/PYHMEI3",
+                              "type": "status_page_service"
+                            }
+                          }
+                        ],
+                        "message": "<p>We will be undergoing schedule maitenance at this date and time</p>",
+                        "notify_subscribers": false,
+                        "post": {
+                          "id": "P6F2CJ3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                          "type": "status_page_post"
+                        },
+                        "reported_at": "2023-12-12T10:08:19.000Z",
+                        "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/post_updates/PXSOCH0",
+                        "severity": {
+                          "id": "P6F2CJ4",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/severities/P6F2CJ4",
+                          "type": "status_page_severity"
+                        },
+                        "status": {
+                          "id": "P6F2CJ3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/statuses/P6F2CJ3",
+                          "type": "status_page_status"
+                        },
+                        "type": "status_page_post_update",
+                        "update_frequency_ms": 300000
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "delete": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "deleteStatusPagePostUpdate",
+        "description": "Delete a Post Update for a Post by Post ID and Post Update ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Delete a Status Page Post Update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_update_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/status_pages/{id}/posts/{post_id}/postmortem": {
+      "get": {
+        "x-pd-requires-scope": "status_pages.read",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "getPostmortem",
+        "description": "Get a Postmortem for a Post by Post ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Post Postmortem",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "postmortem": {
+                      "$ref": "#/components/schemas/StatusPagePostmortem"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "postmortem": {
+                        "id": "PIJ90N7",
+                        "message": "<p>Something wrong happened and this is a postmortem.<p>",
+                        "notify_subscribers": true,
+                        "post": {
+                          "id": "P6F2CJ3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                          "type": "status_page_post"
+                        },
+                        "reported_at": "2023-09-13T10:34:04.000Z",
+                        "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/postmortem",
+                        "type": "status_page_post_postmortem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "post": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "createStatusPagePostmortem",
+        "description": "Create a Postmortem for a Post by Post ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Create a Post Postmortem",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "postmortem": {
+                    "$ref": "#/components/schemas/StatusPagePostmortemRequest"
+                  }
+                },
+                "required": [
+                  "post_update"
+                ]
+              },
+              "example": {
+                "postmortem": {
+                  "message": "<p>Something wrong happened and this is a postmortem.<p>",
+                  "notify_subscribers": true,
+                  "post": {
+                    "id": "P6F2CJ3",
+                    "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                    "type": "status_page_post"
+                  },
+                  "type": "status_page_post_postmortem"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "postmortem": {
+                      "$ref": "#/components/schemas/StatusPagePostmortem"
+                    }
+                  }
+                },
+                "example": {
+                  "postmortem": {
+                    "id": "PIJ90N7",
+                    "message": "<p>Something wrong happened and this is a postmortem.<p>",
+                    "notify_subscribers": true,
+                    "post": {
+                      "id": "P6F2CJ3",
+                      "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                      "type": "status_page_post"
+                    },
+                    "reported_at": "2023-09-13T10:34:04.000Z",
+                    "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/postmortem",
+                    "type": "status_page_post_postmortem"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "put": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "updateStatusPagePostmortem",
+        "description": "Update a Postmortem for a Post by Post ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Update a Post Postmortem",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "postmortem": {
+                    "$ref": "#/components/schemas/StatusPagePostmortemRequest"
+                  }
+                },
+                "required": [
+                  "postmortem"
+                ]
+              },
+              "example": {
+                "postmortem": {
+                  "message": "<p>Something wrong happened and this is a postmortem.<p>",
+                  "notify_subscribers": true,
+                  "post": {
+                    "id": "P6F2CJ3",
+                    "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                    "type": "status_page_post"
+                  },
+                  "type": "status_page_post_postmortem"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "postmortem": {
+                      "$ref": "#/components/schemas/StatusPagePostmortem"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "summary": "Response Example",
+                    "value": {
+                      "postmortem": {
+                        "id": "PIJ90N7",
+                        "message": "<p>Something wrong happened and this is a postmortem.<p>",
+                        "notify_subscribers": true,
+                        "post": {
+                          "id": "P6F2CJ3",
+                          "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3",
+                          "type": "status_page_post"
+                        },
+                        "reported_at": "2023-09-13T10:34:04.000Z",
+                        "self": "https://api.pagerduty.com/status_pages/PR5LMML/posts/P6F2CJ3/postmortem",
+                        "type": "status_page_post_postmortem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ArgumentError"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "delete": {
+        "x-pd-requires-scope": "status_pages.write",
+        "tags": [
+          "Status Pages"
+        ],
+        "operationId": "deleteStatusPagePostmortem",
+        "description": "Delete a Postmortem for a Post by Post ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Delete a Post Postmortem",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_Accept"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/status_page_post_id"
+          },
+          {
+            "$ref": "#/components/parameters/early_access_status_pages"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
     "/status_pages/{id}/subscriptions": {
       "get": {
         "x-pd-requires-scope": "status_pages.read",
@@ -43927,8 +47410,8 @@
           "Status Pages"
         ],
         "operationId": "listStatusPageSubscriptions",
-        "description": "List subscriptions for a Status Page by status page id.\n\nScoped OAuth requires: `status_pages.read`\n",
-        "summary": "List Status Page subscriptions",
+        "description": "List Subscriptions for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "List Status Page Subscriptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/header_Accept"
@@ -44024,8 +47507,8 @@
           "Status Pages"
         ],
         "operationId": "createStatusPageSubscription",
-        "description": "Create a subscription for a Status Page by status page id.\n\nScoped OAuth requires: `status_pages.write`\n",
-        "summary": "Create a status page subscription",
+        "description": "Create a Subscription for a Status Page by Status Page ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Create a Status Page Subscription",
         "parameters": [
           {
             "$ref": "#/components/parameters/header_Accept"
@@ -44198,8 +47681,8 @@
           "Status Pages"
         ],
         "operationId": "getStatusPageSubscription",
-        "description": "Get a subscription for a Status Page by status page id and subscription id.\n\nScoped OAuth requires: `status_pages.read`\n",
-        "summary": "Get a status page subscription",
+        "description": "Get a Subscription for a Status Page by Status Page ID and Subscription ID.\n\nScoped OAuth requires: `status_pages.read`\n",
+        "summary": "Get a Status Page Subscription",
         "parameters": [
           {
             "$ref": "#/components/parameters/header_Accept"
@@ -44273,8 +47756,8 @@
           "Status Pages"
         ],
         "operationId": "deleteStatusPageSubscription",
-        "description": "Delete a subscription for a Status Page by status page id and subscription id.\n\nScoped OAuth requires: `status_pages.write`\n",
-        "summary": "Delete a status page subscription",
+        "description": "Delete a Subscription for a Status Page by Status Page ID and Subscription ID.\n\nScoped OAuth requires: `status_pages.write`\n",
+        "summary": "Delete a Status Page Subscription",
         "parameters": [
           {
             "$ref": "#/components/parameters/header_Accept"

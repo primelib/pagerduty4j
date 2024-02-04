@@ -52,17 +52,20 @@ public class IncidentWorkflowActionConfiguration {
     protected String description;
 
     /**
-     * The standard inputs used to configure the Action to execute
+     * An unordered list of standard inputs used to configure the Action to execute
      */
     @JsonProperty("inputs")
     protected List<IncidentWorkflowActionConfigurationInputsInner> inputs;
 
     /**
-     * Specialized inputs used to configure a workflow-within-a-workflow
+     * An unordered list of specialized inputs used to configure a workflow-within-a-workflow
      */
     @JsonProperty("inline_steps_inputs")
     protected List<IncidentWorkflowActionConfigurationInlineStepsInputsInner> inlineStepsInputs;
 
+    /**
+     * An unordered list of outputs this action produces
+     */
     @JsonProperty("outputs")
     protected List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs;
 
@@ -81,9 +84,9 @@ public class IncidentWorkflowActionConfiguration {
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfiguration(Consumer)} instead.
      * @param actionId The identifier of the Action to execute
      * @param description Description of the Action
-     * @param inputs The standard inputs used to configure the Action to execute
-     * @param inlineStepsInputs Specialized inputs used to configure a workflow-within-a-workflow
-     * @param outputs outputs
+     * @param inputs An unordered list of standard inputs used to configure the Action to execute
+     * @param inlineStepsInputs An unordered list of specialized inputs used to configure a workflow-within-a-workflow
+     * @param outputs An unordered list of outputs this action produces
      */
     @ApiStatus.Internal
     public IncidentWorkflowActionConfiguration(String actionId, String description, List<IncidentWorkflowActionConfigurationInputsInner> inputs, List<IncidentWorkflowActionConfigurationInlineStepsInputsInner> inlineStepsInputs, List<IncidentWorkflowActionConfigurationInlineStepsInputsInnerValueStepsInnerAllOfActionConfigurationOutputsInner> outputs) {

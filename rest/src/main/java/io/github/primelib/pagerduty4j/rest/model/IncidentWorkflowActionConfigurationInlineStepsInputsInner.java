@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IncidentWorkflowActionConfigurationInlineStepsInputsInner {
 
     /**
-     * The name of the Input
+     * The name for this Input. Input names are unique per action and should be used to find a specific Input.
      */
     @JsonProperty("name")
     protected String name;
@@ -57,7 +57,7 @@ public class IncidentWorkflowActionConfigurationInlineStepsInputsInner {
      * Constructs a validated instance of {@link IncidentWorkflowActionConfigurationInlineStepsInputsInner}.
      * <p>
      * NOTE: This constructor is not considered stable and may change if the model is updated. Consider using {@link #IncidentWorkflowActionConfigurationInlineStepsInputsInner(Consumer)} instead.
-     * @param name The name of the Input
+     * @param name The name for this Input. Input names are unique per action and should be used to find a specific Input.
      * @param value value
      */
     @ApiStatus.Internal
